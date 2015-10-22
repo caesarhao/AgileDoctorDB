@@ -1,0 +1,10 @@
+ALTER TABLE Scenario_MicroSequence DROP CONSTRAINT ScnrMcrSqmcrSqncsD
+ALTER TABLE Scenario_MicroSequence DROP CONSTRAINT ScnrMcrSqenceScnrD
+ALTER TABLE MicroSequence_DialogueSession DROP CONSTRAINT McrSqncDlgMcrSqncD
+ALTER TABLE MicroSequence_DialogueSession DROP CONSTRAINT McrSqncDldlgSssnsD
+DROP TABLE Scenario
+DROP TABLE MicroSequence
+DROP TABLE DialogueSession
+DROP TABLE Phrase
+DROP TABLE Scenario_MicroSequence
+DROP TABLE MicroSequence_DialogueSession

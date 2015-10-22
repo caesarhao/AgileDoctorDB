@@ -9,21 +9,21 @@ Set environment variable *DERBY_HOME* to the Derby directory.
 Put derby\*/bin in environment variable *PATH*.
 
 ## Start Derby Database
-Open a new cmd and execute command *startNetworkServer*.
+Open a new *cmd*, use *cd* command to change the current path into *CurrentProjectPath/db/* 
+Execute command *startNetworkServer*.
 
 ## Folder definition:
 * *src* : java source code here.
-* *model* : class and property (TBox) saved here.
-* *individual* : individual information (ABox) saved here.
-* *LibsProtege* : *.jar copied from Protege, imported in project.
+* *db*: database directory.
+* *derby* : derby client jar file.
+* *eclipselink* : jpa interface implemented with eclipselink.
+* *doc* : documentation for the current project.
 
-## Use Protege to generate Java code:
-1. *Output folder* : **AgileDoctor/src**
-2. *Java package* : **model**
-3. *Factory class name* : **MyFactory**
+## Generate tables in the derby Database:
+1. Make sure the derby server has been started.
+2. Right-click the project folder, select *JPA Tools > Generate Tables from Entities* to generate tables, output mode (Database or Both)
 
 ## Package definition:
-* *model* : Protege generating model code, can't be modified manually.
-* *test* : write any test functions here during the development.
+* *model* : Concepts/Classes, corresponding Tables in database.
 * *view* : gui design.
 * *control* : logic code, the main function is defined here.
