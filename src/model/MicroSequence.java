@@ -11,7 +11,11 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="MicroSequence")
-
+@NamedQueries({
+@NamedQuery(name = "MicroSequence.findAll", query = "SELECT e FROM MicroSequence e"),
+@NamedQuery(name = "MicroSequence.findById", query = "SELECT e FROM MicroSequence e WHERE e.id = :id"),
+@NamedQuery(name = "MicroSequence.findByName", query = "SELECT e FROM MicroSequence e WHERE e.name = :name"),
+})
 public class MicroSequence implements Serializable {
 
 	
@@ -20,6 +24,17 @@ public class MicroSequence implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	
+	@Column(name="name", nullable=false, unique=true)
+	private String name;
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	@OneToMany(cascade=CascadeType.ALL)
 	private Set<DialogueSession> dialogueSessions;
 	

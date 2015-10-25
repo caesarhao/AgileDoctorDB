@@ -10,6 +10,11 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="Phrase")
+@NamedQueries({
+@NamedQuery(name = "Phrase.findAll", query = "SELECT e FROM Phrase e"),
+@NamedQuery(name = "Phrase.findById", query = "SELECT e FROM Phrase e WHERE e.id = :id"),
+@NamedQuery(name = "Phrase.findByName", query = "SELECT e FROM Phrase e WHERE e.name = :name"),
+})
 public class Phrase implements Serializable {
 	public enum AggressiveLevel{
 		Aggressive,
@@ -30,6 +35,16 @@ public class Phrase implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	
+	@Column(name="name", nullable=false, unique=true)
+	private String name;
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	@Column(name="expression", nullable=false)
 	private String expression;
 	

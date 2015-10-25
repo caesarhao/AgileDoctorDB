@@ -11,6 +11,11 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="Scenario")
+@NamedQueries({
+@NamedQuery(name = "Scenario.findAll", query = "SELECT e FROM Scenario e"),
+@NamedQuery(name = "Scenario.findById", query = "SELECT e FROM Scenario e WHERE e.id = :id"),
+@NamedQuery(name = "Scenario.findByName", query = "SELECT e FROM Scenario e WHERE e.name = :name"),
+})
 public class Scenario implements Serializable {
 
 	
@@ -18,6 +23,9 @@ public class Scenario implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
+	
+	@Column(name="name", nullable=false, unique=true)
+	private String name;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	private Set<MicroSequence> microSequences;
@@ -32,6 +40,14 @@ public class Scenario implements Serializable {
 
 	public Scenario() {
 		super();
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
    
 	
