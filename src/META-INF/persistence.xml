@@ -3,8 +3,11 @@
 	<persistence-unit name="AgileDoctorDB" transaction-type="RESOURCE_LOCAL">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<class>model.DialogueSession</class>
+		<class>model.DoctorActor</class>
 		<class>model.MicroSequence</class>
+		<class>model.PatientActor</class>
 		<class>model.Phrase</class>
+		<class>model.PhraseActor</class>
 		<class>model.Scenario</class>
       <properties>
         <property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC" />

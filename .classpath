@@ -6,11 +6,8 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/EclipseLink">
-		<attributes>
-			<attribute name="owner.project.facets" value="jpt.jpa"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.datatools.connectivity.jdt.DRIVERLIBRARY/SQLite JDBC Driver"/>
+	<classpathentry kind="lib" path="eclipselink/eclipselink.jar"/>
+	<classpathentry kind="lib" path="eclipselink/javax.persistence.jar"/>
+	<classpathentry kind="lib" path="sqlite/sqlite-jdbc-3.8.11.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

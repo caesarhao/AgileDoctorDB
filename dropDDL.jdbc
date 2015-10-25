@@ -1,9 +1,14 @@
+ALTER TABLE DoctorActor DROP CONSTRAINT FK_DoctorActor_ID
+ALTER TABLE PatientActor DROP CONSTRAINT FK_PatientActor_ID
 ALTER TABLE MicroSequence_DialogueSession DROP CONSTRAINT MicroSequence_DialogueSession_dialogueSessions_ID
 ALTER TABLE MicroSequence_DialogueSession DROP CONSTRAINT FK_MicroSequence_DialogueSession_MicroSequence_ID
 ALTER TABLE Scenario_MicroSequence DROP CONSTRAINT FK_Scenario_MicroSequence_microSequences_ID
 ALTER TABLE Scenario_MicroSequence DROP CONSTRAINT FK_Scenario_MicroSequence_Scenario_ID
 DROP TABLE DialogueSession
+DROP TABLE PHRASEACTOR
+DROP TABLE DoctorActor
 DROP TABLE MicroSequence
+DROP TABLE PatientActor
 DROP TABLE Phrase
 DROP TABLE Scenario
 DROP TABLE MicroSequence_DialogueSession

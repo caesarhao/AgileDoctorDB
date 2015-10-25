@@ -28,7 +28,7 @@ public class JpaManager {
 		return em;
 	}
 
-	public static <T extends Serializable> void create(T entity) {
+	public static <T extends Serializable> void persist(T entity) {
 		EntityManager em = getEM();
 		try {
 			em.getTransaction().begin();
