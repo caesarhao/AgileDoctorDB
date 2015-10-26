@@ -9,6 +9,7 @@
 		<class>model.Phrase</class>
 		<class>model.PhraseActor</class>
 		<class>model.Scenario</class>
+		<class>model.Thing</class>
       <properties>
         <property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC" />
         <property name="javax.persistence.jdbc.url" value="jdbc:sqlite:/home/caesarhao/workspace/AgileDoctorDB/dbs.db" />

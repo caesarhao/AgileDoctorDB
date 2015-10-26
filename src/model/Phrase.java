@@ -15,7 +15,7 @@ import javax.persistence.*;
 @NamedQuery(name = "Phrase.findById", query = "SELECT e FROM Phrase e WHERE e.id = :id"),
 @NamedQuery(name = "Phrase.findByName", query = "SELECT e FROM Phrase e WHERE e.name = :name"),
 })
-public class Phrase implements Serializable {
+public class Phrase extends Thing implements Serializable {
 	public enum AggressiveLevel{
 		Aggressive,
 		Neutral,
@@ -31,19 +31,6 @@ public class Phrase implements Serializable {
 		TooLong
 	}
 	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id;
-	
-	@Column(name="name", nullable=false, unique=true)
-	private String name;
-	
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	@Column(name="expression", nullable=false)
 	private String expression;
@@ -69,9 +56,7 @@ public class Phrase implements Serializable {
 	public void setLongLevel(LongLevel longLevel) {
 		this.longLevel = longLevel;
 	}
-	public long getId() {
-		return id;
-	}
+
 	public Phrase() {
 		super();
 	}   
