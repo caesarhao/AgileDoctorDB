@@ -9,9 +9,10 @@ import javax.persistence.*;
  * Entity implementation class for Entity: Scenario
  *
  */
-@Entity
-@Table(name="Thing")
-@Inheritance(strategy = InheritanceType.JOINED)
+//@Entity
+//@Table(name="Thing")
+//@Inheritance(strategy = InheritanceType.JOINED)
+@MappedSuperclass
 public abstract class Thing implements Serializable {
 
 	private static final long serialVersionUID = 1L;

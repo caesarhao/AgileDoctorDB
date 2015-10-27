@@ -1,20 +1,14 @@
-ALTER TABLE DialogueSession DROP CONSTRAINT FK_DialogueSession_ID
-ALTER TABLE DoctorActor DROP CONSTRAINT FK_DoctorActor_ID
-ALTER TABLE MicroSequence DROP CONSTRAINT FK_MicroSequence_ID
-ALTER TABLE PatientActor DROP CONSTRAINT FK_PatientActor_ID
-ALTER TABLE Phrase DROP CONSTRAINT FK_Phrase_ID
-ALTER TABLE Scenario DROP CONSTRAINT FK_Scenario_ID
 ALTER TABLE MicroSequence_DialogueSession DROP CONSTRAINT MicroSequence_DialogueSession_dialogueSessions_ID
 ALTER TABLE MicroSequence_DialogueSession DROP CONSTRAINT FK_MicroSequence_DialogueSession_MicroSequence_ID
 ALTER TABLE Scenario_MicroSequence DROP CONSTRAINT FK_Scenario_MicroSequence_microSequences_ID
 ALTER TABLE Scenario_MicroSequence DROP CONSTRAINT FK_Scenario_MicroSequence_Scenario_ID
-DROP TABLE Thing
 DROP TABLE DialogueSession
 DROP TABLE DoctorActor
 DROP TABLE MicroSequence
 DROP TABLE PatientActor
 DROP TABLE Phrase
 DROP TABLE Scenario
+DROP TABLE Symptom
 DROP TABLE MicroSequence_DialogueSession
 DROP TABLE Scenario_MicroSequence
 DELETE FROM SEQUENCE WHERE SEQ_NAME = 'SEQ_GEN_IDENTITY'
