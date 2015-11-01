@@ -30,6 +30,14 @@ public class Phrase extends Thing implements Serializable {
 		Normal,
 		TooLong
 	}
+	public enum PrimitiveType{
+		Statement,
+		OpenQuestion,
+		CloseQuestion,
+		Confirmation,
+		Disagree,
+		DontUnderstand
+	}
 	private static final long serialVersionUID = 1L;
 
 	@Column(name="expression", nullable=false)
@@ -44,6 +52,15 @@ public class Phrase extends Thing implements Serializable {
 	@Column(name="longLevel", nullable=false)
 	private LongLevel longLevel;
 	
+	@Column(name="primitiveType", nullable=false)
+	private PrimitiveType primitiveType;
+	
+	public PrimitiveType getPrimitiveType() {
+		return primitiveType;
+	}
+	public void setPrimitiveType(PrimitiveType primitiveType) {
+		this.primitiveType = primitiveType;
+	}
 	public ClearLevel getClearLevel() {
 		return clearLevel;
 	}

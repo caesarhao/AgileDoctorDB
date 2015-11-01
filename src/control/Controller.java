@@ -54,6 +54,8 @@ public class Controller {
 
 		//JMain jm = new JMain("xx");
 		//jm.setVisible(true);
+		JModelManagement jmm = new JModelManagement();
+		jmm.setVisible(true);
 	}
 
 }

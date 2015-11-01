@@ -39,14 +39,15 @@
       <x>10</x>
       <y>400</y>
       <w>330</w>
-      <h>100</h>
+      <h>110</h>
     </coordinates>
     <panel_attributes>Phrase
 --
-+aggressiveLevel:&lt;aggressive,netral,polite&gt;
-+clearLevel:&lt;clear,unclear&gt;
-+longLevel:&lt;concise,longer,normal&gt;
-+expression:String
+-aggressiveLevel:&lt;aggressive,netral,polite&gt;
+-clearLevel:&lt;clear,unclear&gt;
+-longLevel:&lt;concise,longer,normal&gt;
+-primitiveType:&lt;Statement, ..&gt;
+-expression:String
 
 
 </panel_attributes>
@@ -140,14 +141,14 @@ m2=*</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>210</x>
-      <y>490</y>
+      <y>500</y>
       <w>90</w>
-      <h>140</h>
+      <h>130</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
 r2=hasActor
 m2=2..*</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -241,12 +242,14 @@ m2=1</panel_attributes>
     <coordinates>
       <x>200</x>
       <y>750</y>
-      <w>130</w>
-      <h>70</h>
+      <w>160</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>PatientActor
 --
-
+-aggressiveValue: int
+-longPhraseValue: int
+-clearValue: int
 
 
 </panel_attributes>

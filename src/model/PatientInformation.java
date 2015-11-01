@@ -9,7 +9,6 @@ import model.Information;
  *
  */
 @MappedSuperclass
-
 public abstract class PatientInformation extends Information implements Serializable {
 
 	
