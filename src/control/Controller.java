@@ -54,8 +54,9 @@ public class Controller {
 
 		//JMain jm = new JMain("xx");
 		//jm.setVisible(true);
-		JModelManagement jmm = new JModelManagement();
-		jmm.setVisible(true);
+		ModelManager mm = new ModelManager(new JModelManagement("AgileDoctorDB Model Management"));
+		mm.initilizeControl();
+		
 	}
 
 }

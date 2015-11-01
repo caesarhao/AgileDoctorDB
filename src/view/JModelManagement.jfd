@@ -5,6 +5,7 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 			name: "this"
+			"title": "AgileDoctorDB Model Management"
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 				name: "dialogPane"
 				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
@@ -29,7 +30,9 @@ new FormModel {
 							} )
 							add( new FormComponent( "javax.swing.JComboBox" ) {
 								name: "cmbBoxConcepts"
-								addEvent( new FormEvent( "java.awt.event.ItemListener", "itemStateChanged", "cmbBoxConceptsItemStateChanged", true ) )
+								auxiliary() {
+									"JavaCodeGenerator.variableGetter": true
+								}
 							} )
 						}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 						add( new FormComponent( "javax.swing.JLabel" ) {
@@ -43,13 +46,18 @@ new FormModel {
 							add( new FormComponent( "javax.swing.JList" ) {
 								name: "lstItems"
 								"selectionMode": 0
-								addEvent( new FormEvent( "javax.swing.event.ListSelectionListener", "valueChanged", "lstItemsValueChanged", true ) )
+								auxiliary() {
+									"JavaCodeGenerator.variableGetter": true
+								}
 							} )
 						}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 							"gridy": 1
 						} )
 						add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 							name: "scrollPaneEditRegion"
+							auxiliary() {
+								"JavaCodeGenerator.variableGetter": true
+							}
 						}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 							"gridx": 1
 							"gridy": 1

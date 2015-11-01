@@ -17,6 +17,10 @@ public class JModelManagement extends JFrame {
 	public JModelManagement() {
 		initComponents();
 	}
+	public JModelManagement(String title){
+		this();
+		this.setTitle(title);
+	}
 
 	private void cmbBoxConceptsItemStateChanged(ItemEvent e) {
 		// TODO add your code here
@@ -32,6 +36,26 @@ public class JModelManagement extends JFrame {
 
 	private void cancelButtonMouseReleased(MouseEvent e) {
 		// TODO add your code here
+	}
+
+	public JComboBox getCmbBoxConcepts() {
+		return cmbBoxConcepts;
+	}
+
+	public JList getLstItems() {
+		return lstItems;
+	}
+
+	public JScrollPane getScrollPaneEditRegion() {
+		return scrollPaneEditRegion;
+	}
+
+	private void cmbBoxConceptsActionPerformed(ActionEvent e) {
+		
+	}
+
+	private void createUIComponents() {
+		// TODO: add custom component creation code here
 	}
 
 	private void initComponents() {
@@ -52,6 +76,7 @@ public class JModelManagement extends JFrame {
 		cancelButton = new JButton();
 
 		//======== this ========
+		setTitle("AgileDoctorDB Model Management");
 		Container contentPane = getContentPane();
 		contentPane.setLayout(new BorderLayout());
 
@@ -87,9 +112,6 @@ public class JModelManagement extends JFrame {
 						//---- label3 ----
 						label3.setText("Concept: ");
 						panel5.add(label3);
-
-						//---- cmbBoxConcepts ----
-						cmbBoxConcepts.addItemListener(e -> cmbBoxConceptsItemStateChanged(e));
 						panel5.add(cmbBoxConcepts);
 					}
 					panel4.add(panel5, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
@@ -107,7 +129,6 @@ public class JModelManagement extends JFrame {
 
 						//---- lstItems ----
 						lstItems.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-						lstItems.addListSelectionListener(e -> lstItemsValueChanged(e));
 						scrollPane3.setViewportView(lstItems);
 					}
 					panel4.add(scrollPane3, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
