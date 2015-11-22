@@ -34,9 +34,17 @@ public class Controller {
 		// PhraseActors, patients.
 		PatientActor pa1 = new PatientActor();
 		pa1.setName("Cathy");
+		pa1.setAggressiveLevel(50);
+		pa1.setClearLevel(60);
+		pa1.setConfidentLevel(70);
+		pa1.setLongPhraseLevel(80);
 		JpaManager.persist(pa1);
 		PatientActor pa2 = new PatientActor();
 		pa2.setName("Toto");
+		pa2.setAggressiveLevel(80);
+		pa2.setClearLevel(70);
+		pa2.setConfidentLevel(60);
+		pa2.setLongPhraseLevel(50);
 		JpaManager.persist(pa2);
 		
 		// MicroSequences
@@ -99,6 +107,7 @@ public class Controller {
 		p1.setClearLevel(Phrase.ClearLevel.Clear);
 		p1.setLongLevel(Phrase.LongLevel.Normal);
 		p1.setPrimitiveType(Phrase.PrimitiveType.Statement);
+		p1.setPhraseActor(da1);
 		p1.setExpression("Good morning, please come in and sit down!");
 		JpaManager.persist(p1);
 	}

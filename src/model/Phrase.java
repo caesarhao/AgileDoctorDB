@@ -41,20 +41,29 @@ public class Phrase extends Thing implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Column(name="expression", nullable=false)
-	private String expression;
+	public String expression;
 	
 	@Column(name="agressiveLevel", nullable=false)
-	private AggressiveLevel aggressiveLevel;
+	public AggressiveLevel aggressiveLevel;
 	
 	@Column(name="clearLevel", nullable=false)
-	private ClearLevel clearLevel;
+	public ClearLevel clearLevel;
 	
 	@Column(name="longLevel", nullable=false)
-	private LongLevel longLevel;
+	public LongLevel longLevel;
 	
 	@Column(name="primitiveType", nullable=false)
-	private PrimitiveType primitiveType;
+	public PrimitiveType primitiveType;
 	
+	@Column(name="phraseActor", nullable=false)
+	public PhraseActor phraseActor;
+	
+	public PhraseActor getPhraseActor() {
+		return phraseActor;
+	}
+	public void setPhraseActor(PhraseActor phraseActor) {
+		this.phraseActor = phraseActor;
+	}
 	public PrimitiveType getPrimitiveType() {
 		return primitiveType;
 	}

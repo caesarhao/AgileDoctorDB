@@ -1,6 +1,7 @@
 package control;
 
 import java.awt.event.ActionEvent;
+import java.lang.reflect.Field;
 import java.util.List;
 
 import javax.swing.*;
@@ -15,23 +16,52 @@ public class ModelManager extends AJFrameControl<JModelManagement>{
 	private JComboBox cmbBoxConcepts = null;
 	private JList lstItems = null;
 	private DefaultListModel listModel = null;
+	private JPanel panelEdition = null;
+	private Class currentClass = null;
 	
 	public ModelManager(JModelManagement frame) {
 		super(frame);
 		cmbBoxConcepts = bindedFrame.getCmbBoxConcepts();
 		lstItems = bindedFrame.getLstItems();
 		listModel = new DefaultListModel();
+		panelEdition = bindedFrame.getPanelEdition();
+		try {
+			currentClass = Class.forName("model.Scenario");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private void lstItemsValueChanged(ListSelectionEvent e) {
 		JList list = (JList) e.getSource();
 		String selectedItemName = (String)list.getSelectedValue();
 		//JOptionPane.showMessageDialog(null, selectedItemName);
+		//clean all
+		panelEdition.removeAll();
+		// reflection of class elements
+		Field[] fields = currentClass.getFields();
+		for (int i = 0; i < fields.length; i++){
+			Field field = fields[i];
+			panelEdition.add(new JLabel(field.getName()+": "));
+			if(String.class == field.getType()){
+				panelEdition.add(new JTextField());
+			}
+		}
+		// add name set
+		
+		// refresh the display
+		panelEdition.revalidate();
+		panelEdition.repaint();
 	}
 	
 	private void cmbBoxConceptsActionPerformed(ActionEvent e) {
 		JComboBox<String> combo = (JComboBox<String>) e.getSource();
         String selectedItem = (String) combo.getSelectedItem();
+        try {
+			currentClass = Class.forName("model."+selectedItem);
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+		}
         List<Thing> individuals = JpaManager.<Thing>findAll(selectedItem);
         listModel.removeAllElements();
         individuals.forEach(i -> listModel.addElement(i.getName()));
@@ -61,7 +91,5 @@ public class ModelManager extends AJFrameControl<JModelManagement>{
 		bindedFrame.setVisible(true);
 	}
 	
-	void dealWithCmbBoxConceptsAction(Action e){
-		
-	}
+
 }

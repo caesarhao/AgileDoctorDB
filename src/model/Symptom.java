@@ -20,7 +20,7 @@ public class Symptom extends MedicalInformation implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	@Column(name="expression", nullable=false)
-	private String expression;
+	public String expression;
 	
 	public String getExpression() {
 		return expression;

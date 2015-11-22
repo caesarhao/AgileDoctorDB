@@ -22,16 +22,16 @@ public class PatientActor extends PhraseActor implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Column(name="aggressiveLevel", nullable=false)
-	private int aggressiveLevel;
+	public int aggressiveLevel;
 	
 	@Column(name="longPhraseLevel", nullable=false)
-	private int longPhraseLevel;
+	public int longPhraseLevel;
 	
 	@Column(name="clearLevel", nullable=false)
-	private int clearLevel;
+	public int clearLevel;
 	
 	@Column(name="confidentLevel", nullable=false)
-	private int confidentLevel;
+	public int confidentLevel;
 	
 	public int getConfidentLevel() {
 		return confidentLevel;

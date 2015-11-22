@@ -22,7 +22,7 @@ public class MicroSequence extends Thing implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@OneToMany(cascade=CascadeType.ALL)
-	private Set<DialogueSession> dialogueSessions;
+	public Set<DialogueSession> dialogueSessions;
 
 	public Set<DialogueSession> getDialogueSessions() {
 		return dialogueSessions;

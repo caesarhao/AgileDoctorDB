@@ -58,6 +58,10 @@ public class JModelManagement extends JFrame {
 		// TODO: add custom component creation code here
 	}
 
+	public JPanel getPanelEdition() {
+		return panelEdition;
+	}
+
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
 		dialogPane = new JPanel();
@@ -70,12 +74,14 @@ public class JModelManagement extends JFrame {
 		scrollPane3 = new JScrollPane();
 		lstItems = new JList();
 		scrollPaneEditRegion = new JScrollPane();
+		panelEdition = new JPanel();
 		buttonBar = new JPanel();
 		saveButton = new JButton();
 		cancelButton = new JButton();
 
 		//======== this ========
 		setTitle("AgileDoctorDB Model Management");
+		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		Container contentPane = getContentPane();
 		contentPane.setLayout(new BorderLayout());
 
@@ -125,6 +131,16 @@ public class JModelManagement extends JFrame {
 					panel4.add(scrollPane3, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
 						GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 						new Insets(0, 0, 0, 5), 0, 0));
+
+					//======== scrollPaneEditRegion ========
+					{
+
+						//======== panelEdition ========
+						{
+							panelEdition.setLayout(new FlowLayout(FlowLayout.LEFT));
+						}
+						scrollPaneEditRegion.setViewportView(panelEdition);
+					}
 					panel4.add(scrollPaneEditRegion, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
 						GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 						new Insets(0, 0, 0, 0), 0, 0));
@@ -183,6 +199,7 @@ public class JModelManagement extends JFrame {
 	private JScrollPane scrollPane3;
 	private JList lstItems;
 	private JScrollPane scrollPaneEditRegion;
+	private JPanel panelEdition;
 	private JPanel buttonBar;
 	private JButton saveButton;
 	private JButton cancelButton;

@@ -21,7 +21,7 @@ public abstract class Thing implements Serializable {
 	private long id;
 
 	@Column(name = "name", nullable = false, unique = true)
-	private String name;
+	public String name;
 
 	public long getId() {
 		return id;

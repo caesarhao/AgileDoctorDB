@@ -22,7 +22,7 @@ public class Scenario extends Thing implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@OneToMany(cascade=CascadeType.ALL)
-	private Set<MicroSequence> microSequences;
+	public Set<MicroSequence> microSequences;
 	
 
 	public Set<MicroSequence> getMicroSequences() {
