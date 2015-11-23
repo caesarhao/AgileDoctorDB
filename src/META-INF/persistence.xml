@@ -4,13 +4,16 @@
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<class>model.DialogueSession</class>
 		<class>model.DoctorActor</class>
+		<class>model.Information</class>
+		<class>model.MedicalInformation</class>
 		<class>model.MicroSequence</class>
 		<class>model.PatientActor</class>
+		<class>model.PatientInformation</class>
 		<class>model.Phrase</class>
 		<class>model.PhraseActor</class>
 		<class>model.Scenario</class>
-		<class>model.Thing</class>
 		<class>model.Symptom</class>
+		<class>model.Thing</class>
       <properties>
         <property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC" />
         <property name="javax.persistence.jdbc.url" value="jdbc:sqlite:/home/caesarhao/workspace/AgileDoctorDB/dbs.db" />
