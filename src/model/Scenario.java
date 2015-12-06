@@ -16,7 +16,7 @@ import javax.persistence.*;
 @NamedQuery(name = "Scenario.findById", query = "SELECT e FROM Scenario e WHERE e.id = :id"),
 @NamedQuery(name = "Scenario.findByName", query = "SELECT e FROM Scenario e WHERE e.name = :name"),
 })
-public class Scenario extends Thing implements Serializable {
+public class Scenario extends AThing implements Serializable {
 
 	
 	private static final long serialVersionUID = 1L;

@@ -15,7 +15,7 @@ import javax.persistence.*;
 @NamedQuery(name = "Phrase.findById", query = "SELECT e FROM Phrase e WHERE e.id = :id"),
 @NamedQuery(name = "Phrase.findByName", query = "SELECT e FROM Phrase e WHERE e.name = :name"),
 })
-public class Phrase extends Thing implements Serializable {
+public class Phrase extends AThing implements Serializable {
 	public enum AggressiveLevel{
 		Aggressive,
 		Neutral,
@@ -56,12 +56,12 @@ public class Phrase extends Thing implements Serializable {
 	public PrimitiveType primitiveType;
 	
 	@Column(name="phraseActor", nullable=false)
-	public PhraseActor phraseActor;
+	public APhraseActor phraseActor;
 	
-	public PhraseActor getPhraseActor() {
+	public APhraseActor getPhraseActor() {
 		return phraseActor;
 	}
-	public void setPhraseActor(PhraseActor phraseActor) {
+	public void setPhraseActor(APhraseActor phraseActor) {
 		this.phraseActor = phraseActor;
 	}
 	public PrimitiveType getPrimitiveType() {

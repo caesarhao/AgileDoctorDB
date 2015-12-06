@@ -8,7 +8,7 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 
 import jpa.JpaManager;
-import model.Thing;
+import model.AThing;
 import view.*;
 
 public class ModelManager extends AJFrameControl<JModelManagement>{
@@ -62,7 +62,7 @@ public class ModelManager extends AJFrameControl<JModelManagement>{
 		} catch (ClassNotFoundException e1) {
 			e1.printStackTrace();
 		}
-        List<Thing> individuals = JpaManager.<Thing>findAll(selectedItem);
+        List<AThing> individuals = JpaManager.<AThing>findAll(selectedItem);
         listModel.removeAllElements();
         individuals.forEach(i -> listModel.addElement(i.getName()));
         lstItems.setModel(listModel);
@@ -76,7 +76,8 @@ public class ModelManager extends AJFrameControl<JModelManagement>{
 		cmbBoxConcepts.addItem("Phrase");
 		cmbBoxConcepts.addItem("DoctorActor");
 		cmbBoxConcepts.addItem("PatientActor");
-		cmbBoxConcepts.addItem("Symptom");
+		cmbBoxConcepts.addItem("MedicalInformation");
+		cmbBoxConcepts.addItem("FamilyInformation");
 		cmbBoxConcepts.addActionListener(e -> cmbBoxConceptsActionPerformed(e));
 	}
 	public void setLstItems(){

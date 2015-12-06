@@ -2,19 +2,19 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import model.Thing;
+import model.AThing;
 
 /**
  * Entity implementation class for Entity: Information
  *
  */
 @MappedSuperclass
-public abstract class Information extends Thing implements Serializable {
+public abstract class AInformation extends AThing implements Serializable {
 
 	
 	private static final long serialVersionUID = 1L;
 
-	public Information() {
+	public AInformation() {
 		super();
 	}
    

@@ -27,3 +27,6 @@ Execute command *startNetworkServer*.</del>
 * *jpa* : All manipulations with the database, CRUD.
 * *view* : gui design.
 * *control* : logic code, the main function is defined here.
+
+## Bug logging:
+* A bug in EclipseLink: 2 OneToMany with same element type are mapped to a same relation table with a_b_b.

@@ -14,7 +14,7 @@ import javax.persistence.*;
 @NamedQuery(name = "DialogueSession.findById", query = "SELECT e FROM DialogueSession e WHERE e.id = :id"),
 @NamedQuery(name = "DialogueSession.findByName", query = "SELECT e FROM DialogueSession e WHERE e.name = :name"),
 })
-public class DialogueSession extends Thing implements Serializable {
+public class DialogueSession extends AThing implements Serializable {
 
 	
 	private static final long serialVersionUID = 1L;

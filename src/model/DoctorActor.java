@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import model.PhraseActor;
+import model.APhraseActor;
 
 /**
  * Entity implementation class for Entity: DoctorActor
@@ -15,7 +15,7 @@ import model.PhraseActor;
 @NamedQuery(name = "DoctorActor.findById", query = "SELECT e FROM DoctorActor e WHERE e.id = :id"),
 @NamedQuery(name = "DoctorActor.findByName", query = "SELECT e FROM DoctorActor e WHERE e.name = :name"),
 })
-public class DoctorActor extends PhraseActor implements Serializable {
+public class DoctorActor extends APhraseActor implements Serializable {
 
 	
 	private static final long serialVersionUID = 1L;

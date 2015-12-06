@@ -10,11 +10,11 @@ import javax.persistence.*;
 //@Entity
 //@Table(name="PhraseActor")
 @MappedSuperclass
-public abstract class PhraseActor extends Thing implements Serializable {
+public abstract class APhraseActor extends AThing implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	public PhraseActor() {
+	public APhraseActor() {
 		super();
 	}
    

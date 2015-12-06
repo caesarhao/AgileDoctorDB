@@ -13,7 +13,7 @@ import javax.persistence.*;
 //@Table(name="Thing")
 //@Inheritance(strategy = InheritanceType.JOINED)
 @MappedSuperclass
-public abstract class Thing implements Serializable {
+public abstract class AThing implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -27,7 +27,7 @@ public abstract class Thing implements Serializable {
 		return id;
 	}
 
-	public Thing() {
+	public AThing() {
 		super();
 	}
 

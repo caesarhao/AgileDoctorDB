@@ -16,7 +16,7 @@ import javax.persistence.*;
 @NamedQuery(name = "MicroSequence.findById", query = "SELECT e FROM MicroSequence e WHERE e.id = :id"),
 @NamedQuery(name = "MicroSequence.findByName", query = "SELECT e FROM MicroSequence e WHERE e.name = :name"),
 })
-public class MicroSequence extends Thing implements Serializable {
+public class MicroSequence extends AThing implements Serializable {
 
 	
 	private static final long serialVersionUID = 1L;
