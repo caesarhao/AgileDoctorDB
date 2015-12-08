@@ -8,14 +8,8 @@ import javax.persistence.*;
  * Entity implementation class for Entity: Phrase
  *
  */
-@Entity
-@Table(name="Phrase")
-@NamedQueries({
-@NamedQuery(name = "Phrase.findAll", query = "SELECT e FROM Phrase e"),
-@NamedQuery(name = "Phrase.findById", query = "SELECT e FROM Phrase e WHERE e.id = :id"),
-@NamedQuery(name = "Phrase.findByName", query = "SELECT e FROM Phrase e WHERE e.name = :name"),
-})
-public class Phrase extends AThing implements Serializable {
+@MappedSuperclass
+public abstract class APhrase extends AThing implements Serializable {
 	public enum AggressiveLevel{
 		Aggressive,
 		Neutral,
@@ -83,7 +77,7 @@ public class Phrase extends AThing implements Serializable {
 		this.longLevel = longLevel;
 	}
 
-	public Phrase() {
+	public APhrase() {
 		super();
 	}   
 	public String getExpression() {

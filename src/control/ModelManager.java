@@ -73,7 +73,8 @@ public class ModelManager extends AJFrameControl<JModelManagement>{
 		cmbBoxConcepts.addItem("Scenario");
 		cmbBoxConcepts.addItem("MicroSequence");
 		cmbBoxConcepts.addItem("DialogueSession");
-		cmbBoxConcepts.addItem("Phrase");
+		cmbBoxConcepts.addItem("DoctorPhrase");
+		cmbBoxConcepts.addItem("PatientPhrase");
 		cmbBoxConcepts.addItem("DoctorActor");
 		cmbBoxConcepts.addItem("PatientActor");
 		cmbBoxConcepts.addItem("MedicalInformation");

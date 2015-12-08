@@ -4,15 +4,17 @@
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<class>model.AInformation</class>
 		<class>model.APatientInformation</class>
+		<class>model.APhrase</class>
 		<class>model.APhraseActor</class>
 		<class>model.AThing</class>
 		<class>model.DialogueSession</class>
 		<class>model.DoctorActor</class>
+		<class>model.DoctorPhrase</class>
 		<class>model.FamilyInformation</class>
 		<class>model.MedicalInformation</class>
 		<class>model.MicroSequence</class>
 		<class>model.PatientActor</class>
-		<class>model.Phrase</class>
+		<class>model.PatientPhrase</class>
 		<class>model.Scenario</class>
       <properties>
         <property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC" />

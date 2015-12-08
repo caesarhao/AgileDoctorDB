@@ -39,10 +39,10 @@ public abstract class APatientInformation extends AInformation implements Serial
 	public AcquiringMethod acquiringMethod;
 	
 	@OneToMany(cascade=CascadeType.ALL)
-	public Set<Phrase> possibleAskPhrases;
+	public Set<DoctorPhrase> possibleAskPhrases;
 	
 	@OneToMany(cascade=CascadeType.ALL)
-	public Set<Phrase> possibleResponsePhrases;
+	public Set<PatientPhrase> possibleResponsePhrases;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	public Set<APatientInformation> subInformations;
@@ -79,11 +79,11 @@ public abstract class APatientInformation extends AInformation implements Serial
 		return subInformations;
 	}
 
-	public Set<Phrase> getPossibleAskPhrases() {
+	public Set<DoctorPhrase> getPossibleAskPhrases() {
 		return possibleAskPhrases;
 	}
 
-	public Set<Phrase> getPossibleResponsePhrases() {
+	public Set<PatientPhrase> getPossibleResponsePhrases() {
 		return possibleResponsePhrases;
 	}
    
