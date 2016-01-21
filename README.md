@@ -1,6 +1,9 @@
 # AgileDoctorDB
 AgileDoctor based on Relational Database and Java.
 
+## Requirement
+* JDK >= 1.8.0
+
 ## Installation
 <del>### Installation of Derby Database.
 Goto  http://db.apache.org/derby/derby_downloads.html and download *bin distribution*.
@@ -27,6 +30,7 @@ Execute command *startNetworkServer*.</del>
 * *jpa* : All manipulations with the database, CRUD.
 * *view* : gui design.
 * *control* : logic code, the main function is defined here.
+* *engine* : game engine implementation.
 
 ## Bug logging:
 * A bug in EclipseLink: 2 OneToMany with same element type are mapped to a same relation table with a_b_b. This bug is corrected by introducing 2 new sub classes.

@@ -137,7 +137,7 @@ public class JModelManagement extends JFrame {
 
 						//======== panelEdition ========
 						{
-							panelEdition.setLayout(new FlowLayout(FlowLayout.LEFT));
+							panelEdition.setLayout(new GridLayout(8, 2, 4, 2));
 						}
 						scrollPaneEditRegion.setViewportView(panelEdition);
 					}

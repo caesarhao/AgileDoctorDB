@@ -59,8 +59,11 @@ new FormModel {
 							auxiliary() {
 								"JavaCodeGenerator.variableGetter": true
 							}
-							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
-								"alignment": 0
+							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
+								"columns": 2
+								"hgap": 4
+								"vgap": 2
+								"rows": 8
 							} ) {
 								name: "panelEdition"
 								auxiliary() {
