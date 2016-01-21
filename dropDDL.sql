@@ -1,3 +1,5 @@
+ALTER TABLE DialogueSession DROP CONSTRAINT FK_DialogueSession_patientPhrase
+ALTER TABLE DialogueSession DROP CONSTRAINT FK_DialogueSession_doctorPhrase
 ALTER TABLE FamilyInformation DROP CONSTRAINT FK_FamilyInformation_ID
 ALTER TABLE MedicalInformation DROP CONSTRAINT FK_MedicalInformation_ID
 ALTER TABLE APatientInformation_DoctorPhrase DROP CONSTRAINT PatientInformationDoctorPhrasePatientInformationID

@@ -3,6 +3,8 @@ package control;
 import java.awt.event.ActionEvent;
 import java.lang.reflect.Field;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -18,6 +20,7 @@ public class ModelManager extends AJFrameControl<JModelManagement>{
 	private DefaultListModel listModel = null;
 	private JPanel panelEdition = null;
 	private Class currentClass = null;
+	private AThing currentThing = null;
 	
 	public ModelManager(JModelManagement frame) {
 		super(frame);
@@ -35,6 +38,14 @@ public class ModelManager extends AJFrameControl<JModelManagement>{
 	private void lstItemsValueChanged(ListSelectionEvent e) {
 		JList list = (JList) e.getSource();
 		String selectedItemName = (String)list.getSelectedValue();
+		// get current Thing object.
+		String namedQuery = currentClass.getSimpleName()+".findByName";
+		Map<String, Object> queryParams = new HashMap<String, Object>();
+		queryParams.put("name", selectedItemName);
+		List<AThing> queryResult = JpaManager.<AThing>findWithNamedQuery(namedQuery, queryParams); 
+		if (!queryResult.isEmpty()){
+			currentThing = queryResult.get(0);
+		}
 		//JOptionPane.showMessageDialog(null, selectedItemName);
 		//clean all
 		panelEdition.removeAll();
@@ -44,7 +55,15 @@ public class ModelManager extends AJFrameControl<JModelManagement>{
 			Field field = fields[i];
 			panelEdition.add(new JLabel(field.getName()+": "));
 			if(String.class == field.getType()){
-				panelEdition.add(new JTextField());
+				try {
+					panelEdition.add(new JTextField(field.get(currentClass.cast(currentThing)).toString()));
+				} catch (IllegalArgumentException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IllegalAccessException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		}
 		// add name set

@@ -8,19 +8,38 @@ import javax.persistence.*;
  *
  */
 @Entity
-@Table(name="DialogueSession")
-@NamedQueries({
-@NamedQuery(name = "DialogueSession.findAll", query = "SELECT e FROM DialogueSession e"),
-@NamedQuery(name = "DialogueSession.findById", query = "SELECT e FROM DialogueSession e WHERE e.id = :id"),
-@NamedQuery(name = "DialogueSession.findByName", query = "SELECT e FROM DialogueSession e WHERE e.name = :name"),
-})
+@Table(name = "DialogueSession")
+@NamedQueries({ @NamedQuery(name = "DialogueSession.findAll", query = "SELECT e FROM DialogueSession e"),
+		@NamedQuery(name = "DialogueSession.findById", query = "SELECT e FROM DialogueSession e WHERE e.id = :id"),
+		@NamedQuery(name = "DialogueSession.findByName", query = "SELECT e FROM DialogueSession e WHERE e.name = :name"), })
 public class DialogueSession extends AThing implements Serializable {
 
-	
 	private static final long serialVersionUID = 1L;
-	
+
+	@JoinColumn(name = "doctorPhrase", nullable = true)
+	public DoctorPhrase doctorPhrase;
+
+	@JoinColumn(name = "patientPhrase", nullable = true)
+	public PatientPhrase patientPhrase;
+
 	public DialogueSession() {
 		super();
 	}
-   
+
+	public DoctorPhrase getDoctorPhrase() {
+		return doctorPhrase;
+	}
+
+	public void setDoctorPhrase(DoctorPhrase doctorPhrase) {
+		this.doctorPhrase = doctorPhrase;
+	}
+
+	public PatientPhrase getPatientPhrase() {
+		return patientPhrase;
+	}
+
+	public void setPatientPhrase(PatientPhrase patientPhrase) {
+		this.patientPhrase = patientPhrase;
+	}
+
 }

@@ -11,40 +11,36 @@ import model.AInformation;
  *
  */
 @Entity
-@Inheritance(strategy=InheritanceType.JOINED)
-@Table(name="APatientInformation")
-@NamedQueries({
-@NamedQuery(name = "APatientInformation.findAll", query = "SELECT e FROM APatientInformation e"),
-@NamedQuery(name = "APatientInformation.findById", query = "SELECT e FROM APatientInformation e WHERE e.id = :id"),
-@NamedQuery(name = "APatientInformation.findByName", query = "SELECT e FROM APatientInformation e WHERE e.name = :name"),
-})
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "APatientInformation")
+@NamedQueries({ @NamedQuery(name = "APatientInformation.findAll", query = "SELECT e FROM APatientInformation e"),
+		@NamedQuery(name = "APatientInformation.findById", query = "SELECT e FROM APatientInformation e WHERE e.id = :id"),
+		@NamedQuery(name = "APatientInformation.findByName", query = "SELECT e FROM APatientInformation e WHERE e.name = :name"), })
 public abstract class APatientInformation extends AInformation implements Serializable {
-	public enum AcquiringMethod{
-		SaidByPatient,
-		AskedByDoctor,
-		Examination
+	public enum AcquiringMethod {
+		SaidByPatient, AskedByDoctor, Examination
 	}
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	// low 0 --> high 100
-	@Column(name="importance", nullable=false)
+	@Column(name = "importance", nullable = false)
 	public int importance;
-	
+
 	// low 0 --> high 100
-	@Column(name="priority", nullable=false)
+	@Column(name = "priority", nullable = false)
 	public int priority;
-	
-	@Column(name="acquiringMethod", nullable=false)
+
+	@Column(name = "acquiringMethod", nullable = false)
 	public AcquiringMethod acquiringMethod;
-	
-	@OneToMany(cascade=CascadeType.ALL)
+
+	@OneToMany(cascade = CascadeType.ALL)
 	public Set<DoctorPhrase> possibleAskPhrases;
-	
-	@OneToMany(cascade=CascadeType.ALL)
+
+	@OneToMany(cascade = CascadeType.ALL)
 	public Set<PatientPhrase> possibleResponsePhrases;
-	
-	@OneToMany(cascade=CascadeType.ALL)
+
+	@OneToMany(cascade = CascadeType.ALL)
 	public Set<APatientInformation> subInformations;
 
 	public APatientInformation() {
@@ -86,5 +82,5 @@ public abstract class APatientInformation extends AInformation implements Serial
 	public Set<PatientPhrase> getPossibleResponsePhrases() {
 		return possibleResponsePhrases;
 	}
-   
+
 }
