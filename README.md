@@ -36,5 +36,9 @@ Execute command *startNetworkServer*.</del>
 * A bug in EclipseLink: 2 OneToMany with same element type are mapped to a same relation table with a_b_b. This bug is corrected by introducing 2 new sub classes.
 
 ## TODO:
-engine.DChar.calcFromDoctorPhrase, engine.DChar.calcDropFlag, engine.PActChar.calcFromPatientPhrase should be implemented.
-A new state "END" has been added.
+* implement engine.DChar.calcFromDoctorPhrase
+* implementengine.DChar.calcDropFlag
+* implementengine.PActChar.calcFromPatientPhrase
+
+## Comments for essay:
+* A new state "END" has been added into DialogueSession state.
