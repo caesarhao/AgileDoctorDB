@@ -67,7 +67,7 @@ public class JpaManager {
 	public static <T extends Serializable> List<T> findAll(String strTableName){
 		EntityManager em = getEM();
 		try {
-			 Query query = em.createQuery("SELECT e FROM " + strTableName + " e" + " ORDER BY e.id ASC");
+			 Query query = em.createQuery("SELECT e FROM " + strTableName + " e" + "");
 			 return (List<T>)query.getResultList();
 		} finally {
 			

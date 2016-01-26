@@ -16,10 +16,12 @@ public class DialogueSession extends AThing implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@JoinColumn(name = "doctorPhrase", nullable = true)
+	//@JoinColumn(name = "doctorPhrase", nullable = true)
+	@Transient // just used for simulation, no need to save in db.
 	public DoctorPhrase doctorPhrase;
 
-	@JoinColumn(name = "patientPhrase", nullable = true)
+	//@JoinColumn(name = "patientPhrase", nullable = true)
+	@Transient // just used for simulation, no need to save in db.
 	public PatientPhrase patientPhrase;
 
 	public DialogueSession() {

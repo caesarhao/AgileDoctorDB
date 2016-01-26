@@ -15,7 +15,8 @@ import model.AInformation;
 @Table(name = "APatientInformation")
 @NamedQueries({ @NamedQuery(name = "APatientInformation.findAll", query = "SELECT e FROM APatientInformation e"),
 		@NamedQuery(name = "APatientInformation.findById", query = "SELECT e FROM APatientInformation e WHERE e.id = :id"),
-		@NamedQuery(name = "APatientInformation.findByName", query = "SELECT e FROM APatientInformation e WHERE e.name = :name"), })
+		@NamedQuery(name = "APatientInformation.findByName", query = "SELECT e FROM APatientInformation e WHERE e.name = :name"),
+		@NamedQuery(name = "APatientInformation.findBySuperInformation", query = "SELECT e FROM APatientInformation e WHERE e.superInformation = :superInformation"),})
 public abstract class APatientInformation extends AInformation implements Serializable {
 	public enum AcquiringMethod {
 		SaidByPatient, AskedByDoctor, Examination
@@ -40,8 +41,13 @@ public abstract class APatientInformation extends AInformation implements Serial
 	@OneToMany(cascade = CascadeType.ALL)
 	public Set<PatientPhrase> possibleResponsePhrases;
 
-	@OneToMany(cascade = CascadeType.ALL)
-	public Set<APatientInformation> subInformations;
+	// hard to maintain, use superInformation as a replacement
+	//@OneToMany(cascade = CascadeType.ALL)
+	//public Set<APatientInformation> subInformations;
+
+	@ManyToOne
+	@JoinColumn(name = "superInformation", nullable = true)
+	public APatientInformation superInformation;
 
 	public APatientInformation() {
 		super();
@@ -71,10 +77,6 @@ public abstract class APatientInformation extends AInformation implements Serial
 		this.acquiringMethod = acquiringMethod;
 	}
 
-	public Set<APatientInformation> getSubInformations() {
-		return subInformations;
-	}
-
 	public Set<DoctorPhrase> getPossibleAskPhrases() {
 		return possibleAskPhrases;
 	}
@@ -82,5 +84,15 @@ public abstract class APatientInformation extends AInformation implements Serial
 	public Set<PatientPhrase> getPossibleResponsePhrases() {
 		return possibleResponsePhrases;
 	}
+
+	public APatientInformation getSuperInformation() {
+		return superInformation;
+	}
+
+	public void setSuperInformation(APatientInformation superInformation) {
+		this.superInformation = superInformation;
+	}
+	
+	
 
 }

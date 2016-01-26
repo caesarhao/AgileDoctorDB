@@ -28,9 +28,9 @@ public class Controller {
 		DoctorActor da1 = new DoctorActor();
 		da1.setName("Dupont");
 		JpaManager.persist(da1);
-		DoctorActor da2 = new DoctorActor();
-		da2.setName("Vidal");
-		JpaManager.persist(da2);
+		//DoctorActor da2 = new DoctorActor();
+		//da2.setName("Vidal");
+		//JpaManager.persist(da2);
 		
 		// PhraseActors, patients.
 		PatientActor pa1 = new PatientActor();
@@ -40,13 +40,13 @@ public class Controller {
 		pa1.setConfidentLevel(70);
 		pa1.setLongPhraseLevel(80);
 		JpaManager.persist(pa1);
-		PatientActor pa2 = new PatientActor();
-		pa2.setName("Toto");
-		pa2.setAggressiveLevel(80);
-		pa2.setClearLevel(70);
-		pa2.setConfidentLevel(60);
-		pa2.setLongPhraseLevel(50);
-		JpaManager.persist(pa2);
+		//PatientActor pa2 = new PatientActor();
+		//pa2.setName("Toto");
+		//pa2.setAggressiveLevel(80);
+		//pa2.setClearLevel(70);
+		//pa2.setConfidentLevel(60);
+		//pa2.setLongPhraseLevel(50);
+		//JpaManager.persist(pa2);
 		
 		// MicroSequences
 		MicroSequence ms0 = new MicroSequence();
@@ -118,6 +118,7 @@ public class Controller {
 		mi1.setImportance(50);
 		mi1.setPriority(60);
 		mi1.setAcquiringMethod(APatientInformation.AcquiringMethod.AskedByDoctor);
+		mi1.setSuperInformation(null);
 		JpaManager.persist(mi1);
 		
 		DoctorPhrase mi1_d_p1 = new DoctorPhrase();
@@ -173,9 +174,10 @@ public class Controller {
 		mi2.setImportance(80);
 		mi2.setPriority(50);
 		mi2.setAcquiringMethod(APatientInformation.AcquiringMethod.AskedByDoctor);
+		mi2.setSuperInformation(mi1);
 		JpaManager.persist(mi2);
-		mi1.getSubInformations().add(mi2);
-		JpaManager.update(mi1);
+		//mi1.getSubInformations().add(mi2);
+		//JpaManager.update(mi1);
 		
 		DoctorPhrase mi2_d_p1 = new DoctorPhrase();
 		mi2_d_p1.setName("DoctorAskSmokeFrequency1");
@@ -243,10 +245,11 @@ public class Controller {
 
 		//JMain jm = new JMain("xx");
 		//jm.setVisible(true);
-		ModelManager mm = new ModelManager(new JModelManagement("AgileDoctorDB Model Management"));
-		mm.initilizeControl();
+		//ModelManager mm = new ModelManager(new JModelManagement("AgileDoctorDB Model Management"));
+		//mm.initilizeControl();
 		
 		GameEngine ge = new GameEngine();
+		ge.simulate();
 	}
 
 }

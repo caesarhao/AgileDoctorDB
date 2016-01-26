@@ -4,8 +4,8 @@ import java.util.*;
 import model.APatientInformation;
 
 public class ScenarioVariable {
-	// Set of already got Patient Information.
-	public Set<APatientInformation> sGotPatientInfo = new HashSet<APatientInformation>();
+	// List of already got Patient Information.
+	public List<APatientInformation> sGotPatientInfo = new ArrayList<APatientInformation>();
 	
 	// ScenarioParameter
 	public ScenarioParameter scPara;
