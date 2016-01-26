@@ -16,7 +16,8 @@ import model.AInformation;
 @NamedQueries({ @NamedQuery(name = "APatientInformation.findAll", query = "SELECT e FROM APatientInformation e"),
 		@NamedQuery(name = "APatientInformation.findById", query = "SELECT e FROM APatientInformation e WHERE e.id = :id"),
 		@NamedQuery(name = "APatientInformation.findByName", query = "SELECT e FROM APatientInformation e WHERE e.name = :name"),
-		@NamedQuery(name = "APatientInformation.findBySuperInformation", query = "SELECT e FROM APatientInformation e WHERE e.superInformation = :superInformation"),})
+		@NamedQuery(name = "APatientInformation.findBySuperInformation", query = "SELECT e FROM APatientInformation e WHERE e.superInformation = :superInformation"),
+		@NamedQuery(name = "APatientInformation.findSuperInformationNull", query = "SELECT e FROM APatientInformation e WHERE e.superInformation IS NULL"),})
 public abstract class APatientInformation extends AInformation implements Serializable {
 	public enum AcquiringMethod {
 		SaidByPatient, AskedByDoctor, Examination

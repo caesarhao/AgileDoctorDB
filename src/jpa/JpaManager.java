@@ -13,6 +13,7 @@ public class JpaManager {
 	private static final String PERSISTENCE_UNIT_NAME = "AgileDoctorDB";
 	private static EntityManagerFactory emf = null;
 	private static EntityManager em = null;
+
 	public static EntityManagerFactory getEMF() {
 		if (emf == null) {
 			emf = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
@@ -22,7 +23,7 @@ public class JpaManager {
 	}
 
 	public static EntityManager getEM() {
-		if (null == em){
+		if (null == em) {
 			em = getEMF().createEntityManager();
 		}
 		return em;
@@ -35,51 +36,45 @@ public class JpaManager {
 			em.persist(entity);
 			em.getTransaction().commit();
 		} finally {
-			
+
 		}
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public static <T extends Serializable> List<T> findWithNamedQuery(String strQuery, Map<String, Object> params){
+	public static <T extends Serializable> List<T> findWithNamedQuery(String strQuery, Map<String, Object> params) {
 		EntityManager em = getEM();
 		try {
-			 Query query = em.createNamedQuery(strQuery);
-			 if (null != params && !params.isEmpty()){
-				 for(String key: params.keySet()){
-				 	if(null == params.get(key)){
-				 		//TODO: use IS NULL here.	
-				 	}
-				 	else{
-				 		query.setParameter(key, params.get(key));
-				 	}
-					 
-				 }
-			 }
-			 return (List<T>)query.getResultList();
+			Query query = em.createNamedQuery(strQuery);
+			if (null != params && !params.isEmpty()) {
+				for (String key : params.keySet()) {
+					query.setParameter(key, params.get(key));
+				}
+			}
+			return (List<T>) query.getResultList();
 		} finally {
 		}
 	}
-	
-	public static <T extends Serializable> T findById(Class<T> type, long id){
+
+	public static <T extends Serializable> T findById(Class<T> type, long id) {
 		EntityManager em = getEM();
 		try {
 			return em.find(type, id);
 		} finally {
-			
+
 		}
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public static <T extends Serializable> List<T> findAll(String strTableName){
+	public static <T extends Serializable> List<T> findAll(String strTableName) {
 		EntityManager em = getEM();
 		try {
-			 Query query = em.createQuery("SELECT e FROM " + strTableName + " e" + "");
-			 return (List<T>)query.getResultList();
+			Query query = em.createQuery("SELECT e FROM " + strTableName + " e" + "");
+			return (List<T>) query.getResultList();
 		} finally {
-			
+
 		}
 	}
-	
+
 	public static <T extends Serializable> void update(T entity) {
 		EntityManager em = getEM();
 		try {
@@ -87,10 +82,10 @@ public class JpaManager {
 			em.merge(entity);
 			em.getTransaction().commit();
 		} finally {
-			
+
 		}
 	}
-	
+
 	public static <T extends Serializable> void delete(T entity) {
 		EntityManager em = getEM();
 		try {
@@ -98,8 +93,8 @@ public class JpaManager {
 			em.remove(entity);
 			em.getTransaction().commit();
 		} finally {
-			
+
 		}
 	}
-	
+
 }

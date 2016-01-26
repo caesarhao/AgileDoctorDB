@@ -45,10 +45,16 @@ public class GameEngine {
 		List<APatientInformation> lPAllInfo = JpaManager.<APatientInformation>findAll("APatientInformation");
 		// TODO; Simulation process.
 		while (true) {
-			queryParams.clear();
-			queryParams.put("superInformation", currentInfo);
-			lPInfo = JpaManager.findWithNamedQuery(namedQuery, queryParams);
-			System.out.println(""+ lPAllInfo.size() + "    "+lPInfo.size());
+			if (null == currentInfo){
+				
+				lPInfo = JpaManager.findWithNamedQuery("APatientInformation.findSuperInformationNull", null);
+			}
+			else{
+				queryParams.clear();
+				queryParams.put("superInformation", currentInfo);
+				lPInfo = JpaManager.findWithNamedQuery(namedQuery, queryParams);
+			}
+			
 			randNum = rand.nextInt(lPInfo.size());
 			currentInfo = lPInfo.get(randNum);
 			// get possible doctor phrases.
