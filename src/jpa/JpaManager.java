@@ -46,7 +46,13 @@ public class JpaManager {
 			 Query query = em.createNamedQuery(strQuery);
 			 if (null != params && !params.isEmpty()){
 				 for(String key: params.keySet()){
-					 query.setParameter(key, params.get(key));
+				 	if(null == params.get(key)){
+				 		//TODO: use IS NULL here.	
+				 	}
+				 	else{
+				 		query.setParameter(key, params.get(key));
+				 	}
+					 
 				 }
 			 }
 			 return (List<T>)query.getResultList();
