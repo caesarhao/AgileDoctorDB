@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "5.2.2.0.199" Java: "1.8.0_65" encoding: "UTF-8"
+JFDML JFormDesigner: "5.2.2.0.199" Java: "1.8.0_71" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
@@ -86,6 +86,34 @@ new FormModel {
 				} ) {
 					name: "buttonBar"
 					"border": new javax.swing.border.EmptyBorder( 12, 0, 0, 0 )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+						"alignment": 0
+					} ) {
+						name: "panel1"
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "btnDel"
+							"text": "Delete"
+							"enabled": false
+							auxiliary() {
+								"JavaCodeGenerator.variableGetter": true
+							}
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "txtNewItem"
+							"columns": 10
+							auxiliary() {
+								"JavaCodeGenerator.variableGetter": true
+							}
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "btnAdd"
+							"text": "Add"
+							"enabled": false
+							auxiliary() {
+								"JavaCodeGenerator.variableGetter": true
+							}
+						} )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "saveButton"
 						"text": "Save"

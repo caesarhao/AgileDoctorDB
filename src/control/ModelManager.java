@@ -2,12 +2,16 @@ package control;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 
 import jpa.JpaManager;
@@ -22,6 +26,9 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 	private JPanel panelEdition = null;
 	private Class currentClass = null;
 	private AThing currentThing = null;
+	private JTextField txtNewItem = null;
+	private JButton btnAdd = null;
+	private JButton btnDel = null;
 
 	public ModelManager(JModelManagement frame) {
 		super(frame);
@@ -29,6 +36,9 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 		lstItems = bindedFrame.getLstItems();
 		listModel = new DefaultListModel();
 		panelEdition = bindedFrame.getPanelEdition();
+		txtNewItem = bindedFrame.getTxtNewItem();
+		btnAdd = bindedFrame.getBtnAdd();
+		btnDel = bindedFrame.getBtnDel();
 		try {
 			currentClass = Class.forName("model.Scenario");
 		} catch (ClassNotFoundException e) {
@@ -46,7 +56,9 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 		List<AThing> queryResult = JpaManager.<AThing> findWithNamedQuery(namedQuery, queryParams);
 		if (!queryResult.isEmpty()) {
 			currentThing = queryResult.get(0);
+			btnDel.setEnabled(true);
 		} else {
+			btnDel.setEnabled(false);
 			return;
 		}
 		// JOptionPane.showMessageDialog(null, selectedItemName);
@@ -95,6 +107,38 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 		individuals.forEach(i -> listModel.addElement(i.getName()));
 		lstItems.setModel(listModel);
 	}
+	
+	public class NewItemDocumentChanged implements DocumentListener{
+
+		@Override
+		public void changedUpdate(DocumentEvent arg0) {
+			txtNewItemPropertyChange(null);
+			
+		}
+
+		@Override
+		public void insertUpdate(DocumentEvent arg0) {
+			txtNewItemPropertyChange(null);
+			
+		}
+
+		@Override
+		public void removeUpdate(DocumentEvent arg0) {
+			txtNewItemPropertyChange(null);
+			
+		}
+		
+	}
+	private void txtNewItemPropertyChange(PropertyChangeEvent e) {
+		String txt = txtNewItem.getText();
+		String regex = "([A-Z]|[a-z]|_)([A-Z]|[a-z]|[0-9]|_)*";
+		if (0 < txt.length() && txt.matches(regex)){
+			btnAdd.setEnabled(true);
+		}
+		else{
+			btnAdd.setEnabled(false);
+		}
+	}
 
 	public void setConcepts() {
 		cmbBoxConcepts.removeAllItems();
@@ -112,6 +156,8 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 
 	public void setLstItems() {
 		lstItems.addListSelectionListener(e -> lstItemsValueChanged(e));
+		//txtNewItem.addPropertyChangeListener("text", e -> txtNewItemPropertyChange(e));
+		txtNewItem.getDocument().addDocumentListener(new NewItemDocumentChanged());
 	}
 
 	@Override

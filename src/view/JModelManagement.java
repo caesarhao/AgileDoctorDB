@@ -6,6 +6,7 @@ package view;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.beans.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import javax.swing.event.*;
@@ -62,6 +63,22 @@ public class JModelManagement extends JFrame {
 		return panelEdition;
 	}
 
+	public JButton getBtnDel() {
+		return btnDel;
+	}
+
+	public JTextField getTxtNewItem() {
+		return txtNewItem;
+	}
+
+	public JButton getBtnAdd() {
+		return btnAdd;
+	}
+
+	private void txtNewItemPropertyChange(PropertyChangeEvent e) {
+		// TODO add your code here
+	}
+
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
 		dialogPane = new JPanel();
@@ -76,6 +93,10 @@ public class JModelManagement extends JFrame {
 		scrollPaneEditRegion = new JScrollPane();
 		panelEdition = new JPanel();
 		buttonBar = new JPanel();
+		panel1 = new JPanel();
+		btnDel = new JButton();
+		txtNewItem = new JTextField();
+		btnAdd = new JButton();
 		saveButton = new JButton();
 		cancelButton = new JButton();
 
@@ -156,6 +177,28 @@ public class JModelManagement extends JFrame {
 				((GridBagLayout)buttonBar.getLayout()).columnWidths = new int[] {0, 85, 80};
 				((GridBagLayout)buttonBar.getLayout()).columnWeights = new double[] {1.0, 0.0, 0.0};
 
+				//======== panel1 ========
+				{
+					panel1.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+					//---- btnDel ----
+					btnDel.setText("Delete");
+					btnDel.setEnabled(false);
+					panel1.add(btnDel);
+
+					//---- txtNewItem ----
+					txtNewItem.setColumns(10);
+					panel1.add(txtNewItem);
+
+					//---- btnAdd ----
+					btnAdd.setText("Add");
+					btnAdd.setEnabled(false);
+					panel1.add(btnAdd);
+				}
+				buttonBar.add(panel1, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+					new Insets(0, 0, 0, 5), 0, 0));
+
 				//---- saveButton ----
 				saveButton.setText("Save");
 				saveButton.addMouseListener(new MouseAdapter() {
@@ -201,6 +244,10 @@ public class JModelManagement extends JFrame {
 	private JScrollPane scrollPaneEditRegion;
 	private JPanel panelEdition;
 	private JPanel buttonBar;
+	private JPanel panel1;
+	private JButton btnDel;
+	private JTextField txtNewItem;
+	private JButton btnAdd;
 	private JButton saveButton;
 	private JButton cancelButton;
 	// JFormDesigner - End of variables declaration  //GEN-END:variables
