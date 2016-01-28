@@ -3,6 +3,8 @@ package control;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
 import java.lang.reflect.Field;
 import java.util.List;
@@ -73,13 +75,15 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 		panelEdition.removeAll();
 		// reflection of class elements
 		Field[] fields = currentClass.getFields();
+		JComponent[] fieldValues = new JComponent[fields.length];
 		panelEdition.setLayout(new GridLayout(fields.length, 2, 4, 2));
 		// the relationship between the property and the input region should be kept.
 		for (int i = 0; i < fields.length; i++) {
 			Field field = fields[i];
+			// property name.
 			panelEdition.add(new JLabel(field.getName() + ": "));
-			if (field.getType().isPrimitive() || String.class == field.getType()
-					|| AThing.class.isAssignableFrom(field.getType())) {
+			// property value.
+			if (AThing.class.isAssignableFrom(field.getType())) {
 				try {
 					panelEdition.add(new JTextField(field.get(currentClass.cast(currentThing)).toString()));
 				} catch (IllegalArgumentException e1) {
@@ -89,8 +93,40 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-			} else {
-				panelEdition.add(new JTextField("TODO"));
+			} 
+			else if((field.getType().isPrimitive() && !field.getType().equals(boolean.class))
+					|| field.getType().equals(String.class)){
+				try {
+					fieldValues[i] = new JTextField(field.get(currentClass.cast(currentThing)).toString());
+				} catch (IllegalArgumentException e1) {
+					e1.printStackTrace();
+				} catch (IllegalAccessException e1) {
+					e1.printStackTrace();
+				}
+				panelEdition.add(fieldValues[i]);
+			}
+			else if(field.getType().equals(boolean.class)){// boolean
+				JRadioButton optTrue = new JRadioButton("true");
+				JRadioButton optFalse = new JRadioButton("false");
+				ButtonGroup btnGtf = new ButtonGroup();
+				btnGtf.add(optTrue);
+				btnGtf.add(optFalse);
+				panelEdition.add(optTrue);
+				fieldValues[i] = optTrue;
+			}
+			else if(field.isEnumConstant()){// enum
+				try {
+					fieldValues[i] = new JTextField(field.get(currentClass.cast(currentThing)).toString());
+				} catch (IllegalArgumentException e1) {
+					e1.printStackTrace();
+				} catch (IllegalAccessException e1) {
+					e1.printStackTrace();
+				}
+				panelEdition.add(fieldValues[i]);
+			}
+			else{
+				fieldValues[i] = new JTextField("TODO");
+				panelEdition.add(fieldValues[i]);
 			}
 
 		}
@@ -145,6 +181,22 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 			btnAdd.setEnabled(false);
 		}
 	}
+	
+	private void btnAddMouseReleased(MouseEvent e) {
+		// TODO add your code here
+		if (MouseEvent.BUTTON1 != e.getButton() || !btnAdd.isEnabled()){
+			return;
+		}
+		System.out.println("Add Button Released.");
+	}
+	
+	private void btnDelMouseReleased(MouseEvent e) {
+		// TODO add your code here
+		if (MouseEvent.BUTTON1 != e.getButton() || !btnDel.isEnabled()){
+			return;
+		}
+		System.out.println("Del Button Released.");
+	}
 
 	public void setConcepts() {
 		cmbBoxConcepts.removeAllItems();
@@ -165,6 +217,18 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 		// txtNewItem.addPropertyChangeListener("text", e ->
 		// txtNewItemPropertyChange(e));
 		txtNewItem.getDocument().addDocumentListener(new NewItemDocumentChanged());
+		btnAdd.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				btnAddMouseReleased(e);
+			}
+		});
+		btnDel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				btnDelMouseReleased(e);
+			}
+		});
 	}
 
 	@Override

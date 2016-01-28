@@ -79,6 +79,14 @@ public class JModelManagement extends JFrame {
 		// TODO add your code here
 	}
 
+	private void btnAddMouseReleased(MouseEvent e) {
+		// TODO add your code here
+	}
+
+	private void btnDelMouseReleased(MouseEvent e) {
+		// TODO add your code here
+	}
+
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
 		dialogPane = new JPanel();
