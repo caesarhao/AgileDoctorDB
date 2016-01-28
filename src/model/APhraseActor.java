@@ -8,14 +8,25 @@ import javax.persistence.*;
  *
  */
 //@Entity
-//@Table(name="PhraseActor")
+//@Table(name="APhraseActor")
 @MappedSuperclass
 public abstract class APhraseActor extends AThing implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
+	@Column(name="sex", nullable=false)
+	public boolean sex;
+	
 	public APhraseActor() {
 		super();
+	}
+
+	public boolean isSex() {
+		return sex;
+	}
+
+	public void setSex(boolean sex) {
+		this.sex = sex;
 	}
    
 }

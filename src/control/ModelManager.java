@@ -62,17 +62,24 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 			return;
 		}
 		// JOptionPane.showMessageDialog(null, selectedItemName);
+		showThingOnPanel(currentThing, currentClass);
+	}
+
+	private void showThingOnPanel(AThing thing, Class clazz) {
+		if (null == thing || null == clazz) {
+			return;
+		}
 		// clean all
 		panelEdition.removeAll();
-
 		// reflection of class elements
 		Field[] fields = currentClass.getFields();
 		panelEdition.setLayout(new GridLayout(fields.length, 2, 4, 2));
+		// the relationship between the property and the input region should be kept.
 		for (int i = 0; i < fields.length; i++) {
 			Field field = fields[i];
 			panelEdition.add(new JLabel(field.getName() + ": "));
-			if (field.getType().isPrimitive() || String.class == field.getType() || AThing.class.isAssignableFrom(field.getType())) {
-				// System.out.println(currentThing.name);
+			if (field.getType().isPrimitive() || String.class == field.getType()
+					|| AThing.class.isAssignableFrom(field.getType())) {
 				try {
 					panelEdition.add(new JTextField(field.get(currentClass.cast(currentThing)).toString()));
 				} catch (IllegalArgumentException e1) {
@@ -87,7 +94,6 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 			}
 
 		}
-		// add name set
 
 		// refresh the display
 		panelEdition.revalidate();
@@ -107,35 +113,35 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 		individuals.forEach(i -> listModel.addElement(i.getName()));
 		lstItems.setModel(listModel);
 	}
-	
-	public class NewItemDocumentChanged implements DocumentListener{
+
+	public class NewItemDocumentChanged implements DocumentListener {
 
 		@Override
 		public void changedUpdate(DocumentEvent arg0) {
 			txtNewItemPropertyChange(null);
-			
+
 		}
 
 		@Override
 		public void insertUpdate(DocumentEvent arg0) {
 			txtNewItemPropertyChange(null);
-			
+
 		}
 
 		@Override
 		public void removeUpdate(DocumentEvent arg0) {
 			txtNewItemPropertyChange(null);
-			
+
 		}
-		
+
 	}
+
 	private void txtNewItemPropertyChange(PropertyChangeEvent e) {
 		String txt = txtNewItem.getText();
 		String regex = "([A-Z]|[a-z]|_)([A-Z]|[a-z]|[0-9]|_)*";
-		if (0 < txt.length() && txt.matches(regex)){
+		if (0 < txt.length() && txt.matches(regex)) {
 			btnAdd.setEnabled(true);
-		}
-		else{
+		} else {
 			btnAdd.setEnabled(false);
 		}
 	}
@@ -156,7 +162,8 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 
 	public void setLstItems() {
 		lstItems.addListSelectionListener(e -> lstItemsValueChanged(e));
-		//txtNewItem.addPropertyChangeListener("text", e -> txtNewItemPropertyChange(e));
+		// txtNewItem.addPropertyChangeListener("text", e ->
+		// txtNewItemPropertyChange(e));
 		txtNewItem.getDocument().addDocumentListener(new NewItemDocumentChanged());
 	}
 

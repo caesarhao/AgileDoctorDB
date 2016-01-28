@@ -27,6 +27,7 @@ public class Controller {
 		// PhraseActors, doctors.
 		DoctorActor da1 = new DoctorActor();
 		da1.setName("Dupont");
+		da1.setSex(true);
 		JpaManager.persist(da1);
 		//DoctorActor da2 = new DoctorActor();
 		//da2.setName("Vidal");
@@ -35,6 +36,7 @@ public class Controller {
 		// PhraseActors, patients.
 		PatientActor pa1 = new PatientActor();
 		pa1.setName("Cathy");
+		pa1.setSex(false);
 		pa1.setAggressiveLevel(50);
 		pa1.setClearLevel(60);
 		pa1.setConfidentLevel(70);

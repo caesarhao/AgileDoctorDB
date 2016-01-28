@@ -10,7 +10,7 @@ import javax.persistence.*;
  *
  */
 //@Entity
-//@Table(name="Thing")
+//@Table(name="AThing")
 //@Inheritance(strategy = InheritanceType.JOINED)
 @MappedSuperclass
 public abstract class AThing implements Serializable {
