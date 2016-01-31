@@ -1,5 +1,6 @@
 package control;
 
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,6 +10,7 @@ import java.beans.PropertyChangeEvent;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.HashMap;
 
 import javax.swing.*;
@@ -111,10 +113,30 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 				ButtonGroup btnGtf = new ButtonGroup();
 				btnGtf.add(optTrue);
 				btnGtf.add(optFalse);
-				panelEdition.add(optTrue);
+				JPanel pnlTF = new JPanel();
+				pnlTF.setLayout(new FlowLayout(FlowLayout.LEFT));
+				pnlTF.add(optTrue);
+				pnlTF.add(optFalse);
+				try {
+					if(((Boolean)field.get(currentThing)).booleanValue()){
+						optTrue.setSelected(true);
+					}
+					else{
+						optFalse.setSelected(true);
+					}
+				} catch (IllegalArgumentException e) {
+					e.printStackTrace();
+				} catch (IllegalAccessException e) {
+					e.printStackTrace();
+				}
+				panelEdition.add(pnlTF);
 				fieldValues[i] = optTrue;
 			}
-			else if(field.isEnumConstant()){// enum
+			else if(Set.class.isAssignableFrom(field.getType())){ // a set
+				fieldValues[i] = new JTextField("A Set");
+				panelEdition.add(fieldValues[i]);
+			}
+			else if(false){//field.isEnumConstant()){// enum
 				try {
 					fieldValues[i] = new JTextField(field.get(currentClass.cast(currentThing)).toString());
 				} catch (IllegalArgumentException e1) {
@@ -125,7 +147,21 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 				panelEdition.add(fieldValues[i]);
 			}
 			else{
-				fieldValues[i] = new JTextField("TODO");
+				//fieldValues[i] = new JTextField(field.getType().getSimpleName());
+				//panelEdition.add(fieldValues[i]);
+				try {
+					Object property = field.get(currentClass.cast(currentThing));
+					if (null == property){
+						fieldValues[i] = new JTextField("NULL");
+					}
+					else{
+						fieldValues[i] = new JTextField(property.toString());
+					}
+				} catch (IllegalArgumentException e1) {
+					e1.printStackTrace();
+				} catch (IllegalAccessException e1) {
+					e1.printStackTrace();
+				}
 				panelEdition.add(fieldValues[i]);
 			}
 
