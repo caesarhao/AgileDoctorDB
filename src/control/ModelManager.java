@@ -84,22 +84,34 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 			Field field = fields[i];
 			// property name.
 			panelEdition.add(new JLabel(field.getName() + ": "));
+			System.out.println(field.getName());
 			// property value.
 			if (AThing.class.isAssignableFrom(field.getType())) {
 				try {
-					panelEdition.add(new JTextField(field.get(currentClass.cast(currentThing)).toString()));
+					Object property = field.get(currentClass.cast(currentThing));
+					if (null == property){
+						fieldValues[i] = new JTextField("NULL");
+					}
+					else{
+						fieldValues[i] = new JTextField(property.toString());
+					}
+					panelEdition.add(fieldValues[i]);
 				} catch (IllegalArgumentException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} catch (IllegalAccessException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			} 
 			else if((field.getType().isPrimitive() && !field.getType().equals(boolean.class))
 					|| field.getType().equals(String.class)){
 				try {
-					fieldValues[i] = new JTextField(field.get(currentClass.cast(currentThing)).toString());
+					Object property = field.get(currentClass.cast(currentThing));
+					if (null == property){
+						fieldValues[i] = new JTextField("NULL");
+					}
+					else{
+						fieldValues[i] = new JTextField(property.toString());
+					}
 				} catch (IllegalArgumentException e1) {
 					e1.printStackTrace();
 				} catch (IllegalAccessException e1) {
