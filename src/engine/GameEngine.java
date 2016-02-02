@@ -54,12 +54,16 @@ public class GameEngine {
 				queryParams.put("superInformation", currentInfo);
 				lPInfo = JpaManager.findWithNamedQuery(namedQuery, queryParams);
 				if (1 > lPInfo.size()){
-					break;
+					currentInfo = null;
+					continue;
 				}
 			}
 			
 			randNum = rand.nextInt(lPInfo.size());
 			currentInfo = lPInfo.get(randNum);
+			if (scVar.sGotPatientInfo.contains(currentInfo)){// it's already got
+				continue;
+			}
 			// get possible doctor phrases.
 			List<DoctorPhrase> dps = new ArrayList<DoctorPhrase>(currentInfo.getPossibleAskPhrases());
 			randNum = rand.nextInt(dps.size());
