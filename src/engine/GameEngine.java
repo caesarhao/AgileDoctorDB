@@ -53,6 +53,9 @@ public class GameEngine {
 				queryParams.clear();
 				queryParams.put("superInformation", currentInfo);
 				lPInfo = JpaManager.findWithNamedQuery(namedQuery, queryParams);
+				if (1 > lPInfo.size()){
+					break;
+				}
 			}
 			
 			randNum = rand.nextInt(lPInfo.size());

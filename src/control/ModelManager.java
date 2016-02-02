@@ -8,6 +8,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
 import java.lang.reflect.Field;
+import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -79,20 +80,20 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 		Field[] fields = currentClass.getFields();
 		JComponent[] fieldValues = new JComponent[fields.length];
 		panelEdition.setLayout(new GridLayout(fields.length, 2, 4, 2));
-		// the relationship between the property and the input region should be kept.
+		// the relationship between the property and the input region should be
+		// kept.
 		for (int i = 0; i < fields.length; i++) {
 			Field field = fields[i];
 			// property name.
 			panelEdition.add(new JLabel(field.getName() + ": "));
-			System.out.println(field.getName());
+			//System.out.println(field.getName());
 			// property value.
 			if (AThing.class.isAssignableFrom(field.getType())) {
 				try {
 					Object property = field.get(currentClass.cast(currentThing));
-					if (null == property){
+					if (null == property) {
 						fieldValues[i] = new JTextField("NULL");
-					}
-					else{
+					} else {
 						fieldValues[i] = new JTextField(property.toString());
 					}
 					panelEdition.add(fieldValues[i]);
@@ -101,15 +102,13 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 				} catch (IllegalAccessException e1) {
 					e1.printStackTrace();
 				}
-			} 
-			else if((field.getType().isPrimitive() && !field.getType().equals(boolean.class))
-					|| field.getType().equals(String.class)){
+			} else if ((field.getType().isPrimitive() && !field.getType().equals(boolean.class))
+					|| field.getType().equals(String.class)) {
 				try {
 					Object property = field.get(currentClass.cast(currentThing));
-					if (null == property){
+					if (null == property) {
 						fieldValues[i] = new JTextField("NULL");
-					}
-					else{
+					} else {
 						fieldValues[i] = new JTextField(property.toString());
 					}
 				} catch (IllegalArgumentException e1) {
@@ -118,8 +117,7 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 					e1.printStackTrace();
 				}
 				panelEdition.add(fieldValues[i]);
-			}
-			else if(field.getType().equals(boolean.class)){// boolean
+			} else if (field.getType().equals(boolean.class)) {// boolean
 				JRadioButton optTrue = new JRadioButton("true");
 				JRadioButton optFalse = new JRadioButton("false");
 				ButtonGroup btnGtf = new ButtonGroup();
@@ -130,10 +128,9 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 				pnlTF.add(optTrue);
 				pnlTF.add(optFalse);
 				try {
-					if(((Boolean)field.get(currentThing)).booleanValue()){
+					if (((Boolean) field.get(currentThing)).booleanValue()) {
 						optTrue.setSelected(true);
-					}
-					else{
+					} else {
 						optFalse.setSelected(true);
 					}
 				} catch (IllegalArgumentException e) {
@@ -143,12 +140,28 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 				}
 				panelEdition.add(pnlTF);
 				fieldValues[i] = optTrue;
-			}
-			else if(Set.class.isAssignableFrom(field.getType())){ // a set
-				fieldValues[i] = new JTextField("A Set");
+			} else if (Set.class.isAssignableFrom(field.getType())) { // a set
+				ParameterizedType elementType = (ParameterizedType) field.getGenericType();
+				Class<?> actualType = (Class<?>) elementType.getActualTypeArguments()[0];
+				try {
+					Set<? extends Object> elements = (Set<? extends Object>)field.get(currentClass.cast(currentThing));
+					if (null == elements) {
+						fieldValues[i] = new JTextField("Empty Set of " + actualType.getSimpleName());
+					} else {
+						JList lElements = new JList();
+						DefaultListModel listElementsModel = new DefaultListModel();
+						elements.forEach(e -> listElementsModel.addElement(e));
+						lElements.setModel(listElementsModel);
+						fieldValues[i] = lElements;//new JTextField(elements.toString());
+					}
+				} catch (IllegalArgumentException e1) {
+					e1.printStackTrace();
+				} catch (IllegalAccessException e1) {
+					e1.printStackTrace();
+				}
+				//fieldValues[i] = new JTextField("Set of " + actualType.getSimpleName());
 				panelEdition.add(fieldValues[i]);
-			}
-			else if(false){//field.isEnumConstant()){// enum
+			} else if (false) {// field.isEnumConstant()){// enum
 				try {
 					fieldValues[i] = new JTextField(field.get(currentClass.cast(currentThing)).toString());
 				} catch (IllegalArgumentException e1) {
@@ -157,16 +170,15 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 					e1.printStackTrace();
 				}
 				panelEdition.add(fieldValues[i]);
-			}
-			else{
-				//fieldValues[i] = new JTextField(field.getType().getSimpleName());
-				//panelEdition.add(fieldValues[i]);
+			} else {
+				// fieldValues[i] = new
+				// JTextField(field.getType().getSimpleName());
+				// panelEdition.add(fieldValues[i]);
 				try {
 					Object property = field.get(currentClass.cast(currentThing));
-					if (null == property){
+					if (null == property) {
 						fieldValues[i] = new JTextField("NULL");
-					}
-					else{
+					} else {
 						fieldValues[i] = new JTextField(property.toString());
 					}
 				} catch (IllegalArgumentException e1) {
@@ -229,18 +241,18 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 			btnAdd.setEnabled(false);
 		}
 	}
-	
+
 	private void btnAddMouseReleased(MouseEvent e) {
 		// TODO add your code here
-		if (MouseEvent.BUTTON1 != e.getButton() || !btnAdd.isEnabled()){
+		if (MouseEvent.BUTTON1 != e.getButton() || !btnAdd.isEnabled()) {
 			return;
 		}
 		System.out.println("Add Button Released.");
 	}
-	
+
 	private void btnDelMouseReleased(MouseEvent e) {
 		// TODO add your code here
-		if (MouseEvent.BUTTON1 != e.getButton() || !btnDel.isEnabled()){
+		if (MouseEvent.BUTTON1 != e.getButton() || !btnDel.isEnabled()) {
 			return;
 		}
 		System.out.println("Del Button Released.");

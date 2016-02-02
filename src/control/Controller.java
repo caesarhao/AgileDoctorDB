@@ -229,6 +229,63 @@ public class Controller {
 		mi2.getPossibleResponsePhrases().add(mi2_p_p2);
 		JpaManager.update(mi2);
 		
+		FamilyInformation fi1 = new FamilyInformation();
+		fi1.setName("Marriage");
+		fi1.setImportance(80);
+		fi1.setPriority(90);
+		fi1.setAcquiringMethod(APatientInformation.AcquiringMethod.AskedByDoctor);
+		fi1.setSuperInformation(null);
+		JpaManager.persist(fi1);
+		
+		DoctorPhrase fi1_d_p1 = new DoctorPhrase();
+		fi1_d_p1.setName("DoctorAskMarriage1");
+		fi1_d_p1.setAggressiveLevel(APhrase.AggressiveLevel.Polite);
+		fi1_d_p1.setClearLevel(APhrase.ClearLevel.Clear);
+		fi1_d_p1.setLongLevel(APhrase.LongLevel.Normal);
+		fi1_d_p1.setPrimitiveType(APhrase.PrimitiveType.CloseQuestion);
+		fi1_d_p1.setPhraseActor(da1);
+		fi1_d_p1.setExpression("Are you married?");
+		JpaManager.persist(fi1_d_p1);
+		
+		DoctorPhrase fi1_d_p2 = new DoctorPhrase();
+		fi1_d_p2.setName("DoctorAskMarriage2");
+		fi1_d_p2.setAggressiveLevel(APhrase.AggressiveLevel.Aggressive);
+		fi1_d_p2.setClearLevel(APhrase.ClearLevel.Clear);
+		fi1_d_p2.setLongLevel(APhrase.LongLevel.Normal);
+		fi1_d_p2.setPrimitiveType(APhrase.PrimitiveType.CloseQuestion);
+		fi1_d_p2.setPhraseActor(da1);
+		fi1_d_p2.setExpression("Are you still alone?");
+		JpaManager.persist(fi1_d_p2);
+		
+		fi1.getPossibleAskPhrases().add(fi1_d_p1);
+		fi1.getPossibleAskPhrases().add(fi1_d_p2);
+		JpaManager.update(fi1);
+		
+		PatientPhrase fi1_p_p1 = new PatientPhrase();
+		fi1_p_p1.setName("PatientAnswerMarriage1");
+		fi1_p_p1.setAggressiveLevel(APhrase.AggressiveLevel.Polite);
+		fi1_p_p1.setClearLevel(APhrase.ClearLevel.Clear);
+		fi1_p_p1.setLongLevel(APhrase.LongLevel.Normal);
+		fi1_p_p1.setPrimitiveType(APhrase.PrimitiveType.Statement);
+		fi1_p_p1.setPhraseActor(pa1);
+		fi1_p_p1.setExpression("Yes, I'm married.");
+		JpaManager.persist(fi1_p_p1);
+		
+		PatientPhrase fi1_p_p2 = new PatientPhrase();
+		fi1_p_p2.setName("PatientAnswerMarriage2");
+		fi1_p_p2.setAggressiveLevel(APhrase.AggressiveLevel.Polite);
+		fi1_p_p2.setClearLevel(APhrase.ClearLevel.Unclear);
+		fi1_p_p2.setLongLevel(APhrase.LongLevel.TooLong);
+		fi1_p_p2.setPrimitiveType(APhrase.PrimitiveType.Statement);
+		fi1_p_p2.setPhraseActor(pa1);
+		fi1_p_p2.setExpression("It's unbelievable to be alone at my age, don't you think so?");
+		JpaManager.persist(fi1_p_p2);
+		
+		fi1.getPossibleResponsePhrases().add(fi1_p_p1);
+		fi1.getPossibleResponsePhrases().add(fi1_p_p2);
+		JpaManager.update(fi1);
+		
+		
 	}
 
 	public static void main(String[] args) {
