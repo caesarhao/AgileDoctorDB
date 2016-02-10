@@ -285,7 +285,61 @@ public class Controller {
 		fi1.getPossibleResponsePhrases().add(fi1_p_p2);
 		JpaManager.update(fi1);
 		
+		FamilyInformation fi2 = new FamilyInformation();
+		fi2.setName("Children");
+		fi2.setImportance(80);
+		fi2.setPriority(90);
+		fi2.setAcquiringMethod(APatientInformation.AcquiringMethod.AskedByDoctor);
+		fi2.setSuperInformation(fi1);
+		JpaManager.persist(fi2);
 		
+		DoctorPhrase fi2_d_p1 = new DoctorPhrase();
+		fi2_d_p1.setName("DoctorAskChildren1");
+		fi2_d_p1.setAggressiveLevel(APhrase.AggressiveLevel.Polite);
+		fi2_d_p1.setClearLevel(APhrase.ClearLevel.Clear);
+		fi2_d_p1.setLongLevel(APhrase.LongLevel.Normal);
+		fi2_d_p1.setPrimitiveType(APhrase.PrimitiveType.CloseQuestion);
+		fi2_d_p1.setPhraseActor(da1);
+		fi2_d_p1.setExpression("Do you have any child?");
+		JpaManager.persist(fi2_d_p1);
+		
+		DoctorPhrase fi2_d_p2 = new DoctorPhrase();
+		fi2_d_p2.setName("DoctorAskChildren2");
+		fi2_d_p2.setAggressiveLevel(APhrase.AggressiveLevel.Aggressive);
+		fi2_d_p2.setClearLevel(APhrase.ClearLevel.Clear);
+		fi2_d_p2.setLongLevel(APhrase.LongLevel.Normal);
+		fi2_d_p2.setPrimitiveType(APhrase.PrimitiveType.CloseQuestion);
+		fi2_d_p2.setPhraseActor(da1);
+		fi2_d_p2.setExpression("Don't you have any child?");
+		JpaManager.persist(fi2_d_p2);
+		
+		fi2.getPossibleAskPhrases().add(fi2_d_p1);
+		fi2.getPossibleAskPhrases().add(fi2_d_p2);
+		JpaManager.update(fi2);
+		
+		PatientPhrase fi2_p_p1 = new PatientPhrase();
+		fi2_p_p1.setName("PatientAnswerChildren1");
+		fi2_p_p1.setAggressiveLevel(APhrase.AggressiveLevel.Polite);
+		fi2_p_p1.setClearLevel(APhrase.ClearLevel.Clear);
+		fi2_p_p1.setLongLevel(APhrase.LongLevel.Normal);
+		fi2_p_p1.setPrimitiveType(APhrase.PrimitiveType.Statement);
+		fi2_p_p1.setPhraseActor(pa1);
+		fi2_p_p1.setExpression("Yes, I've 1 son and 1 daughter.");
+		JpaManager.persist(fi2_p_p1);
+		
+		PatientPhrase fi2_p_p2 = new PatientPhrase();
+		fi2_p_p2.setName("PatientAnswerChildren2");
+		fi2_p_p2.setAggressiveLevel(APhrase.AggressiveLevel.Polite);
+		fi2_p_p2.setClearLevel(APhrase.ClearLevel.Unclear);
+		fi2_p_p2.setLongLevel(APhrase.LongLevel.TooLong);
+		fi2_p_p2.setPrimitiveType(APhrase.PrimitiveType.Statement);
+		fi2_p_p2.setPhraseActor(pa1);
+		fi2_p_p2.setExpression("Of course, I have some children. I've 1 son and 1 daughter.");
+		JpaManager.persist(fi2_p_p2);
+		
+		fi2.getPossibleResponsePhrases().add(fi2_p_p1);
+		fi2.getPossibleResponsePhrases().add(fi2_p_p2);
+		JpaManager.update(fi2);
 	}
 
 	public static void main(String[] args) {
