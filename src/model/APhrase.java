@@ -10,6 +10,7 @@ import javax.persistence.*;
  */
 @MappedSuperclass
 public abstract class APhrase extends AThing implements Serializable {
+	/* As per the discussion on 9th Feb 2016. These three are used only by PatientPhrase
 	public enum AggressiveLevel{
 		Aggressive,
 		Neutral,
@@ -24,6 +25,7 @@ public abstract class APhrase extends AThing implements Serializable {
 		Normal,
 		TooLong
 	}
+	*/
 	public enum PrimitiveType{
 		Statement,
 		OpenQuestion,
@@ -36,7 +38,7 @@ public abstract class APhrase extends AThing implements Serializable {
 
 	@Column(name="expression", nullable=false)
 	public String expression;
-	
+/*	
 	@Column(name="agressiveLevel", nullable=false)
 	public AggressiveLevel aggressiveLevel;
 	
@@ -45,7 +47,7 @@ public abstract class APhrase extends AThing implements Serializable {
 	
 	@Column(name="longLevel", nullable=false)
 	public LongLevel longLevel;
-	
+*/	
 	@Column(name="primitiveType", nullable=false)
 	public PrimitiveType primitiveType;
 	
@@ -64,6 +66,7 @@ public abstract class APhrase extends AThing implements Serializable {
 	public void setPrimitiveType(PrimitiveType primitiveType) {
 		this.primitiveType = primitiveType;
 	}
+	/*
 	public ClearLevel getClearLevel() {
 		return clearLevel;
 	}
@@ -76,7 +79,14 @@ public abstract class APhrase extends AThing implements Serializable {
 	public void setLongLevel(LongLevel longLevel) {
 		this.longLevel = longLevel;
 	}
+	public AggressiveLevel getAggressiveLevel() {
+		return this.aggressiveLevel;
+	}
 
+	public void setAggressiveLevel(AggressiveLevel aggressiveLevel) {
+		this.aggressiveLevel = aggressiveLevel;
+	}
+	*/
 	public APhrase() {
 		super();
 	}   
@@ -87,12 +97,6 @@ public abstract class APhrase extends AThing implements Serializable {
 	public void setExpression(String expression) {
 		this.expression = expression;
 	}   
-	public AggressiveLevel getAggressiveLevel() {
-		return this.aggressiveLevel;
-	}
-
-	public void setAggressiveLevel(AggressiveLevel aggressiveLevel) {
-		this.aggressiveLevel = aggressiveLevel;
-	}
+	
    
 }

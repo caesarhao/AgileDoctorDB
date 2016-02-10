@@ -5,6 +5,8 @@ import java.util.List;
 import engine.GameEngine;
 import jpa.JpaManager;
 import model.*;
+import model.APhrase.*;
+import model.PatientPhrase.*;
 import view.*;
 
 public class Controller {
@@ -106,10 +108,12 @@ public class Controller {
 		// Phrases
 		DoctorPhrase p1 = new DoctorPhrase();
 		p1.setName("DoctorWelcomesPatient");
-		p1.setAggressiveLevel(APhrase.AggressiveLevel.Polite);
-		p1.setClearLevel(APhrase.ClearLevel.Clear);
-		p1.setLongLevel(APhrase.LongLevel.Normal);
-		p1.setPrimitiveType(APhrase.PrimitiveType.Statement);
+		//p1.setAggressiveLevel(AggressiveLevel.Polite);
+		//p1.setClearLevel(ClearLevel.Clear);
+		//p1.setLongLevel(LongLevel.Normal);
+		p1.setEffTrust(10.0);
+		p1.setEffDisturbance(0.0);
+		p1.setPrimitiveType(PrimitiveType.Statement);
 		p1.setPhraseActor(da1);
 		p1.setExpression("Good morning, please come in and sit down!");
 		JpaManager.persist(p1);
@@ -125,20 +129,24 @@ public class Controller {
 		
 		DoctorPhrase mi1_d_p1 = new DoctorPhrase();
 		mi1_d_p1.setName("DoctorAskSmoke1");
-		mi1_d_p1.setAggressiveLevel(APhrase.AggressiveLevel.Polite);
-		mi1_d_p1.setClearLevel(APhrase.ClearLevel.Clear);
-		mi1_d_p1.setLongLevel(APhrase.LongLevel.Normal);
-		mi1_d_p1.setPrimitiveType(APhrase.PrimitiveType.CloseQuestion);
+		//mi1_d_p1.setAggressiveLevel(AggressiveLevel.Polite);
+		//mi1_d_p1.setClearLevel(ClearLevel.Clear);
+		//mi1_d_p1.setLongLevel(LongLevel.Normal);
+		mi1_d_p1.setEffTrust(10.0);
+		mi1_d_p1.setEffDisturbance(0.0);
+		mi1_d_p1.setPrimitiveType(PrimitiveType.CloseQuestion);
 		mi1_d_p1.setPhraseActor(da1);
 		mi1_d_p1.setExpression("Do you smoke?");
 		JpaManager.persist(mi1_d_p1);
 		
 		DoctorPhrase mi1_d_p2 = new DoctorPhrase();
 		mi1_d_p2.setName("DoctorAskSmoke2");
-		mi1_d_p2.setAggressiveLevel(APhrase.AggressiveLevel.Aggressive);
-		mi1_d_p2.setClearLevel(APhrase.ClearLevel.Clear);
-		mi1_d_p2.setLongLevel(APhrase.LongLevel.Normal);
-		mi1_d_p2.setPrimitiveType(APhrase.PrimitiveType.CloseQuestion);
+		//mi1_d_p2.setAggressiveLevel(AggressiveLevel.Aggressive);
+		//mi1_d_p2.setClearLevel(ClearLevel.Clear);
+		//mi1_d_p2.setLongLevel(LongLevel.Normal);
+		mi1_d_p2.setEffTrust(-10.0);
+		mi1_d_p2.setEffDisturbance(5.0);
+		mi1_d_p2.setPrimitiveType(PrimitiveType.CloseQuestion);
 		mi1_d_p2.setPhraseActor(da1);
 		mi1_d_p2.setExpression("Do you enjoy the fucking smoking?");
 		JpaManager.persist(mi1_d_p2);
@@ -149,20 +157,20 @@ public class Controller {
 		
 		PatientPhrase mi1_p_p1 = new PatientPhrase();
 		mi1_p_p1.setName("PatientAnswerSmoke1");
-		mi1_p_p1.setAggressiveLevel(APhrase.AggressiveLevel.Polite);
-		mi1_p_p1.setClearLevel(APhrase.ClearLevel.Clear);
-		mi1_p_p1.setLongLevel(APhrase.LongLevel.Normal);
-		mi1_p_p1.setPrimitiveType(APhrase.PrimitiveType.Statement);
+		mi1_p_p1.setAggressiveLevel(AggressiveLevel.Polite);
+		mi1_p_p1.setClearLevel(ClearLevel.Clear);
+		mi1_p_p1.setLongLevel(LongLevel.Normal);
+		mi1_p_p1.setPrimitiveType(PrimitiveType.Statement);
 		mi1_p_p1.setPhraseActor(pa1);
 		mi1_p_p1.setExpression("Yes, I smoke.");
 		JpaManager.persist(mi1_p_p1);
 		
 		PatientPhrase mi1_p_p2 = new PatientPhrase();
 		mi1_p_p2.setName("PatientAnswerSmoke2");
-		mi1_p_p2.setAggressiveLevel(APhrase.AggressiveLevel.Polite);
-		mi1_p_p2.setClearLevel(APhrase.ClearLevel.Unclear);
-		mi1_p_p2.setLongLevel(APhrase.LongLevel.TooLong);
-		mi1_p_p2.setPrimitiveType(APhrase.PrimitiveType.Statement);
+		mi1_p_p2.setAggressiveLevel(AggressiveLevel.Polite);
+		mi1_p_p2.setClearLevel(ClearLevel.Unclear);
+		mi1_p_p2.setLongLevel(LongLevel.TooLong);
+		mi1_p_p2.setPrimitiveType(PrimitiveType.Statement);
 		mi1_p_p2.setPhraseActor(pa1);
 		mi1_p_p2.setExpression("Smoking can help me to decrease stress, why not?");
 		JpaManager.persist(mi1_p_p2);
@@ -183,20 +191,24 @@ public class Controller {
 		
 		DoctorPhrase mi2_d_p1 = new DoctorPhrase();
 		mi2_d_p1.setName("DoctorAskSmokeFrequency1");
-		mi2_d_p1.setAggressiveLevel(APhrase.AggressiveLevel.Polite);
-		mi2_d_p1.setClearLevel(APhrase.ClearLevel.Clear);
-		mi2_d_p1.setLongLevel(APhrase.LongLevel.Normal);
-		mi2_d_p1.setPrimitiveType(APhrase.PrimitiveType.CloseQuestion);
+		//mi2_d_p1.setAggressiveLevel(AggressiveLevel.Polite);
+		//mi2_d_p1.setClearLevel(ClearLevel.Clear);
+		//mi2_d_p1.setLongLevel(LongLevel.Normal);
+		mi2_d_p1.setEffTrust(10.0);
+		mi2_d_p1.setEffDisturbance(0.0);
+		mi2_d_p1.setPrimitiveType(PrimitiveType.CloseQuestion);
 		mi2_d_p1.setPhraseActor(da1);
 		mi2_d_p1.setExpression("Do you often smoke?");
 		JpaManager.persist(mi2_d_p1);
 		
 		DoctorPhrase mi2_d_p2 = new DoctorPhrase();
 		mi2_d_p2.setName("DoctorAskSmokeFrequency2");
-		mi2_d_p2.setAggressiveLevel(APhrase.AggressiveLevel.Aggressive);
-		mi2_d_p2.setClearLevel(APhrase.ClearLevel.Clear);
-		mi2_d_p2.setLongLevel(APhrase.LongLevel.Normal);
-		mi2_d_p2.setPrimitiveType(APhrase.PrimitiveType.CloseQuestion);
+		//mi2_d_p2.setAggressiveLevel(AggressiveLevel.Aggressive);
+		//mi2_d_p2.setClearLevel(ClearLevel.Clear);
+		//mi2_d_p2.setLongLevel(LongLevel.Normal);
+		mi2_d_p2.setEffTrust(-10.0);
+		mi2_d_p2.setEffDisturbance(-5.0);
+		mi2_d_p2.setPrimitiveType(PrimitiveType.CloseQuestion);
 		mi2_d_p2.setPhraseActor(da1);
 		mi2_d_p2.setExpression("Do you have too many cigarettes everyday?");
 		JpaManager.persist(mi2_d_p2);
@@ -207,20 +219,20 @@ public class Controller {
 		
 		PatientPhrase mi2_p_p1 = new PatientPhrase();
 		mi2_p_p1.setName("PatientAnswerSmokeFrequency1");
-		mi2_p_p1.setAggressiveLevel(APhrase.AggressiveLevel.Polite);
-		mi2_p_p1.setClearLevel(APhrase.ClearLevel.Clear);
-		mi2_p_p1.setLongLevel(APhrase.LongLevel.Normal);
-		mi2_p_p1.setPrimitiveType(APhrase.PrimitiveType.Statement);
+		mi2_p_p1.setAggressiveLevel(AggressiveLevel.Polite);
+		mi2_p_p1.setClearLevel(ClearLevel.Clear);
+		mi2_p_p1.setLongLevel(LongLevel.Normal);
+		mi2_p_p1.setPrimitiveType(PrimitiveType.Statement);
 		mi2_p_p1.setPhraseActor(pa1);
 		mi2_p_p1.setExpression("2 cigarettes everyday.");
 		JpaManager.persist(mi2_p_p1);
 		
 		PatientPhrase mi2_p_p2 = new PatientPhrase();
 		mi2_p_p2.setName("PatientAnswerSmokeFrequency2");
-		mi2_p_p2.setAggressiveLevel(APhrase.AggressiveLevel.Polite);
-		mi2_p_p2.setClearLevel(APhrase.ClearLevel.Unclear);
-		mi2_p_p2.setLongLevel(APhrase.LongLevel.TooLong);
-		mi2_p_p2.setPrimitiveType(APhrase.PrimitiveType.Statement);
+		mi2_p_p2.setAggressiveLevel(AggressiveLevel.Polite);
+		mi2_p_p2.setClearLevel(ClearLevel.Unclear);
+		mi2_p_p2.setLongLevel(LongLevel.TooLong);
+		mi2_p_p2.setPrimitiveType(PrimitiveType.Statement);
 		mi2_p_p2.setPhraseActor(pa1);
 		mi2_p_p2.setExpression("Maybe 2, maybe 10, who knows?");
 		JpaManager.persist(mi2_p_p2);
@@ -239,19 +251,23 @@ public class Controller {
 		
 		DoctorPhrase fi1_d_p1 = new DoctorPhrase();
 		fi1_d_p1.setName("DoctorAskMarriage1");
-		fi1_d_p1.setAggressiveLevel(APhrase.AggressiveLevel.Polite);
-		fi1_d_p1.setClearLevel(APhrase.ClearLevel.Clear);
-		fi1_d_p1.setLongLevel(APhrase.LongLevel.Normal);
-		fi1_d_p1.setPrimitiveType(APhrase.PrimitiveType.CloseQuestion);
+		//fi1_d_p1.setAggressiveLevel(AggressiveLevel.Polite);
+		//fi1_d_p1.setClearLevel(ClearLevel.Clear);
+		//fi1_d_p1.setLongLevel(LongLevel.Normal);
+		fi1_d_p1.setEffTrust(10.0);
+		fi1_d_p1.setEffDisturbance(0.0);
+		fi1_d_p1.setPrimitiveType(PrimitiveType.CloseQuestion);
 		fi1_d_p1.setPhraseActor(da1);
 		fi1_d_p1.setExpression("Are you married?");
 		JpaManager.persist(fi1_d_p1);
 		
 		DoctorPhrase fi1_d_p2 = new DoctorPhrase();
 		fi1_d_p2.setName("DoctorAskMarriage2");
-		fi1_d_p2.setAggressiveLevel(APhrase.AggressiveLevel.Aggressive);
-		fi1_d_p2.setClearLevel(APhrase.ClearLevel.Clear);
-		fi1_d_p2.setLongLevel(APhrase.LongLevel.Normal);
+		//fi1_d_p2.setAggressiveLevel(AggressiveLevel.Aggressive);
+		//fi1_d_p2.setClearLevel(ClearLevel.Clear);
+		//fi1_d_p2.setLongLevel(LongLevel.Normal);
+		fi1_d_p2.setEffTrust(-10.0);
+		fi1_d_p2.setEffDisturbance(-5.0);
 		fi1_d_p2.setPrimitiveType(APhrase.PrimitiveType.CloseQuestion);
 		fi1_d_p2.setPhraseActor(da1);
 		fi1_d_p2.setExpression("Are you still alone?");
@@ -263,20 +279,20 @@ public class Controller {
 		
 		PatientPhrase fi1_p_p1 = new PatientPhrase();
 		fi1_p_p1.setName("PatientAnswerMarriage1");
-		fi1_p_p1.setAggressiveLevel(APhrase.AggressiveLevel.Polite);
-		fi1_p_p1.setClearLevel(APhrase.ClearLevel.Clear);
-		fi1_p_p1.setLongLevel(APhrase.LongLevel.Normal);
-		fi1_p_p1.setPrimitiveType(APhrase.PrimitiveType.Statement);
+		fi1_p_p1.setAggressiveLevel(AggressiveLevel.Polite);
+		fi1_p_p1.setClearLevel(ClearLevel.Clear);
+		fi1_p_p1.setLongLevel(LongLevel.Normal);
+		fi1_p_p1.setPrimitiveType(PrimitiveType.Statement);
 		fi1_p_p1.setPhraseActor(pa1);
 		fi1_p_p1.setExpression("Yes, I'm married.");
 		JpaManager.persist(fi1_p_p1);
 		
 		PatientPhrase fi1_p_p2 = new PatientPhrase();
 		fi1_p_p2.setName("PatientAnswerMarriage2");
-		fi1_p_p2.setAggressiveLevel(APhrase.AggressiveLevel.Polite);
-		fi1_p_p2.setClearLevel(APhrase.ClearLevel.Unclear);
-		fi1_p_p2.setLongLevel(APhrase.LongLevel.TooLong);
-		fi1_p_p2.setPrimitiveType(APhrase.PrimitiveType.Statement);
+		fi1_p_p2.setAggressiveLevel(AggressiveLevel.Polite);
+		fi1_p_p2.setClearLevel(ClearLevel.Unclear);
+		fi1_p_p2.setLongLevel(LongLevel.TooLong);
+		fi1_p_p2.setPrimitiveType(PrimitiveType.Statement);
 		fi1_p_p2.setPhraseActor(pa1);
 		fi1_p_p2.setExpression("It's unbelievable to be alone at my age, don't you think so?");
 		JpaManager.persist(fi1_p_p2);
@@ -295,20 +311,24 @@ public class Controller {
 		
 		DoctorPhrase fi2_d_p1 = new DoctorPhrase();
 		fi2_d_p1.setName("DoctorAskChildren1");
-		fi2_d_p1.setAggressiveLevel(APhrase.AggressiveLevel.Polite);
-		fi2_d_p1.setClearLevel(APhrase.ClearLevel.Clear);
-		fi2_d_p1.setLongLevel(APhrase.LongLevel.Normal);
-		fi2_d_p1.setPrimitiveType(APhrase.PrimitiveType.CloseQuestion);
+		//fi2_d_p1.setAggressiveLevel(AggressiveLevel.Polite);
+		//fi2_d_p1.setClearLevel(ClearLevel.Clear);
+		//fi2_d_p1.setLongLevel(LongLevel.Normal);
+		fi2_d_p1.setEffTrust(10.0);
+		fi2_d_p1.setEffDisturbance(0.0);
+		fi2_d_p1.setPrimitiveType(PrimitiveType.CloseQuestion);
 		fi2_d_p1.setPhraseActor(da1);
 		fi2_d_p1.setExpression("Do you have any child?");
 		JpaManager.persist(fi2_d_p1);
 		
 		DoctorPhrase fi2_d_p2 = new DoctorPhrase();
 		fi2_d_p2.setName("DoctorAskChildren2");
-		fi2_d_p2.setAggressiveLevel(APhrase.AggressiveLevel.Aggressive);
-		fi2_d_p2.setClearLevel(APhrase.ClearLevel.Clear);
-		fi2_d_p2.setLongLevel(APhrase.LongLevel.Normal);
-		fi2_d_p2.setPrimitiveType(APhrase.PrimitiveType.CloseQuestion);
+		//fi2_d_p2.setAggressiveLevel(AggressiveLevel.Aggressive);
+		//fi2_d_p2.setClearLevel(ClearLevel.Clear);
+		//fi2_d_p2.setLongLevel(LongLevel.Normal);
+		fi2_d_p2.setEffTrust(-10.0);
+		fi2_d_p2.setEffDisturbance(-5.0);
+		fi2_d_p2.setPrimitiveType(PrimitiveType.CloseQuestion);
 		fi2_d_p2.setPhraseActor(da1);
 		fi2_d_p2.setExpression("Don't you have any child?");
 		JpaManager.persist(fi2_d_p2);
@@ -319,20 +339,20 @@ public class Controller {
 		
 		PatientPhrase fi2_p_p1 = new PatientPhrase();
 		fi2_p_p1.setName("PatientAnswerChildren1");
-		fi2_p_p1.setAggressiveLevel(APhrase.AggressiveLevel.Polite);
-		fi2_p_p1.setClearLevel(APhrase.ClearLevel.Clear);
-		fi2_p_p1.setLongLevel(APhrase.LongLevel.Normal);
-		fi2_p_p1.setPrimitiveType(APhrase.PrimitiveType.Statement);
+		fi2_p_p1.setAggressiveLevel(AggressiveLevel.Polite);
+		fi2_p_p1.setClearLevel(ClearLevel.Clear);
+		fi2_p_p1.setLongLevel(LongLevel.Normal);
+		fi2_p_p1.setPrimitiveType(PrimitiveType.Statement);
 		fi2_p_p1.setPhraseActor(pa1);
 		fi2_p_p1.setExpression("Yes, I've 1 son and 1 daughter.");
 		JpaManager.persist(fi2_p_p1);
 		
 		PatientPhrase fi2_p_p2 = new PatientPhrase();
 		fi2_p_p2.setName("PatientAnswerChildren2");
-		fi2_p_p2.setAggressiveLevel(APhrase.AggressiveLevel.Polite);
-		fi2_p_p2.setClearLevel(APhrase.ClearLevel.Unclear);
-		fi2_p_p2.setLongLevel(APhrase.LongLevel.TooLong);
-		fi2_p_p2.setPrimitiveType(APhrase.PrimitiveType.Statement);
+		fi2_p_p2.setAggressiveLevel(AggressiveLevel.Polite);
+		fi2_p_p2.setClearLevel(ClearLevel.Unclear);
+		fi2_p_p2.setLongLevel(LongLevel.TooLong);
+		fi2_p_p2.setPrimitiveType(PrimitiveType.Statement);
 		fi2_p_p2.setPhraseActor(pa1);
 		fi2_p_p2.setExpression("Of course, I have some children. I've 1 son and 1 daughter.");
 		JpaManager.persist(fi2_p_p2);

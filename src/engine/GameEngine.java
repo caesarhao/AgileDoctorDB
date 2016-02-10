@@ -73,7 +73,7 @@ public class GameEngine {
 			randNum = rand.nextInt(dps.size());
 			PatientPhrase pp = pps.get(randNum);
 			System.out.println(pp.getPhraseActor().getName()+": "+pp.getExpression());
-			scVar.calcOnce(2, 3);
+			scVar.calcOnce(dp, pp);
 			scVar.sGotPatientInfo.add(currentInfo);
 			if (scVar.sGotPatientInfo.size() >= lPAllInfo.size()){
 				break;
@@ -85,6 +85,9 @@ public class GameEngine {
 				continue;
 			}
 		}
+		System.out.println("After simulation:");
+		System.out.println(scPara);
+		System.out.println(scVar);
 	}
 
 	public static void main(String[] args) {

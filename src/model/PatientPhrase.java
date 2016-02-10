@@ -17,11 +17,52 @@ import model.APhrase;
 })
 public class PatientPhrase extends APhrase implements Serializable {
 
+	public enum AggressiveLevel{
+		Aggressive,
+		Neutral,
+		Polite
+	}
+	public enum ClearLevel{
+		Clear,
+		Unclear
+	}
+	public enum LongLevel{
+		Concise,
+		Normal,
+		TooLong
+	}
 	
 	private static final long serialVersionUID = 1L;
-
+	
+	@Column(name="agressiveLevel", nullable=false)
+	public AggressiveLevel aggressiveLevel;
+	
+	@Column(name="clearLevel", nullable=false)
+	public ClearLevel clearLevel;
+	
+	@Column(name="longLevel", nullable=false)
+	public LongLevel longLevel;
+	
 	public PatientPhrase() {
 		super();
 	}
-   
+	public ClearLevel getClearLevel() {
+		return clearLevel;
+	}
+	public void setClearLevel(ClearLevel clearLevel) {
+		this.clearLevel = clearLevel;
+	}
+	public LongLevel getLongLevel() {
+		return longLevel;
+	}
+	public void setLongLevel(LongLevel longLevel) {
+		this.longLevel = longLevel;
+	}
+	public AggressiveLevel getAggressiveLevel() {
+		return this.aggressiveLevel;
+	}
+
+	public void setAggressiveLevel(AggressiveLevel aggressiveLevel) {
+		this.aggressiveLevel = aggressiveLevel;
+	}
 }

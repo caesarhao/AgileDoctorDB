@@ -1,7 +1,7 @@
 package engine;
 import java.util.*;
 
-import model.APatientInformation;
+import model.*;
 
 public class ScenarioVariable {
 	// List of already got Patient Information.
@@ -41,10 +41,11 @@ public class ScenarioVariable {
 	}
 
 	// calculate once as per the Doctor action.
-	public void calcOnce(double dActEffTi, double dActEffDi) {
+	// argument pp: PatientPhrase is preserved for additional usage.
+	public void calcOnce(DoctorPhrase dp, PatientPhrase pp) {
 		n++;
-		pt_Trust += dActEffTi;
-		pt_Dist += (10 * n * scPara.pTypeV.chaotic + dActEffDi);
+		pt_Trust += dp.getEffTrust();
+		pt_Dist += (10 * n * scPara.pTypeV.chaotic + dp.getEffDisturbance());
 		pt_Aggr += ((pt_Dist + (100 - pt_Trust)) / 2);
 		stat_Dist = pt_Dist > scPara.Threshold_Disturb;
 		stat_Aggr = pt_Aggr > scPara.Threshold_Aggr;

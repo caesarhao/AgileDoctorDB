@@ -15,9 +15,9 @@ public class DChar {
 	}
 	private void calcFromDoctorPhrase(){
 		//TODO: add code to generate DChar.
-		valEffTrust = 5 - dp.getAggressiveLevel().ordinal();
-		valEffDist = dp.getAggressiveLevel().ordinal();
-		valClarity = dp.getClearLevel().ordinal();
+		valEffTrust = dp.getEffTrust();
+		valEffDist = dp.getEffDisturbance();
+		valClarity = 0;
 	}
 	
 	public DoctorPhrase getDoctorPhrase() {

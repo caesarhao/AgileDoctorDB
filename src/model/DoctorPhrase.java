@@ -19,9 +19,31 @@ public class DoctorPhrase extends APhrase implements Serializable {
 
 	
 	private static final long serialVersionUID = 1L;
-
+	
+	@Column(name="effTrust", nullable=false)
+	public double effTrust = 0.0;
+	
+	@Column(name="effDisturbance", nullable=false)
+	public double effDisturbance = 0.0;
+	
 	public DoctorPhrase() {
 		super();
+	}
+
+	public double getEffTrust() {
+		return effTrust;
+	}
+
+	public void setEffTrust(double effTrust) {
+		this.effTrust = effTrust;
+	}
+
+	public double getEffDisturbance() {
+		return effDisturbance;
+	}
+
+	public void setEffDisturbance(double effDisturbance) {
+		this.effDisturbance = effDisturbance;
 	}
    
 }
