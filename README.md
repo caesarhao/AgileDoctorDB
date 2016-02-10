@@ -43,3 +43,11 @@ Execute command *startNetworkServer*.</del>
 
 ## Comments for essay:
 * A new state "END" has been added into DialogueSession state.
+
+## Hints for JPA Inheritance:
+* https://en.wikibooks.org/wiki/Java_Persistence/Inheritance
+There are 4 different types of inheritance in the persistance of Object -> Table.
+1. Superclass just defines the common properties, superclass won't be persisted. Put an annotation ** @MappedSuperclass ** on the superclass.
+2. Superclass and childrenclass are created in a single table. Put an annotation ** @Inheritance(strategy=InheritanceType.SINGLE_TABLE) ** on the superclass.
+3. Different tables are created for Superclass and childrenclass. Put an annotation ** @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS) ** on the superclass.
+4. One table is created for the common data and additional tables are created childrenclass. Put an annotation ** @Inheritance(strategy=InheritanceType.JOINED) ** on the superclass.
