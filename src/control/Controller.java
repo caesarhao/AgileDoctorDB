@@ -378,8 +378,10 @@ public class Controller {
 
 		//JMain jm = new JMain("xx");
 		//jm.setVisible(true);
-		ModelManager mm = new ModelManager(new JModelManagement("AgileDoctorDB Model Management"));
-		mm.initilizeControl();
+		//ModelManager mm = new ModelManager(new JModelManagement("AgileDoctorDB Model Management"));
+		//mm.initilizeControl();
+		Play pl = new Play(new JPlay("AgileDoctorDB Play"));
+		pl.initilizeControl();
 		
 		GameEngine ge = new GameEngine();
 		ge.simulate();
