@@ -70,7 +70,7 @@ public class GameEngine {
 			DoctorPhrase dp = dps.get(randNum);
 			System.out.println(dp.getPhraseActor().getName()+": "+dp.getExpression());
 			List<PatientPhrase> pps = new ArrayList<PatientPhrase>(currentInfo.getPossibleResponsePhrases());
-			randNum = rand.nextInt(dps.size());
+			randNum = rand.nextInt(pps.size());
 			PatientPhrase pp = pps.get(randNum);
 			System.out.println(pp.getPhraseActor().getName()+": "+pp.getExpression());
 			scVar.calcOnce(dp, pp);

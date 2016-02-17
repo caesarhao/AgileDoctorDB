@@ -57,6 +57,14 @@ public class JPlay extends JFrame {
 		// TODO add your code here
 	}
 
+	public JCheckBox getChkBoxDoctorAI() {
+		return chkBoxDoctorAI;
+	}
+
+	public JCheckBox getChkBoxPatientAI() {
+		return chkBoxPatientAI;
+	}
+
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
 		dialogPane = new JPanel();
@@ -66,9 +74,11 @@ public class JPlay extends JFrame {
 		panel3 = new JPanel();
 		label2 = new JLabel();
 		cmbBoxDoctor = new JComboBox();
+		chkBoxDoctorAI = new JCheckBox();
 		panel4 = new JPanel();
 		label3 = new JLabel();
 		cmbBoxPatient = new JComboBox();
+		chkBoxPatientAI = new JCheckBox();
 		lblDoctor = new JLabel();
 		lblPatient = new JLabel();
 		label4 = new JLabel();
@@ -83,6 +93,7 @@ public class JPlay extends JFrame {
 		cancelButton = new JButton();
 
 		//======== this ========
+		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		Container contentPane = getContentPane();
 		contentPane.setLayout(new BorderLayout());
 
@@ -119,6 +130,10 @@ public class JPlay extends JFrame {
 							label2.setText("Doctor: ");
 							panel3.add(label2);
 							panel3.add(cmbBoxDoctor);
+
+							//---- chkBoxDoctorAI ----
+							chkBoxDoctorAI.setText("AI mode");
+							panel3.add(chkBoxDoctorAI);
 						}
 						panel2.add(panel3, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
 							GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -132,6 +147,10 @@ public class JPlay extends JFrame {
 							label3.setText("Patient: ");
 							panel4.add(label3);
 							panel4.add(cmbBoxPatient);
+
+							//---- chkBoxPatientAI ----
+							chkBoxPatientAI.setText("AI mode");
+							panel4.add(chkBoxPatientAI);
 						}
 						panel2.add(panel4, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
 							GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -224,9 +243,11 @@ public class JPlay extends JFrame {
 	private JPanel panel3;
 	private JLabel label2;
 	private JComboBox cmbBoxDoctor;
+	private JCheckBox chkBoxDoctorAI;
 	private JPanel panel4;
 	private JLabel label3;
 	private JComboBox cmbBoxPatient;
+	private JCheckBox chkBoxPatientAI;
 	private JLabel lblDoctor;
 	private JLabel lblPatient;
 	private JLabel label4;

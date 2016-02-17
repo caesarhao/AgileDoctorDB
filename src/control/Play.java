@@ -16,6 +16,8 @@ import view.JPlay;
 public class Play extends AJFrameControl<JPlay> {
 	private JComboBox cmbBoxDoctor = null;
 	private JComboBox cmbBoxPatient = null;
+	private JCheckBox chkBoxDoctorAI = null;
+	private JCheckBox chkBoxPatientAI = null;
 	private JComboBox cmbBoxDoctorPhrase = null;
 	private JComboBox cmbBoxPatientPhrase = null;
 	
@@ -34,6 +36,8 @@ public class Play extends AJFrameControl<JPlay> {
 		super(frame, parent);
 		cmbBoxDoctor = bindedFrame.getCmbBoxDoctor();
 		cmbBoxPatient = bindedFrame.getCmbBoxPatient();
+		chkBoxDoctorAI = bindedFrame.getChkBoxDoctorAI();
+		chkBoxPatientAI = bindedFrame.getChkBoxPatientAI();
 		cmbBoxDoctorPhrase = bindedFrame.getCmbBoxDoctorPhrase();
 		cmbBoxPatientPhrase = bindedFrame.getCmbBoxPatientPhrase();
 		lblDoctor = bindedFrame.getLblDoctor();
@@ -42,7 +46,7 @@ public class Play extends AJFrameControl<JPlay> {
 		
 		queryParams = new HashMap<String, Object>();
 		
-		cmbBoxDoctor.addItem("AI");
+		cmbBoxDoctor.addItem("");
 		namedQuery = "DoctorActor.findAll";
 		queryResult = JpaManager.<AThing> findWithNamedQuery(namedQuery, queryParams);
 		if (!queryResult.isEmpty()) {
@@ -50,7 +54,7 @@ public class Play extends AJFrameControl<JPlay> {
 		}
 		cmbBoxDoctor.addItemListener(e -> cmbBoxDoctorItemStateChanged(e));
 		
-		cmbBoxPatient.addItem("AI");
+		cmbBoxPatient.addItem("");
 		namedQuery = "PatientActor.findAll";
 		queryResult = JpaManager.<AThing> findWithNamedQuery(namedQuery, queryParams);
 		if (!queryResult.isEmpty()) {
@@ -61,8 +65,9 @@ public class Play extends AJFrameControl<JPlay> {
 
 	private void cmbBoxDoctorItemStateChanged(ItemEvent e) {
 		String itemName = e.getItem().toString();
-		if (itemName.equals("AI")){
-			lblDoctor.setIcon(new ImageIcon(((new ImageIcon("resources/android.png")).getImage()).getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH)));
+		if (itemName.equals("")){
+			da = null;
+			lblDoctor.setIcon(null);
 		}
 		else{
 			namedQuery = "DoctorActor.findByName";
@@ -83,8 +88,9 @@ public class Play extends AJFrameControl<JPlay> {
 	
 	private void cmbBoxPatientItemStateChanged(ItemEvent e) {
 		String itemName = e.getItem().toString();
-		if (itemName.equals("AI")){
-			lblPatient.setIcon(new ImageIcon(((new ImageIcon("resources/android.png")).getImage()).getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH)));
+		if (itemName.equals("")){
+			pa = null;
+			lblPatient.setIcon(null);
 		}
 		else{
 			namedQuery = "PatientActor.findByName";

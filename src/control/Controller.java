@@ -47,6 +47,7 @@ public class Controller {
 		
 		PatientActor pa2 = new PatientActor();
 		pa2.setName("Jovial");
+		pa2.setSex(false);
 		pa2.setAggressiveLevel(80);
 		pa2.setClearLevel(70);
 		pa2.setConfidentLevel(60);
@@ -120,7 +121,7 @@ public class Controller {
 		JpaManager.persist(p1);
 		
 		DoctorPhrase p2 = new DoctorPhrase();
-		p1.setName("DoctorWelcomesPatient2");
+		p2.setName("DoctorWelcomesPatient2");
 		//p1.setAggressiveLevel(AggressiveLevel.Polite);
 		//p1.setClearLevel(ClearLevel.Clear);
 		//p1.setLongLevel(LongLevel.Normal);
@@ -174,7 +175,7 @@ public class Controller {
 		mi1_d_p2.setEffDisturbance(5.0);
 		mi1_d_p2.setPrimitiveType(PrimitiveType.CloseQuestion);
 		mi1_d_p2.setPhraseActor(da1);
-		mi1_d_p2.setExpression("You smoke a lot, right? You smell like cigarette.");
+		mi1_d_p2.setExpression("You smoke a lot, right? You smell like a cigarette.");
 		JpaManager.persist(mi1_d_p2);
 		
 		DoctorPhrase mi1_d_p3 = new DoctorPhrase();
@@ -275,10 +276,10 @@ public class Controller {
 		JpaManager.persist(mi2_p_p2);
 		
 		PatientPhrase mi2_p_p3 = new PatientPhrase();
-		mi2_p_p3.setName("PatientAnswerSmokeFrequency2");
-		mi2_p_p3.setAggressiveLevel(AggressiveLevel.Polite);
-		mi2_p_p3.setClearLevel(ClearLevel.Unclear);
-		mi2_p_p3.setLongLevel(LongLevel.TooLong);
+		mi2_p_p3.setName("PatientAnswerSmokeFrequency3");
+		mi2_p_p3.setAggressiveLevel(AggressiveLevel.Neutral);
+		mi2_p_p3.setClearLevel(ClearLevel.Clear);
+		mi2_p_p3.setLongLevel(LongLevel.Concise);
 		mi2_p_p3.setPrimitiveType(PrimitiveType.Statement);
 		mi2_p_p3.setPhraseActor(pa1);
 		mi2_p_p3.setExpression("A lot.");
