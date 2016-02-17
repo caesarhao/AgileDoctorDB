@@ -30,6 +30,7 @@ public abstract class APhrase extends AThing implements Serializable {
 		Statement,
 		OpenQuestion,
 		CloseQuestion,
+		AnswerWithInfo,
 		Confirmation,
 		Disagree,
 		DontUnderstand
