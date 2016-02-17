@@ -12,3 +12,7 @@
 hs_err_pid*
 /build/
 
+# eclipse file no need to trace.
+.settings/
+.classpath
+
