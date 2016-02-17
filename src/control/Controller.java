@@ -376,12 +376,12 @@ public class Controller {
 		System.out.println("" + patients.size());
 		System.out.println(patients.get(0).getName());
 
-		//JMain jm = new JMain("xx");
-		//jm.setVisible(true);
-		//ModelManager mm = new ModelManager(new JModelManagement("AgileDoctorDB Model Management"));
+		JMain jm = new JMain("AgileDoctorDB 1.0.0-1");
+		jm.setVisible(true);
+		//ModelManager mm = new ModelManager(new JModelManagement("AgileDoctorDB Model Management"), null);
 		//mm.initilizeControl();
-		Play pl = new Play(new JPlay("AgileDoctorDB Play"));
-		pl.initilizeControl();
+		//Play pl = new Play(new JPlay("AgileDoctorDB Play"), null);
+		//pl.initilizeControl();
 		
 		GameEngine ge = new GameEngine();
 		ge.simulate();

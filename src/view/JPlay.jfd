@@ -37,7 +37,10 @@ new FormModel {
 									"text": "Doctor: "
 								} )
 								add( new FormComponent( "javax.swing.JComboBox" ) {
-									name: "comboBox1"
+									name: "cmbBoxDoctor"
+									auxiliary() {
+										"JavaCodeGenerator.variableGetter": true
+									}
 								} )
 							}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
@@ -49,20 +52,29 @@ new FormModel {
 									"text": "Patient: "
 								} )
 								add( new FormComponent( "javax.swing.JComboBox" ) {
-									name: "comboBox2"
+									name: "cmbBoxPatient"
+									auxiliary() {
+										"JavaCodeGenerator.variableGetter": true
+									}
 								} )
 							}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 								"gridx": 1
 							} )
 							add( new FormComponent( "javax.swing.JLabel" ) {
-								name: "label6"
-								"icon": new com.jformdesigner.model.SwingIcon( 1, "/home/caesarhao/workspace/AgileDoctorDB/resources/maledoctor.jpg" )
+								name: "lblDoctor"
+								"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
+								auxiliary() {
+									"JavaCodeGenerator.variableGetter": true
+								}
 							}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 								"gridy": 1
 							} )
 							add( new FormComponent( "javax.swing.JLabel" ) {
-								name: "label7"
-								"icon": new com.jformdesigner.model.SwingIcon( 1, "/home/caesarhao/workspace/AgileDoctorDB/resources/femalepatient.jpg" )
+								name: "lblPatient"
+								"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
+								auxiliary() {
+									"JavaCodeGenerator.variableGetter": true
+								}
 							}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 								"gridx": 1
 								"gridy": 1
@@ -81,12 +93,18 @@ new FormModel {
 								"gridx": 1
 							} )
 							add( new FormComponent( "javax.swing.JComboBox" ) {
-								name: "comboBox5"
+								name: "cmbBoxDoctorPhrase"
+								auxiliary() {
+									"JavaCodeGenerator.variableGetter": true
+								}
 							}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 								"gridy": 3
 							} )
 							add( new FormComponent( "javax.swing.JComboBox" ) {
-								name: "comboBox4"
+								name: "cmbBoxPatientPhrase"
+								auxiliary() {
+									"JavaCodeGenerator.variableGetter": true
+								}
 							}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 								"gridx": 1
 								"gridy": 3
@@ -101,7 +119,10 @@ new FormModel {
 						add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 							name: "scrollPane1"
 							add( new FormComponent( "javax.swing.JTextArea" ) {
-								name: "textArea1"
+								name: "txtAreaLog"
+								auxiliary() {
+									"JavaCodeGenerator.variableGetter": true
+								}
 							} )
 						}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 							"gridy": 2

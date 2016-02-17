@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeEvent;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
@@ -35,8 +36,8 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 	private JButton btnAdd = null;
 	private JButton btnDel = null;
 
-	public ModelManager(JModelManagement frame) {
-		super(frame);
+	public ModelManager(JModelManagement frame, JFrame parent) {
+		super(frame, parent);
 		cmbBoxConcepts = bindedFrame.getCmbBoxConcepts();
 		lstItems = bindedFrame.getLstItems();
 		listModel = new DefaultListModel();
@@ -292,11 +293,18 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 	}
 
 	@Override
-	void initilizeControl() {
+	public void initilizeControl() {
 		setConcepts();
 		setLstItems();
 		// --end
 		bindedFrame.setVisible(true);
+	}
+
+	@Override
+	void thisWindowClosed(WindowEvent e) {
+		if (null != this.parent){
+			this.parent.setVisible(true);
+		}		
 	}
 
 }

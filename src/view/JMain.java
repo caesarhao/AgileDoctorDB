@@ -20,10 +20,12 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 
+import control.*;
+
 public class JMain extends JFrame {
 
 	private JPanel contentPane;
-	private JMain self;
+	private JFrame self;
 	private JComboBox cbPatient;
 	
 
@@ -34,7 +36,7 @@ public class JMain extends JFrame {
 		super(name);
 		self = this;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 600, 200);
+		setBounds(100, 100, 400, 200);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -44,44 +46,23 @@ public class JMain extends JFrame {
 		btnManager.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				//JManager jm = new JManager();
+				ModelManager mm = new ModelManager(new JModelManagement("AgileDoctorDB Model Management"), self);
+				mm.initilizeControl();
 				self.setVisible(false);
-				//jm.setVisible(true);
 			}
 		});
 		contentPane.add(btnManager);
-		
-		JButton btnQGManager = new JButton(new ImageIcon(((new ImageIcon("resources/settings.jpg")).getImage()).getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH)));  
-		btnQGManager.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				//JQGManager jm = new JQGManager();
-				self.setVisible(false);
-				//jm.setVisible(true);
-			}
-		});
-		contentPane.add(btnQGManager);
 		
 		JButton btnJouer = new JButton(new ImageIcon(((new ImageIcon("resources/play-icon.png")).getImage()).getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH)));  
 		btnJouer.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//Patient p = (Patient)cbPatient.getSelectedItem();
-				//JJouer jj = new JJouer();
+				Play pl = new Play(new JPlay("AgileDoctorDB Play"), self);
+				pl.initilizeControl();
 				self.setVisible(false);
-				//jj.setPatient(p);
-				//jj.setVisible(true);
-				//jj.jouer();
 			}
 		});
 		contentPane.add(btnJouer);
-		
-		cbPatient = new JComboBox();
-		//List<Patient> ps = PatientControl.findAll();
-		//for (Patient p: ps){
-		//	cbPatient.addItem(p);
-		//}
-		contentPane.add(cbPatient);
 	}
 
 }

@@ -5,6 +5,7 @@
 package view;
 
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
@@ -20,6 +21,42 @@ public class JPlay extends JFrame {
 		this.setTitle(title);
 	}
 
+	public JComboBox getCmbBoxDoctor() {
+		return cmbBoxDoctor;
+	}
+
+	public JComboBox getCmbBoxPatient() {
+		return cmbBoxPatient;
+	}
+
+	public JLabel getLblDoctor() {
+		return lblDoctor;
+	}
+
+	public JLabel getLblPatient() {
+		return lblPatient;
+	}
+
+	public JComboBox getCmbBoxDoctorPhrase() {
+		return cmbBoxDoctorPhrase;
+	}
+
+	public JComboBox getCmbBoxPatientPhrase() {
+		return cmbBoxPatientPhrase;
+	}
+
+	public JTextArea getTxtAreaLog() {
+		return txtAreaLog;
+	}
+
+	private void cmbBoxDoctorItemStateChanged(ItemEvent e) {
+		// TODO add your code here
+	}
+
+	private void thisWindowClosed(WindowEvent e) {
+		// TODO add your code here
+	}
+
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
 		dialogPane = new JPanel();
@@ -28,19 +65,19 @@ public class JPlay extends JFrame {
 		panel2 = new JPanel();
 		panel3 = new JPanel();
 		label2 = new JLabel();
-		comboBox1 = new JComboBox();
+		cmbBoxDoctor = new JComboBox();
 		panel4 = new JPanel();
 		label3 = new JLabel();
-		comboBox2 = new JComboBox();
-		label6 = new JLabel();
-		label7 = new JLabel();
+		cmbBoxPatient = new JComboBox();
+		lblDoctor = new JLabel();
+		lblPatient = new JLabel();
 		label4 = new JLabel();
 		label5 = new JLabel();
-		comboBox5 = new JComboBox();
-		comboBox4 = new JComboBox();
+		cmbBoxDoctorPhrase = new JComboBox();
+		cmbBoxPatientPhrase = new JComboBox();
 		label1 = new JLabel();
 		scrollPane1 = new JScrollPane();
-		textArea1 = new JTextArea();
+		txtAreaLog = new JTextArea();
 		buttonBar = new JPanel();
 		okButton = new JButton();
 		cancelButton = new JButton();
@@ -81,7 +118,7 @@ public class JPlay extends JFrame {
 							//---- label2 ----
 							label2.setText("Doctor: ");
 							panel3.add(label2);
-							panel3.add(comboBox1);
+							panel3.add(cmbBoxDoctor);
 						}
 						panel2.add(panel3, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
 							GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -94,21 +131,21 @@ public class JPlay extends JFrame {
 							//---- label3 ----
 							label3.setText("Patient: ");
 							panel4.add(label3);
-							panel4.add(comboBox2);
+							panel4.add(cmbBoxPatient);
 						}
 						panel2.add(panel4, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
 							GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 							new Insets(0, 0, 5, 0), 0, 0));
 
-						//---- label6 ----
-						label6.setIcon(new ImageIcon("/home/caesarhao/workspace/AgileDoctorDB/resources/maledoctor.jpg"));
-						panel2.add(label6, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
+						//---- lblDoctor ----
+						lblDoctor.setIcon(null);
+						panel2.add(lblDoctor, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
 							GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 							new Insets(0, 0, 5, 5), 0, 0));
 
-						//---- label7 ----
-						label7.setIcon(new ImageIcon("/home/caesarhao/workspace/AgileDoctorDB/resources/femalepatient.jpg"));
-						panel2.add(label7, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
+						//---- lblPatient ----
+						lblPatient.setIcon(null);
+						panel2.add(lblPatient, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
 							GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 							new Insets(0, 0, 5, 0), 0, 0));
 
@@ -123,10 +160,10 @@ public class JPlay extends JFrame {
 						panel2.add(label5, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0,
 							GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 							new Insets(0, 0, 5, 0), 0, 0));
-						panel2.add(comboBox5, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
+						panel2.add(cmbBoxDoctorPhrase, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
 							GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 							new Insets(0, 0, 5, 5), 0, 0));
-						panel2.add(comboBox4, new GridBagConstraints(1, 3, 1, 1, 0.0, 0.0,
+						panel2.add(cmbBoxPatientPhrase, new GridBagConstraints(1, 3, 1, 1, 0.0, 0.0,
 							GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 							new Insets(0, 0, 5, 0), 0, 0));
 					}
@@ -142,7 +179,7 @@ public class JPlay extends JFrame {
 
 					//======== scrollPane1 ========
 					{
-						scrollPane1.setViewportView(textArea1);
+						scrollPane1.setViewportView(txtAreaLog);
 					}
 					panel1.add(scrollPane1, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
 						GridBagConstraints.CENTER, GridBagConstraints.BOTH,
@@ -186,19 +223,19 @@ public class JPlay extends JFrame {
 	private JPanel panel2;
 	private JPanel panel3;
 	private JLabel label2;
-	private JComboBox comboBox1;
+	private JComboBox cmbBoxDoctor;
 	private JPanel panel4;
 	private JLabel label3;
-	private JComboBox comboBox2;
-	private JLabel label6;
-	private JLabel label7;
+	private JComboBox cmbBoxPatient;
+	private JLabel lblDoctor;
+	private JLabel lblPatient;
 	private JLabel label4;
 	private JLabel label5;
-	private JComboBox comboBox5;
-	private JComboBox comboBox4;
+	private JComboBox cmbBoxDoctorPhrase;
+	private JComboBox cmbBoxPatientPhrase;
 	private JLabel label1;
 	private JScrollPane scrollPane1;
-	private JTextArea textArea1;
+	private JTextArea txtAreaLog;
 	private JPanel buttonBar;
 	private JButton okButton;
 	private JButton cancelButton;
