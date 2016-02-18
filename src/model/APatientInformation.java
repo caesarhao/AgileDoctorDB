@@ -7,7 +7,7 @@ import javax.persistence.*;
 import model.AInformation;
 
 /**
- * Entity implementation class for Entity: PatientInformation
+ * Entity implementation class for Entity: FamilyInformation, MedicalInformation  //PatientInformation
  *
  */
 @Entity
@@ -85,6 +85,13 @@ public abstract class APatientInformation extends AInformation implements Serial
 	public Set<PatientPhrase> getPossibleResponsePhrases() {
 		return possibleResponsePhrases;
 	}
+	/*
+	//Info tree: get ResponsePhrases by session state
+	public Set<PatientPhrase> getPossibleResponsePhrasesByState(enum type){
+		
+		Set<PatientPhrase> res =  
+		
+	}*/
 
 	public APatientInformation getSuperInformation() {
 		return superInformation;

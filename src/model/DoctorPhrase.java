@@ -26,6 +26,9 @@ public class DoctorPhrase extends APhrase implements Serializable {
 	@Column(name="effDisturbance", nullable=false)
 	public double effDisturbance = 0.0;
 	
+	@Column( name="valClarity", nullable=false)
+	public double valClarity = 0.5;
+	
 	public DoctorPhrase() {
 		super();
 	}
@@ -44,6 +47,14 @@ public class DoctorPhrase extends APhrase implements Serializable {
 
 	public void setEffDisturbance(double effDisturbance) {
 		this.effDisturbance = effDisturbance;
+	}
+	
+	public double getvalClarity() {
+		return valClarity;
+	}
+	
+	public void setvalClarity(double valClarity){
+		this.valClarity = valClarity;
 	}
    
 }

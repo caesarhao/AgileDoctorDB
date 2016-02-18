@@ -13,6 +13,7 @@ import model.APhrase;
 @NamedQueries({
 @NamedQuery(name = "PatientPhrase.findAll", query = "SELECT e FROM PatientPhrase e"),
 @NamedQuery(name = "PatientPhrase.findById", query = "SELECT e FROM PatientPhrase e WHERE e.id = :id"),
+@NamedQuery(name = "PatientPhrase.findByType", query = "SELECT e FROM PatientPhrase e WHERE e.primitiveType = :primitiveType"),
 @NamedQuery(name = "PatientPhrase.findByName", query = "SELECT e FROM PatientPhrase e WHERE e.name = :name"),
 })
 public class PatientPhrase extends APhrase implements Serializable {
@@ -46,6 +47,12 @@ public class PatientPhrase extends APhrase implements Serializable {
 	public PatientPhrase() {
 		super();
 	}
+	public PatientPhrase(String def, APhraseActor act) {   // default new Phrase (Expression&Actor)
+		super();
+		this.expression = def;
+		this.phraseActor = act; 
+	}
+	
 	public ClearLevel getClearLevel() {
 		return clearLevel;
 	}

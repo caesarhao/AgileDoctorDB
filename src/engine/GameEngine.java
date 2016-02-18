@@ -15,7 +15,9 @@ import model.PatientPhrase;
 public class GameEngine {
 	private ScenarioParameter scPara;
 	private ScenarioVariable scVar;
+	
 
+	//
 	public GameEngine() {
 		scPara = new ScenarioParameter();
 		// System.out.println(scPara);
@@ -43,7 +45,7 @@ public class GameEngine {
 		System.out.println(scVar);
 		System.out.println("Simulation:");
 		List<APatientInformation> lPAllInfo = JpaManager.<APatientInformation>findAll("APatientInformation");
-		// TODO; Simulation process.
+	
 		while (true) {
 			if (null == currentInfo){
 				
@@ -60,6 +62,7 @@ public class GameEngine {
 			}
 			
 			randNum = rand.nextInt(lPInfo.size());
+		
 			currentInfo = lPInfo.get(randNum);
 			if (scVar.sGotPatientInfo.contains(currentInfo)){// it's already got
 				continue;
@@ -68,13 +71,92 @@ public class GameEngine {
 			List<DoctorPhrase> dps = new ArrayList<DoctorPhrase>(currentInfo.getPossibleAskPhrases());
 			randNum = rand.nextInt(dps.size());
 			DoctorPhrase dp = dps.get(randNum);
-			System.out.println(dp.getPhraseActor().getName()+": "+dp.getExpression());
-			List<PatientPhrase> pps = new ArrayList<PatientPhrase>(currentInfo.getPossibleResponsePhrases());
-			randNum = rand.nextInt(pps.size());
-			PatientPhrase pp = pps.get(randNum);
+			System.out.println("Doctor "+dp.getPhraseActor().getName()+": "+dp.getExpression());
+			
+			
+			//update system variables after selection of doctor.
+			scVar.calcOnce(dp);					
+			System.out.println("now clarity is "+dp.getvalClarity());
+			System.out.println("now state is "+scVar.dialSt.toString());
+			
+			// Prepare possible patient phrases.
+			List<PatientPhrase> pps = new ArrayList<PatientPhrase>(currentInfo.getPossibleResponsePhrases());  // all phrases
+			List<PatientPhrase> pps_n = new ArrayList<PatientPhrase>();  // Normal phrases
+			List<PatientPhrase> pps_du = new ArrayList<PatientPhrase>();  // don'tUnderstand phrases
+			List<PatientPhrase> pps_q = new ArrayList<PatientPhrase>();  // questioning phrases
+			List<PatientPhrase> pps_r = new ArrayList<PatientPhrase>();  // refuse phrases
+
+			for(PatientPhrase ps:pps){
+	
+				if(ps.getPrimitiveType().toString().equals("DontUnderstand")) pps_du.add(ps);
+				else if(ps.getPrimitiveType().toString().equals("Disagree")) pps_q.add(ps);
+				else if(ps.getPrimitiveType().toString().equals("Questioning")) pps_r.add(ps);
+				else pps_n.add(ps);
+				
+			}
+			PatientPhrase pp_0=pps.get(0);
+			PatientPhrase pp;
+			// get possible patient phrase
+			switch (scVar.dialSt){
+			case DU:  
+				if(pps_du.size()>0){   //has customer DU phrases
+					randNum = rand.nextInt(pps_du.size());
+					pp = pps_du.get(randNum);
+				}
+				else{
+					pp = new PatientPhrase("I don't know what do you mean.",pp_0.phraseActor);
+				}
+				break;
+			case Q:  
+				if(pps_q.size()>0){
+					randNum = rand.nextInt(pps_q.size());
+					pp = pps_q.get(randNum);
+				}
+				else{
+					pp = new PatientPhrase("Why do you ask?",pp_0.phraseActor);
+				}
+				break;
+			case R:  
+				if(pps_r.size()>0){
+					randNum = rand.nextInt(pps_r.size());
+					pp = pps_r.get(randNum);
+				}
+				else{
+					pp = new PatientPhrase("I don't want to talk about it.",pp_0.phraseActor);
+				}
+				break;
+			case N:  
+				if(pps_n.size()>0){
+					randNum = rand.nextInt(pps_n.size());
+					pp = pps_n.get(randNum);
+					
+				}
+				else{
+					pp = new PatientPhrase("Well, ok...",pp_0.phraseActor);
+				}
+				scVar.sGotPatientInfo.add(currentInfo);
+				break;
+			default:
+				if(pps_n.size()>0){
+					randNum = rand.nextInt(pps_n.size());
+					pp = pps_n.get(randNum);
+					
+				}
+				else{
+					pp = new PatientPhrase("Well, ok...",pp_0.phraseActor);
+				}
+				break;
+					
+			}
+			
+			//TODO: should select patient phrase by algorithm instead of random
+			
 			System.out.println(pp.getPhraseActor().getName()+": "+pp.getExpression());
-			scVar.calcOnce(dp, pp);
-			scVar.sGotPatientInfo.add(currentInfo);
+		
+
+			
+			//scVar.sGotPatientInfo.add(currentInfo);    //should be got only when state is normal
+			
 			if (scVar.sGotPatientInfo.size() >= lPAllInfo.size()){
 				break;
 			}
@@ -85,9 +167,10 @@ public class GameEngine {
 				continue;
 			}
 		}
-		System.out.println("After simulation:");
+		System.out.println("\n After simulation:");
 		System.out.println(scPara);
 		System.out.println(scVar);
+		
 	}
 
 	public static void main(String[] args) {
@@ -95,6 +178,10 @@ public class GameEngine {
 		// set parameter of game engine.
 		ge.getScPara().tr_init = 20;
 		ge.simulate();
+		/* run 3 times
+		for(int i =0; i<3;i++){
+		ge.simulate();
+		}*/
 	}
 
 }

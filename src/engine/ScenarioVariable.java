@@ -25,6 +25,10 @@ public class ScenarioVariable {
 	// boolean status of aggressive
 	public boolean stat_Aggr;
 	
+	// boolean state of session Don't Understand
+	public double p_DU;
+	public double p_AbNor;
+	
 	// dialogue state.
 	public DialogueState dialSt = DialogueState.N;
 	// dialogue old state.
@@ -41,8 +45,13 @@ public class ScenarioVariable {
 	}
 
 	// calculate once as per the Doctor action.
-	// argument pp: PatientPhrase is preserved for additional usage.
-	public void calcOnce(DoctorPhrase dp, PatientPhrase pp) {
+
+	public void calcOnce(DoctorPhrase dp) {
+		Random random1 = new Random();
+	//	Random random2 = new Random();
+		int num = 0;
+		num = random1.nextInt(101);
+		System.out.println("got random"+num);
 		n++;
 		pt_Trust += dp.getEffTrust();
 		pt_Dist += (10 * n * scPara.pTypeV.chaotic + dp.getEffDisturbance());
@@ -51,8 +60,48 @@ public class ScenarioVariable {
 		stat_Aggr = pt_Aggr > scPara.Threshold_Aggr;
 		
 		oldDialSt = dialSt;
-		//TODO: How to calculate new state?
-		dialSt = DialogueState.N;
+		
+		// calculate State of session
+		
+		//enter into DUnderstand?
+		int bvarDist = stat_Dist?1:0;
+		int bvarAggr = stat_Aggr?1:0;
+		
+    	p_DU = (bvarDist * 0.5 + 1) * scPara.beta /(dp.getvalClarity() + 0.0001);
+    	p_AbNor = (bvarAggr*0.2+1)*(1-1.1*Math.pow((pt_Trust/100), 1/3));
+    	//normalisation
+    	if(p_DU<0) p_DU=0.0;
+    	if(p_DU>1.0) p_DU=1.0;
+
+    	if(p_AbNor<0) p_AbNor=0.0;
+    	if(p_AbNor>1.0) p_AbNor=1.0;
+    	double num_percent = num/100.0;
+    	
+    	double num_percent2 = random1.nextInt(101)/100.0;
+    	System.out.println("probability DU:"+ p_DU+", rand value:"+num_percent);
+    	if(num_percent < p_DU) {
+    		dialSt = DialogueState.DU;
+    		
+    	}
+    	
+    	// enter into Questionnement or Refuse? 
+
+    	else if(num_percent2 < p_AbNor) {
+        	double num_percent3 = random1.nextInt(101)/100.0;
+        	System.out.println("probability AbNor:"+ p_AbNor+", rand value:"+num_percent2);
+    		if(num_percent3 < scPara.gamma) dialSt = DialogueState.Q;
+    		else dialSt = DialogueState.R;
+    		
+    	}
+    	
+    	// enter State Normal
+    	else{
+    		dialSt = DialogueState.N;
+    		
+    	}
+		
+		
+
 		
 		// check state, same state except normal state cumulate for twice.
 		if ((oldDialSt == dialSt) && DialogueState.N != dialSt){
@@ -65,7 +114,11 @@ public class ScenarioVariable {
 			dialSt = DialogueState.R;
 		}
 	}
-
+	
+	// argument pp: PatientPhrase is preserved for additional usage.
+	public void calcOnce(DoctorPhrase dp, PatientPhrase pp) {
+		
+	}
 	@Override
 	public String toString() {
 		String rt = "";

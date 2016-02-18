@@ -17,7 +17,7 @@ public class DChar {
 		//TODO: add code to generate DChar.
 		valEffTrust = dp.getEffTrust();
 		valEffDist = dp.getEffDisturbance();
-		valClarity = 0;
+		valClarity = dp.getvalClarity();
 	}
 	
 	public DoctorPhrase getDoctorPhrase() {

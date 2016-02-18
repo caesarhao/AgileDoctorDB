@@ -33,6 +33,7 @@ public abstract class APhrase extends AThing implements Serializable {
 		AnswerWithInfo,
 		Confirmation,
 		Disagree,
+		Questioning,
 		DontUnderstand
 	}
 	private static final long serialVersionUID = 1L;

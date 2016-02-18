@@ -5,25 +5,25 @@ public enum DialogueState {
 	DU, // Don't Understand
 	Q, // Questioning
 	R, // Refuse
-	D, // Drop
+	D, // Drop (go Session Exit Point)
 	END; // End of session.
 	
 	public DialogueState nextState(){
 		DialogueState nxtSt = this.N;
 		switch(this){
-		case N:
+		case N:  // State Normal
 			// N, DU, Q, R
 			break;
-		case DU:
+		case DU: // State Don't Understand 
 			// N, DU, Q, R, D
 			break;
-		case Q:
+		case Q:  // State Questionnement
 			// N, R, D
 			break;
-		case R:
+		case R:  // State Refuse
 			// N, Q, D
 			break;
-		case D:
+		case D:  // 
 			nxtSt = END;
 			break;
 		default:

@@ -35,8 +35,19 @@ Execute command *startNetworkServer*.</del>
 ## Bug logging:
 * A bug in EclipseLink: 2 OneToMany with same element type are mapped to a same relation table with a_b_b. This bug is corrected by introducing 2 new sub classes.
 
+##Update:
+Major modifications:
+* 1:Add session state conditions. Now the engine can decide which session to enter
+* 2:Add default abnormal states phrases (by adding a new construction function in PatientPhrase)
+* 3:Running: If Session State is not Normal, which means patient's phrase primitif type is not "AnswerWithInfo", the corresponding AInformation can't be got.
+Other modifications
+* 1 APhrase add primitive type: Questioning
+* 2 model: PatientPhrase add findByType  but not implementing (the idea is to add query which can get patient's phrases by primitive tyê)
 ## TODO:
-* information query method should be changed.
+* <del>information query method should be changed.</del>
+* 1:Patient Phrase selection should be according to Session State
+* 2:Add Levels for a dialogue session
+* 3: Run engine simulation for other dialogue session other than (Information Querying) 
 * implement engine.DChar.calcFromDoctorPhrase
 * implementengine.DChar.calcDropFlag
 * implementengine.PActChar.calcFromPatientPhrase
