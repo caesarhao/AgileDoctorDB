@@ -2,6 +2,11 @@
 engines:
   fixme:
     enabled: true
+  pep8:
+    enabled: false
+  radon:
+    enabled: true
 ratings:
-  paths: []
+  paths:
+ - "**.java"
 exclude_paths: []
