@@ -9,8 +9,8 @@ notifications:
 
 
 script:
-	- jdk_switcher use oraclejdk8
-	- bash build.sh
-	- jdk_switcher use openjdk7
-	- bash build.sh
+    - jdk_switcher use oraclejdk8
+    - bash build.sh
+    - jdk_switcher use openjdk7
+    - bash build.sh
 
