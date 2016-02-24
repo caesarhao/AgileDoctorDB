@@ -1,5 +1,8 @@
 # AgileDoctorDB
 AgileDoctor based on Relational Database and Java.
+[![Code Climate](https://codeclimate.com/github/caesarhao/AgileDoctorDB/badges/gpa.svg)](https://codeclimate.com/github/caesarhao/AgileDoctorDB)
+[![Test Coverage](https://codeclimate.com/github/caesarhao/AgileDoctorDB/badges/coverage.svg)](https://codeclimate.com/github/caesarhao/AgileDoctorDB/coverage)
+[![Issue Count](https://codeclimate.com/github/caesarhao/AgileDoctorDB/badges/issue_count.svg)](https://codeclimate.com/github/caesarhao/AgileDoctorDB)
 
 ## Requirement
 * JDK >= 1.8.0
