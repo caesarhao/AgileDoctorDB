@@ -2,7 +2,7 @@
 language: java
 jdk:
     - oraclejdk8
-    - openjdk8
+    - openjdk7
 
 notifications:
   email: false
@@ -10,7 +10,7 @@ notifications:
 
 script:
 	- jdk_switcher use oraclejdk8
-	- ./build.sh
-	- jdk_switcher use openjdk8
-	- ./build.sh
+	- bash build.sh
+	- jdk_switcher use openjdk7
+	- bash build.sh
 
