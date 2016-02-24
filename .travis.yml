@@ -1,0 +1,13 @@
+# https://travis-ci.org/caesarhao/AgileDoctorDB
+language: java
+jdk:
+    - oraclejdk8
+    - openjdk8
+
+notifications:
+  email: false
+
+
+script:
+  ./build.sh
+
