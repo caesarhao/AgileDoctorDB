@@ -19,13 +19,13 @@ import model.APhrase;
 public class PatientPhrase extends APhrase implements Serializable {
 
 	public enum AggressiveLevel{
-		Aggressive,
+		Polite,
 		Neutral,
-		Polite
+		Aggressive
 	}
 	public enum ClearLevel{
-		Clear,
-		Unclear
+		Unclear,
+		Clear
 	}
 	public enum LongLevel{
 		Concise,

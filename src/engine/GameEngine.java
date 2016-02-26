@@ -31,9 +31,28 @@ public class GameEngine {
 	public ScenarioVariable getScVar() {
 		return scVar;
 	}
+	
+	public PatientPhrase getBestPatientPhrase(List<PatientPhrase> pps){
+		PatientPhrase rpp = null;
+	
+		double minDistance = 999999999;
+		double currentDistance = 0;
+		for (PatientPhrase pp: pps){
+			// to modify pTypeV factor in the formula
+			currentDistance = Math.pow(pp.getAggressiveLevel().ordinal()*50 - scVar.pt_Aggr, 2)
+			+ Math.pow((100-pp.getClearLevel().ordinal()*100 - scVar.pt_Dist), 2)
+			+ Math.pow(pp.getLongLevel().ordinal()*50 - scPara.pTypeV.talktive*100, 2);
+			if(currentDistance<minDistance){
+				minDistance=currentDistance;
+				rpp = pp;
+			}
+		}
+		return rpp;
+	}
+	
 	public void simulateBest(){
 		List<DialogueSession> selectedDSs = new ArrayList<DialogueSession>();
-		DoctorPhrase bestDChoice = new DoctorPhrase();
+		DoctorPhrase bestDChoice = null;
 		
 		String namedQuery = "MicroSequence.findByName";
 		Map<String, Object> queryParams = new HashMap<String, Object>();
@@ -41,44 +60,37 @@ public class GameEngine {
 		List<MicroSequence> mss = JpaManager.<MicroSequence>findWithNamedQuery(namedQuery, queryParams);
 
 		for(DialogueSession ds: mss.get(0).getDialogueSessions()){
-			List<Pair> pairs = new ArrayList<Pair>(ds.getPairs());
-			Pair pair = pairs.get(0);
-			double eff_high = 0;
-			double eff_curr; 
-	
-			for(DoctorPhrase dp: pair.getPossibleDoctorPhrases()){
-			
-				eff_curr = dp.effTrust-dp.effDisturbance;
-				if(eff_curr>eff_high) {
-					eff_high=eff_curr;
-					bestDChoice = dp;
-					
+			List<Pair> pairs = ds.getPairs();
+			for (Pair pair: pairs){
+				double eff_high = 0;
+				double eff_curr = 0;
+				bestDChoice = null;
+				for (DoctorPhrase dp : pair.getPossibleDoctorPhrases()) {
+					eff_curr = dp.effTrust - dp.effDisturbance;
+					if (eff_curr > eff_high) {
+						eff_high = eff_curr;
+						bestDChoice = dp;
+					}
 				}
-								
-			}
-			if(eff_high>0) {
-				selectedDSs.add(ds);
-				System.out.println("Doctor "+bestDChoice.getPhraseActor().getName()+": "+bestDChoice.getExpression());
-							
-				//update system variables after selection of doctor.
-				scVar.calcOnce(bestDChoice);	
-				for(PatientPhrase pp: pair.getPossiblePatientPhrases()){
-					System.out.println("Patient: "+pp.getExpression());
-					break;
+				if(eff_high>0 || 1 > pair.getPossibleDoctorPhrases().size()) {
+					selectedDSs.add(ds);
+					if (null != bestDChoice){
+						System.out.println("Doctor "+bestDChoice.getPhraseActor().getName()+": "+bestDChoice.getExpression());
+						
+						//update system variables after selection of doctor.
+						scVar.calcOnce(bestDChoice);
+					}
+					//Get corresponding patient phrase.
+					PatientPhrase bestPP = getBestPatientPhrase(pair.getPossiblePatientPhrases());
+					System.out.println("Patient " + bestPP.getPhraseActor() + ": "+bestPP.getExpression());
+						
 				}
-				// Prepare possible patient phrases.
-				/*for(PatientPhrase pp: pair.getPossiblePatientPhrases()){
-					pp.aggressiveLevel
-				}*/
-				
 			}
 		}
-		
-		
 	}
 	public void simulateWorst(){
 	
-		DoctorPhrase worstDChoice = new DoctorPhrase();
+		DoctorPhrase worstDChoice = null;
 		
 		String namedQuery = "MicroSequence.findByName";
 		Map<String, Object> queryParams = new HashMap<String, Object>();
@@ -86,39 +98,31 @@ public class GameEngine {
 		List<MicroSequence> mss = JpaManager.<MicroSequence>findWithNamedQuery(namedQuery, queryParams);
 
 		for(DialogueSession ds: mss.get(0).getDialogueSessions()){
-			List<Pair> pairs = new ArrayList<Pair>(ds.getPairs());
-			Pair pair = pairs.get(0);
-			double eff_low = 0;
-			double eff_curr; 
-	
-			for(DoctorPhrase dp: pair.getPossibleDoctorPhrases()){
-			
-				eff_curr = dp.effTrust-dp.effDisturbance;
-				if(eff_curr<eff_low) {
-					eff_low=eff_curr;
-					worstDChoice = dp;
-					
+			List<Pair> pairs = ds.getPairs();
+			for (Pair pair: pairs){
+				double eff_low = 10000;
+				double eff_curr = 0;
+				worstDChoice = null;
+				for (DoctorPhrase dp : pair.getPossibleDoctorPhrases()) {
+					eff_curr = dp.effTrust - dp.effDisturbance;
+					if (eff_curr <= eff_low) {
+						eff_low = eff_curr;
+						worstDChoice = dp;
+					}
 				}
-								
-			}
-			
-			
-				System.out.println("Doctor "+worstDChoice.getPhraseActor().getName()+": "+worstDChoice.getExpression());
-							
-				//update system variables after selection of doctor.
-				scVar.calcOnce(worstDChoice);	
-				for(PatientPhrase pp: pair.getPossiblePatientPhrases()){
-					System.out.println("Patient: "+pp.getExpression());
-					break;
-				}
-				// Prepare possible patient phrases.
-				/*for(PatientPhrase pp: pair.getPossiblePatientPhrases()){
-					pp.aggressiveLevel
-				}*/
 				
-			
+				if (null != worstDChoice){
+					System.out.println("Doctor "+worstDChoice.getPhraseActor().getName()+": "+worstDChoice.getExpression());
+					
+					//update system variables after selection of doctor.
+					scVar.calcOnce(worstDChoice);
+				}
+				//Get corresponding patient phrase.
+				PatientPhrase bestPP = getBestPatientPhrase(pair.getPossiblePatientPhrases());
+				System.out.println("Patient " + bestPP.getPhraseActor() + ": "+bestPP.getExpression());
+						
+			}
 		}
-		
 		
 	}
 
