@@ -450,14 +450,26 @@ public class Controller {
 		ds3p2pp3.setPhraseActor(pa1);
 		ds3p2pp3.setExpression("Chaque fois c'est comme ça ! Mais j'ai pris un rdv avec l'heure et minute...");
 		ds3p2pp3.persist();
+		
+		PatientPhrase ds3p2pp4 = new PatientPhrase();
+		ds3p2pp4.setName("Pair2AnswerReplyComplainWaiting4");
+		ds3p2pp4.setAggressiveLevel(AggressiveLevel.Neutral);
+		ds3p2pp4.setClearLevel(ClearLevel.Clear);
+		ds3p2pp4.setLongLevel(LongLevel.Concise);
+		ds3p2pp4.setPrimitiveType(PrimitiveType.Disagree);
+		ds3p2pp4.setPhraseActor(pa1);
+		ds3p2pp4.setExpression("Oui, mais c'est quand même pénible.");
+		ds3p2pp4.persist();
+		
 		//add phrase to pair
-		ms0ds2p1.getPossibleDoctorPhrases().add(ds3p2dp1);
-		ms0ds2p1.getPossibleDoctorPhrases().add(ds3p2dp2);
-		ms0ds2p1.getPossibleDoctorPhrases().add(ds3p2dp3);
-		ms0ds2p1.getPossiblePatientPhrases().add(ds3p2pp1);
-		ms0ds2p1.getPossiblePatientPhrases().add(ds3p2pp2);
-		ms0ds2p1.getPossiblePatientPhrases().add(ds3p2pp3);
-		ms0ds2p1.update();
+		ms0ds3p2.getPossibleDoctorPhrases().add(ds3p2dp1);
+		ms0ds3p2.getPossibleDoctorPhrases().add(ds3p2dp2);
+		ms0ds3p2.getPossibleDoctorPhrases().add(ds3p2dp3);
+		ms0ds3p2.getPossiblePatientPhrases().add(ds3p2pp1);
+		ms0ds3p2.getPossiblePatientPhrases().add(ds3p2pp2);
+		ms0ds3p2.getPossiblePatientPhrases().add(ds3p2pp3);
+		ms0ds3p2.getPossiblePatientPhrases().add(ds3p2pp4);
+		ms0ds3p2.update();
 	}
 	public void fillDatabase() {
 		// PhraseActors
