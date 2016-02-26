@@ -10,6 +10,24 @@ import model.PatientPhrase.*;
 import view.*;
 
 public class Controller {
+	
+	private DoctorActor da1;
+	private PatientActor pa1;
+	private PatientActor pa2;
+	private Scenario s1;
+		private MicroSequence ms0;
+			private DialogueSession ms0ds1;
+				private Pair ms0ds1p1;
+				private Pair ms0ds1p2;
+			private DialogueSession ms0ds2;
+				private Pair ms0ds2p1;
+			private DialogueSession ms0ds3;
+				private Pair ms0ds3p1;
+				private Pair ms0ds3p2;
+		private MicroSequence ms1;
+		private MicroSequence ms2;
+		private MicroSequence ms3;
+		
 	public static boolean needFillingDatabase() {
 		List<Scenario> scenarios = JpaManager.<Scenario> findWithNamedQuery("Scenario.findAll", null);
 		if (scenarios.isEmpty()) {
@@ -19,128 +37,186 @@ public class Controller {
 		}
 
 	}
-
-	public static void fillDatabase() {
-		// Scenarios
-		Scenario s1 = new Scenario();
-		s1.setName("DemoSenario");
-		JpaManager.persist(s1);
-		
+	
+	private void fillActors(){
 		// PhraseActors, doctors.
-		DoctorActor da1 = new DoctorActor();
+		da1 = new DoctorActor();
 		da1.setName("Dupont");
 		da1.setSex(true);
-		JpaManager.persist(da1);
-		//DoctorActor da2 = new DoctorActor();
-		//da2.setName("Vidal");
-		//JpaManager.persist(da2);
+		da1.persist();
 		
 		// PhraseActors, patients.
-		PatientActor pa1 = new PatientActor();
+		pa1 = new PatientActor();
 		pa1.setName("Cathy");
 		pa1.setSex(false);
 		pa1.setAggressiveLevel(80);
 		pa1.setClearLevel(50);
 		pa1.setConfidentLevel(50);
 		pa1.setLongPhraseLevel(80);
-		JpaManager.persist(pa1);
+		pa1.persist();
 		
-		PatientActor pa2 = new PatientActor();
+		pa2 = new PatientActor();
 		pa2.setName("Jovial");
 		pa2.setSex(false);
 		pa2.setAggressiveLevel(20);
 		pa2.setClearLevel(70);
 		pa2.setConfidentLevel(70);
 		pa2.setLongPhraseLevel(50);
-		JpaManager.persist(pa2);
-		
+		pa2.persist();
+	}
+	private void fillScenario(){
+		s1 = new Scenario();
+		s1.setName("DemoSenario");
+		s1.persist();
+		fillMS0();
+		fillMS1();
+		fillMS2();
+		fillMS3();
+	}
+	private void fillMS0() {
 		// MicroSequences
-		MicroSequence ms0 = new MicroSequence();
+		ms0 = new MicroSequence();
 		ms0.setName("Welcome");
-		JpaManager.persist(ms0);
-		MicroSequence ms1 = new MicroSequence();
-		ms1.setName("AskReason");
-		JpaManager.persist(ms1);
-		MicroSequence ms2 = new MicroSequence();
-		ms2.setName("InviteToPhysicExam");
-		JpaManager.persist(ms2);
-		MicroSequence ms3 = new MicroSequence();
-		ms3.setName("QueryDuringExam");
-		JpaManager.persist(ms3);
-		MicroSequence ms4 = new MicroSequence();
-		ms4.setName("GiveDiagnosis");
-		JpaManager.persist(ms4);
-		MicroSequence ms5 = new MicroSequence();
-		ms5.setName("ExplainPrescription");
-		JpaManager.persist(ms5);
-		MicroSequence ms6 = new MicroSequence();
-		ms6.setName("GiveHealthAdvice");
-		JpaManager.persist(ms6);
-		MicroSequence ms7 = new MicroSequence();
-		ms7.setName("FixNextInterview");
-		JpaManager.persist(ms7);
-		MicroSequence ms8 = new MicroSequence();
-		ms8.setName("Payment");
-		JpaManager.persist(ms8);
-		MicroSequence ms9 = new MicroSequence();
-		ms9.setName("GoodBye");
-		JpaManager.persist(ms9);
-		
-		// Add microsequences in senario.
+		ms0.persist();
 		s1.getMicroSequences().add(ms0);
+		fillMS0DS1();
+		fillMS0DS2();
+		fillMS0DS3();
+	}
+	private void fillMS1() {
+		// MicroSequences
+		ms1 = new MicroSequence();
+		ms1.setName("AskReason");
+		ms1.persist();
 		s1.getMicroSequences().add(ms1);
+		//fillMS1DS1();
+	}
+	private void fillMS2() {
+		// MicroSequences
+		ms2 = new MicroSequence();
+		ms2.setName("GeneralQuestion");
+		ms2.persist();
 		s1.getMicroSequences().add(ms2);
+		//fillMS2DS1();
+	}
+	private void fillMS3() {
+		// MicroSequences
+		ms3 = new MicroSequence();
+		ms3.setName("AskSymptom");
+		ms3.persist();
 		s1.getMicroSequences().add(ms3);
-		s1.getMicroSequences().add(ms4);
-		s1.getMicroSequences().add(ms5);
-		s1.getMicroSequences().add(ms6);
-		s1.getMicroSequences().add(ms7);
-		s1.getMicroSequences().add(ms8);
-		s1.getMicroSequences().add(ms9);
-		JpaManager.update(s1);
-		
-		// DialogueSessions
-		DialogueSession ds1 = new DialogueSession();
-		ds1.setName("QuerySmoking");
-		JpaManager.persist(ds1);
-		DialogueSession ds2 = new DialogueSession();
-		ds2.setName("QueryFatigue");
-		JpaManager.persist(ds2);
+		//fillMS3DS1();
+	}
+	private void fillMS0DS1(){
+		ms0ds1 = new DialogueSession();
+		ms0ds1.setName("SayHello");
+		ms0ds1.persist();
+		ms0.getDialogueSessions().add(ms0ds1);
+		fillMS0DS1P1();
+		fillMS0DS1P2();
+	}
+	private void fillMS0DS1P1(){
+		//Pair for ds1
+		ms0ds1p1 = new Pair();
+		ms0ds1p1.setName(ms0ds1.getName()+"p1");
+		ms0ds1p1.persist();
+		ms0ds1.getPairs().add(ms0ds1p1);
+		ms0ds1.update();
 		
 		// Phrases
-		DoctorPhrase p1 = new DoctorPhrase();
-		p1.setName("DoctorWelcomesPatient1");
-		//p1.setAggressiveLevel(AggressiveLevel.Polite);
-		//p1.setClearLevel(ClearLevel.Clear);
-		//p1.setLongLevel(LongLevel.Normal);
-		p1.setEffTrust(-5.0);
-		p1.setEffDisturbance(0.0);
-	//	p1.setvalClarity(1.0);
-		p1.setPrimitiveType(PrimitiveType.Statement);
-		p1.setPhraseActor(da1);
-		p1.setExpression("Bonjour.");
-		JpaManager.persist(p1);
+		DoctorPhrase ds1p1dp1 = new DoctorPhrase();
+		ds1p1dp1.setName("DoctorWelcomesPatient1");
+		ds1p1dp1.setEffTrust(-5.0);
+		ds1p1dp1.setEffDisturbance(5.0);
+		ds1p1dp1.setPrimitiveType(PrimitiveType.Statement);
+		ds1p1dp1.setPhraseActor(da1);
+		ds1p1dp1.setExpression("Bonjour.");
+		ds1p1dp1.persist();
+			
+		DoctorPhrase ds1p1dp2 = new DoctorPhrase();
+		ds1p1dp2.setName("DoctorWelcomesPatient2");
+		ds1p1dp2.setEffTrust(5.0);
+		ds1p1dp2.setEffDisturbance(0.0);
+		ds1p1dp2.setPrimitiveType(PrimitiveType.Statement);
+		ds1p1dp2.setPhraseActor(da1);
+		String title = (pa1.sex)?"M. ":"Mme ";
+		ds1p1dp2.setExpression("Bonjour " + title + pa1.name);
+		ds1p1dp2.persist();;
 		
-		DoctorPhrase p2 = new DoctorPhrase();
-		p2.setName("DoctorWelcomesPatient2");
-		p2.setEffTrust(5.0);
-		p2.setEffDisturbance(0.0);
-	//	p2.setvalClarity(1.0);
-		p2.setPrimitiveType(PrimitiveType.Statement);
-		p2.setPhraseActor(da1);
-		String title = (pa2.sex)?" M.":"Mme";
-		p2.setExpression("Bonjour"+ title +pa2.name);
-		JpaManager.persist(p2);
+		DoctorPhrase ds1p1dp3 = new DoctorPhrase();
+		ds1p1dp3.setName("DoctorWelcomesPatient3");
+		ds1p1dp3.setEffTrust(10.0);
+		ds1p1dp3.setEffDisturbance(-10.0);
+		ds1p1dp3.setPrimitiveType(PrimitiveType.Statement);
+		ds1p1dp3.setPhraseActor(da1);
+		ds1p1dp3.setExpression("Bonjour "+ title + pa1.name+ ", je suis Docteur "+ds1p1dp3.getPhraseActor().getName());
+		ds1p1dp3.persist();
 		
-		DoctorPhrase p3 = new DoctorPhrase();
-		p3.setName("DoctorWelcomesPatient3");
-		p3.setEffTrust(10.0);
-		p3.setEffDisturbance(0.0);
-	//	p3.setvalClarity(1.0);
-		p3.setPrimitiveType(PrimitiveType.Statement);
-		p3.setPhraseActor(da1);
-		p3.setExpression("Bonjour. [serrez la main]");
-		JpaManager.persist(p3);
+		PatientPhrase ds1p1pp1 = new PatientPhrase();
+		ds1p1pp1.setName("AnswerDoctorWelcomesPatient1");
+		ds1p1pp1.setAggressiveLevel(AggressiveLevel.Neutral);
+		ds1p1pp1.setClearLevel(ClearLevel.Clear);
+		ds1p1pp1.setLongLevel(LongLevel.Concise);
+		ds1p1pp1.setPrimitiveType(PrimitiveType.Statement);
+		ds1p1pp1.setPhraseActor(pa1);
+		ds1p1pp1.setExpression("Bonjour.");
+		ds1p1pp1.persist();
+		
+		PatientPhrase ds1p1pp2 = new PatientPhrase();
+		ds1p1pp2.setName("AnswerDoctorWelcomesPatient2");
+		ds1p1pp2.setAggressiveLevel(AggressiveLevel.Polite);
+		ds1p1pp2.setClearLevel(ClearLevel.Clear);
+		ds1p1pp2.setLongLevel(LongLevel.Concise);
+		ds1p1pp2.setPrimitiveType(PrimitiveType.Statement);
+		ds1p1pp2.setPhraseActor(pa1);
+		ds1p1pp2.setExpression("Bonjour Docteur.");
+		ds1p1pp2.persist();
+		
+		//add phrase to pair
+		ms0ds1p1.getPossibleDoctorPhrases().add(ds1p1dp1);
+		ms0ds1p1.getPossibleDoctorPhrases().add(ds1p1dp2);
+		ms0ds1p1.getPossibleDoctorPhrases().add(ds1p1dp3);
+		ms0ds1p1.getPossiblePatientPhrases().add(ds1p1pp1);
+		ms0ds1p1.getPossiblePatientPhrases().add(ds1p1pp2);
+		ms0ds1p1.update();
+	}
+	private void fillMS0DS1P2(){
+		//Pair for ds1
+		ms0ds1p2 = new Pair();
+		ms0ds1p2.setName(ms0ds1.getName()+"p2");
+		ms0ds1p2.persist();
+		//add pair to ds1
+		ms0ds1.getPairs().add(ms0ds1p2);
+		ms0ds1.update();
+		
+	}
+	private void fillMS0DS2(){
+		
+	}
+	private void fillMS0DS3(){
+		
+	}
+	public void fillDatabase() {
+		// PhraseActors
+		fillActors();
+		
+		// Scenarios
+		fillScenario();
+/*		
+		DialogueSession ds2 = new DialogueSession();
+		ds2.setName("InviteToSit");
+		JpaManager.persist(ds2);
+		DialogueSession ds3 = new DialogueSession();
+		ds3.setName("ComplainWaiting");
+		JpaManager.persist(ds3);
+		//add ds to ms
+		ms0.getDialogueSessions().add(ds1);
+		ms0.getDialogueSessions().add(ds2);
+		ms0.getDialogueSessions().add(ds3);
+		JpaManager.update(ms0);
+		
+*/	
+		
 		
 		// Get Information mode, ask if the patient smokes and the frequency
 		MedicalInformation mi1 = new MedicalInformation();
@@ -460,8 +536,9 @@ public class Controller {
 	}
 
 	public static void main(String[] args) {
-		if (needFillingDatabase()) {
-			fillDatabase();
+		Controller ctl = new Controller();
+		if (ctl.needFillingDatabase()) {
+			ctl.fillDatabase();
 		}
 		List<Scenario> scenarios = JpaManager.<Scenario> findWithNamedQuery("Scenario.findAll", null);
 		System.out.println("" + scenarios.size());

@@ -5,6 +5,8 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import jpa.JpaManager;
+
 /**
  * Entity implementation class for Entity: Scenario
  *
@@ -37,6 +39,14 @@ public abstract class AThing implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public void persist(){
+		JpaManager.persist(this);
+	}
+	
+	public void update(){
+		JpaManager.update(this);
 	}
 	
 	@Override

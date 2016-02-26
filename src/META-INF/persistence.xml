@@ -13,6 +13,7 @@
 		<class>model.FamilyInformation</class>
 		<class>model.MedicalInformation</class>
 		<class>model.MicroSequence</class>
+		<class>model.Pair</class>
 		<class>model.PatientActor</class>
 		<class>model.PatientPhrase</class>
 		<class>model.Scenario</class>

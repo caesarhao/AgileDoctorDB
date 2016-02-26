@@ -5,8 +5,14 @@ ALTER TABLE APatientInformation_DoctorPhrase DROP CONSTRAINT PatientInformationD
 ALTER TABLE APatientInformation_DoctorPhrase DROP CONSTRAINT PatientInformationDoctorPhrasepossibleAskPhrasesID
 ALTER TABLE APatientInformation_PatientPhrase DROP CONSTRAINT PtientInformationPatientPhrasePatientInformationID
 ALTER TABLE APatientInformation_PatientPhrase DROP CONSTRAINT PtntInformationPatientPhrasepssblResponsePhrasesID
+ALTER TABLE DialogueSession_Pair DROP CONSTRAINT FK_DialogueSession_Pair_DialogueSession_ID
+ALTER TABLE DialogueSession_Pair DROP CONSTRAINT FK_DialogueSession_Pair_pairs_ID
 ALTER TABLE MicroSequence_DialogueSession DROP CONSTRAINT MicroSequence_DialogueSession_dialogueSessions_ID
 ALTER TABLE MicroSequence_DialogueSession DROP CONSTRAINT FK_MicroSequence_DialogueSession_MicroSequence_ID
+ALTER TABLE Pair_DoctorPhrase DROP CONSTRAINT FK_Pair_DoctorPhrase_possibleDoctorPhrases_ID
+ALTER TABLE Pair_DoctorPhrase DROP CONSTRAINT FK_Pair_DoctorPhrase_Pair_ID
+ALTER TABLE Pair_PatientPhrase DROP CONSTRAINT FK_Pair_PatientPhrase_Pair_ID
+ALTER TABLE Pair_PatientPhrase DROP CONSTRAINT FK_Pair_PatientPhrase_possiblePatientPhrases_ID
 ALTER TABLE Scenario_MicroSequence DROP CONSTRAINT FK_Scenario_MicroSequence_microSequences_ID
 ALTER TABLE Scenario_MicroSequence DROP CONSTRAINT FK_Scenario_MicroSequence_Scenario_ID
 DROP TABLE APatientInformation
@@ -16,11 +22,15 @@ DROP TABLE DoctorPhrase
 DROP TABLE FamilyInformation
 DROP TABLE MedicalInformation
 DROP TABLE MicroSequence
+DROP TABLE Pair
 DROP TABLE PatientActor
 DROP TABLE PatientPhrase
 DROP TABLE Scenario
 DROP TABLE APatientInformation_DoctorPhrase
 DROP TABLE APatientInformation_PatientPhrase
+DROP TABLE DialogueSession_Pair
 DROP TABLE MicroSequence_DialogueSession
+DROP TABLE Pair_DoctorPhrase
+DROP TABLE Pair_PatientPhrase
 DROP TABLE Scenario_MicroSequence
 DELETE FROM SEQUENCE WHERE SEQ_NAME = 'SEQ_GEN_IDENTITY'

@@ -1,6 +1,8 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Set;
+
 import javax.persistence.*;
 
 /**
@@ -16,32 +18,16 @@ public class DialogueSession extends AThing implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	//@JoinColumn(name = "doctorPhrase", nullable = true)
-	@Transient // just used for simulation, no need to save in db.
-	public DoctorPhrase doctorPhrase;
-
-	//@JoinColumn(name = "patientPhrase", nullable = true)
-	@Transient // just used for simulation, no need to save in db.
-	public PatientPhrase patientPhrase;
+	@OneToMany(cascade = CascadeType.ALL)
+	public Set<Pair> pairs;
 
 	public DialogueSession() {
 		super();
 	}
 
-	public DoctorPhrase getDoctorPhrase() {
-		return doctorPhrase;
+	public Set<Pair> getPairs() {
+		return pairs;
 	}
 
-	public void setDoctorPhrase(DoctorPhrase doctorPhrase) {
-		this.doctorPhrase = doctorPhrase;
-	}
-
-	public PatientPhrase getPatientPhrase() {
-		return patientPhrase;
-	}
-
-	public void setPatientPhrase(PatientPhrase patientPhrase) {
-		this.patientPhrase = patientPhrase;
-	}
-
+	
 }
