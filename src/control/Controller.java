@@ -340,7 +340,124 @@ public class Controller {
 		ms0ds2p1.update();
 	}
 	private void fillMS0DS3(){
+		ms0ds3 = new DialogueSession();
+		ms0ds3.setName("ComplainWaiting");
+		ms0ds3.persist();
+		ms0.getDialogueSessions().add(ms0ds3);
+		fillMS0DS3P1();	
+		fillMS0DS3P2();	
 		
+	}
+	private void fillMS0DS3P1(){
+		//Pair1 for ds3
+		ms0ds3p1 = new Pair();
+		ms0ds3p1.setName(ms0ds3.getName()+"P1");
+		ms0ds3p1.persist();
+		ms0ds3.getPairs().add(ms0ds3p1);
+		ms0ds3.update();
+		
+		// Phrases
+		// no Doctor's Phrases (patient initial ds)
+		
+		PatientPhrase ds3p1pp1 = new PatientPhrase();
+		ds3p1pp1.setName("Pair1ComplainWaiting1");
+		ds3p1pp1.setAggressiveLevel(AggressiveLevel.Polite);
+		ds3p1pp1.setClearLevel(ClearLevel.Clear);
+		ds3p1pp1.setLongLevel(LongLevel.TooLong);
+		ds3p1pp1.setPrimitiveType(PrimitiveType.Statement);
+		ds3p1pp1.setPhraseActor(pa1);
+		ds3p1pp1.setExpression("Vous savez ça fait plus d'une heure que j'attends et... enfin... bon... maintenant que je suis là...");
+		ds3p1pp1.persist();
+		
+		PatientPhrase ds3p1pp2 = new PatientPhrase();
+		ds3p1pp2.setName("Pair1ComplainWaiting2");
+		ds3p1pp2.setAggressiveLevel(AggressiveLevel.Neutral);
+		ds3p1pp2.setClearLevel(ClearLevel.Clear);
+		ds3p1pp2.setLongLevel(LongLevel.Concise);
+		ds3p1pp2.setPrimitiveType(PrimitiveType.Statement);
+		ds3p1pp2.setPhraseActor(pa1);
+		ds3p1pp2.setExpression("C'est que j'attends depuis plus d'une heure....");
+		ds3p1pp2.persist();
+		
+		//add phrase to pair
+		ms0ds3p1.getPossiblePatientPhrases().add(ds3p1pp1);
+		ms0ds3p1.getPossiblePatientPhrases().add(ds3p1pp2);
+
+		ms0ds3p1.update();
+	}
+	private void fillMS0DS3P2(){
+		//Pair2 for ds3
+		ms0ds3p2 = new Pair();
+		ms0ds3p2.setName(ms0ds3.getName()+"P2");
+		ms0ds3p2.persist();
+		ms0ds3.getPairs().add(ms0ds3p2);
+		ms0ds3.update();
+		
+		// Phrases
+		DoctorPhrase ds3p2dp1 = new DoctorPhrase();
+		ds3p2dp1.setName("Pair2ReplyComplainWaiting1");
+		ds3p2dp1.setEffTrust(5.0);
+		ds3p2dp1.setEffDisturbance(0.0);
+		ds3p2dp1.setPrimitiveType(PrimitiveType.Statement);
+		ds3p2dp1.setPhraseActor(da1);
+		ds3p2dp1.setExpression("Et oui j'ai dû passer plus de temps que prévu avec le patient précédent et en plus j'ai eu une urgence en début d'après-midi…");
+		ds3p2dp1.persist();
+			
+		DoctorPhrase ds3p2dp2 = new DoctorPhrase();
+		ds3p2dp2.setName("Pair2ReplyComplainWaiting2");
+		ds3p2dp2.setEffTrust(-5.0);
+		ds3p2dp2.setEffDisturbance(5.0);
+		ds3p2dp2.setPrimitiveType(PrimitiveType.Statement);
+		ds3p2dp2.setPhraseActor(da1);		
+		ds3p2dp2.setExpression("Certains patients ont besoin qu'on leur consacre plus de temps que d'autres...");
+		ds3p2dp2.persist();
+		
+		DoctorPhrase ds3p2dp3 = new DoctorPhrase();
+		ds3p2dp3.setName("Pair2ReplyComplainWaiting3");
+		ds3p2dp3.setEffTrust(5.0);
+		ds3p2dp3.setEffDisturbance(0.0);
+		ds3p2dp3.setPrimitiveType(PrimitiveType.Statement);
+		ds3p2dp3.setPhraseActor(da1);
+		ds3p2dp3.setExpression("Je m’excuse de vous avoir fait attendre");
+		ds3p2dp3.persist();
+		
+		PatientPhrase ds3p2pp1 = new PatientPhrase();
+		ds3p2pp1.setName("Pair2AnswerReplyComplainWaiting1");
+		ds3p2pp1.setAggressiveLevel(AggressiveLevel.Polite);
+		ds3p2pp1.setClearLevel(ClearLevel.Clear);
+		ds3p2pp1.setLongLevel(LongLevel.Concise);
+		ds3p2pp1.setPrimitiveType(PrimitiveType.Statement);
+		ds3p2pp1.setPhraseActor(pa1);
+		ds3p2pp1.setExpression("Oui bien sûr, je comprends...");
+		ds3p2pp1.persist();
+		
+		PatientPhrase ds3p2pp2 = new PatientPhrase();
+		ds3p2pp2.setName("Pair2AnswerReplyComplainWaiting2");
+		ds3p2pp2.setAggressiveLevel(AggressiveLevel.Aggressive);
+		ds3p2pp2.setClearLevel(ClearLevel.Clear);
+		ds3p2pp2.setLongLevel(LongLevel.Concise);
+		ds3p2pp2.setPrimitiveType(PrimitiveType.Statement);
+		ds3p2pp2.setPhraseActor(pa1);
+		ds3p2pp2.setExpression("(s’asseoir)");
+		ds3p2pp2.persist();
+		
+		PatientPhrase ds2p1pp3 = new PatientPhrase();
+		ds2p1pp3.setName("Pair1AnswerDoctorInviteSit3");
+		ds2p1pp3.setAggressiveLevel(AggressiveLevel.Neutral);
+		ds2p1pp3.setClearLevel(ClearLevel.Clear);
+		ds2p1pp3.setLongLevel(LongLevel.Concise);
+		ds2p1pp3.setPrimitiveType(PrimitiveType.Statement);
+		ds2p1pp3.setPhraseActor(pa1);
+		ds2p1pp3.setExpression("D'accord. (s’asseoir)");
+		ds2p1pp3.persist();
+		//add phrase to pair
+		ms0ds2p1.getPossibleDoctorPhrases().add(ds3p2dp1);
+		ms0ds2p1.getPossibleDoctorPhrases().add(ds3p2dp2);
+		ms0ds2p1.getPossibleDoctorPhrases().add(ds3p2dp3);
+		ms0ds2p1.getPossiblePatientPhrases().add(ds3p2pp1);
+		ms0ds2p1.getPossiblePatientPhrases().add(ds3p2pp2);
+		ms0ds2p1.getPossiblePatientPhrases().add(ds2p1pp3);
+		ms0ds2p1.update();
 	}
 	public void fillDatabase() {
 		// PhraseActors
