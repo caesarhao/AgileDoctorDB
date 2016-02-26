@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -21,20 +22,20 @@ public class Pair extends AThing implements Serializable {
 
 
 	@OneToMany(cascade = CascadeType.ALL)
-	public Set<DoctorPhrase> possibleDoctorPhrases;
+	public List<DoctorPhrase> possibleDoctorPhrases;
 
 	@OneToMany(cascade = CascadeType.ALL)
-	public Set<PatientPhrase> possiblePatientPhrases;
+	public List<PatientPhrase> possiblePatientPhrases;
 
 	public Pair() {
 		super();
 	}
 
-	public Set<DoctorPhrase> getPossibleDoctorPhrases() {
+	public List<DoctorPhrase> getPossibleDoctorPhrases() {
 		return possibleDoctorPhrases;
 	}
 
-	public Set<PatientPhrase> getPossiblePatientPhrases() {
+	public List<PatientPhrase> getPossiblePatientPhrases() {
 		return possiblePatientPhrases;
 	}
 	

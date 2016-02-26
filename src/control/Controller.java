@@ -216,7 +216,7 @@ public class Controller {
 		ds1p2dp3.setEffDisturbance(-5.0);
 		ds1p2dp3.setPrimitiveType(PrimitiveType.Statement);
 		ds1p2dp3.setPhraseActor(da1);	
-		ds1p2dp3.setExpression("Comment allez-vous" + pa1.getTitle() + " ?");
+		ds1p2dp3.setExpression("Comment allez-vous " + pa1.getTitle() + " ?");
 		ds1p2dp3.persist();
 		
 		PatientPhrase ds1p2pp1 = new PatientPhrase();
@@ -832,8 +832,8 @@ public class Controller {
 		//Play pl = new Play(new JPlay("AgileDoctorDB Play"), null);
 		//pl.initilizeControl();
 		
-		GameEngine ge = new GameEngine();
-		ge.simulate();
+	/*	GameEngine ge = new GameEngine();
+		ge.simulate();*/
 	}
 
 }

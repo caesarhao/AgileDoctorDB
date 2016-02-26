@@ -49,6 +49,10 @@ public abstract class AThing implements Serializable {
 		JpaManager.update(this);
 	}
 	
+	public void delete(){
+		JpaManager.delete(this);
+	}
+	
 	@Override
 	public String toString(){
 		return name;

@@ -8,9 +8,8 @@ import java.util.Random;
 import java.util.Set;
 
 import jpa.JpaManager;
-import model.APatientInformation;
-import model.DoctorPhrase;
-import model.PatientPhrase;
+import model.*;
+
 
 public class GameEngine {
 	private ScenarioParameter scPara;
@@ -32,8 +31,99 @@ public class GameEngine {
 	public ScenarioVariable getScVar() {
 		return scVar;
 	}
+	public void simulateBest(){
+		List<DialogueSession> selectedDSs = new ArrayList<DialogueSession>();
+		DoctorPhrase bestDChoice = new DoctorPhrase();
+		
+		String namedQuery = "MicroSequence.findByName";
+		Map<String, Object> queryParams = new HashMap<String, Object>();
+		queryParams.put("name", "Welcome");
+		List<MicroSequence> mss = JpaManager.<MicroSequence>findWithNamedQuery(namedQuery, queryParams);
 
-	public void simulate() {
+		for(DialogueSession ds: mss.get(0).getDialogueSessions()){
+			List<Pair> pairs = new ArrayList<Pair>(ds.getPairs());
+			Pair pair = pairs.get(0);
+			double eff_high = 0;
+			double eff_curr; 
+	
+			for(DoctorPhrase dp: pair.getPossibleDoctorPhrases()){
+			
+				eff_curr = dp.effTrust-dp.effDisturbance;
+				if(eff_curr>eff_high) {
+					eff_high=eff_curr;
+					bestDChoice = dp;
+					
+				}
+								
+			}
+			if(eff_high>0) {
+				selectedDSs.add(ds);
+				System.out.println("Doctor "+bestDChoice.getPhraseActor().getName()+": "+bestDChoice.getExpression());
+							
+				//update system variables after selection of doctor.
+				scVar.calcOnce(bestDChoice);	
+				for(PatientPhrase pp: pair.getPossiblePatientPhrases()){
+					System.out.println("Patient: "+pp.getExpression());
+					break;
+				}
+				// Prepare possible patient phrases.
+				/*for(PatientPhrase pp: pair.getPossiblePatientPhrases()){
+					pp.aggressiveLevel
+				}*/
+				
+			}
+		}
+		
+		
+	}
+	public void simulateWorst(){
+	
+		DoctorPhrase worstDChoice = new DoctorPhrase();
+		
+		String namedQuery = "MicroSequence.findByName";
+		Map<String, Object> queryParams = new HashMap<String, Object>();
+		queryParams.put("name", "Welcome");
+		List<MicroSequence> mss = JpaManager.<MicroSequence>findWithNamedQuery(namedQuery, queryParams);
+
+		for(DialogueSession ds: mss.get(0).getDialogueSessions()){
+			List<Pair> pairs = new ArrayList<Pair>(ds.getPairs());
+			Pair pair = pairs.get(0);
+			double eff_low = 0;
+			double eff_curr; 
+	
+			for(DoctorPhrase dp: pair.getPossibleDoctorPhrases()){
+			
+				eff_curr = dp.effTrust-dp.effDisturbance;
+				if(eff_curr<eff_low) {
+					eff_low=eff_curr;
+					worstDChoice = dp;
+					
+				}
+								
+			}
+			
+			
+				System.out.println("Doctor "+worstDChoice.getPhraseActor().getName()+": "+worstDChoice.getExpression());
+							
+				//update system variables after selection of doctor.
+				scVar.calcOnce(worstDChoice);	
+				for(PatientPhrase pp: pair.getPossiblePatientPhrases()){
+					System.out.println("Patient: "+pp.getExpression());
+					break;
+				}
+				// Prepare possible patient phrases.
+				/*for(PatientPhrase pp: pair.getPossiblePatientPhrases()){
+					pp.aggressiveLevel
+				}*/
+				
+			
+		}
+		
+		
+	}
+
+
+	public void simulate_old() {
 		int randNum = 0;
 		APatientInformation currentInfo = null;
 		List<APatientInformation> lPInfo = null;
@@ -177,7 +267,10 @@ public class GameEngine {
 		GameEngine ge = new GameEngine();
 		// set parameter of game engine.
 		ge.getScPara().tr_init = 20;
-		ge.simulate();
+		System.out.println("********Best result**********");
+		ge.simulateBest();
+		System.out.println("********Worst result**********");
+		ge.simulateWorst();
 		/* run 3 times
 		for(int i =0; i<3;i++){
 		ge.simulate();

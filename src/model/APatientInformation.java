@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -37,10 +38,10 @@ public abstract class APatientInformation extends AInformation implements Serial
 	public AcquiringMethod acquiringMethod;
 
 	@OneToMany(cascade = CascadeType.ALL)
-	public Set<DoctorPhrase> possibleAskPhrases;
+	public List<DoctorPhrase> possibleAskPhrases;
 
 	@OneToMany(cascade = CascadeType.ALL)
-	public Set<PatientPhrase> possibleResponsePhrases;
+	public List<PatientPhrase> possibleResponsePhrases;
 
 	// hard to maintain, use superInformation as a replacement
 	//@OneToMany(cascade = CascadeType.ALL)
@@ -78,11 +79,11 @@ public abstract class APatientInformation extends AInformation implements Serial
 		this.acquiringMethod = acquiringMethod;
 	}
 
-	public Set<DoctorPhrase> getPossibleAskPhrases() {
+	public List<DoctorPhrase> getPossibleAskPhrases() {
 		return possibleAskPhrases;
 	}
 
-	public Set<PatientPhrase> getPossibleResponsePhrases() {
+	public List<PatientPhrase> getPossibleResponsePhrases() {
 		return possibleResponsePhrases;
 	}
 	/*

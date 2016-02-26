@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -22,10 +23,10 @@ public class Scenario extends AThing implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@OneToMany(cascade=CascadeType.ALL)
-	public Set<MicroSequence> microSequences;
+	public List<MicroSequence> microSequences;
 	
 
-	public Set<MicroSequence> getMicroSequences() {
+	public List<MicroSequence> getMicroSequences() {
 		return microSequences;
 	}
 

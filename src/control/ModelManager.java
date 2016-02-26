@@ -141,7 +141,28 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 				}
 				panelEdition.add(pnlTF);
 				fieldValues[i] = optTrue;
-			} else if (Set.class.isAssignableFrom(field.getType())) { // a set
+			} else if (List.class.isAssignableFrom(field.getType())) { // a list
+				ParameterizedType elementType = (ParameterizedType) field.getGenericType();
+				Class<?> actualType = (Class<?>) elementType.getActualTypeArguments()[0];
+				try {
+					List<? extends Object> elements = (List<? extends Object>)field.get(currentClass.cast(currentThing));
+					if (null == elements) {
+						fieldValues[i] = new JTextField("Empty Set of " + actualType.getSimpleName());
+					} else {
+						JList lElements = new JList();
+						DefaultListModel listElementsModel = new DefaultListModel();
+						elements.forEach(e -> listElementsModel.addElement(e));
+						lElements.setModel(listElementsModel);
+						fieldValues[i] = lElements;//new JTextField(elements.toString());
+					}
+				} catch (IllegalArgumentException e1) {
+					e1.printStackTrace();
+				} catch (IllegalAccessException e1) {
+					e1.printStackTrace();
+				}
+				//fieldValues[i] = new JTextField("List of " + actualType.getSimpleName());
+				panelEdition.add(fieldValues[i]);
+			}else if (Set.class.isAssignableFrom(field.getType())) { // a set
 				ParameterizedType elementType = (ParameterizedType) field.getGenericType();
 				Class<?> actualType = (Class<?>) elementType.getActualTypeArguments()[0];
 				try {

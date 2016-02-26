@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -19,13 +20,13 @@ public class DialogueSession extends AThing implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@OneToMany(cascade = CascadeType.ALL)
-	public Set<Pair> pairs;
+	public List<Pair> pairs;
 
 	public DialogueSession() {
 		super();
 	}
 
-	public Set<Pair> getPairs() {
+	public List<Pair> getPairs() {
 		return pairs;
 	}
 

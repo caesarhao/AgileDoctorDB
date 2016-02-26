@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -22,9 +23,9 @@ public class MicroSequence extends AThing implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@OneToMany(cascade=CascadeType.ALL)
-	public Set<DialogueSession> dialogueSessions;
+	public List<DialogueSession> dialogueSessions;
 
-	public Set<DialogueSession> getDialogueSessions() {
+	public List<DialogueSession> getDialogueSessions() {
 		return dialogueSessions;
 	}
 

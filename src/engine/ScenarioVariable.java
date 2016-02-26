@@ -51,7 +51,7 @@ public class ScenarioVariable {
 	//	Random random2 = new Random();
 		int num = 0;
 		num = random1.nextInt(101);
-		System.out.println("got random"+num);
+	//	System.out.println("got random"+num);
 		n++;
 		pt_Trust += dp.getEffTrust();
 		pt_Dist += (10 * n * scPara.pTypeV.chaotic + dp.getEffDisturbance());
@@ -78,7 +78,7 @@ public class ScenarioVariable {
     	double num_percent = num/100.0;
     	
     	double num_percent2 = random1.nextInt(101)/100.0;
-    	System.out.println("probability DU:"+ p_DU+", rand value:"+num_percent);
+    //	System.out.println("probability DU:"+ p_DU+", rand value:"+num_percent);
     	if(num_percent < p_DU) {
     		dialSt = DialogueState.DU;
     		
