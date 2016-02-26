@@ -13,6 +13,7 @@ public class Controller {
 	
 	private DoctorActor da1;
 	private PatientActor pa1;
+	
 	private PatientActor pa2;
 	private Scenario s1;
 		private MicroSequence ms0;
@@ -89,7 +90,7 @@ public class Controller {
 		ms1.setName("AskReason");
 		ms1.persist();
 		s1.getMicroSequences().add(ms1);
-		//fillMS1DS1();
+			//fillMS1DS1();
 	}
 	private void fillMS2() {
 		// MicroSequences
@@ -118,14 +119,14 @@ public class Controller {
 	private void fillMS0DS1P1(){
 		//Pair for ds1
 		ms0ds1p1 = new Pair();
-		ms0ds1p1.setName(ms0ds1.getName()+"p1");
+		ms0ds1p1.setName(ms0ds1.getName()+"P1");
 		ms0ds1p1.persist();
 		ms0ds1.getPairs().add(ms0ds1p1);
 		ms0ds1.update();
 		
 		// Phrases
 		DoctorPhrase ds1p1dp1 = new DoctorPhrase();
-		ds1p1dp1.setName("DoctorWelcomesPatient1");
+		ds1p1dp1.setName("Pair1DoctorWelcomesPatient1");
 		ds1p1dp1.setEffTrust(-5.0);
 		ds1p1dp1.setEffDisturbance(5.0);
 		ds1p1dp1.setPrimitiveType(PrimitiveType.Statement);
@@ -134,26 +135,26 @@ public class Controller {
 		ds1p1dp1.persist();
 			
 		DoctorPhrase ds1p1dp2 = new DoctorPhrase();
-		ds1p1dp2.setName("DoctorWelcomesPatient2");
+		ds1p1dp2.setName("Pair1DoctorWelcomesPatient2");
 		ds1p1dp2.setEffTrust(5.0);
 		ds1p1dp2.setEffDisturbance(0.0);
 		ds1p1dp2.setPrimitiveType(PrimitiveType.Statement);
 		ds1p1dp2.setPhraseActor(da1);
-		String title = (pa1.sex)?"M. ":"Mme ";
-		ds1p1dp2.setExpression("Bonjour " + title + pa1.name);
-		ds1p1dp2.persist();;
+		
+		ds1p1dp2.setExpression("Bonjour " + pa1.getTitle());
+		ds1p1dp2.persist();
 		
 		DoctorPhrase ds1p1dp3 = new DoctorPhrase();
-		ds1p1dp3.setName("DoctorWelcomesPatient3");
+		ds1p1dp3.setName("Pair1DoctorWelcomesPatient3");
 		ds1p1dp3.setEffTrust(10.0);
 		ds1p1dp3.setEffDisturbance(-10.0);
 		ds1p1dp3.setPrimitiveType(PrimitiveType.Statement);
 		ds1p1dp3.setPhraseActor(da1);
-		ds1p1dp3.setExpression("Bonjour "+ title + pa1.name+ ", je suis Docteur "+ds1p1dp3.getPhraseActor().getName());
+		ds1p1dp3.setExpression("Bonjour "+ pa1.getTitle() + ", je suis Docteur "+ds1p1dp3.getPhraseActor().getName());
 		ds1p1dp3.persist();
 		
 		PatientPhrase ds1p1pp1 = new PatientPhrase();
-		ds1p1pp1.setName("AnswerDoctorWelcomesPatient1");
+		ds1p1pp1.setName("Pair1AnswerDoctorWelcomesPatient1");
 		ds1p1pp1.setAggressiveLevel(AggressiveLevel.Neutral);
 		ds1p1pp1.setClearLevel(ClearLevel.Clear);
 		ds1p1pp1.setLongLevel(LongLevel.Concise);
@@ -163,7 +164,7 @@ public class Controller {
 		ds1p1pp1.persist();
 		
 		PatientPhrase ds1p1pp2 = new PatientPhrase();
-		ds1p1pp2.setName("AnswerDoctorWelcomesPatient2");
+		ds1p1pp2.setName("Pair1AnswerDoctorWelcomesPatient2");
 		ds1p1pp2.setAggressiveLevel(AggressiveLevel.Polite);
 		ds1p1pp2.setClearLevel(ClearLevel.Clear);
 		ds1p1pp2.setLongLevel(LongLevel.Concise);
@@ -183,15 +184,160 @@ public class Controller {
 	private void fillMS0DS1P2(){
 		//Pair for ds1
 		ms0ds1p2 = new Pair();
-		ms0ds1p2.setName(ms0ds1.getName()+"p2");
+		ms0ds1p2.setName(ms0ds1.getName()+"P2");
 		ms0ds1p2.persist();
 		//add pair to ds1
 		ms0ds1.getPairs().add(ms0ds1p2);
 		ms0ds1.update();
 		
+		
+		// Phrases
+		DoctorPhrase ds1p2dp1 = new DoctorPhrase();
+		ds1p2dp1.setName("Pair2DoctorWelcomesPatient1");
+		ds1p2dp1.setEffTrust(5.0);
+		ds1p2dp1.setEffDisturbance(0.0);
+		ds1p2dp1.setPrimitiveType(PrimitiveType.Statement);
+		ds1p2dp1.setPhraseActor(da1);
+		ds1p2dp1.setExpression("Vous allez bien ?");
+		ds1p2dp1.persist();
+			
+		DoctorPhrase ds1p2dp2 = new DoctorPhrase();
+		ds1p2dp2.setName("Pair2DoctorWelcomesPatient2");
+		ds1p2dp2.setEffTrust(0.0);
+		ds1p2dp2.setEffDisturbance(5.0);
+		ds1p2dp2.setPrimitiveType(PrimitiveType.Statement);
+		ds1p2dp2.setPhraseActor(da1);	
+		ds1p2dp2.setExpression("Comment-va tu ?");
+		ds1p2dp2.persist();
+		
+		DoctorPhrase ds1p2dp3 = new DoctorPhrase();
+		ds1p2dp3.setName("Pair2DoctorWelcomesPatient3");
+		ds1p2dp3.setEffTrust(5.0);
+		ds1p2dp3.setEffDisturbance(-5.0);
+		ds1p2dp3.setPrimitiveType(PrimitiveType.Statement);
+		ds1p2dp3.setPhraseActor(da1);	
+		ds1p2dp3.setExpression("Comment allez-vous" + pa1.getTitle() + " ?");
+		ds1p2dp3.persist();
+		
+		PatientPhrase ds1p2pp1 = new PatientPhrase();
+		ds1p2pp1.setName("Pair2AnswerDoctorWelcomesPatient1");
+		ds1p2pp1.setAggressiveLevel(AggressiveLevel.Polite);
+		ds1p2pp1.setClearLevel(ClearLevel.Clear);
+		ds1p2pp1.setLongLevel(LongLevel.Concise);
+		ds1p2pp1.setPrimitiveType(PrimitiveType.Statement);
+		ds1p2pp1.setPhraseActor(pa1);
+		ds1p2pp1.setExpression("(souriant) Ça va, merci.");
+		ds1p2pp1.persist();
+		
+		PatientPhrase ds1p2pp2 = new PatientPhrase();
+		ds1p2pp2.setName("Pair2AnswerDoctorWelcomesPatient2");
+		ds1p2pp2.setAggressiveLevel(AggressiveLevel.Aggressive);
+		ds1p2pp2.setClearLevel(ClearLevel.Clear);
+		ds1p2pp2.setLongLevel(LongLevel.Concise);
+		ds1p2pp2.setPrimitiveType(PrimitiveType.Statement);
+		ds1p2pp2.setPhraseActor(pa1);
+		ds1p2pp2.setExpression("(indifférent) Ça va.");
+		ds1p2pp2.persist();
+		
+		PatientPhrase ds1p2pp3 = new PatientPhrase();
+		ds1p2pp3.setName("Pair2AnswerDoctorWelcomesPatient3");
+		ds1p2pp3.setAggressiveLevel(AggressiveLevel.Neutral);
+		ds1p2pp3.setClearLevel(ClearLevel.Unclear);
+		ds1p2pp3.setLongLevel(LongLevel.Normal);
+		ds1p2pp3.setPrimitiveType(PrimitiveType.Statement);
+		ds1p2pp3.setPhraseActor(pa1);
+		ds1p2pp3.setExpression("Oh, rien de particulier.");
+		ds1p2pp3.persist();
+		
+		//add phrase to pair
+		ms0ds1p2.getPossibleDoctorPhrases().add(ds1p2dp1);
+		ms0ds1p2.getPossibleDoctorPhrases().add(ds1p2dp2);
+		ms0ds1p2.getPossibleDoctorPhrases().add(ds1p2dp3);
+		ms0ds1p2.getPossiblePatientPhrases().add(ds1p2pp1);
+		ms0ds1p2.getPossiblePatientPhrases().add(ds1p2pp2);
+		ms0ds1p2.getPossiblePatientPhrases().add(ds1p2pp3);
+		ms0ds1p2.update();
 	}
 	private void fillMS0DS2(){
+		ms0ds2 = new DialogueSession();
+		ms0ds2.setName("InviteToSit");
+		ms0ds2.persist();
+		ms0.getDialogueSessions().add(ms0ds2);
+		fillMS0DS2P1();			
+	}
+	private void fillMS0DS2P1(){
+		//Pair for ds2
+		ms0ds2p1 = new Pair();
+		ms0ds2p1.setName(ms0ds2.getName()+"P1");
+		ms0ds2p1.persist();
+		ms0ds2.getPairs().add(ms0ds2p1);
+		ms0ds2.update();
 		
+		// Phrases
+		DoctorPhrase ds2p1dp1 = new DoctorPhrase();
+		ds2p1dp1.setName("Pair1DoctorInviteSit1");
+		ds2p1dp1.setEffTrust(5.0);
+		ds2p1dp1.setEffDisturbance(-5.0);
+		ds2p1dp1.setPrimitiveType(PrimitiveType.Statement);
+		ds2p1dp1.setPhraseActor(da1);
+		ds2p1dp1.setExpression("Suivez-moi. Veuillez-vous asseoir. ");
+		ds2p1dp1.persist();
+			
+		DoctorPhrase ds2p1dp2 = new DoctorPhrase();
+		ds2p1dp2.setName("Pair1DoctorInviteSit2");
+		ds2p1dp2.setEffTrust(0.0);
+		ds2p1dp2.setEffDisturbance(5.0);
+		ds2p1dp2.setPrimitiveType(PrimitiveType.Statement);
+		ds2p1dp2.setPhraseActor(da1);		
+		ds2p1dp2.setExpression("Vous pouvez vous asseoir.");
+		ds2p1dp2.persist();
+		
+		DoctorPhrase ds2p1dp3 = new DoctorPhrase();
+		ds2p1dp3.setName("Pair1DoctorInviteSit3");
+		ds2p1dp3.setEffTrust(0.0);
+		ds2p1dp3.setEffDisturbance(-5.0);
+		ds2p1dp3.setPrimitiveType(PrimitiveType.Statement);
+		ds2p1dp3.setPhraseActor(da1);
+		ds2p1dp3.setExpression("Asseyez-vous,"+ pa1.getTitle());
+		ds2p1dp3.persist();
+		
+		PatientPhrase ds2p1pp1 = new PatientPhrase();
+		ds2p1pp1.setName("Pair1AnswerDoctorInviteSit1");
+		ds2p1pp1.setAggressiveLevel(AggressiveLevel.Polite);
+		ds2p1pp1.setClearLevel(ClearLevel.Clear);
+		ds2p1pp1.setLongLevel(LongLevel.Concise);
+		ds2p1pp1.setPrimitiveType(PrimitiveType.Statement);
+		ds2p1pp1.setPhraseActor(pa1);
+		ds2p1pp1.setExpression("Ah merci. (s’asseoir)");
+		ds2p1pp1.persist();
+		
+		PatientPhrase ds2p1pp2 = new PatientPhrase();
+		ds2p1pp2.setName("Pair1AnswerDoctorInviteSit2");
+		ds2p1pp2.setAggressiveLevel(AggressiveLevel.Aggressive);
+		ds2p1pp2.setClearLevel(ClearLevel.Clear);
+		ds2p1pp2.setLongLevel(LongLevel.Concise);
+		ds2p1pp2.setPrimitiveType(PrimitiveType.Statement);
+		ds2p1pp2.setPhraseActor(pa1);
+		ds2p1pp2.setExpression("(s’asseoir)");
+		ds2p1pp2.persist();
+		
+		PatientPhrase ds2p1pp3 = new PatientPhrase();
+		ds2p1pp3.setName("Pair1AnswerDoctorInviteSit3");
+		ds2p1pp3.setAggressiveLevel(AggressiveLevel.Neutral);
+		ds2p1pp3.setClearLevel(ClearLevel.Clear);
+		ds2p1pp3.setLongLevel(LongLevel.Concise);
+		ds2p1pp3.setPrimitiveType(PrimitiveType.Statement);
+		ds2p1pp3.setPhraseActor(pa1);
+		ds2p1pp3.setExpression("D'accord. (s’asseoir)");
+		ds2p1pp3.persist();
+		//add phrase to pair
+		ms0ds2p1.getPossibleDoctorPhrases().add(ds2p1dp1);
+		ms0ds2p1.getPossibleDoctorPhrases().add(ds2p1dp2);
+		ms0ds2p1.getPossibleDoctorPhrases().add(ds2p1dp3);
+		ms0ds2p1.getPossiblePatientPhrases().add(ds2p1pp1);
+		ms0ds2p1.getPossiblePatientPhrases().add(ds2p1pp2);
+		ms0ds2p1.getPossiblePatientPhrases().add(ds2p1pp3);
+		ms0ds2p1.update();
 	}
 	private void fillMS0DS3(){
 		

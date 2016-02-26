@@ -68,5 +68,9 @@ public class PatientActor extends APhraseActor implements Serializable {
 	public void setClearLevel(int clearLevel) {
 		this.clearLevel = clearLevel;
 	}
+	public String getTitle(){
+		String title = (this.sex)?"M. ":"Mme " + this.getName();
+		return title;
+	}
    
 }
