@@ -27,14 +27,14 @@ public abstract class APhrase extends AThing implements Serializable {
 	}
 	*/
 	public enum PrimitiveType{
-		Statement,
-		OpenQuestion,
-		CloseQuestion,
-		AnswerWithInfo,
-		Confirmation,
-		Disagree,
-		Questioning,
-		DontUnderstand
+		Statement,  //d p (normal)
+		OpenQuestion, //d(normal)
+		CloseQuestion, //d(normal)
+		AnswerWithInfo, //p (normal)
+		Confirmation, // 
+		Disagree,  // p (refuse)
+		Questioning, //p (questioning)
+		DontUnderstand  //p(DU)
 	}
 	private static final long serialVersionUID = 1L;
 

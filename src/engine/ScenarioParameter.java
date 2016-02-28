@@ -1,5 +1,8 @@
 package engine;
 
+import jpa.JpaManager;
+import model.*;
+
 public class ScenarioParameter {
 	// a three dimension vector that represents patient's initial profile(0-1):
 	// talkative, aggressivem chaotics.
@@ -9,6 +12,8 @@ public class ScenarioParameter {
 		public double chaotic;
 	}
 
+	public DoctorActor doctor;
+	public PatientActor patient;
 	public PatientInitialProfile pTypeV;
 	// initial value of disturbance(0-100)
 	public double dist_init;
@@ -28,7 +33,10 @@ public class ScenarioParameter {
 		pTypeV.talktive = 0.5;
 		pTypeV.aggressive = 0.2;
 		pTypeV.chaotic = 0.2;
-
+		
+		
+		doctor = JpaManager.<DoctorActor>findAll("DoctorActor").get(0);
+		patient = JpaManager.<PatientActor>findAll("PatientActor").get(0);
 		dist_init = 10;
 		tr_init = 80;
 		beta = 0.1;

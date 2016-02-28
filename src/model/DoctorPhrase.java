@@ -14,6 +14,7 @@ import model.APhrase;
 @NamedQuery(name = "DoctorPhrase.findAll", query = "SELECT e FROM DoctorPhrase e"),
 @NamedQuery(name = "DoctorPhrase.findById", query = "SELECT e FROM DoctorPhrase e WHERE e.id = :id"),
 @NamedQuery(name = "DoctorPhrase.findByName", query = "SELECT e FROM DoctorPhrase e WHERE e.name = :name"),
+@NamedQuery(name = "DoctorPhrase.findByPrimitiveType", query = "SELECT e FROM DoctorPhrase e WHERE e.primitiveType = :primitiveType"),
 })
 public class DoctorPhrase extends APhrase implements Serializable {
 
