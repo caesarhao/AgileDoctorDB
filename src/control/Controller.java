@@ -73,6 +73,8 @@ public class Controller {
 		fillMS1();
 		fillMS2();
 		fillMS3();
+		fillMedicalInfo();
+		fillFamilyInfo();
 	}
 	private void fillMS0() {
 		// MicroSequences
@@ -471,28 +473,8 @@ public class Controller {
 		ms0ds3p2.getPossiblePatientPhrases().add(ds3p2pp4);
 		ms0ds3p2.update();
 	}
-	public void fillDatabase() {
-		// PhraseActors
-		fillActors();
-		
-		// Scenarios
-		fillScenario();
-/*		
-		DialogueSession ds2 = new DialogueSession();
-		ds2.setName("InviteToSit");
-		JpaManager.persist(ds2);
-		DialogueSession ds3 = new DialogueSession();
-		ds3.setName("ComplainWaiting");
-		JpaManager.persist(ds3);
-		//add ds to ms
-		ms0.getDialogueSessions().add(ds1);
-		ms0.getDialogueSessions().add(ds2);
-		ms0.getDialogueSessions().add(ds3);
-		JpaManager.update(ms0);
-		
-*/	
-		
-		
+	
+	private void fillMedicalInfo(){
 		// Get Information mode, ask if the patient smokes and the frequency
 		MedicalInformation mi1 = new MedicalInformation();
 		mi1.setName("Smoke");
@@ -684,7 +666,9 @@ public class Controller {
 		mi2.getPossibleResponsePhrases().add(mi2_p_p2);
 		mi2.getPossibleResponsePhrases().add(mi2_p_p3);
 		JpaManager.update(mi2);
-		
+	}
+	
+	private void fillFamilyInfo(){
 		FamilyInformation fi1 = new FamilyInformation();
 		fi1.setName("Marriage");
 		fi1.setImportance(50);
@@ -808,6 +792,32 @@ public class Controller {
 		fi2.getPossibleResponsePhrases().add(fi2_p_p1);
 		fi2.getPossibleResponsePhrases().add(fi2_p_p2);
 		JpaManager.update(fi2);
+	}
+	public void fillDatabase() {
+		// PhraseActors
+		fillActors();
+		
+		// Scenarios
+		fillScenario();
+/*		
+		DialogueSession ds2 = new DialogueSession();
+		ds2.setName("InviteToSit");
+		JpaManager.persist(ds2);
+		DialogueSession ds3 = new DialogueSession();
+		ds3.setName("ComplainWaiting");
+		JpaManager.persist(ds3);
+		//add ds to ms
+		ms0.getDialogueSessions().add(ds1);
+		ms0.getDialogueSessions().add(ds2);
+		ms0.getDialogueSessions().add(ds3);
+		JpaManager.update(ms0);
+		
+*/	
+		
+		
+		
+		
+		
 	}
 
 	public static void main(String[] args) {

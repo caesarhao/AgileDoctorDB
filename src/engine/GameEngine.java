@@ -258,24 +258,25 @@ public class GameEngine {
 			
 			// Prepare possible patient phrases.
 			List<PatientPhrase> pps = new ArrayList<PatientPhrase>(currentInfo.getPossibleResponsePhrases());  // all phrases
-			List<PatientPhrase> pps_n = new ArrayList<PatientPhrase>();  // Normal phrases
-			List<PatientPhrase> pps_du = new ArrayList<PatientPhrase>();  // don'tUnderstand phrases
-			List<PatientPhrase> pps_q = new ArrayList<PatientPhrase>();  // questioning phrases
-			List<PatientPhrase> pps_r = new ArrayList<PatientPhrase>();  // refuse phrases
+			List<PatientPhrase> pps_n; // = new ArrayList<PatientPhrase>();  // Normal phrases
+			List<PatientPhrase> pps_du; // = new ArrayList<PatientPhrase>();  // don'tUnderstand phrases
+			List<PatientPhrase> pps_q; // = new ArrayList<PatientPhrase>();  // questioning phrases
+			List<PatientPhrase> pps_r; // = new ArrayList<PatientPhrase>();  // refuse phrases
 
-			for(PatientPhrase ps:pps){
+/*			for(PatientPhrase ps:pps){
 	
 				if(ps.getPrimitiveType().toString().equals("DontUnderstand")) pps_du.add(ps);
 				else if(ps.getPrimitiveType().toString().equals("Disagree")) pps_q.add(ps);
 				else if(ps.getPrimitiveType().toString().equals("Questioning")) pps_r.add(ps);
 				else pps_n.add(ps);
 				
-			}
+			}*/
 			PatientPhrase pp_0=pps.get(0);
 			PatientPhrase pp;
 			// get possible patient phrase
 			switch (scVar.dialSt){
-			case DU:  
+			case DU:
+				pps_du = getPPhrasesInPairByType(pps, APhrase.PrimitiveType.DontUnderstand);
 				if(pps_du.size()>0){   //has customer DU phrases
 					randNum = rand.nextInt(pps_du.size());
 					pp = pps_du.get(randNum);
@@ -284,7 +285,8 @@ public class GameEngine {
 					pp = new PatientPhrase("I don't know what do you mean.",pp_0.phraseActor);
 				}
 				break;
-			case Q:  
+			case Q:
+				pps_q = getPPhrasesInPairByType(pps, APhrase.PrimitiveType.Questioning);
 				if(pps_q.size()>0){
 					randNum = rand.nextInt(pps_q.size());
 					pp = pps_q.get(randNum);
@@ -293,7 +295,8 @@ public class GameEngine {
 					pp = new PatientPhrase("Why do you ask?",pp_0.phraseActor);
 				}
 				break;
-			case R:  
+			case R:
+				pps_r = getPPhrasesInPairByType(pps, APhrase.PrimitiveType.Disagree);
 				if(pps_r.size()>0){
 					randNum = rand.nextInt(pps_r.size());
 					pp = pps_r.get(randNum);
@@ -302,7 +305,8 @@ public class GameEngine {
 					pp = new PatientPhrase("I don't want to talk about it.",pp_0.phraseActor);
 				}
 				break;
-			case N:  
+			case N: 
+				pps_n = getPPhrasesInPairByType(pps, APhrase.PrimitiveType.Statement);
 				if(pps_n.size()>0){
 					randNum = rand.nextInt(pps_n.size());
 					pp = pps_n.get(randNum);
@@ -314,6 +318,7 @@ public class GameEngine {
 				scVar.sGotPatientInfo.add(currentInfo);
 				break;
 			default:
+				pps_n = getPPhrasesInPairByType(pps, APhrase.PrimitiveType.Statement);
 				if(pps_n.size()>0){
 					randNum = rand.nextInt(pps_n.size());
 					pp = pps_n.get(randNum);
