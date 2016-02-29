@@ -200,12 +200,31 @@ public class GameEngine {
 	}
 
 	public List<DoctorPhrase> getDPhrasesInPairByType(List<DoctorPhrase> ps, APhrase.PrimitiveType pType){
+		if (null == pType){
+			return ps;
+		}
 		List<DoctorPhrase> pps = new ArrayList<DoctorPhrase>();
 		for(DoctorPhrase ap:ps){
-			if(ap.getPrimitiveType().equals(pType)) pps.add(ap);
+			if(ap.getPrimitiveType().equals(pType)){
+				pps.add(ap);
+			}
 		}
 		return pps;
 	}
+	
+	public List<DoctorPhrase> getDPhrasesInPairByTypeS(List<DoctorPhrase> ps, List<APhrase.PrimitiveType> pTypes){
+		if (null == pTypes || 0 == pTypes.size()){
+			return ps;
+		}
+		List<DoctorPhrase> pps = new ArrayList<DoctorPhrase>();
+		for(DoctorPhrase ap:ps){
+			if(pTypes.contains(ap.getPrimitiveType())){
+				pps.add(ap);
+			}
+		}
+		return pps;
+	}
+	
 	public List<PatientPhrase> getPPhrasesInPairByType(List<PatientPhrase> ps, APhrase.PrimitiveType pType){
 		if (null == pType){
 			return ps;
@@ -213,6 +232,19 @@ public class GameEngine {
 		List<PatientPhrase> pps = new ArrayList<PatientPhrase>();
 		for(PatientPhrase ap:ps){
 			if(ap.getPrimitiveType().equals(pType)) pps.add(ap);
+		}
+		return pps;
+	}
+	
+	public List<PatientPhrase> getPPhrasesInPairByTypeS(List<PatientPhrase> ps, List<APhrase.PrimitiveType> pTypes){
+		if (null == pTypes || 0 == pTypes.size()){
+			return ps;
+		}
+		List<PatientPhrase> pps = new ArrayList<PatientPhrase>();
+		for(PatientPhrase ap:ps){
+			if(pTypes.contains(ap.getPrimitiveType())){
+				pps.add(ap);
+			}
 		}
 		return pps;
 	}
@@ -268,7 +300,7 @@ public class GameEngine {
 					switch (scVar.dialSt) {
 					case N:
 						// no info, find in type Confirmation.
-						if(getPPhrasesInPairByType(pair.getPossiblePatientPhrases(), APhrase.PrimitiveType.AnswerWithInfo).size()<0){
+						if(getPPhrasesInPairByType(pair.getPossiblePatientPhrases(), APhrase.PrimitiveType.AnswerWithInfo).size()<1){
 							bestPP = getBestPatientPhrase(
 									getPPhrasesInPairByType(pair.getPossiblePatientPhrases(), APhrase.PrimitiveType.Confirmation));
 				
