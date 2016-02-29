@@ -38,6 +38,7 @@ public class Pair extends AThing implements Serializable {
 	public List<PatientPhrase> getPossiblePatientPhrases() {
 		return possiblePatientPhrases;
 	}
+
 	
 	
 

@@ -21,7 +21,7 @@ import model.AInformation;
 		@NamedQuery(name = "APatientInformation.findSuperInformationNull", query = "SELECT e FROM APatientInformation e WHERE e.superInformation IS NULL"),})
 public abstract class APatientInformation extends AInformation implements Serializable {
 	public enum AcquiringMethod {
-		SaidByPatient, AskedByDoctor, Examination
+		SaidByPatient, AskedByDoctor, Examination, ConsultToFile
 	}
 
 	private static final long serialVersionUID = 1L;
@@ -38,10 +38,9 @@ public abstract class APatientInformation extends AInformation implements Serial
 	public AcquiringMethod acquiringMethod;
 
 	@OneToMany(cascade = CascadeType.ALL)
-	public List<DoctorPhrase> possibleAskPhrases;
+	public List<Pair> pairs;
 
-	@OneToMany(cascade = CascadeType.ALL)
-	public List<PatientPhrase> possibleResponsePhrases;
+
 
 	// hard to maintain, use superInformation as a replacement
 	//@OneToMany(cascade = CascadeType.ALL)
@@ -79,13 +78,7 @@ public abstract class APatientInformation extends AInformation implements Serial
 		this.acquiringMethod = acquiringMethod;
 	}
 
-	public List<DoctorPhrase> getPossibleAskPhrases() {
-		return possibleAskPhrases;
-	}
 
-	public List<PatientPhrase> getPossibleResponsePhrases() {
-		return possibleResponsePhrases;
-	}
 	/*
 	//Info tree: get ResponsePhrases by session state
 	public Set<PatientPhrase> getPossibleResponsePhrasesByState(enum type){
@@ -93,6 +86,10 @@ public abstract class APatientInformation extends AInformation implements Serial
 		Set<PatientPhrase> res =  
 		
 	}*/
+
+	public List<Pair> getPairs() {
+		return pairs;
+	}
 
 	public APatientInformation getSuperInformation() {
 		return superInformation;

@@ -26,6 +26,27 @@ public class Controller {
 				private Pair ms0ds3p1;
 				private Pair ms0ds3p2;
 		private MicroSequence ms1;
+			private DialogueSession ms1ds1;
+				private Pair ms1ds1p1;
+				private Pair ms1ds1p2;
+			private DialogueSession ms1ds2;
+				private Pair ms1ds2p1;
+				private Pair ms1ds2p2;
+			private DialogueSession ms1ds3;
+				private Pair ms1ds3p1;
+				private Pair ms1ds3p2;
+			// information node
+			private	FamilyInformation fi1;
+				private Pair fi1p1;
+				private Pair fi1p2;
+			private FamilyInformation fi11;
+				private Pair fi11p1;
+				private Pair fi11p2;
+			private FamilyInformation fi2;
+				private Pair fi2p1;
+				private Pair fi2p2;
+			
+		////////TODO	
 		private MicroSequence ms2;
 		private MicroSequence ms3;
 		
@@ -73,7 +94,7 @@ public class Controller {
 		fillMS1();
 		fillMS2();
 		fillMS3();
-		fillMedicalInfo();
+		//fillMedicalInfo();
 		fillFamilyInfo();
 	}
 	private void fillMS0() {
@@ -473,8 +494,54 @@ public class Controller {
 		ms0ds3p2.getPossiblePatientPhrases().add(ds3p2pp4);
 		ms0ds3p2.update();
 	}
+	//TODO: add ms1 QG 3ds or delete for Inof-tree based algo
+	private void fillMS1DS1(){
+		ms1ds1 = new DialogueSession();
+		ms1ds1.setName("Askdog");
+		ms1ds1.persist();
+		ms1.getDialogueSessions().add(ms1ds1);
+		fillMS1DS1P1();	
+		fillMS1DS1P2();	
+		
+	}
+	private void fillMS1DS1P1(){
+		
+	}
+	private void fillMS1DS1P2(){
+		
+		
+	}
+	private void fillMS1DS2(){
+		ms1ds2 = new DialogueSession();
+		ms1ds2.setName("AskdogDeadReason");
+		ms1ds2.persist();
+		ms1.getDialogueSessions().add(ms1ds2);
+		fillMS1DS2P1();	
+		fillMS1DS2P2();	
+		
+	}
+	private void fillMS1DS2P1(){
+		
+	}
+	private void fillMS1DS2P2(){
+		
+	}
+	private void fillMS1DS3(){
+		
+	}
+	private void fillMS1DS3P1(){
+		
+	}
+	private void fillMS1DS3P2(){
+		
+	}
+	/*------info tree based---------*/
 	
-	private void fillMedicalInfo(){
+	// fill info-based data
+
+	
+	//TO be modified cause change of model
+/*	private void fillMedicalInfo(){
 		// Get Information mode, ask if the patient smokes and the frequency
 		MedicalInformation mi1 = new MedicalInformation();
 		mi1.setName("Smoke");
@@ -483,6 +550,8 @@ public class Controller {
 		mi1.setAcquiringMethod(APatientInformation.AcquiringMethod.AskedByDoctor);
 		mi1.setSuperInformation(null);
 		JpaManager.persist(mi1);
+		
+
 		
 		DoctorPhrase mi1_d_p1 = new DoctorPhrase();
 		mi1_d_p1.setName("DoctorAskSmoke1");
@@ -667,6 +736,7 @@ public class Controller {
 		mi2.getPossibleResponsePhrases().add(mi2_p_p3);
 		JpaManager.update(mi2);
 	}
+
 	
 	private void fillFamilyInfo(){
 		FamilyInformation fi1 = new FamilyInformation();
@@ -792,6 +862,330 @@ public class Controller {
 		fi2.getPossibleResponsePhrases().add(fi2_p_p1);
 		fi2.getPossibleResponsePhrases().add(fi2_p_p2);
 		JpaManager.update(fi2);
+	}	
+	*/
+	private void fillFI1CategorieDog(){
+		
+	}
+	private void fillFI2CategorieGarden(){
+		
+	}
+	
+	private void fillFamilyInfo(){
+		//FamilyInfo 1
+		fi1 = new FamilyInformation();
+		fi1.setName("Dog");
+		fi1.setImportance(50);
+		fi1.setPriority(20);
+		fi1.setAcquiringMethod(APatientInformation.AcquiringMethod.AskedByDoctor);
+		fi1.setSuperInformation(null);
+		JpaManager.persist(fi1);
+		
+		//Pair 1 + Pair 2
+		fi1p1 = new Pair();
+		fi1p1.setName(fi1.getName()+"P1");
+		fi1p1.persist();
+		fi1p2 = new Pair();
+		fi1p2.setName(fi1.getName()+"P2");
+		fi1p2.persist();
+		
+		fi1.getPairs().add(fi1p1);
+		fi1.getPairs().add(fi1p2);
+		fi1.update();
+		
+		// Phrases for FI1 P1
+			
+		DoctorPhrase fi1_p1dp1 = new DoctorPhrase();
+		fi1_p1dp1.setName("DoctorAskDog");
+		fi1_p1dp1.setEffTrust(-5.0);
+		fi1_p1dp1.setEffDisturbance(10.0);
+		fi1_p1dp1.setPrimitiveType(PrimitiveType.CloseQuestion);
+		fi1_p1dp1.setPhraseActor(da1);
+		fi1_p1dp1.setExpression("Vous baladez toujours avec votre chien ? C’est un caniche, non ?");
+		JpaManager.persist(fi1_p1dp1);
+		
+
+		PatientPhrase fi1_p1pp1 = new PatientPhrase();
+		fi1_p1pp1.setName("PatientAnswerDog1");
+		fi1_p1pp1.setAggressiveLevel(AggressiveLevel.Neutral);
+		fi1_p1pp1.setClearLevel(ClearLevel.Clear);
+		fi1_p1pp1.setLongLevel(LongLevel.Normal);
+		fi1_p1pp1.setPrimitiveType(PrimitiveType.AnswerWithInfo);
+		fi1_p1pp1.setPhraseActor(pa1);
+		fi1_p1pp1.setExpression("(frustré) Il est mort il y a quelque mois..");
+		JpaManager.persist(fi1_p1pp1);
+		
+		PatientPhrase fi1_p1pp2 = new PatientPhrase();
+		fi1_p1pp2.setName("PatientAnswerDog2");
+		fi1_p1pp2.setAggressiveLevel(AggressiveLevel.Aggressive);
+		fi1_p1pp2.setClearLevel(ClearLevel.Clear);
+		fi1_p1pp2.setLongLevel(LongLevel.Normal);
+		fi1_p1pp2.setPrimitiveType(PrimitiveType.Statement);
+		fi1_p1pp2.setPhraseActor(pa1);
+		fi1_p1pp2.setExpression("(Fâché) Vous ne savez pas qu’il est mort ?! ");
+		JpaManager.persist(fi1_p1pp2);
+		
+		fi1p1.getPossibleDoctorPhrases().add(fi1_p1dp1);
+		fi1p1.getPossiblePatientPhrases().add(fi1_p1pp1);
+		fi1p1.getPossiblePatientPhrases().add(fi1_p1pp2);
+		JpaManager.update(fi1p1);
+		
+		//Phrases for FI1 P2
+		
+		DoctorPhrase fi1_p2dp1 = new DoctorPhrase();
+		fi1_p2dp1.setName("DoctorAskDog1P2");
+		fi1_p2dp1.setEffTrust(5.0);
+		fi1_p2dp1.setEffDisturbance(0.0);
+		fi1_p2dp1.setPrimitiveType(PrimitiveType.Confirmation);
+		fi1_p2dp1.setPhraseActor(da1);
+		fi1_p2dp1.setExpression("Ah je suis désolé.");
+		JpaManager.persist(fi1_p2dp1);
+		
+		DoctorPhrase fi1_p2dp2 = new DoctorPhrase();
+		fi1_p2dp2.setName("DoctorAskDog2P2");
+		fi1_p2dp2.setEffTrust(-5.0);
+		fi1_p2dp2.setEffDisturbance(5.0);
+		fi1_p2dp2.setPrimitiveType(PrimitiveType.Confirmation);
+		fi1_p2dp2.setPhraseActor(da1);
+		fi1_p2dp2.setExpression("Ah bon ? ");
+		JpaManager.persist(fi1_p2dp2);
+				
+		PatientPhrase fi1_p2pp1 = new PatientPhrase();
+		fi1_p2pp1.setName("PatientAnswerDogP2");
+		fi1_p2pp1.setAggressiveLevel(AggressiveLevel.Neutral);
+		fi1_p2pp1.setClearLevel(ClearLevel.Clear);
+		fi1_p2pp1.setLongLevel(LongLevel.Normal);
+		fi1_p2pp1.setPrimitiveType(PrimitiveType.AnswerWithInfo);
+		fi1_p2pp1.setPhraseActor(pa1);
+		fi1_p2pp1.setExpression("(triste) Ça va.");
+		JpaManager.persist(fi1_p2pp1);
+	
+		fi1p2.getPossibleDoctorPhrases().add(fi1_p2dp1);
+		fi1p2.getPossibleDoctorPhrases().add(fi1_p2dp2);	
+		fi1p2.getPossiblePatientPhrases().add(fi1_p2pp1);
+		JpaManager.update(fi1p2);
+		///
+		
+		// FamilyInfo FI11 (child of FI1)
+		fi11 = new FamilyInformation();
+		fi11.setName("DogReason");
+		fi11.setImportance(50);
+		fi11.setPriority(20);
+		fi11.setAcquiringMethod(APatientInformation.AcquiringMethod.AskedByDoctor);
+		fi11.setSuperInformation(fi1);
+		JpaManager.persist(fi11);
+		
+		//Add Pair1+Pair2
+		
+		fi11p1 = new Pair();
+		fi11p1.setName(fi11.getName()+"P1");
+		fi11p1.persist();
+		fi11p2 = new Pair();
+		fi11p2.setName(fi11.getName()+"P2");
+		fi11p2.persist();
+		
+		fi11.getPairs().add(fi11p1);
+		fi11.getPairs().add(fi11p2);
+		fi11.update();
+		
+	
+		
+		// Phrases Pair 1
+		DoctorPhrase fi11_p1dp1 = new DoctorPhrase();
+		fi11_p1dp1.setName("DoctorAskDogReason1");
+		fi11_p1dp1.setEffTrust(5.0);
+		fi11_p1dp1.setEffDisturbance(5.0);
+		fi11_p1dp1.setPrimitiveType(PrimitiveType.CloseQuestion);
+		fi11_p1dp1.setPhraseActor(da1);
+		fi11_p1dp1.setExpression("Comment ça ?");
+		JpaManager.persist(fi11_p1dp1);
+		
+		DoctorPhrase fi11_p1dp2 = new DoctorPhrase();
+		fi11_p1dp2.setName("DoctorAskDogReason2");
+		fi11_p1dp2.setEffTrust(5.0);
+		fi11_p1dp2.setEffDisturbance(5.0);
+		fi11_p1dp2.setPrimitiveType(PrimitiveType.CloseQuestion);
+		fi11_p1dp2.setPhraseActor(da1);
+		fi11_p1dp2.setExpression("Qu’est ce qui s’est passé ?");
+		JpaManager.persist(fi11_p1dp2);
+
+		PatientPhrase fi11_p1pp1 = new PatientPhrase();
+		fi11_p1pp1.setName("PatientAnswerDogReason1");
+		fi11_p1pp1.setAggressiveLevel(AggressiveLevel.Neutral);
+		fi11_p1pp1.setClearLevel(ClearLevel.Clear);
+		fi11_p1pp1.setLongLevel(LongLevel.TooLong);
+		fi11_p1pp1.setPrimitiveType(PrimitiveType.AnswerWithInfo);
+		fi11_p1pp1.setPhraseActor(pa1);
+		fi11_p1pp1.setExpression("(triste) C’était brusque.  Blablabla...");
+		JpaManager.persist(fi11_p1pp1);
+		
+		PatientPhrase fi11_p1pp2 = new PatientPhrase();
+		fi11_p1pp2.setName("PatientAnswerDogReason2");
+		fi11_p1pp2.setAggressiveLevel(AggressiveLevel.Aggressive);
+		fi11_p1pp2.setClearLevel(ClearLevel.Clear);
+		fi11_p1pp2.setLongLevel(LongLevel.TooLong);
+		fi11_p1pp2.setPrimitiveType(PrimitiveType.Disagree);
+		fi11_p1pp2.setPhraseActor(pa1);
+		fi11_p1pp2.setExpression("(fâché) Alors docteur, on peut commencer à traiter mes problèmes au lieu de parler mon ancien chien ?");
+		JpaManager.persist(fi11_p1pp2);
+		
+		PatientPhrase fi11_p1pp3 = new PatientPhrase();
+		fi11_p1pp3.setName("PatientAnswerDogReason3");
+		fi11_p1pp3.setAggressiveLevel(AggressiveLevel.Neutral);
+		fi11_p1pp3.setClearLevel(ClearLevel.Clear);
+		fi11_p1pp3.setLongLevel(LongLevel.TooLong);
+		fi11_p1pp3.setPrimitiveType(PrimitiveType.Disagree);
+		fi11_p1pp3.setPhraseActor(pa1);
+		fi11_p1pp3.setExpression("(triste) Je ne vois pas trop la relation avec mon problème mais je ne veux plus parler sur ça.");
+		JpaManager.persist(fi11_p1pp3);
+		
+		//add phrase to pair
+		fi11p1.getPossibleDoctorPhrases().add(fi11_p1dp1);
+		fi11p1.getPossibleDoctorPhrases().add(fi11_p1dp2);
+		fi11p1.getPossiblePatientPhrases().add(fi11_p1pp1);
+		fi11p1.getPossiblePatientPhrases().add(fi11_p1pp2);
+		fi11p1.getPossiblePatientPhrases().add(fi11_p1pp3);
+
+		fi11p1.update();
+		
+		//Pair 2
+	
+		DoctorPhrase fi11_p2dp1 = new DoctorPhrase();
+		fi11_p2dp1.setName("DoctorAskDogReason1P2");
+		fi11_p2dp1.setEffTrust(5.0);
+		fi11_p2dp1.setEffDisturbance(-5.0);
+		fi11_p2dp1.setPrimitiveType(PrimitiveType.Confirmation);
+		fi11_p2dp1.setPhraseActor(da1);
+		fi11_p2dp1.setExpression("C’était triste, pauvre chien. Mais il faut quand même faire un peu plus de la marche, ou quoi que soit.");
+		JpaManager.persist(fi11_p2dp1);
+		
+		DoctorPhrase fi11_p2dp2 = new DoctorPhrase();
+		fi11_p2dp2.setName("DoctorAskDogReason2P2");
+		fi11_p2dp2.setEffTrust(-5.0);
+		fi11_p2dp2.setEffDisturbance(5.0);
+		fi11_p2dp2.setPrimitiveType(PrimitiveType.Confirmation);
+		fi11_p2dp2.setPhraseActor(da1);
+		fi11_p2dp2.setExpression("Ah oui? Dommage");
+		JpaManager.persist(fi11_p2dp2);
+		
+		PatientPhrase fi11_p2pp1 = new PatientPhrase();
+		fi11_p2pp1.setName("PatientAnswerDogReasonP2");
+		fi11_p2pp1.setAggressiveLevel(AggressiveLevel.Neutral);
+		fi11_p2pp1.setClearLevel(ClearLevel.Clear);
+		fi11_p2pp1.setLongLevel(LongLevel.Normal);
+		fi11_p2pp1.setPrimitiveType(PrimitiveType.Confirmation);
+		fi11_p2pp1.setPhraseActor(pa1);
+		fi11_p2pp1.setExpression("(triste) Ouais, je sais, mais c’est dur..");
+		JpaManager.persist(fi11_p2pp1);
+		
+		//Add Phrases to Pair 2
+		fi11p2.getPossibleDoctorPhrases().add(fi11_p2dp1);
+		fi11p2.getPossibleDoctorPhrases().add(fi11_p2dp2);
+		
+		fi11p2.getPossiblePatientPhrases().add(fi11_p2pp1);
+		// same in case of Refuse with Pair1
+		fi11p2.getPossiblePatientPhrases().add(fi11_p1pp2);
+		fi11p2.getPossiblePatientPhrases().add(fi11_p1pp3);
+
+		fi11p2.update();
+		
+		
+		// node Garden info FI2
+		fi2 = new FamilyInformation();
+		fi2.setName("Garden");
+		fi2.setImportance(50);
+		fi2.setPriority(20);
+		fi2.setAcquiringMethod(APatientInformation.AcquiringMethod.AskedByDoctor);
+		fi2.setSuperInformation(null);
+		JpaManager.persist(fi2);
+		
+		//Add Pair1+Pair2
+		
+		fi2p1 = new Pair();
+		fi2p1.setName(fi2.getName()+"P1");
+		fi2p1.persist();
+		fi2p2 = new Pair();
+		fi2p2.setName(fi2.getName()+"P2");
+		fi2p2.persist();
+		
+		fi2.getPairs().add(fi2p1);
+		fi2.getPairs().add(fi2p2);
+		fi2.update();
+				
+		// Phrases for Pair 1
+		DoctorPhrase fi2_p1dp1 = new DoctorPhrase();
+		fi2_p1dp1.setName("DoctorAskGardenP1");
+		fi2_p1dp1.setEffTrust(5.0);
+		fi2_p1dp1.setEffDisturbance(-5.0);
+		fi2_p1dp1.setPrimitiveType(PrimitiveType.CloseQuestion);
+		fi2_p1dp1.setPhraseActor(da1);
+		fi2_p1dp1.setExpression("Sinon vous continuez à jardiner ? Vous jardinez, c’est bien ça ?");
+		JpaManager.persist(fi2_p1dp1);
+		
+		PatientPhrase fi2_p1pp1 = new PatientPhrase();
+		fi2_p1pp1.setName("PatientAnsweGarden1P1");
+		fi2_p1pp1.setAggressiveLevel(AggressiveLevel.Neutral);
+		fi2_p1pp1.setClearLevel(ClearLevel.Clear);
+		fi2_p1pp1.setLongLevel(LongLevel.Normal);
+		fi2_p1pp1.setPrimitiveType(PrimitiveType.AnswerWithInfo);
+		fi2_p1pp1.setPhraseActor(pa1);
+		fi2_p1pp1.setExpression("Oui, autant que possible...");
+		JpaManager.persist(fi2_p1pp1);
+		
+		PatientPhrase fi2_p1pp2 = new PatientPhrase();
+		fi2_p1pp2.setName("PatientAnsweGarden2P1");
+		fi2_p1pp2.setAggressiveLevel(AggressiveLevel.Neutral);
+		fi2_p1pp2.setClearLevel(ClearLevel.Clear);
+		fi2_p1pp2.setLongLevel(LongLevel.Concise);
+		fi2_p1pp2.setPrimitiveType(PrimitiveType.AnswerWithInfo);
+		fi2_p1pp2.setPhraseActor(pa1);
+		fi2_p1pp2.setExpression("Oui.");
+		JpaManager.persist(fi2_p1pp2);
+		
+		fi2p1.getPossibleDoctorPhrases().add(fi2_p1dp1);
+		fi2p1.getPossiblePatientPhrases().add(fi2_p1pp1);
+		fi2p1.getPossiblePatientPhrases().add(fi2_p1pp2);
+		fi2p1.update();
+		
+		//Phrases for Pair 2
+		DoctorPhrase fi2_p2dp1 = new DoctorPhrase();
+		fi2_p2dp1.setName("DoctorAskGarden1P2");
+		fi2_p2dp1.setEffTrust(5.0);
+		fi2_p2dp1.setEffDisturbance(-5.0);
+		fi2_p2dp1.setPrimitiveType(PrimitiveType.Confirmation);
+		fi2_p2dp1.setPhraseActor(da1);
+		fi2_p2dp1.setExpression("(Hochement de la tête) en hein");
+		JpaManager.persist(fi2_p2dp1);
+		
+		DoctorPhrase fi2_p2dp2 = new DoctorPhrase();
+		fi2_p2dp2.setName("DoctorAskGarden2P2");
+		fi2_p2dp2.setEffTrust(0.0);
+		fi2_p2dp2.setEffDisturbance(-5.0);
+		fi2_p2dp2.setPrimitiveType(PrimitiveType.CloseQuestion);
+		fi2_p2dp2.setPhraseActor(da1);
+		fi2_p2dp2.setExpression("Vous pouvez me dire plus ?");
+		JpaManager.persist(fi2_p2dp2);
+		
+		PatientPhrase fi2_p2pp1 = new PatientPhrase();
+		fi2_p2pp1.setName("PatientAnsweGarden1P2");
+		fi2_p2pp1.setAggressiveLevel(AggressiveLevel.Polite);
+		fi2_p2pp1.setClearLevel(ClearLevel.Clear);
+		fi2_p2pp1.setLongLevel(LongLevel.TooLong);
+		fi2_p2pp1.setPrimitiveType(PrimitiveType.AnswerWithInfo);
+		fi2_p2pp1.setPhraseActor(pa1);
+		fi2_p2pp1.setExpression("J’ai des tomates à planter, vous comprenez. Je dois me pencher et franchement, c’est dur...");
+		JpaManager.persist(fi2_p2pp1);
+		
+		PatientPhrase fi2_p2pp2 = new PatientPhrase();
+		fi2_p2pp2.setName("PatientAnsweGarden2P2");
+		fi2_p2pp2.setAggressiveLevel(AggressiveLevel.Neutral);
+		fi2_p2pp2.setClearLevel(ClearLevel.Clear);
+		fi2_p2pp2.setLongLevel(LongLevel.Concise);
+		fi2_p2pp2.setPrimitiveType(PrimitiveType.AnswerWithInfo);
+		fi2_p2pp2.setPhraseActor(pa1);
+		fi2_p2pp2.setExpression("Ben je plante. C’est dur.");
+		JpaManager.persist(fi2_p2pp2);
+		
 	}
 	public void fillDatabase() {
 		// PhraseActors
@@ -799,24 +1193,6 @@ public class Controller {
 		
 		// Scenarios
 		fillScenario();
-/*		
-		DialogueSession ds2 = new DialogueSession();
-		ds2.setName("InviteToSit");
-		JpaManager.persist(ds2);
-		DialogueSession ds3 = new DialogueSession();
-		ds3.setName("ComplainWaiting");
-		JpaManager.persist(ds3);
-		//add ds to ms
-		ms0.getDialogueSessions().add(ds1);
-		ms0.getDialogueSessions().add(ds2);
-		ms0.getDialogueSessions().add(ds3);
-		JpaManager.update(ms0);
-		
-*/	
-		
-		
-		
-		
 		
 	}
 
