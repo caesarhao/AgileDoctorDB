@@ -39,15 +39,18 @@ public class GameEngine {
 		double currentDistance = 0;
 	
 		for (PatientPhrase pp: pps){
-			// to modify pTypeV factor in the formula
-			currentDistance = Math.pow(pp.getAggressiveLevel().ordinal()*50 - scVar.pt_Aggr, 2)
-			+ Math.pow((100-pp.getClearLevel().ordinal()*100 - scVar.pt_Dist), 2)
-			+ Math.pow(pp.getLongLevel().ordinal()*50 - scPara.pTypeV.talktive*100, 2);
-			if(currentDistance<minDistance){
-				minDistance=currentDistance;
-				rpp = pp;
-			}
+				// to modify pTypeV factor in the formula
+				currentDistance = Math.pow(pp.getAggressiveLevel().ordinal()*50 - scVar.pt_Aggr, 2)
+				+ Math.pow((100-pp.getClearLevel().ordinal()*100 - scVar.pt_Dist), 2)
+				+ Math.pow(pp.getLongLevel().ordinal()*50 - scPara.pTypeV.talktive*100, 2);
+				if(currentDistance<minDistance){
+					minDistance=currentDistance;
+					rpp = pp;
+		
+				}	
 		}
+	
+		
 		return rpp;
 	}
 	
@@ -213,11 +216,12 @@ public class GameEngine {
 		}
 		return pps;
 	}
-	// information tree based strategy simulation
+	// information tree based strategy simulation: random select to find all nodes
 	public void simulateInfoBased(){
 		int randNum = 0;
 		APatientInformation currentInfo = null;
 		List<APatientInformation> lPInfo = null;
+				
 		Random rand = new Random();
 		String namedQuery = "APatientInformation.findBySuperInformation";
 		Map<String, Object> queryParams = new HashMap<String, Object>();
@@ -244,100 +248,90 @@ public class GameEngine {
 			if (scVar.sGotPatientInfo.contains(currentInfo)){// it's already got
 				continue;
 			}
-			// get possible doctor phrases.
-			List<DoctorPhrase> dps = new ArrayList<DoctorPhrase>(currentInfo.getPossibleAskPhrases());
-			randNum = rand.nextInt(dps.size());
-			DoctorPhrase dp = dps.get(randNum);
-			System.out.println("Doctor "+dp.getPhraseActor().getName()+": "+dp.getExpression());
 			
-			
-			//update system variables after selection of doctor.
-			scVar.calcOnce(dp);					
-			System.out.println("now clarity is "+dp.getvalClarity());
-			System.out.println("now state is "+scVar.dialSt.toString());
-			
-			// Prepare possible patient phrases.
-			List<PatientPhrase> pps = new ArrayList<PatientPhrase>(currentInfo.getPossibleResponsePhrases());  // all phrases
-			List<PatientPhrase> pps_n; // = new ArrayList<PatientPhrase>();  // Normal phrases
-			List<PatientPhrase> pps_du; // = new ArrayList<PatientPhrase>();  // don'tUnderstand phrases
-			List<PatientPhrase> pps_q; // = new ArrayList<PatientPhrase>();  // questioning phrases
-			List<PatientPhrase> pps_r; // = new ArrayList<PatientPhrase>();  // refuse phrases
+			//get Pairs in Info node
+			List<Pair> pairs = new ArrayList<Pair>(currentInfo.getPairs());
+			for(Pair pair:pairs){
+				List<DoctorPhrase> dps = new ArrayList<DoctorPhrase>(pair.getPossibleDoctorPhrases());
+				PatientPhrase bestPP = null;
+				// has Doctor Phrase in the pair
+				if(0 < dps.size()){
+					randNum = rand.nextInt(dps.size());
+					DoctorPhrase dp = dps.get(randNum);
+					System.out.println("Doctor "+dp.getPhraseActor().getName()+": "+dp.getExpression());
+					
+					
+					//update system variables after selection of doctor.
+					scVar.calcOnce(dp);		
+					
 
-/*			for(PatientPhrase ps:pps){
-	
-				if(ps.getPrimitiveType().toString().equals("DontUnderstand")) pps_du.add(ps);
-				else if(ps.getPrimitiveType().toString().equals("Disagree")) pps_q.add(ps);
-				else if(ps.getPrimitiveType().toString().equals("Questioning")) pps_r.add(ps);
-				else pps_n.add(ps);
+					switch (scVar.dialSt) {
+					case N:
+						// no info, find in type Confirmation.
+						if(getPPhrasesInPairByType(pair.getPossiblePatientPhrases(), APhrase.PrimitiveType.AnswerWithInfo).size()<0){
+							bestPP = getBestPatientPhrase(
+									getPPhrasesInPairByType(pair.getPossiblePatientPhrases(), APhrase.PrimitiveType.Confirmation));
 				
-			}*/
-			PatientPhrase pp_0=pps.get(0);
-			PatientPhrase pp;
-			// get possible patient phrase
-			switch (scVar.dialSt){
-			case DU:
-				pps_du = getPPhrasesInPairByType(pps, APhrase.PrimitiveType.DontUnderstand);
-				if(pps_du.size()>0){   //has customer DU phrases
-					randNum = rand.nextInt(pps_du.size());
-					pp = pps_du.get(randNum);
-				}
-				else{
-					pp = new PatientPhrase("I don't know what do you mean.",pp_0.phraseActor);
-				}
-				break;
-			case Q:
-				pps_q = getPPhrasesInPairByType(pps, APhrase.PrimitiveType.Questioning);
-				if(pps_q.size()>0){
-					randNum = rand.nextInt(pps_q.size());
-					pp = pps_q.get(randNum);
-				}
-				else{
-					pp = new PatientPhrase("Why do you ask?",pp_0.phraseActor);
-				}
-				break;
-			case R:
-				pps_r = getPPhrasesInPairByType(pps, APhrase.PrimitiveType.Disagree);
-				if(pps_r.size()>0){
-					randNum = rand.nextInt(pps_r.size());
-					pp = pps_r.get(randNum);
-				}
-				else{
-					pp = new PatientPhrase("I don't want to talk about it.",pp_0.phraseActor);
-				}
-				break;
-			case N: 
-				pps_n = getPPhrasesInPairByType(pps, APhrase.PrimitiveType.Statement);
-				if(pps_n.size()>0){
-					randNum = rand.nextInt(pps_n.size());
-					pp = pps_n.get(randNum);
+						}
+						else{
+							bestPP = getBestPatientPhrase(
+									getPPhrasesInPairByType(pair.getPossiblePatientPhrases(), APhrase.PrimitiveType.AnswerWithInfo));
+								
+							
+						}
+						if(bestPP == null){
+							System.out.println("Patient " + scPara.patient + ": ...(Warning: no data)");
+						}
+						else{
+							System.out.println("Patient " + bestPP.getPhraseActor() + ": " + bestPP.getExpression());
+							scVar.sGotPatientInfo.add(currentInfo);
+						}
+						
+						break;
+					case DU:
+						bestPP = getBestPatientPhrase(getPPhrasesInPairByType(pair.getPossiblePatientPhrases(),
+								APhrase.PrimitiveType.DontUnderstand));
+						if (bestPP == null) {
+							System.out.println("Patient " + scPara.patient + ": Je n'ai pas compris...");
+						} else{
+							System.out.println("Patient " + bestPP.getPhraseActor() + ": " + bestPP.getExpression());
+						}
+						break;
+					case Q:
+						bestPP = getBestPatientPhrase(
+								getPPhrasesInPairByType(pair.getPossiblePatientPhrases(), APhrase.PrimitiveType.Questioning));
+						if (bestPP == null) {
+							System.out.println("Patient " + scPara.patient + ": Pourquoi vous me demandez ça?");
+						} else
+							System.out.println("Patient " + bestPP.getPhraseActor() + ": " + bestPP.getExpression());
+						break;
+					case R:
+						bestPP = getBestPatientPhrase(
+								getPPhrasesInPairByType(pair.getPossiblePatientPhrases(), APhrase.PrimitiveType.Disagree));
+						if (bestPP == null) {
+							System.out.println("Patient " + scPara.patient + ": Je ne veux plus parler de ça...");
+						} else
+							System.out.println("Patient " + bestPP.getPhraseActor() + ": " + bestPP.getExpression());
+						break;
+					case END:
+						System.out.println("Doctor " + scPara.doctor + ": OK, on parle plus sur ça.");
+						break;
+					default:
+						System.out.println("Patient " + scPara.patient + ": Au revoir");
+						break;
+					}
 					
 				}
 				else{
-					pp = new PatientPhrase("Well, ok...",pp_0.phraseActor);
-				}
-				scVar.sGotPatientInfo.add(currentInfo);
-				break;
-			default:
-				pps_n = getPPhrasesInPairByType(pps, APhrase.PrimitiveType.Statement);
-				if(pps_n.size()>0){
-					randNum = rand.nextInt(pps_n.size());
-					pp = pps_n.get(randNum);
 					
+					bestPP = getBestPatientPhrase(pair.getPossiblePatientPhrases());
+					System.out.println("Patient " + bestPP.getPhraseActor() + ": "+bestPP.getExpression());
+							
 				}
-				else{
-					pp = new PatientPhrase("Well, ok...",pp_0.phraseActor);
-				}
-				break;
-					
-			}
-			
-			//TODO: should select patient phrase by algorithm instead of random
-			
-			System.out.println(pp.getPhraseActor().getName()+": "+pp.getExpression());
 		
+											
+			}
 
-			
-			//scVar.sGotPatientInfo.add(currentInfo);    //should be got only when state is normal
 			
 			if (scVar.sGotPatientInfo.size() >= lPAllInfo.size()){
 				break;
@@ -352,7 +346,7 @@ public class GameEngine {
 		
 	}
 	
-	public void simulate_old() {
+/*	public void simulate_old() {
 		int randNum = 0;
 		APatientInformation currentInfo = null;
 		List<APatientInformation> lPInfo = null;
@@ -491,6 +485,7 @@ public class GameEngine {
 		System.out.println(scVar);
 		
 	}
+	*/
 
 	public static void main(String[] args) {
 		GameEngine ge = new GameEngine();

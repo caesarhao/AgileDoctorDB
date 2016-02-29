@@ -865,14 +865,6 @@ public class Controller {
 	}	
 	*/
 	private void fillFI1CategorieDog(){
-		
-	}
-	private void fillFI2CategorieGarden(){
-		
-	}
-	
-	private void fillFamilyInfo(){
-		//FamilyInfo 1
 		fi1 = new FamilyInformation();
 		fi1.setName("Dog");
 		fi1.setImportance(50);
@@ -896,7 +888,7 @@ public class Controller {
 		// Phrases for FI1 P1
 			
 		DoctorPhrase fi1_p1dp1 = new DoctorPhrase();
-		fi1_p1dp1.setName("DoctorAskDog");
+		fi1_p1dp1.setName("DoctorAskDog1P1");
 		fi1_p1dp1.setEffTrust(-5.0);
 		fi1_p1dp1.setEffDisturbance(10.0);
 		fi1_p1dp1.setPrimitiveType(PrimitiveType.CloseQuestion);
@@ -906,7 +898,7 @@ public class Controller {
 		
 
 		PatientPhrase fi1_p1pp1 = new PatientPhrase();
-		fi1_p1pp1.setName("PatientAnswerDog1");
+		fi1_p1pp1.setName("PatientAnswerDog1P1");
 		fi1_p1pp1.setAggressiveLevel(AggressiveLevel.Neutral);
 		fi1_p1pp1.setClearLevel(ClearLevel.Clear);
 		fi1_p1pp1.setLongLevel(LongLevel.Normal);
@@ -916,11 +908,11 @@ public class Controller {
 		JpaManager.persist(fi1_p1pp1);
 		
 		PatientPhrase fi1_p1pp2 = new PatientPhrase();
-		fi1_p1pp2.setName("PatientAnswerDog2");
+		fi1_p1pp2.setName("PatientAnswerDog2P1");
 		fi1_p1pp2.setAggressiveLevel(AggressiveLevel.Aggressive);
 		fi1_p1pp2.setClearLevel(ClearLevel.Clear);
 		fi1_p1pp2.setLongLevel(LongLevel.Normal);
-		fi1_p1pp2.setPrimitiveType(PrimitiveType.Statement);
+		fi1_p1pp2.setPrimitiveType(PrimitiveType.AnswerWithInfo);
 		fi1_p1pp2.setPhraseActor(pa1);
 		fi1_p1pp2.setExpression("(Fâché) Vous ne savez pas qu’il est mort ?! ");
 		JpaManager.persist(fi1_p1pp2);
@@ -951,11 +943,11 @@ public class Controller {
 		JpaManager.persist(fi1_p2dp2);
 				
 		PatientPhrase fi1_p2pp1 = new PatientPhrase();
-		fi1_p2pp1.setName("PatientAnswerDogP2");
+		fi1_p2pp1.setName("PatientAnswerDog1P2");
 		fi1_p2pp1.setAggressiveLevel(AggressiveLevel.Neutral);
 		fi1_p2pp1.setClearLevel(ClearLevel.Clear);
 		fi1_p2pp1.setLongLevel(LongLevel.Normal);
-		fi1_p2pp1.setPrimitiveType(PrimitiveType.AnswerWithInfo);
+		fi1_p2pp1.setPrimitiveType(PrimitiveType.Confirmation);
 		fi1_p2pp1.setPhraseActor(pa1);
 		fi1_p2pp1.setExpression("(triste) Ça va.");
 		JpaManager.persist(fi1_p2pp1);
@@ -992,7 +984,7 @@ public class Controller {
 		
 		// Phrases Pair 1
 		DoctorPhrase fi11_p1dp1 = new DoctorPhrase();
-		fi11_p1dp1.setName("DoctorAskDogReason1");
+		fi11_p1dp1.setName("DoctorAskDogReason1P1");
 		fi11_p1dp1.setEffTrust(5.0);
 		fi11_p1dp1.setEffDisturbance(5.0);
 		fi11_p1dp1.setPrimitiveType(PrimitiveType.CloseQuestion);
@@ -1001,7 +993,7 @@ public class Controller {
 		JpaManager.persist(fi11_p1dp1);
 		
 		DoctorPhrase fi11_p1dp2 = new DoctorPhrase();
-		fi11_p1dp2.setName("DoctorAskDogReason2");
+		fi11_p1dp2.setName("DoctorAskDogReason2P1");
 		fi11_p1dp2.setEffTrust(5.0);
 		fi11_p1dp2.setEffDisturbance(5.0);
 		fi11_p1dp2.setPrimitiveType(PrimitiveType.CloseQuestion);
@@ -1010,7 +1002,7 @@ public class Controller {
 		JpaManager.persist(fi11_p1dp2);
 
 		PatientPhrase fi11_p1pp1 = new PatientPhrase();
-		fi11_p1pp1.setName("PatientAnswerDogReason1");
+		fi11_p1pp1.setName("PatientAnswerDogReason1P1");
 		fi11_p1pp1.setAggressiveLevel(AggressiveLevel.Neutral);
 		fi11_p1pp1.setClearLevel(ClearLevel.Clear);
 		fi11_p1pp1.setLongLevel(LongLevel.TooLong);
@@ -1020,7 +1012,7 @@ public class Controller {
 		JpaManager.persist(fi11_p1pp1);
 		
 		PatientPhrase fi11_p1pp2 = new PatientPhrase();
-		fi11_p1pp2.setName("PatientAnswerDogReason2");
+		fi11_p1pp2.setName("PatientAnswerDogReason2P1");
 		fi11_p1pp2.setAggressiveLevel(AggressiveLevel.Aggressive);
 		fi11_p1pp2.setClearLevel(ClearLevel.Clear);
 		fi11_p1pp2.setLongLevel(LongLevel.TooLong);
@@ -1030,7 +1022,7 @@ public class Controller {
 		JpaManager.persist(fi11_p1pp2);
 		
 		PatientPhrase fi11_p1pp3 = new PatientPhrase();
-		fi11_p1pp3.setName("PatientAnswerDogReason3");
+		fi11_p1pp3.setName("PatientAnswerDogReason3P1");
 		fi11_p1pp3.setAggressiveLevel(AggressiveLevel.Neutral);
 		fi11_p1pp3.setClearLevel(ClearLevel.Clear);
 		fi11_p1pp3.setLongLevel(LongLevel.TooLong);
@@ -1089,7 +1081,8 @@ public class Controller {
 
 		fi11p2.update();
 		
-		
+	}
+	private void fillFI2CategorieGarden(){
 		// node Garden info FI2
 		fi2 = new FamilyInformation();
 		fi2.setName("Garden");
@@ -1185,6 +1178,20 @@ public class Controller {
 		fi2_p2pp2.setPhraseActor(pa1);
 		fi2_p2pp2.setExpression("Ben je plante. C’est dur.");
 		JpaManager.persist(fi2_p2pp2);
+		fi2p2.getPossibleDoctorPhrases().add(fi2_p2dp1);
+		fi2p2.getPossibleDoctorPhrases().add(fi2_p2dp2);
+		fi2p2.getPossiblePatientPhrases().add(fi2_p2pp1);
+		fi2p2.getPossiblePatientPhrases().add(fi2_p2pp2);
+		fi2p2.update();
+		
+	}
+	
+	private void fillFamilyInfo(){
+		//FamilyInfo 1
+		fillFI1CategorieDog();
+		fillFI2CategorieGarden();
+		
+	
 		
 	}
 	public void fillDatabase() {
