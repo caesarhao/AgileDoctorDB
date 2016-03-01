@@ -16,6 +16,11 @@ public class Controller {
 	
 	private PatientActor pa2;
 	private Scenario s1;
+	
+	/* order of data:
+	 * Scenario -> MicroSequence -> Dialogue Session   -> Pair -> <DoctorPhrase, PatientPhrase>
+	 * Scenario -> MicroSequence -> Medical Information-> Pair -> <DoctorPhrase, PatientPhrase>
+	 */
 		private MicroSequence ms0;
 			private DialogueSession ms0ds1;
 				private Pair ms0ds1p1;
@@ -26,16 +31,19 @@ public class Controller {
 				private Pair ms0ds3p1;
 				private Pair ms0ds3p2;
 		private MicroSequence ms1;
-			private DialogueSession ms1ds1;
-				private Pair ms1ds1p1;
-				private Pair ms1ds1p2;
-			private DialogueSession ms1ds2;
-				private Pair ms1ds2p1;
-				private Pair ms1ds2p2;
-			private DialogueSession ms1ds3;
-				private Pair ms1ds3p1;
-				private Pair ms1ds3p2;
-			// information node
+			private MedicalInformation ms1mi1;
+				private Pair ms1mi1p1;				
+			private MedicalInformation ms1mi2;
+				private Pair ms1mi2p1;
+				
+			// root element	
+			private MedicalInformation ms1mi0;
+				private Pair ms1dmi0p1;
+				
+			
+				
+				
+			//Special:General Question, no micro-sequence order
 			private	FamilyInformation fi1;
 				private Pair fi1p1;
 				private Pair fi1p2;
@@ -92,10 +100,12 @@ public class Controller {
 		s1.persist();
 		fillMS0();
 		fillMS1();
-		fillMS2();
-		fillMS3();
+		//fillMS2();
+		//fillMS3();
 		//fillMedicalInfo();
+		fillMedicalInfo();
 		fillFamilyInfo();
+		
 	}
 	private void fillMS0() {
 		// MicroSequences
@@ -115,7 +125,7 @@ public class Controller {
 		s1.getMicroSequences().add(ms1);
 			//fillMS1DS1();
 	}
-	private void fillMS2() {
+/*	private void fillMS2() {
 		// MicroSequences
 		ms2 = new MicroSequence();
 		ms2.setName("GeneralQuestion");
@@ -130,7 +140,7 @@ public class Controller {
 		ms3.persist();
 		s1.getMicroSequences().add(ms3);
 		//fillMS3DS1();
-	}
+	}*/
 	private void fillMS0DS1(){
 		ms0ds1 = new DialogueSession();
 		ms0ds1.setName("SayHello");
@@ -494,24 +504,11 @@ public class Controller {
 		ms0ds3p2.getPossiblePatientPhrases().add(ds3p2pp4);
 		ms0ds3p2.update();
 	}
-	//TODO: add ms1 QG 3ds or delete for Inof-tree based algo
-	private void fillMS1DS1(){
-		ms1ds1 = new DialogueSession();
-		ms1ds1.setName("Askdog");
-		ms1ds1.persist();
-		ms1.getDialogueSessions().add(ms1ds1);
-		fillMS1DS1P1();	
-		fillMS1DS1P2();	
-		
-	}
-	private void fillMS1DS1P1(){
-		
-	}
-	private void fillMS1DS1P2(){
-		
-		
-	}
-	private void fillMS1DS2(){
+	
+	
+	
+
+/*	private void fillMS1DS2(){
 		ms1ds2 = new DialogueSession();
 		ms1ds2.setName("AskdogDeadReason");
 		ms1ds2.persist();
@@ -534,7 +531,9 @@ public class Controller {
 	}
 	private void fillMS1DS3P2(){
 		
-	}
+	}*/
+	
+	
 	/*------info tree based---------*/
 	
 	// fill info-based data
@@ -561,7 +560,7 @@ public class Controller {
 		mi1_d_p1.setEffTrust(10.0);
 		mi1_d_p1.setEffDisturbance(0.0);
 		mi1_d_p1.setvalClarity(0.99);
-		mi1_d_p1.setPrimitiveType(PrimitiveType.CloseQuestion);
+		mi1_d_p1.setPrimitiveType(PrimitiveType.ClosedQuestion);
 		mi1_d_p1.setPhraseActor(da1);
 		mi1_d_p1.setExpression("Do you keep smoking?");
 		JpaManager.persist(mi1_d_p1);
@@ -571,7 +570,7 @@ public class Controller {
 		mi1_d_p2.setEffTrust(-10.0);
 		mi1_d_p2.setEffDisturbance(5.0);
 		mi1_d_p2.setvalClarity(0.99);
-		mi1_d_p2.setPrimitiveType(PrimitiveType.CloseQuestion);
+		mi1_d_p2.setPrimitiveType(PrimitiveType.ClosedQuestion);
 		mi1_d_p2.setPhraseActor(da1);
 		mi1_d_p2.setExpression("You smoke a lot, right? You smell like a cigarette.");
 		JpaManager.persist(mi1_d_p2);
@@ -668,7 +667,7 @@ public class Controller {
 		mi2_d_p1.setEffTrust(10.0);
 		mi2_d_p1.setEffDisturbance(0.0);
 	//	mi2_d_p1.setvalClarity(0.6);
-		mi2_d_p1.setPrimitiveType(PrimitiveType.CloseQuestion);
+		mi2_d_p1.setPrimitiveType(PrimitiveType.ClosedQuestion);
 		mi2_d_p1.setPhraseActor(da1);
 		mi2_d_p1.setExpression("Do you often smoke?");
 		JpaManager.persist(mi2_d_p1);
@@ -681,7 +680,7 @@ public class Controller {
 		mi2_d_p2.setEffTrust(0.0);
 		mi2_d_p2.setEffDisturbance(-5.0);
 	//	mi2_d_p2.setvalClarity(1.0);
-		mi2_d_p2.setPrimitiveType(PrimitiveType.CloseQuestion);
+		mi2_d_p2.setPrimitiveType(PrimitiveType.ClosedQuestion);
 		mi2_d_p2.setPhraseActor(da1);
 		mi2_d_p2.setExpression("How many cigarettes do you take everyday?");
 		JpaManager.persist(mi2_d_p2);
@@ -691,7 +690,7 @@ public class Controller {
 		mi2_d_p3.setEffTrust(-10.0);
 		mi2_d_p3.setEffDisturbance(10.0);
 		mi2_d_p3.setvalClarity(0.2);
-		mi2_d_p3.setPrimitiveType(PrimitiveType.CloseQuestion);
+		mi2_d_p3.setPrimitiveType(PrimitiveType.ClosedQuestion);
 		mi2_d_p3.setPhraseActor(da1);
 		mi2_d_p3.setExpression("How about your intake?");
 		JpaManager.persist(mi2_d_p3);
@@ -755,7 +754,7 @@ public class Controller {
 		fi1_d_p1.setEffTrust(5.0);
 		fi1_d_p1.setEffDisturbance(10.0);
 	//	fi1_d_p1.setvalClarity(1.0);
-		fi1_d_p1.setPrimitiveType(PrimitiveType.CloseQuestion);
+		fi1_d_p1.setPrimitiveType(PrimitiveType.ClosedQuestion);
 		fi1_d_p1.setPhraseActor(da1);
 		fi1_d_p1.setExpression("Are you married?");
 		JpaManager.persist(fi1_d_p1);
@@ -768,7 +767,7 @@ public class Controller {
 		fi1_d_p2.setEffTrust(-5.0);
 		fi1_d_p2.setEffDisturbance(-5.0);
 	//	fi1_d_p2.setvalClarity(1.0);
-		fi1_d_p2.setPrimitiveType(APhrase.PrimitiveType.CloseQuestion);
+		fi1_d_p2.setPrimitiveType(APhrase.PrimitiveType.ClosedQuestion);
 		fi1_d_p2.setPhraseActor(da1);
 		fi1_d_p2.setExpression("You live with your family or alone?");
 		JpaManager.persist(fi1_d_p2);
@@ -817,7 +816,7 @@ public class Controller {
 		fi2_d_p1.setEffTrust(10.0);
 		fi2_d_p1.setEffDisturbance(0.0);
 	//	fi2_d_p1.setvalClarity(1.0);
-		fi2_d_p1.setPrimitiveType(PrimitiveType.CloseQuestion);
+		fi2_d_p1.setPrimitiveType(PrimitiveType.ClosedQuestion);
 		fi2_d_p1.setPhraseActor(da1);
 		fi2_d_p1.setExpression("Do you have any child?");
 		JpaManager.persist(fi2_d_p1);
@@ -830,7 +829,7 @@ public class Controller {
 		fi2_d_p2.setEffTrust(0.0);
 		fi2_d_p2.setEffDisturbance(5.0);
 	//	fi2_d_p2.setvalClarity(1.0);
-		fi2_d_p2.setPrimitiveType(PrimitiveType.CloseQuestion);
+		fi2_d_p2.setPrimitiveType(PrimitiveType.ClosedQuestion);
 		fi2_d_p2.setPhraseActor(da1);
 		fi2_d_p2.setExpression("Don't you have any child?");
 		JpaManager.persist(fi2_d_p2);
@@ -864,6 +863,9 @@ public class Controller {
 		JpaManager.update(fi2);
 	}	
 	*/
+	
+	
+
 	private void fillFI1CategorieDog(){
 		fi1 = new FamilyInformation();
 		fi1.setName("Dog");
@@ -891,7 +893,7 @@ public class Controller {
 		fi1_p1dp1.setName("DoctorAskDog1P1");
 		fi1_p1dp1.setEffTrust(-5.0);
 		fi1_p1dp1.setEffDisturbance(10.0);
-		fi1_p1dp1.setPrimitiveType(PrimitiveType.CloseQuestion);
+		fi1_p1dp1.setPrimitiveType(PrimitiveType.ClosedQuestion);
 		fi1_p1dp1.setPhraseActor(da1);
 		fi1_p1dp1.setExpression("Vous baladez toujours avec votre chien ? C’est un caniche, non ?");
 		JpaManager.persist(fi1_p1dp1);
@@ -987,7 +989,7 @@ public class Controller {
 		fi11_p1dp1.setName("DoctorAskDogReason1P1");
 		fi11_p1dp1.setEffTrust(5.0);
 		fi11_p1dp1.setEffDisturbance(5.0);
-		fi11_p1dp1.setPrimitiveType(PrimitiveType.CloseQuestion);
+		fi11_p1dp1.setPrimitiveType(PrimitiveType.ClosedQuestion);
 		fi11_p1dp1.setPhraseActor(da1);
 		fi11_p1dp1.setExpression("Comment ça ?");
 		JpaManager.persist(fi11_p1dp1);
@@ -996,7 +998,7 @@ public class Controller {
 		fi11_p1dp2.setName("DoctorAskDogReason2P1");
 		fi11_p1dp2.setEffTrust(5.0);
 		fi11_p1dp2.setEffDisturbance(5.0);
-		fi11_p1dp2.setPrimitiveType(PrimitiveType.CloseQuestion);
+		fi11_p1dp2.setPrimitiveType(PrimitiveType.ClosedQuestion);
 		fi11_p1dp2.setPhraseActor(da1);
 		fi11_p1dp2.setExpression("Qu’est ce qui s’est passé ?");
 		JpaManager.persist(fi11_p1dp2);
@@ -1110,7 +1112,7 @@ public class Controller {
 		fi2_p1dp1.setName("DoctorAskGardenP1");
 		fi2_p1dp1.setEffTrust(5.0);
 		fi2_p1dp1.setEffDisturbance(-5.0);
-		fi2_p1dp1.setPrimitiveType(PrimitiveType.CloseQuestion);
+		fi2_p1dp1.setPrimitiveType(PrimitiveType.ClosedQuestion);
 		fi2_p1dp1.setPhraseActor(da1);
 		fi2_p1dp1.setExpression("Sinon vous continuez à jardiner ? Vous jardinez, c’est bien ça ?");
 		JpaManager.persist(fi2_p1dp1);
@@ -1154,7 +1156,7 @@ public class Controller {
 		fi2_p2dp2.setName("DoctorAskGarden2P2");
 		fi2_p2dp2.setEffTrust(0.0);
 		fi2_p2dp2.setEffDisturbance(-5.0);
-		fi2_p2dp2.setPrimitiveType(PrimitiveType.CloseQuestion);
+		fi2_p2dp2.setPrimitiveType(PrimitiveType.ClosedQuestion);
 		fi2_p2dp2.setPhraseActor(da1);
 		fi2_p2dp2.setExpression("Vous pouvez me dire plus ?");
 		JpaManager.persist(fi2_p2dp2);
@@ -1189,9 +1191,156 @@ public class Controller {
 	private void fillFamilyInfo(){
 		//FamilyInfo 1
 		fillFI1CategorieDog();
-		fillFI2CategorieGarden();
-		
+		//FamilyInfo 2
+		fillFI2CategorieGarden();	
+	}
 	
+	// Medical Info
+	private void fillMS1MIConsultReason0(){
+		
+	}
+	private void fillMS1MIConsultReason1(){
+		ms1mi1 = new MedicalInformation();
+		ms1mi1.setName("ConsultReason1");
+		ms1mi1.setImportance(100);
+		ms1mi1.setPriority(90);
+		ms1mi1.setAcquiringMethod(APatientInformation.AcquiringMethod.ConsultToFile);
+		ms1mi1.setSuperInformation(null);
+		ms1mi1.persist();
+		
+		ms1.getMedicalInfos().add(ms1mi1);
+	
+		
+		fillMS1MI1Pair();	
+		
+		
+	}
+	private void fillMS1MI1Pair(){
+	
+		//Add Pair1
+		
+		ms1mi1p1 = new Pair();
+		ms1mi1p1.setName(ms1mi1.getName()+"P1");
+		ms1mi1p1.persist();
+		
+		ms1mi1.getPairs().add(ms1mi1p1);
+		ms1mi1.update();
+		
+		// Phrases for Pair 1
+		DoctorPhrase ms1mi1p1dp1 = new DoctorPhrase();
+		ms1mi1p1dp1.setName("DoctorAskConsultReason11");
+		ms1mi1p1dp1.setEffTrust(5.0);
+		ms1mi1p1dp1.setEffDisturbance(-5.0);
+		ms1mi1p1dp1.setPrimitiveType(PrimitiveType.ClosedQuestion);
+		ms1mi1p1dp1.setPhraseActor(da1);
+		ms1mi1p1dp1.setExpression("Je vois que vous avez des ordonnances qui arrivent à expiration, il faut peut-être les renouveler...");
+		JpaManager.persist(ms1mi1p1dp1);
+		
+		DoctorPhrase ms1mi1p1dp2 = new DoctorPhrase();
+		ms1mi1p1dp2.setName("DoctorAskConsultReason12");
+		ms1mi1p1dp2.setEffTrust(5.0);
+		ms1mi1p1dp2.setEffDisturbance(5.0);
+		ms1mi1p1dp2.setPrimitiveType(PrimitiveType.ClosedQuestion);
+		ms1mi1p1dp2.setPhraseActor(da1);
+		ms1mi1p1dp2.setExpression("Vous ne devrez pas renouveler votre ordonnance par hasard ?");
+		JpaManager.persist(ms1mi1p1dp2);
+		
+		PatientPhrase ms1mi1p1pp1 = new PatientPhrase();
+		ms1mi1p1pp1.setName("PatientAnsweConsultReason11");
+		ms1mi1p1pp1.setAggressiveLevel(AggressiveLevel.Neutral);
+		ms1mi1p1pp1.setClearLevel(ClearLevel.Clear);
+		ms1mi1p1pp1.setLongLevel(LongLevel.Normal);
+		ms1mi1p1pp1.setPrimitiveType(PrimitiveType.AnswerWithInfo);
+		ms1mi1p1pp1.setPhraseActor(pa1);
+		ms1mi1p1pp1.setExpression("C’est pour renouveler l’ordonnance pour mon diabète.");
+		JpaManager.persist(ms1mi1p1pp1);
+		
+		PatientPhrase ms1mi1p1pp2 = new PatientPhrase();
+		ms1mi1p1pp2.setName("PatientAnsweConsultReason12");
+		ms1mi1p1pp2.setAggressiveLevel(AggressiveLevel.Neutral);
+		ms1mi1p1pp2.setClearLevel(ClearLevel.Unclear);
+		ms1mi1p1pp2.setLongLevel(LongLevel.Normal);
+		ms1mi1p1pp2.setPrimitiveType(PrimitiveType.AnswerWithInfo);
+		ms1mi1p1pp2.setPhraseActor(pa1);
+		ms1mi1p1pp2.setExpression("Alors j’ai mon ordonnance qui sera expirée bientôt.");
+		JpaManager.persist(ms1mi1p1pp2);
+		
+		ms1mi1p1.getPossibleDoctorPhrases().add(ms1mi1p1dp1);
+		ms1mi1p1.getPossibleDoctorPhrases().add(ms1mi1p1dp2);
+		ms1mi1p1.getPossiblePatientPhrases().add(ms1mi1p1pp1);
+		ms1mi1p1.getPossiblePatientPhrases().add(ms1mi1p1pp2);
+		ms1mi1p1.update();
+		
+
+		
+	}
+	private void fillMS1MIConsultReason2(){
+		ms1mi2 = new MedicalInformation();
+		ms1mi2.setName("ConsultReason2");
+		ms1mi2.setImportance(50);
+		ms1mi2.setPriority(100);
+		ms1mi2.setAcquiringMethod(APatientInformation.AcquiringMethod.ConsultToFile);
+		ms1mi2.setSuperInformation(null);
+		ms1mi2.persist();
+		
+
+		ms1.getMedicalInfos().add(ms1mi2);
+		
+		
+		fillMS1MI2Pair();	
+		
+	}
+	private void fillMS1MI2Pair(){
+		//Add Pair1
+		
+		ms1mi2p1 = new Pair();
+		ms1mi2p1.setName(ms1mi2.getName()+"P1");
+		ms1mi2p1.persist();
+		
+		ms1mi2.getPairs().add(ms1mi2p1);
+		ms1mi2.update();
+		
+		// Phrases for Pair 1
+		DoctorPhrase ms1mi2p1dp1 = new DoctorPhrase();
+		ms1mi2p1dp1.setName("DoctorAskConsultReason21");
+		ms1mi2p1dp1.setEffTrust(0.0);
+		ms1mi2p1dp1.setEffDisturbance(-5.0);
+		ms1mi2p1dp1.setPrimitiveType(PrimitiveType.ClosedQuestion);
+		ms1mi2p1dp1.setPhraseActor(da1);
+		ms1mi2p1dp1.setExpression("Donc on fait juste un petit bilan ?");
+		JpaManager.persist(ms1mi2p1dp1);
+			
+		PatientPhrase ms1mi2p1pp1 = new PatientPhrase();
+		ms1mi2p1pp1.setName("PatientAnsweConsultReason21");
+		ms1mi2p1pp1.setAggressiveLevel(AggressiveLevel.Neutral);
+		ms1mi2p1pp1.setClearLevel(ClearLevel.Clear);
+		ms1mi2p1pp1.setLongLevel(LongLevel.Normal);
+		ms1mi2p1pp1.setPrimitiveType(PrimitiveType.AnswerWithInfo);
+		ms1mi2p1pp1.setPhraseActor(pa1);
+		ms1mi2p1pp1.setExpression("Pour vous me examinez un peu...");
+		JpaManager.persist(ms1mi2p1pp1);
+		
+		PatientPhrase ms1mi2p1pp2 = new PatientPhrase();
+		ms1mi2p1pp2.setName("PatientAnsweConsultReason22");
+		ms1mi2p1pp2.setAggressiveLevel(AggressiveLevel.Neutral);
+		ms1mi2p1pp2.setClearLevel(ClearLevel.Clear);
+		ms1mi2p1pp2.setLongLevel(LongLevel.TooLong);
+		ms1mi2p1pp2.setPrimitiveType(PrimitiveType.AnswerWithInfo);
+		ms1mi2p1pp2.setPhraseActor(pa1);
+		ms1mi2p1pp2.setExpression("Pour faire un contrôle ? Vous me dites de revenir de temps en temps..");
+		JpaManager.persist(ms1mi2p1pp2);
+		
+		ms1mi2p1.getPossibleDoctorPhrases().add(ms1mi2p1dp1);
+		ms1mi2p1.getPossiblePatientPhrases().add(ms1mi2p1pp1);
+		ms1mi2p1.getPossiblePatientPhrases().add(ms1mi2p1pp2);
+		ms1mi2p1.update();
+		
+	}
+
+	private void fillMedicalInfo(){
+		//Medical Info 1: consultation reasons
+		fillMS1MIConsultReason1();
+		fillMS1MIConsultReason2();
 		
 	}
 	public void fillDatabase() {

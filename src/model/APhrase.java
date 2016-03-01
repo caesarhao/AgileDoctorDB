@@ -29,7 +29,7 @@ public abstract class APhrase extends AThing implements Serializable {
 	public enum PrimitiveType{
 		Statement,  //d p (normal)
 		OpenQuestion, //d(normal)
-		CloseQuestion, //d(normal)
+		ClosedQuestion, //d(normal)
 		AnswerWithInfo, //p (normal)
 		Confirmation, // 
 		Disagree,  // p (refuse)

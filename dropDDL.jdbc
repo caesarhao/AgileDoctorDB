@@ -7,6 +7,8 @@ ALTER TABLE DialogueSession_Pair DROP CONSTRAINT FK_DialogueSession_Pair_Dialogu
 ALTER TABLE DialogueSession_Pair DROP CONSTRAINT FK_DialogueSession_Pair_pairs_ID
 ALTER TABLE MicroSequence_DialogueSession DROP CONSTRAINT MicroSequence_DialogueSession_dialogueSessions_ID
 ALTER TABLE MicroSequence_DialogueSession DROP CONSTRAINT FK_MicroSequence_DialogueSession_MicroSequence_ID
+ALTER TABLE MicroSequence_MedicalInformation DROP CONSTRAINT MicroSequence_MedicalInformation_MicroSequence_ID
+ALTER TABLE MicroSequence_MedicalInformation DROP CONSTRAINT MicroSequence_MedicalInformation_medicalInfos_ID
 ALTER TABLE Pair_DoctorPhrase DROP CONSTRAINT FK_Pair_DoctorPhrase_possibleDoctorPhrases_ID
 ALTER TABLE Pair_DoctorPhrase DROP CONSTRAINT FK_Pair_DoctorPhrase_Pair_ID
 ALTER TABLE Pair_PatientPhrase DROP CONSTRAINT FK_Pair_PatientPhrase_Pair_ID
@@ -27,6 +29,7 @@ DROP TABLE Scenario
 DROP TABLE APatientInformation_Pair
 DROP TABLE DialogueSession_Pair
 DROP TABLE MicroSequence_DialogueSession
+DROP TABLE MicroSequence_MedicalInformation
 DROP TABLE Pair_DoctorPhrase
 DROP TABLE Pair_PatientPhrase
 DROP TABLE Scenario_MicroSequence
