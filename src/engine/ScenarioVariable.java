@@ -5,8 +5,9 @@ import model.*;
 
 public class ScenarioVariable {
 	// List of already got Patient Information.
-	public List<APatientInformation> sGotPatientInfo = new ArrayList<APatientInformation>();
-	
+	public List<APatientInformation> sGotPatientInfoByQuery = new ArrayList<APatientInformation>();  // got by query
+	public List<APatientInformation> sGotPatientInfoByDefault = new ArrayList<APatientInformation>(); // got by consulting to files
+	public List<APatientInformation> sGotPatientInfoAllRoot = new ArrayList<APatientInformation>(); // all got info
 	// ScenarioParameter
 	public ScenarioParameter scPara;
 	// number of actions effected by the doctor.
@@ -109,7 +110,7 @@ public class ScenarioVariable {
 		}
 		
 		//TODO: same information required twice by the doctor, should calculate based on patient info.
-		if(sGotPatientInfo.contains(null)){
+		if(sGotPatientInfoByQuery.contains(null)){
 			oldDialSt = dialSt;
 			dialSt = DialogueState.R;
 		}

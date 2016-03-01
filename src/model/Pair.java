@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -33,6 +34,15 @@ public class Pair extends AThing implements Serializable {
 
 	public List<DoctorPhrase> getPossibleDoctorPhrases() {
 		return possibleDoctorPhrases;
+	}
+	public List<DoctorPhrase> getPossibleDoctorPhrasesByType(APhrase.PrimitiveType atype) {
+		List<DoctorPhrase> dps = new ArrayList<DoctorPhrase>();
+		for(DoctorPhrase dp:possibleDoctorPhrases){
+			if(atype.compareTo(dp.primitiveType) == 0){
+				dps.add(dp);
+			}
+		}
+		return dps;
 	}
 
 	public List<PatientPhrase> getPossiblePatientPhrases() {

@@ -1215,6 +1215,8 @@ public class Controller {
 		
 		
 	}
+	DoctorPhrase ms1mi1p1dpOQ1 = null;
+	DoctorPhrase ms1mi1p1dpOQ2 = null; 
 	private void fillMS1MI1Pair(){
 	
 		//Add Pair1
@@ -1227,6 +1229,26 @@ public class Controller {
 		ms1mi1.update();
 		
 		// Phrases for Pair 1
+		//open question
+		ms1mi1p1dpOQ1 = new DoctorPhrase();
+		ms1mi1p1dpOQ1.setName("DoctorAskConsultReason_OQ1");
+		ms1mi1p1dpOQ1.setEffTrust(0.0);
+		ms1mi1p1dpOQ1.setEffDisturbance(0.0);
+		ms1mi1p1dpOQ1.setPrimitiveType(PrimitiveType.OpenQuestion);
+		ms1mi1p1dpOQ1.setPhraseActor(da1);
+		ms1mi1p1dpOQ1.setExpression("Je vous écoute.");
+		JpaManager.persist(ms1mi1p1dpOQ1);
+		
+		ms1mi1p1dpOQ2 = new DoctorPhrase();
+		ms1mi1p1dpOQ2.setName("DoctorAskConsultReason_OQ2");
+		ms1mi1p1dpOQ2.setEffTrust(0.0);
+		ms1mi1p1dpOQ2.setEffDisturbance(0.0);
+		ms1mi1p1dpOQ2.setPrimitiveType(PrimitiveType.OpenQuestion);
+		ms1mi1p1dpOQ2.setPhraseActor(da1);
+		ms1mi1p1dpOQ2.setExpression("Dites-moi pourquoi vous êtes venu.");
+		JpaManager.persist(ms1mi1p1dpOQ2);
+		
+		
 		DoctorPhrase ms1mi1p1dp1 = new DoctorPhrase();
 		ms1mi1p1dp1.setName("DoctorAskConsultReason11");
 		ms1mi1p1dp1.setEffTrust(5.0);
@@ -1264,6 +1286,9 @@ public class Controller {
 		ms1mi1p1pp2.setPhraseActor(pa1);
 		ms1mi1p1pp2.setExpression("Alors j’ai mon ordonnance qui sera expirée bientôt.");
 		JpaManager.persist(ms1mi1p1pp2);
+		
+		ms1mi1p1.getPossibleDoctorPhrases().add(ms1mi1p1dpOQ1);
+		ms1mi1p1.getPossibleDoctorPhrases().add(ms1mi1p1dpOQ2);
 		
 		ms1mi1p1.getPossibleDoctorPhrases().add(ms1mi1p1dp1);
 		ms1mi1p1.getPossibleDoctorPhrases().add(ms1mi1p1dp2);
@@ -1333,6 +1358,11 @@ public class Controller {
 		ms1mi2p1.getPossibleDoctorPhrases().add(ms1mi2p1dp1);
 		ms1mi2p1.getPossiblePatientPhrases().add(ms1mi2p1pp1);
 		ms1mi2p1.getPossiblePatientPhrases().add(ms1mi2p1pp2);
+		
+		//add OpenQuestion already defined for Reason 1
+		ms1mi2p1.getPossibleDoctorPhrases().add(ms1mi1p1dpOQ1);
+		ms1mi2p1.getPossibleDoctorPhrases().add(ms1mi1p1dpOQ2);
+		
 		ms1mi2p1.update();
 		
 	}

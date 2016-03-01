@@ -251,13 +251,13 @@ public class GameEngine {
 	// information tree based strategy simulation: random select to find all nodes
 	public void simulateInfoBased(){
 		int randNum = 0;
-		APatientInformation currentInfo = null;
-		List<APatientInformation> lPInfo = null;
+		FamilyInformation currentInfo = null;
+		List<FamilyInformation> lPInfo = null;
 				
 		Random rand = new Random();
-		String namedQuery = "APatientInformation.findBySuperInformation";
+		String namedQuery = "FamilyInformation.findBySuperInformation";
 		Map<String, Object> queryParams = new HashMap<String, Object>();
-		List<APatientInformation> lPAllInfo = JpaManager.<APatientInformation>findAll("APatientInformation");
+		List<FamilyInformation> lPAllInfo = JpaManager.<FamilyInformation>findAll("FamilyInformation");
 	
 		while (true) {
 			if (null == currentInfo){
@@ -277,15 +277,15 @@ public class GameEngine {
 			randNum = rand.nextInt(lPInfo.size());
 		
 			currentInfo = lPInfo.get(randNum);
-			if (scVar.sGotPatientInfo.contains(currentInfo)){// it's already got
+			if (scVar.sGotPatientInfoByQuery.contains(currentInfo)){// it's already got
 				continue;
 			}
-			
+			PatientPhrase bestPP = null;
 			//get Pairs in Info node
 			List<Pair> pairs = new ArrayList<Pair>(currentInfo.getPairs());
 			for(Pair pair:pairs){
 				List<DoctorPhrase> dps = new ArrayList<DoctorPhrase>(pair.getPossibleDoctorPhrases());
-				PatientPhrase bestPP = null;
+				
 				// has Doctor Phrase in the pair
 				if(0 < dps.size()){
 					randNum = rand.nextInt(dps.size());
@@ -316,7 +316,7 @@ public class GameEngine {
 						}
 						else{
 							System.out.println("Patient " + bestPP.getPhraseActor() + ": " + bestPP.getExpression());
-							scVar.sGotPatientInfo.add(currentInfo);
+							scVar.sGotPatientInfoByQuery.add(currentInfo);
 						}
 						
 						break;
@@ -365,7 +365,7 @@ public class GameEngine {
 			}
 
 			
-			if (scVar.sGotPatientInfo.size() >= lPAllInfo.size()){
+			if (scVar.sGotPatientInfoByQuery.size() >= lPAllInfo.size()){
 				break;
 			}
 			else if (DialogueState.END == scVar.dialSt) { // game over.
@@ -377,6 +377,247 @@ public class GameEngine {
 		}
 		
 	}
+	public void setKnownNode(){
+		String namedQuery = "MicroSequence.findByName";
+		Map<String, Object> queryParams = new HashMap<String, Object>();
+		queryParams.put("name", "AskReason");
+		List<MicroSequence> mss = JpaManager.<MicroSequence>findWithNamedQuery(namedQuery, queryParams);
+		List<MedicalInformation> minfos= new ArrayList<MedicalInformation>(mss.get(0).getMedicalInfos());
+		// Cheat info: MI1 known, MI2 unkown.
+		for(MedicalInformation info:minfos){
+			if(info.getName().equalsIgnoreCase("ConsultReason1")){
+				scVar.sGotPatientInfoByDefault.add(info);
+				scVar.sGotPatientInfoAllRoot.add(info);
+			}
+		}
+
+		
+		
+	}
+	
+	public void simulateInfoBasedTest(){
+		setKnownNode();
+		int randNum = 0;
+		boolean hasUnknownNode = false;
+		Random rand = new Random();
+	
+		List<MedicalInformation> acquiredNodes = new ArrayList<MedicalInformation>();
+		MedicalInformation currentInfo = null;
+		List<MedicalInformation> lPInfo = new ArrayList<MedicalInformation>();
+		List<MedicalInformation> lPAllInfo = new ArrayList<MedicalInformation>();
+		
+		String namedQuery = "MicroSequence.findByName";
+		Map<String, Object> queryParams = new HashMap<String, Object>();
+		queryParams.put("name", "AskReason");
+		List<MicroSequence> mss = JpaManager.<MicroSequence>findWithNamedQuery(namedQuery, queryParams);
+
+		lPAllInfo= new ArrayList<MedicalInformation>(mss.get(0).getMedicalInfos());
+		while (true) {
+			if (null == currentInfo){
+				for(MedicalInformation info:lPAllInfo){
+					if(info.superInformation == null){  // add all root nodes
+						lPInfo.add(info);
+					}
+				}
+				if(scVar.sGotPatientInfoAllRoot.size()<lPInfo.size()){   //not all root nodes have been known
+					hasUnknownNode = true;
+				}
+			}
+			else{
+				for(MedicalInformation info:lPAllInfo){
+					if(info.superInformation == currentInfo){  // add all children nodes of current info
+						lPInfo.add(info);
+					}
+				}
+				if (1 > lPInfo.size()){   // don't have child node, is a leaf node, end the parcours of this branch
+					currentInfo = null;
+					continue;
+				}
+				
+			}
+			// process the node: currentInfo
+			randNum = rand.nextInt(lPInfo.size());
+			currentInfo = lPInfo.get(randNum);
+
+			if(scVar.sGotPatientInfoByQuery.contains(currentInfo)){
+				continue;
+			}
+			
+			PatientPhrase bestPP = null;
+			//TODO: check if all root are known by query
+			// 			
+			//cheat: Know there is at least one unknown node in the root nodes. so choose openQuestion
+			// Cheat info: MI1 known, MI2 unkown.
+			//cheat: proceed directly with openquestion
+			List<Pair> pairs = new ArrayList<Pair>(currentInfo.getPairs());
+			for(Pair pair:pairs){
+				//List<DoctorPhrase> dps = new ArrayList<DoctorPhrase>(pair.getPossibleDoctorPhrasesByType(APhrase.PrimitiveType.OpenQuestion));
+				List<DoctorPhrase> dps = new ArrayList<DoctorPhrase>(pair.getPossibleDoctorPhrases());
+				
+				if(0 < dps.size()){  // has Doctor Phrase in the pair
+					randNum = rand.nextInt(dps.size());  //random choose open question
+					DoctorPhrase dp = dps.get(randNum);
+					System.out.println("Doctor "+dp.getPhraseActor().getName()+": "+dp.getExpression());
+					
+					//update system variables after selection of doctor.
+					scVar.calcOnce(dp);		
+					
+
+					switch (scVar.dialSt) {
+					case N:
+						// no info, find in type Confirmation.
+						if(getPPhrasesInPairByType(pair.getPossiblePatientPhrases(), APhrase.PrimitiveType.AnswerWithInfo).size()<1){
+							bestPP = getBestPatientPhrase(
+									getPPhrasesInPairByType(pair.getPossiblePatientPhrases(), APhrase.PrimitiveType.Confirmation));
+				
+						}
+						else{
+							bestPP = getBestPatientPhrase(
+									getPPhrasesInPairByType(pair.getPossiblePatientPhrases(), APhrase.PrimitiveType.AnswerWithInfo));
+								
+							
+						}
+						
+						if(bestPP == null){
+							System.out.println("Patient " + scPara.patient + ": ...(Warning: no data)");
+						}
+						else{
+							String add = "";
+							if(dp.getPrimitiveType().compareTo(APhrase.PrimitiveType.ClosedQuestion) == 0){
+								add = "Oui,,,";
+							}
+							System.out.println("Patient " + bestPP.getPhraseActor() + ": " + add+ bestPP.getExpression());
+							scVar.sGotPatientInfoByQuery.add(currentInfo);
+							scVar.sGotPatientInfoAllRoot.add(currentInfo);
+						}
+						
+						break;
+					case DU:
+						bestPP = getBestPatientPhrase(getPPhrasesInPairByType(pair.getPossiblePatientPhrases(),
+								APhrase.PrimitiveType.DontUnderstand));
+						if (bestPP == null) {
+							System.out.println("Patient " + scPara.patient + ": Je n'ai pas compris...");
+						} else{
+							System.out.println("Patient " + bestPP.getPhraseActor() + ": " + bestPP.getExpression());
+						}
+						break;
+					case Q:
+						bestPP = getBestPatientPhrase(
+								getPPhrasesInPairByType(pair.getPossiblePatientPhrases(), APhrase.PrimitiveType.Questioning));
+						if (bestPP == null) {
+							System.out.println("Patient " + scPara.patient + ": Pourquoi vous me demandez ça?");
+						} else
+							System.out.println("Patient " + bestPP.getPhraseActor() + ": " + bestPP.getExpression());
+						break;
+					case R:
+						bestPP = getBestPatientPhrase(
+								getPPhrasesInPairByType(pair.getPossiblePatientPhrases(), APhrase.PrimitiveType.Disagree));
+						if (bestPP == null) {
+							System.out.println("Patient " + scPara.patient + ": Je ne veux plus parler de ça...");
+						} else
+							System.out.println("Patient " + bestPP.getPhraseActor() + ": " + bestPP.getExpression());
+						break;
+					case END:
+						System.out.println("Doctor " + scPara.doctor + ": OK, on parle plus sur ça.");
+						break;
+					default:
+						System.out.println("Patient " + scPara.patient + ": Au revoir");
+						break;
+					}
+					
+				}
+				else{   //No open Question defined, not on the root level
+
+				/*	List<DoctorPhrase> closeddps = new ArrayList<DoctorPhrase>(pair.getPossibleDoctorPhrasesByType(APhrase.PrimitiveType.ClosedQuestion));
+					randNum = rand.nextInt(dps.size());  //random choose possible closed questions
+					DoctorPhrase cdp = closeddps.get(randNum);
+					System.out.println("Doctor "+cdp.getPhraseActor().getName()+": "+cdp.getExpression());
+					
+					//update system variables after selection of doctor.
+					scVar.calcOnce(cdp);		
+					
+
+					switch (scVar.dialSt) {
+					case N:
+						// no info, find in type Confirmation.
+						if(getPPhrasesInPairByType(pair.getPossiblePatientPhrases(), APhrase.PrimitiveType.AnswerWithInfo).size()<1){
+							bestPP = getBestPatientPhrase(
+									getPPhrasesInPairByType(pair.getPossiblePatientPhrases(), APhrase.PrimitiveType.Confirmation));
+				
+						}
+						else{
+							bestPP = getBestPatientPhrase(
+									getPPhrasesInPairByType(pair.getPossiblePatientPhrases(), APhrase.PrimitiveType.AnswerWithInfo));
+								
+							
+						}
+						
+						if(bestPP == null){
+							System.out.println("Patient " + scPara.patient + ": ...(Warning: no data)");
+						}
+						else{
+							
+							System.out.println("Patient " + bestPP.getPhraseActor() + ": Oui,,," + bestPP.getExpression());
+							scVar.sGotPatientInfoByQuery.add(currentInfo);
+							scVar.sGotPatientInfoAllRoot.add(currentInfo);
+						}
+						
+						break;
+					case DU:
+						bestPP = getBestPatientPhrase(getPPhrasesInPairByType(pair.getPossiblePatientPhrases(),
+								APhrase.PrimitiveType.DontUnderstand));
+						if (bestPP == null) {
+							System.out.println("Patient " + scPara.patient + ": Je n'ai pas compris...");
+						} else{
+							System.out.println("Patient " + bestPP.getPhraseActor() + ": " + bestPP.getExpression());
+						}
+						break;
+					case Q:
+						bestPP = getBestPatientPhrase(
+								getPPhrasesInPairByType(pair.getPossiblePatientPhrases(), APhrase.PrimitiveType.Questioning));
+						if (bestPP == null) {
+							System.out.println("Patient " + scPara.patient + ": Pourquoi vous me demandez ça?");
+						} else
+							System.out.println("Patient " + bestPP.getPhraseActor() + ": " + bestPP.getExpression());
+						break;
+					case R:
+						bestPP = getBestPatientPhrase(
+								getPPhrasesInPairByType(pair.getPossiblePatientPhrases(), APhrase.PrimitiveType.Disagree));
+						if (bestPP == null) {
+							System.out.println("Patient " + scPara.patient + ": Je ne veux plus parler de ça...");
+						} else
+							System.out.println("Patient " + bestPP.getPhraseActor() + ": " + bestPP.getExpression());
+						break;
+					case END:
+						System.out.println("Doctor " + scPara.doctor + ": OK, on parle plus sur ça.");
+						break;
+					default:
+						System.out.println("Patient " + scPara.patient + ": Au revoir");
+						break;
+					}*/
+					
+					
+					System.out.println("Patient " + bestPP.getPhraseActor() + ": " + bestPP.getExpression());	
+				}
+			}
+			if (scVar.sGotPatientInfoByQuery.size() >= lPAllInfo.size()){  //All asked
+				break;
+			}
+			else if (DialogueState.END == scVar.dialSt) { // game over.
+				break;
+			}
+			else{
+				continue;
+			}
+			
+			
+		}
+	}
+			
+			
+		
+		
+		
 	
 /*	public void simulate_old() {
 		int randNum = 0;
@@ -523,11 +764,12 @@ public class GameEngine {
 		GameEngine ge = new GameEngine();
 		// set parameter of game engine.
 		ge.getScPara().tr_init = 20;
-		System.out.println("********Best result**********");
+	/*	System.out.println("********Best result**********");
 		ge.simulateBest();
 		ge.simulateInfoBased();
 		System.out.println("********Worst result**********");
-		ge.simulateWorst();
+		ge.simulateWorst();*/
+		ge.simulateInfoBasedTest();
 		/* run 3 times
 		for(int i =0; i<3;i++){
 		ge.simulate();
