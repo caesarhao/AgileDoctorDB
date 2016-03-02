@@ -217,10 +217,8 @@ public class GameEngine {
 			return ps;
 		}
 		List<DoctorPhrase> pps = new ArrayList<DoctorPhrase>();
-		for(DoctorPhrase ap:ps){
-			if(pTypes.contains(ap.getPrimitiveType())){
-				pps.add(ap);
-			}
+		for(APhrase.PrimitiveType type:pTypes){
+			pps.addAll(getDPhrasesInPairByType(ps, type));
 		}
 		return pps;
 	}
@@ -241,10 +239,8 @@ public class GameEngine {
 			return ps;
 		}
 		List<PatientPhrase> pps = new ArrayList<PatientPhrase>();
-		for(PatientPhrase ap:ps){
-			if(pTypes.contains(ap.getPrimitiveType())){
-				pps.add(ap);
-			}
+		for(APhrase.PrimitiveType type:pTypes){
+			pps.addAll(getPPhrasesInPairByType(ps, type));
 		}
 		return pps;
 	}
@@ -382,7 +378,7 @@ public class GameEngine {
 		Map<String, Object> queryParams = new HashMap<String, Object>();
 		queryParams.put("name", "AskReason");
 		List<MicroSequence> mss = JpaManager.<MicroSequence>findWithNamedQuery(namedQuery, queryParams);
-		List<MedicalInformation> minfos= new ArrayList<MedicalInformation>(mss.get(0).getMedicalInfos());
+		List<MedicalInformation> minfos= mss.get(0).getMedicalInfos();
 		// Cheat info: MI1 known, MI2 unkown.
 		for(MedicalInformation info:minfos){
 			if(info.getName().equalsIgnoreCase("ConsultReason1")){
@@ -395,24 +391,27 @@ public class GameEngine {
 		
 	}
 	
-	public void simulateInfoBasedTest(){
-		setKnownNode();
+	public void simulateMedicalInfoBasedTest(){
+		//setKnownNode();
 		int randNum = 0;
-		boolean hasUnknownNode = false;
+		//boolean hasUnknownNode = false;
+		int closeModeCounter = 0;
+		boolean isCloseQMode = false;
 		Random rand = new Random();
 	
 		List<MedicalInformation> acquiredNodes = new ArrayList<MedicalInformation>();
 		MedicalInformation currentInfo = null;
-		List<MedicalInformation> lPInfo = new ArrayList<MedicalInformation>();
-		List<MedicalInformation> lPAllInfo = new ArrayList<MedicalInformation>();
+		// List<MedicalInformation> lPInfo = new ArrayList<MedicalInformation>();
+		List<MedicalInformation> lPAllInfo = null;
 		
 		String namedQuery = "MicroSequence.findByName";
 		Map<String, Object> queryParams = new HashMap<String, Object>();
 		queryParams.put("name", "AskReason");
 		List<MicroSequence> mss = JpaManager.<MicroSequence>findWithNamedQuery(namedQuery, queryParams);
-
-		lPAllInfo= new ArrayList<MedicalInformation>(mss.get(0).getMedicalInfos());
+		lPAllInfo= mss.get(0).getMedicalInfos();
+		
 		while (true) {
+			/*
 			if (null == currentInfo){
 				for(MedicalInformation info:lPAllInfo){
 					if(info.superInformation == null){  // add all root nodes
@@ -435,34 +434,68 @@ public class GameEngine {
 				}
 				
 			}
+			*/
+			
 			// process the node: currentInfo
+			/*
 			randNum = rand.nextInt(lPInfo.size());
 			currentInfo = lPInfo.get(randNum);
 
 			if(scVar.sGotPatientInfoByQuery.contains(currentInfo)){
 				continue;
 			}
-			
+			*/
+			if (!isCloseQMode){ // normal mode.
+				randNum = rand.nextInt(lPAllInfo.size());
+				currentInfo = lPAllInfo.get(randNum);
+				if (scVar.sGotPatientInfo.contains(currentInfo)){// already got.
+					continue;
+				}
+				else if (null == currentInfo.getSuperInformation()){ // root node, can be asked directly.
+					// not only acquired in document but also asked by the doctor, can be asked here, nothing to do here.
+				}
+				else{ // leave node.
+					if (!scVar.sGotPatientInfo.contains(currentInfo.getSuperInformation())){ // parent node hasn't been got.
+						continue;
+					}
+				}
+			}
+			else{ // close question mode.
+				closeModeCounter--;
+				namedQuery = "MedicalInformation.findBySuperInformation";
+				queryParams.clear();
+				queryParams.put("superInformation", currentInfo);
+				List<MedicalInformation> subMIs = JpaManager.<MedicalInformation>findWithNamedQuery(namedQuery, queryParams);
+				randNum = rand.nextInt(subMIs.size());
+				currentInfo = subMIs.get(randNum);
+			}
 			PatientPhrase bestPP = null;
 			//TODO: check if all root are known by query
 			// 			
 			//cheat: Know there is at least one unknown node in the root nodes. so choose openQuestion
 			// Cheat info: MI1 known, MI2 unkown.
 			//cheat: proceed directly with openquestion
-			List<Pair> pairs = new ArrayList<Pair>(currentInfo.getPairs());
+			//List<Pair> pairs = new ArrayList<Pair>(currentInfo.getPairs());
+			// the returned value is already a list, no need to create it again.
+			List<Pair> pairs = currentInfo.getPairs();
 			for(Pair pair:pairs){
 				//List<DoctorPhrase> dps = new ArrayList<DoctorPhrase>(pair.getPossibleDoctorPhrasesByType(APhrase.PrimitiveType.OpenQuestion));
-				List<DoctorPhrase> dps = new ArrayList<DoctorPhrase>(pair.getPossibleDoctorPhrases());
+				List<DoctorPhrase> dps = pair.getPossibleDoctorPhrases();
 				
 				if(0 < dps.size()){  // has Doctor Phrase in the pair
 					randNum = rand.nextInt(dps.size());  //random choose open question
 					DoctorPhrase dp = dps.get(randNum);
-					System.out.println("Doctor "+dp.getPhraseActor().getName()+": "+dp.getExpression());
-					
-					//update system variables after selection of doctor.
-					scVar.calcOnce(dp);		
-					
-
+					if (!isCloseQMode){
+						System.out.println("Doctor "+dp.getPhraseActor().getName()+": "+dp.getExpression());
+						
+						//update system variables after selection of doctor.
+						scVar.calcOnce(dp);		
+					}
+					else{
+						if(closeModeCounter < 1){
+							isCloseQMode = false;
+						}
+					}
 					switch (scVar.dialSt) {
 					case N:
 						// no info, find in type Confirmation.
@@ -483,12 +516,27 @@ public class GameEngine {
 						}
 						else{
 							String add = "";
-							if(dp.getPrimitiveType().compareTo(APhrase.PrimitiveType.ClosedQuestion) == 0){
+							if(dp.getPrimitiveType().compareTo(APhrase.PrimitiveType.ClosedQuestion) == 0){//answer more.
 								add = "Oui,,,";
+								System.out.println("Patient " + bestPP.getPhraseActor() + ": " + add+ bestPP.getExpression());
+								scVar.sGotPatientInfo.add(currentInfo);
+								namedQuery = "MedicalInformation.findBySuperInformation";
+								queryParams.clear();
+								queryParams.put("superInformation", currentInfo);
+								if (!JpaManager.findWithNamedQuery(namedQuery, queryParams).isEmpty()){
+									closeModeCounter = 1;
+									isCloseQMode = true;
+									//TODO: the method to determine the number of phrases in a close question.
+								}
 							}
-							System.out.println("Patient " + bestPP.getPhraseActor() + ": " + add+ bestPP.getExpression());
-							scVar.sGotPatientInfoByQuery.add(currentInfo);
-							scVar.sGotPatientInfoAllRoot.add(currentInfo);
+							else if(APhrase.PrimitiveType.OpenQuestion == dp.getPrimitiveType()){ // just answer this one.
+								System.out.println("Patient " + bestPP.getPhraseActor() + ": " + add+ bestPP.getExpression());
+								scVar.sGotPatientInfo.add(currentInfo);
+							}
+							//System.out.println("Patient " + bestPP.getPhraseActor() + ": " + add+ bestPP.getExpression());
+							//scVar.sGotPatientInfoByQuery.add(currentInfo);
+							//scVar.sGotPatientInfoAllRoot.add(currentInfo);
+							//scVar.sGotPatientInfo.add(currentInfo);
 						}
 						
 						break;
@@ -600,7 +648,7 @@ public class GameEngine {
 					System.out.println("Patient " + bestPP.getPhraseActor() + ": " + bestPP.getExpression());	
 				}
 			}
-			if (scVar.sGotPatientInfoByQuery.size() >= lPAllInfo.size()){  //All asked
+			if (scVar.sGotPatientInfo.size() >= lPAllInfo.size()){  //All asked
 				break;
 			}
 			else if (DialogueState.END == scVar.dialSt) { // game over.
@@ -769,7 +817,7 @@ public class GameEngine {
 		ge.simulateInfoBased();
 		System.out.println("********Worst result**********");
 		ge.simulateWorst();*/
-		ge.simulateInfoBasedTest();
+		ge.simulateMedicalInfoBasedTest();
 		/* run 3 times
 		for(int i =0; i<3;i++){
 		ge.simulate();

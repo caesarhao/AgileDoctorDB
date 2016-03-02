@@ -87,6 +87,14 @@ public class JModelManagement extends JFrame {
 		// TODO add your code here
 	}
 
+	public JPanel getPanelEditionLeft() {
+		return panelEditionLeft;
+	}
+
+	public JPanel getPanelEditionRight() {
+		return panelEditionRight;
+	}
+
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
 		dialogPane = new JPanel();
@@ -100,6 +108,8 @@ public class JModelManagement extends JFrame {
 		lstItems = new JList();
 		scrollPaneEditRegion = new JScrollPane();
 		panelEdition = new JPanel();
+		panelEditionLeft = new JPanel();
+		panelEditionRight = new JPanel();
 		buttonBar = new JPanel();
 		panel1 = new JPanel();
 		btnDel = new JButton();
@@ -166,7 +176,27 @@ public class JModelManagement extends JFrame {
 
 						//======== panelEdition ========
 						{
-							panelEdition.setLayout(new GridLayout(8, 2, 4, 2));
+							panelEdition.setLayout(new GridBagLayout());
+							((GridBagLayout)panelEdition.getLayout()).columnWidths = new int[] {163, 410, 0};
+							((GridBagLayout)panelEdition.getLayout()).rowHeights = new int[] {0, 0};
+							((GridBagLayout)panelEdition.getLayout()).columnWeights = new double[] {0.0, 0.0, 1.0E-4};
+							((GridBagLayout)panelEdition.getLayout()).rowWeights = new double[] {1.0, 1.0E-4};
+
+							//======== panelEditionLeft ========
+							{
+								panelEditionLeft.setLayout(new GridLayout(8, 1, 4, 2));
+							}
+							panelEdition.add(panelEditionLeft, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+								GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+								new Insets(0, 0, 0, 0), 0, 0));
+
+							//======== panelEditionRight ========
+							{
+								panelEditionRight.setLayout(new GridLayout(8, 1, 4, 2));
+							}
+							panelEdition.add(panelEditionRight, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
+								GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+								new Insets(0, 0, 0, 0), 0, 0));
 						}
 						scrollPaneEditRegion.setViewportView(panelEdition);
 					}
@@ -251,6 +281,8 @@ public class JModelManagement extends JFrame {
 	private JList lstItems;
 	private JScrollPane scrollPaneEditRegion;
 	private JPanel panelEdition;
+	private JPanel panelEditionLeft;
+	private JPanel panelEditionRight;
 	private JPanel buttonBar;
 	private JPanel panel1;
 	private JButton btnDel;

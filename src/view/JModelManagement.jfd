@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "5.2.2.0.199" Java: "1.8.0_71" encoding: "UTF-8"
+JFDML JFormDesigner: "5.2.2.0.199" Java: "1.8.0_72" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
@@ -59,16 +59,44 @@ new FormModel {
 							auxiliary() {
 								"JavaCodeGenerator.variableGetter": true
 							}
-							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
-								"columns": 2
-								"hgap": 4
-								"vgap": 2
-								"rows": 8
+							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+								"$columnSpecs": "163, 410"
+								"$rowSpecs": "center:0:1.0"
+								"$alignTop": true
+								"$alignLeft": true
 							} ) {
 								name: "panelEdition"
 								auxiliary() {
 									"JavaCodeGenerator.variableGetter": true
 								}
+								add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
+									"columns": 1
+									"rows": 8
+									"hgap": 4
+									"vgap": 2
+								} ) {
+									name: "panelEditionLeft"
+									auxiliary() {
+										"JavaCodeGenerator.variableGetter": true
+									}
+								}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+									"hAlign": 5
+									"vAlign": 5
+								} )
+								add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
+									"columns": 1
+									"rows": 8
+									"hgap": 4
+									"vgap": 2
+								} ) {
+									name: "panelEditionRight"
+									auxiliary() {
+										"JavaCodeGenerator.variableGetter": true
+									}
+								}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+									"gridx": 1
+									"vAlign": 5
+								} )
 							} )
 						}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 							"gridx": 1

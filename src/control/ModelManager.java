@@ -29,7 +29,8 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 	private JComboBox cmbBoxConcepts = null;
 	private JList lstItems = null;
 	private DefaultListModel listModel = null;
-	private JPanel panelEdition = null;
+	private JPanel panelEditionLeft = null;
+	private JPanel panelEditionRight = null;
 	private Class currentClass = null;
 	private AThing currentThing = null;
 	private JTextField txtNewItem = null;
@@ -41,7 +42,8 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 		cmbBoxConcepts = bindedFrame.getCmbBoxConcepts();
 		lstItems = bindedFrame.getLstItems();
 		listModel = new DefaultListModel();
-		panelEdition = bindedFrame.getPanelEdition();
+		panelEditionLeft = bindedFrame.getPanelEditionLeft();
+		panelEditionRight = bindedFrame.getPanelEditionRight();
 		txtNewItem = bindedFrame.getTxtNewItem();
 		btnAdd = bindedFrame.getBtnAdd();
 		btnDel = bindedFrame.getBtnDel();
@@ -76,17 +78,19 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 			return;
 		}
 		// clean all
-		panelEdition.removeAll();
+		panelEditionLeft.removeAll();
+		panelEditionRight.removeAll();
 		// reflection of class elements
 		Field[] fields = currentClass.getFields();
 		JComponent[] fieldValues = new JComponent[fields.length];
-		panelEdition.setLayout(new GridLayout(fields.length, 2, 4, 2));
+		panelEditionLeft.setLayout(new GridLayout(fields.length, 1, 4, 2));
+		panelEditionRight.setLayout(new GridLayout(fields.length, 1, 4, 2));
 		// the relationship between the property and the input region should be
 		// kept.
 		for (int i = 0; i < fields.length; i++) {
 			Field field = fields[i];
 			// property name.
-			panelEdition.add(new JLabel(field.getName() + ": "));
+			panelEditionLeft.add(new JLabel(field.getName() + ": "));
 			//System.out.println(field.getName());
 			// property value.
 			if (AThing.class.isAssignableFrom(field.getType())) {
@@ -97,7 +101,7 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 					} else {
 						fieldValues[i] = new JTextField(property.toString());
 					}
-					panelEdition.add(fieldValues[i]);
+					panelEditionRight.add(fieldValues[i]);
 				} catch (IllegalArgumentException e1) {
 					e1.printStackTrace();
 				} catch (IllegalAccessException e1) {
@@ -117,7 +121,7 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 				} catch (IllegalAccessException e1) {
 					e1.printStackTrace();
 				}
-				panelEdition.add(fieldValues[i]);
+				panelEditionRight.add(fieldValues[i]);
 			} else if (field.getType().equals(boolean.class)) {// boolean
 				JRadioButton optTrue = new JRadioButton("true");
 				JRadioButton optFalse = new JRadioButton("false");
@@ -139,7 +143,7 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 				} catch (IllegalAccessException e) {
 					e.printStackTrace();
 				}
-				panelEdition.add(pnlTF);
+				panelEditionRight.add(pnlTF);
 				fieldValues[i] = optTrue;
 			} else if (List.class.isAssignableFrom(field.getType())) { // a list
 				ParameterizedType elementType = (ParameterizedType) field.getGenericType();
@@ -161,7 +165,7 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 					e1.printStackTrace();
 				}
 				//fieldValues[i] = new JTextField("List of " + actualType.getSimpleName());
-				panelEdition.add(fieldValues[i]);
+				panelEditionRight.add(fieldValues[i]);
 			}else if (Set.class.isAssignableFrom(field.getType())) { // a set
 				ParameterizedType elementType = (ParameterizedType) field.getGenericType();
 				Class<?> actualType = (Class<?>) elementType.getActualTypeArguments()[0];
@@ -182,7 +186,7 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 					e1.printStackTrace();
 				}
 				//fieldValues[i] = new JTextField("Set of " + actualType.getSimpleName());
-				panelEdition.add(fieldValues[i]);
+				panelEditionRight.add(fieldValues[i]);
 			} else if (false) {// field.isEnumConstant()){// enum
 				try {
 					fieldValues[i] = new JTextField(field.get(currentClass.cast(currentThing)).toString());
@@ -191,7 +195,7 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 				} catch (IllegalAccessException e1) {
 					e1.printStackTrace();
 				}
-				panelEdition.add(fieldValues[i]);
+				panelEditionRight.add(fieldValues[i]);
 			} else {
 				// fieldValues[i] = new
 				// JTextField(field.getType().getSimpleName());
@@ -208,14 +212,16 @@ public class ModelManager extends AJFrameControl<JModelManagement> {
 				} catch (IllegalAccessException e1) {
 					e1.printStackTrace();
 				}
-				panelEdition.add(fieldValues[i]);
+				panelEditionRight.add(fieldValues[i]);
 			}
 
 		}
 
 		// refresh the display
-		panelEdition.revalidate();
-		panelEdition.repaint();
+		panelEditionLeft.revalidate();
+		panelEditionRight.revalidate();
+		panelEditionLeft.repaint();
+		panelEditionRight.repaint();
 	}
 
 	private void cmbBoxConceptsActionPerformed(ActionEvent e) {

@@ -5,6 +5,7 @@ import model.*;
 
 public class ScenarioVariable {
 	// List of already got Patient Information.
+	public List<APatientInformation> sGotPatientInfo = new ArrayList<APatientInformation>();  // got
 	public List<APatientInformation> sGotPatientInfoByQuery = new ArrayList<APatientInformation>();  // got by query
 	public List<APatientInformation> sGotPatientInfoByDefault = new ArrayList<APatientInformation>(); // got by consulting to files
 	public List<APatientInformation> sGotPatientInfoAllRoot = new ArrayList<APatientInformation>(); // all got info

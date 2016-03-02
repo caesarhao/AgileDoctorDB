@@ -14,7 +14,8 @@ import model.APatientInformation;
 @NamedQuery(name = "FamilyInformation.findAll", query = "SELECT e FROM FamilyInformation e"),
 @NamedQuery(name = "FamilyInformation.findById", query = "SELECT e FROM FamilyInformation e WHERE e.id = :id"),
 @NamedQuery(name = "FamilyInformation.findByName", query = "SELECT e FROM FamilyInformation e WHERE e.name = :name"),
-})
+@NamedQuery(name = "FamilyInformation.findBySuperInformation", query = "SELECT e FROM FamilyInformation e WHERE e.superInformation = :superInformation"),
+@NamedQuery(name = "FamilyInformation.findSuperInformationNull", query = "SELECT e FROM FamilyInformation e WHERE e.superInformation IS NULL"),})
 public class FamilyInformation extends APatientInformation implements Serializable {
 
 	
