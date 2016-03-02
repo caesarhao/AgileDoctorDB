@@ -42,6 +42,7 @@ public class ScenarioVariable {
 		pt_Trust = scPara.tr_init;
 		pt_Dist = scPara.dist_init;
 		pt_Aggr = scPara.pTypeV.aggressive;
+		//TODO error here
 		stat_Dist = pt_Dist > scPara.Threshold_Disturb;
 		stat_Aggr = pt_Aggr > scPara.Threshold_Aggr;
 	}
