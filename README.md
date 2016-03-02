@@ -1,4 +1,4 @@
-# AgileDoctorDB
+﻿# AgileDoctorDB
 
 [![Code Climate](https://codeclimate.com/github/caesarhao/AgileDoctorDB/badges/gpa.svg)](https://codeclimate.com/github/caesarhao/AgileDoctorDB)
 [![Test Coverage](https://codeclimate.com/github/caesarhao/AgileDoctorDB/badges/coverage.svg)](https://codeclimate.com/github/caesarhao/AgileDoctorDB/coverage)
@@ -43,17 +43,16 @@ Execute command *startNetworkServer*.</del>
 
 ##Update:
 Major modifications:
-* 1:Add session state conditions. Now the engine can decide which session to enter
+<del>* 1:Add session state conditions. Now the engine can decide which session to enter
 * 2:Add default abnormal states phrases (by adding a new construction function in PatientPhrase)
 * 3:Running: If Session State is not Normal, which means patient's phrase primitif type is not "AnswerWithInfo", the corresponding AInformation can't be got.
 Other modifications
 * 1 APhrase add primitive type: Questioning
-* 2 model: PatientPhrase add findByType  but not implementing (the idea is to add query which can get patient's phrases by primitive tyê)
+* 2 model: PatientPhrase add findByType  but not implementing (the idea is to add query which can get patient's phrases by primitive type</del>
 ## TODO:
 * <del>information query method should be changed.</del>
-* 1:Patient Phrase selection should be according to Session State
-* 2:Add Levels for a dialogue session
-* 3: Run engine simulation for other dialogue session other than (Information Querying) 
+* Debug system parameter and algorithm.
+* add ms3 and test all
 * implement engine.DChar.calcFromDoctorPhrase
 * implementengine.DChar.calcDropFlag
 * implementengine.PActChar.calcFromPatientPhrase
