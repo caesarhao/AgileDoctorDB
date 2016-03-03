@@ -1217,6 +1217,11 @@ public class Controller {
 	}
 	DoctorPhrase ms1mi1p1dpOQ1 = null;
 	DoctorPhrase ms1mi1p1dpOQ2 = null; 
+	
+	//Refuse: no info
+	PatientPhrase ms1mi1p1pp3 = null;
+	PatientPhrase ms1mi1p1pp4 = null;
+	PatientPhrase ms1mi1p1pp5 = null;
 	private void fillMS1MI1Pair(){
 	
 		//Add Pair1
@@ -1287,6 +1292,36 @@ public class Controller {
 		ms1mi1p1pp2.setExpression("Alors j’ai mon ordonnance qui sera expirée bientôt.");
 		JpaManager.persist(ms1mi1p1pp2);
 		
+		PatientPhrase ms1mi1p1pp3 = new PatientPhrase();
+		ms1mi1p1pp3.setName("PatientAnsweConsultReasonDeny1");
+		ms1mi1p1pp3.setAggressiveLevel(AggressiveLevel.Neutral);
+		ms1mi1p1pp3.setClearLevel(ClearLevel.Unclear);
+		ms1mi1p1pp3.setLongLevel(LongLevel.Normal);
+		ms1mi1p1pp3.setPrimitiveType(PrimitiveType.Disagree);
+		ms1mi1p1pp3.setPhraseActor(pa1);
+		ms1mi1p1pp3.setExpression("Non pas grand-chose, attendez que je me souvienne....");
+		JpaManager.persist(ms1mi1p1pp3);
+		
+		PatientPhrase ms1mi1p1pp4 = new PatientPhrase();
+		ms1mi1p1pp4.setName("PatientAnsweConsultReasonDeny2");
+		ms1mi1p1pp4.setAggressiveLevel(AggressiveLevel.Neutral);
+		ms1mi1p1pp4.setClearLevel(ClearLevel.Unclear);
+		ms1mi1p1pp4.setLongLevel(LongLevel.Normal);
+		ms1mi1p1pp4.setPrimitiveType(PrimitiveType.Disagree);
+		ms1mi1p1pp4.setPhraseActor(pa1);
+		ms1mi1p1pp4.setExpression("Bon... euh.... je me suis dit que ça faisait longtemps que j'étais pas venu....  ");
+		JpaManager.persist(ms1mi1p1pp4);
+		
+		PatientPhrase ms1mi1p1pp5 = new PatientPhrase();
+		ms1mi1p1pp5.setName("PatientAnsweConsultReasonDeny3");
+		ms1mi1p1pp5.setAggressiveLevel(AggressiveLevel.Neutral);
+		ms1mi1p1pp5.setClearLevel(ClearLevel.Unclear);
+		ms1mi1p1pp5.setLongLevel(LongLevel.Normal);
+		ms1mi1p1pp5.setPrimitiveType(PrimitiveType.Disagree);
+		ms1mi1p1pp5.setPhraseActor(pa1);
+		ms1mi1p1pp5.setExpression("Bah non rien de spécial, le train-train quoi.");
+		JpaManager.persist(ms1mi1p1pp5);
+		
 		ms1mi1p1.getPossibleDoctorPhrases().add(ms1mi1p1dpOQ1);
 		ms1mi1p1.getPossibleDoctorPhrases().add(ms1mi1p1dpOQ2);
 		
@@ -1294,6 +1329,9 @@ public class Controller {
 		ms1mi1p1.getPossibleDoctorPhrases().add(ms1mi1p1dp2);
 		ms1mi1p1.getPossiblePatientPhrases().add(ms1mi1p1pp1);
 		ms1mi1p1.getPossiblePatientPhrases().add(ms1mi1p1pp2);
+		ms1mi1p1.getPossiblePatientPhrases().add(ms1mi1p1pp3);
+		ms1mi1p1.getPossiblePatientPhrases().add(ms1mi1p1pp4);
+		ms1mi1p1.getPossiblePatientPhrases().add(ms1mi1p1pp5);
 		ms1mi1p1.update();
 		
 
@@ -1362,6 +1400,12 @@ public class Controller {
 		//add OpenQuestion already defined for Reason 1
 		ms1mi2p1.getPossibleDoctorPhrases().add(ms1mi1p1dpOQ1);
 		ms1mi2p1.getPossibleDoctorPhrases().add(ms1mi1p1dpOQ2);
+		
+		//add Refuse Answers of patient
+		ms1mi2p1.getPossiblePatientPhrases().add(ms1mi1p1pp3);
+		ms1mi2p1.getPossiblePatientPhrases().add(ms1mi1p1pp4);
+		ms1mi2p1.getPossiblePatientPhrases().add(ms1mi1p1pp5);
+		
 		
 		ms1mi2p1.update();
 		

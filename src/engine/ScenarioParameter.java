@@ -27,12 +27,24 @@ public class ScenarioParameter {
 	public double Threshold_Disturb;
 	// threshold of aggressive
 	public double Threshold_Aggr;
+	public void setScenarioParameter(double t, double a, double c, double distInit, double trustInit,double probDU, double probR, double thresTrust, double thresDist){
+		this.pTypeV.talktive = t;
+		this.pTypeV.aggressive = a;
+		this.pTypeV.chaotic = c;
+		this.dist_init = distInit;
+		this.tr_init = trustInit;
+		this.gamma = probDU;
+		this.beta = probR;
+		this.Threshold_Aggr = thresTrust;
+		this.Threshold_Disturb = thresDist;
+		
+	}
 
 	public ScenarioParameter() {
 		pTypeV = new PatientInitialProfile();
 		pTypeV.talktive = 0.5;
 		pTypeV.aggressive = 0.2;
-		pTypeV.chaotic = 0.2;
+		pTypeV.chaotic = 0.8;
 		
 		
 		doctor = JpaManager.<DoctorActor>findAll("DoctorActor").get(0);
