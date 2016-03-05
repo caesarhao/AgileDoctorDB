@@ -1,7 +1,7 @@
 package model;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.*;
 
 import javax.persistence.*;
 
@@ -51,6 +51,11 @@ public abstract class AThing implements Serializable {
 	
 	public void delete(){
 		JpaManager.delete(this);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends AThing> List<T> findAll(Class clazz){
+		return (List<T>)JpaManager.findAll(clazz.getSimpleName());
 	}
 	
 	@Override
