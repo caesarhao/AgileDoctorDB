@@ -15,13 +15,19 @@ public class ScenarioVariable {
 	public int n;
 	// confidence value of the patient towards the doctor,
 	// pt_Trust = tr_init + sum(dActEffTi)
+	// 0-100
 	public double pt_Trust;
+	
 	// disturbance value of the patient.
 	// pt_Dist = dist_init + 10*n*c + sum(dActEffDi)
+	// 0-100
 	public double pt_Dist;
+	
 	// aggressive value of the patient.
 	// pt_Aggr = (1+a)(pt_Dist+(100-pt_Trust))/2
+	// 0-100
 	public double pt_Aggr;
+	
 	// boolean status of disturbance
 	public boolean stat_Dist;
 	// boolean status of aggressive
@@ -41,10 +47,24 @@ public class ScenarioVariable {
 		n = 0;
 		pt_Trust = scPara.tr_init;
 		pt_Dist = scPara.dist_init;
-		pt_Aggr = scPara.pTypeV.aggressive;
+		
+
+		//pt_Aggr = scPara.pTypeV.aggressive;
 		//TODO error here
-		stat_Dist = pt_Dist > scPara.Threshold_Disturb;
-		stat_Aggr = pt_Aggr > scPara.Threshold_Aggr;
+
+	}
+	
+	// the range stays in [0,100]
+	public double normalisation(double number){
+		double result;
+		if(number < 0){
+			result = 0;
+		}
+		else if (number > 100){
+			result = 100;
+		}
+		else result = number;
+		return result;
 	}
 
 	// calculate once as per the Doctor action.
@@ -54,11 +74,21 @@ public class ScenarioVariable {
 	//	Random random2 = new Random();
 		int num = 0;
 		num = random1.nextInt(101);
-	//	System.out.println("got random"+num);
+		System.out.println("got disturbance"+pt_Dist);
 		n++;
+
+		
 		pt_Trust += dp.getEffTrust();
 		pt_Dist += (10 * n * scPara.pTypeV.chaotic + dp.getEffDisturbance());
+		System.out.println(" disturbance now"+pt_Dist);
+		// Notice: aggr doesn't have intial value defined; it's based on trust and disturbance
+		
 		pt_Aggr += ((pt_Dist + (100 - pt_Trust)) / 2);
+		
+		pt_Dist = normalisation(pt_Dist);
+		pt_Trust = normalisation(pt_Trust);
+		pt_Aggr = normalisation(pt_Aggr);
+		
 		stat_Dist = pt_Dist > scPara.Threshold_Disturb;
 		stat_Aggr = pt_Aggr > scPara.Threshold_Aggr;
 		
@@ -70,7 +100,7 @@ public class ScenarioVariable {
 		int bvarDist = stat_Dist?1:0;
 		int bvarAggr = stat_Aggr?1:0;
 		
-    	p_DU = (bvarDist * 0.5 + 1) * scPara.beta /(dp.getvalClarity() + 0.0001);
+    	p_DU = (bvarDist * 0.5 + 1) * scPara.probDU * (1/(dp.getvalClarity() + 0.0001))-1;
     	p_AbNor = (bvarAggr*0.2+1)*(1-1.1*Math.pow((pt_Trust/100), 1/3));
     	//normalisation
     	if(p_DU<0) p_DU=0.0;
@@ -81,7 +111,10 @@ public class ScenarioVariable {
     	double num_percent = num/100.0;
     	
     	double num_percent2 = random1.nextInt(101)/100.0;
-    //	System.out.println("probability DU:"+ p_DU+", rand value:"+num_percent);
+    	//System.out.println(scPara.toString());
+    	
+    	//System.out.println("stat_Dist:"+ bvarDist+",probDU"+scPara.probDU+"probability DU:"+ p_DU);
+    	
     	if(num_percent < p_DU) {
     		dialSt = DialogueState.DU;
     		
@@ -92,7 +125,7 @@ public class ScenarioVariable {
     	else if(num_percent2 < p_AbNor) {
         	double num_percent3 = random1.nextInt(101)/100.0;
         	System.out.println("probability AbNor:"+ p_AbNor+", rand value:"+num_percent2);
-    		if(num_percent3 < scPara.gamma) dialSt = DialogueState.Q;
+    		if(num_percent3 < scPara.probR) dialSt = DialogueState.Q;
     		else dialSt = DialogueState.R;
     		
     	}
