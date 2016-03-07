@@ -60,8 +60,13 @@ public abstract class AThing implements Serializable {
 	*/
 	
 	@SuppressWarnings("unchecked")
-	public static <T> T findAll(Class<? extends AThing> clazz){
+	public static <T extends AThing> T findAll(Class<? extends AThing> clazz){
 		return (T)JpaManager.findAll(clazz.getSimpleName());
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T extends AThing> T findById(Class<? extends AThing> clazz, long pid){
+		return (T)JpaManager.findById(clazz, pid);
 	}
 	
 	public static <T extends AThing> T findByName(Class<? extends AThing> clazz, String pname){
