@@ -58,10 +58,25 @@ public abstract class AThing implements Serializable {
 		return (List<T>)JpaManager.findAll(clazz.getSimpleName());
 	}
 	*/
+	
 	@SuppressWarnings("unchecked")
-	public static <T> T findAll(Class clazz){
+	public static <T> T findAll(Class<? extends AThing> clazz){
 		return (T)JpaManager.findAll(clazz.getSimpleName());
 	}
+	
+	public static <T extends AThing> T findByName(Class<? extends AThing> clazz, String pname){
+		String namedQuery = clazz.getSimpleName() + ".findByName";
+		Map<String, Object> queryParams = new HashMap<String, Object>();
+		queryParams.put("name", pname);
+		List<T> res = JpaManager.<T>findWithNamedQuery(namedQuery, queryParams);
+		if (0 == res.size()){
+			return null;
+		}
+		else{
+			return res.get(0);
+		}
+	}
+	
 	@Override
 	public String toString(){
 		return name;
