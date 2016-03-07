@@ -52,12 +52,16 @@ public abstract class AThing implements Serializable {
 	public void delete(){
 		JpaManager.delete(this);
 	}
-	
+	/*
 	@SuppressWarnings("unchecked")
 	public static <T extends AThing> List<T> findAll(Class clazz){
 		return (List<T>)JpaManager.findAll(clazz.getSimpleName());
 	}
-	
+	*/
+	@SuppressWarnings("unchecked")
+	public static <T> T findAll(Class clazz){
+		return (T)JpaManager.findAll(clazz.getSimpleName());
+	}
 	@Override
 	public String toString(){
 		return name;
