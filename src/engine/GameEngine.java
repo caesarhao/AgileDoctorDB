@@ -244,13 +244,14 @@ public class GameEngine {
 
 	public void simulateBest() {
 		List<DialogueSession> selectedDSs = new ArrayList<DialogueSession>();
-
+/* new common method has been introduced, no need to search in named query now. 14/03/2016
 		String namedQuery = "MicroSequence.findByName";
 		Map<String, Object> queryParams = new HashMap<String, Object>();
 		queryParams.put("name", "Welcome");
 		List<MicroSequence> mss = JpaManager.<MicroSequence> findWithNamedQuery(namedQuery, queryParams);
-
-		for (DialogueSession ds : mss.get(0).getDialogueSessions()) {
+*/
+		MicroSequence ms = MicroSequence.findByName(MicroSequence.class, "Welcome");
+		for (DialogueSession ds : ms.getDialogueSessions()) {
 			List<Pair> pairs = ds.getPairs();
 			for (Pair pair : pairs) {
 				processPairWithBestStrategy(pair);
@@ -259,15 +260,14 @@ public class GameEngine {
 	}
 
 	public void simulateWorst() {
-
-	
-
+/* new common method has been introduced, no need to search in named query now. 14/03/2016
 		String namedQuery = "MicroSequence.findByName";
 		Map<String, Object> queryParams = new HashMap<String, Object>();
 		queryParams.put("name", "Welcome");
 		List<MicroSequence> mss = JpaManager.<MicroSequence> findWithNamedQuery(namedQuery, queryParams);
-
-		for (DialogueSession ds : mss.get(0).getDialogueSessions()) {
+*/
+		MicroSequence ms = MicroSequence.findByName(MicroSequence.class, "Welcome");
+		for (DialogueSession ds : ms.getDialogueSessions()) {
 			List<Pair> pairs = ds.getPairs();
 			for (Pair pair : pairs) {
 				processPairWithWorstStrategy(pair);
@@ -276,7 +276,6 @@ public class GameEngine {
 	}
 
 	
-
 	public List<DoctorPhrase> getDPhrasesInPairByType(List<DoctorPhrase> ps, APhrase.PrimitiveType pType) {
 		if (null == pType) {
 			return ps;
