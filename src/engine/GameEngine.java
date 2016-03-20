@@ -1,6 +1,7 @@
 package engine;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -110,8 +111,11 @@ public class GameEngine {
 					System.out.println("Patient " + bestPP.getPhraseActor() + ": " + bestPP.getExpression());
 				break;
 			case DU:
-				bestPP = getBestPatientPhrase(getPPhrasesInPairByType(pair.getPossiblePatientPhrases(),
-						APhrase.PrimitiveType.DontUnderstand));
+				//bestPP = getBestPatientPhrase(getPPhrasesInPairByType(pair.getPossiblePatientPhrases(),
+				//		APhrase.PrimitiveType.DontUnderstand));
+				bestPP = getBestPatientPhrase(
+						getPPhrasesInPairByTypeS(pair.getPossiblePatientPhrases(), new ArrayList<APhrase.PrimitiveType>(
+								Arrays.asList(APhrase.PrimitiveType.Statement, APhrase.PrimitiveType.DontUnderstand))));
 				if (bestPP == null) {
 					System.out.println("Patient " + scPara.patient + ": Je n'ai pas compris...");
 				} else {
@@ -120,8 +124,11 @@ public class GameEngine {
 				processPairWithBestStrategy(pair);
 				break;
 			case Q:
+				//bestPP = getBestPatientPhrase(
+				//		getPPhrasesInPairByType(pair.getPossiblePatientPhrases(), APhrase.PrimitiveType.Questioning));
 				bestPP = getBestPatientPhrase(
-						getPPhrasesInPairByType(pair.getPossiblePatientPhrases(), APhrase.PrimitiveType.Questioning));
+						getPPhrasesInPairByTypeS(pair.getPossiblePatientPhrases(), new ArrayList<APhrase.PrimitiveType>(
+								Arrays.asList(APhrase.PrimitiveType.Statement, APhrase.PrimitiveType.Questioning))));
 				if (bestPP == null) {
 					System.out.println("Patient " + scPara.patient + ": Pourquoi vous me demandez ça?");
 				} else{
@@ -130,8 +137,11 @@ public class GameEngine {
 				processPairWithBestStrategy(pair);
 				break;
 			case R:
+				//bestPP = getBestPatientPhrase(
+				//		getPPhrasesInPairByType(pair.getPossiblePatientPhrases(), APhrase.PrimitiveType.Disagree));
 				bestPP = getBestPatientPhrase(
-						getPPhrasesInPairByType(pair.getPossiblePatientPhrases(), APhrase.PrimitiveType.Disagree));
+						getPPhrasesInPairByTypeS(pair.getPossiblePatientPhrases(), new ArrayList<APhrase.PrimitiveType>(
+								Arrays.asList(APhrase.PrimitiveType.Statement, APhrase.PrimitiveType.Disagree))));
 				if (bestPP == null) {
 					System.out.println("Patient " + scPara.patient + ": Je ne veux plus parler de ça...");
 				} else
@@ -473,35 +483,28 @@ public class GameEngine {
 		// ArrayList<MedicalInformation>();
 		MedicalInformation currentInfo = null;
 		List<MedicalInformation> lPAllInfo = null;
-
+		String namedQuery = "";
+		Map<String, Object> queryParams = new HashMap<String, Object>();
+		/* new common method has been introduced, no need to search in named query now. 14/03/2016
 		String namedQuery = "MicroSequence.findByName";
 		Map<String, Object> queryParams = new HashMap<String, Object>();
 		queryParams.put("name", "AskReason");
 		List<MicroSequence> mss = JpaManager.<MicroSequence> findWithNamedQuery(namedQuery, queryParams);
-		lPAllInfo = mss.get(0).getMedicalInfos();
+		*/
+		MicroSequence ms = MicroSequence.findByName(MicroSequence.class, "AskReason");
+		lPAllInfo = ms.getMedicalInfos();
 
 		while (true) {
 
 			if (!isCloseQMode) { // normal mode.
 				randNum = rand.nextInt(lPAllInfo.size());
 				currentInfo = lPAllInfo.get(randNum);
-				if (scVar.sGotPatientInfo.contains(currentInfo)) {// already
-																	// got.
+				if (scVar.sGotPatientInfo.contains(currentInfo)) {// already got.
 					continue;
-				} else if (null == currentInfo.getSuperInformation()) { // root
-																		// node,
-																		// can
-																		// be
-																		// asked
-																		// directly.
-					// not only acquired in document but also asked by the
-					// doctor, can be asked here, nothing to do here.
-				} else { // leave node.
-					if (!scVar.sGotPatientInfo.contains(currentInfo.getSuperInformation())) { // parent
-																								// node
-																								// hasn't
-																								// been
-																								// got.
+				} else if (null == currentInfo.getSuperInformation()) { // root node, can be asked directly.
+					// not only acquired in document but also asked by the doctor, can be asked here, nothing to do here.
+				} else { // leaf node.
+					if (!scVar.sGotPatientInfo.contains(currentInfo.getSuperInformation())) { // parent node hasn't been got.
 						continue;
 					}
 				}
@@ -595,8 +598,11 @@ public class GameEngine {
 
 						break;
 					case DU:
-						bestPP = getBestPatientPhrase(getPPhrasesInPairByType(pair.getPossiblePatientPhrases(),
-								APhrase.PrimitiveType.DontUnderstand));
+						//bestPP = getBestPatientPhrase(getPPhrasesInPairByType(pair.getPossiblePatientPhrases(),
+						//		APhrase.PrimitiveType.DontUnderstand));
+						bestPP = getBestPatientPhrase(
+								getPPhrasesInPairByTypeS(pair.getPossiblePatientPhrases(), new ArrayList<APhrase.PrimitiveType>(
+										Arrays.asList(APhrase.PrimitiveType.Statement, APhrase.PrimitiveType.DontUnderstand))));
 						if (bestPP == null) {
 							System.out.println("Patient " + scPara.patient + ": Je n'ai pas compris...");
 						} else {
@@ -604,16 +610,22 @@ public class GameEngine {
 						}
 						break;
 					case Q:
-						bestPP = getBestPatientPhrase(getPPhrasesInPairByType(pair.getPossiblePatientPhrases(),
-								APhrase.PrimitiveType.Questioning));
+						//bestPP = getBestPatientPhrase(getPPhrasesInPairByType(pair.getPossiblePatientPhrases(),
+						//		APhrase.PrimitiveType.Questioning));
+						bestPP = getBestPatientPhrase(
+								getPPhrasesInPairByTypeS(pair.getPossiblePatientPhrases(), new ArrayList<APhrase.PrimitiveType>(
+										Arrays.asList(APhrase.PrimitiveType.Statement, APhrase.PrimitiveType.Questioning))));
 						if (bestPP == null) {
 							System.out.println("Patient " + scPara.patient + ": Pourquoi vous me demandez ça?");
 						} else
 							System.out.println("Patient " + bestPP.getPhraseActor() + ": " + bestPP.getExpression());
 						break;
 					case R:
-						bestPP = getBestPatientPhrase(getPPhrasesInPairByType(pair.getPossiblePatientPhrases(),
-								APhrase.PrimitiveType.Disagree));
+						//bestPP = getBestPatientPhrase(getPPhrasesInPairByType(pair.getPossiblePatientPhrases(),
+						//		APhrase.PrimitiveType.Disagree));
+						bestPP = getBestPatientPhrase(
+								getPPhrasesInPairByTypeS(pair.getPossiblePatientPhrases(), new ArrayList<APhrase.PrimitiveType>(
+										Arrays.asList(APhrase.PrimitiveType.Statement, APhrase.PrimitiveType.Disagree))));
 						if (bestPP == null) {
 							System.out.println("Patient " + scPara.patient + ": Je ne veux plus parler de ça...");
 						} else
@@ -663,7 +675,7 @@ public class GameEngine {
 		System.out.println("Trail 1 :A patient talkative, aggressive and chaotic, low on comprehension .");
 		System.out.println("*****trail 1*****");
 		ge.simulateBest();
-		//ge.simulateMedicalInfoBasedTest();
+		ge.simulateMedicalInfoBasedTest();
 		System.out.println("*****end trail 1*****");
 
 		/*
@@ -677,7 +689,7 @@ public class GameEngine {
 				"Trail 2 :A patient normal talkative, aggressive, clear, high on comprehension, low on trust .");
 		System.out.println("*****trail 2*****");
 		ge2.simulateBest();
-		//ge.simulateMedicalInfoBasedTest();
+		ge.simulateMedicalInfoBasedTest();
 		System.out.println("*****end trail 2*****");
 
 	}
