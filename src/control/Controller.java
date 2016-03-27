@@ -162,6 +162,7 @@ public class Controller {
 		ds1p1dp1.setName("Pair1DoctorWelcomesPatient1");
 		ds1p1dp1.setEffTrust(-5.0);
 		ds1p1dp1.setEffDisturbance(5.0);
+	
 		ds1p1dp1.setPrimitiveType(PrimitiveType.Statement);
 		ds1p1dp1.setPhraseActor(da1);
 		ds1p1dp1.setExpression("Bonjour.");

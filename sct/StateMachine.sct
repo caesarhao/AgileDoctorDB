@@ -116,7 +116,7 @@
         <layoutConstraint xsi:type="notation:Bounds" xmi:id="_MjyyQeSqEeWwmbZy7hs3sw"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" xmi:id="_MiKakeSqEeWwmbZy7hs3sw" fontName="Verdana" fillColor="15790320" lineColor="12632256"/>
-      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_MjzZUOSqEeWwmbZy7hs3sw" x="220" y="10" width="453" height="471"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_MjzZUOSqEeWwmbZy7hs3sw" x="220" y="10" width="513" height="555"/>
     </children>
     <children xsi:type="notation:Shape" xmi:id="_MkNpAOSqEeWwmbZy7hs3sw" type="StatechartText" fontName="Verdana" lineColor="4210752">
       <children xsi:type="notation:DecorationNode" xmi:id="_MkOQEOSqEeWwmbZy7hs3sw" type="StatechartName">
@@ -126,7 +126,7 @@
       <children xsi:type="notation:Shape" xmi:id="_MkOQE-SqEeWwmbZy7hs3sw" type="StatechartTextExpression" fontName="Verdana" lineColor="4210752">
         <layoutConstraint xsi:type="notation:Bounds" xmi:id="_MkOQFOSqEeWwmbZy7hs3sw"/>
       </children>
-      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_MkO3IOSqEeWwmbZy7hs3sw" x="10" y="10" width="200" height="471"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_MkO3IOSqEeWwmbZy7hs3sw" x="10" y="10" width="195" height="555"/>
     </children>
     <children xmi:id="_Bq8AEOSvEeWwmbZy7hs3sw" type="Region" element="_Bq5j0OSvEeWwmbZy7hs3sw">
       <children xsi:type="notation:DecorationNode" xmi:id="_Bq8AE-SvEeWwmbZy7hs3sw" type="RegionName">
@@ -216,7 +216,7 @@
         <layoutConstraint xsi:type="notation:Bounds" xmi:id="_Bq8AF-SvEeWwmbZy7hs3sw"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" xmi:id="_Bq8AEeSvEeWwmbZy7hs3sw" fontName="Verdana" fillColor="15790320" lineColor="12632256"/>
-      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_Bq8AEuSvEeWwmbZy7hs3sw" x="695" y="10" width="438" height="471"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_Bq8AEuSvEeWwmbZy7hs3sw" x="744" y="10" width="517" height="555"/>
     </children>
     <styles xsi:type="notation:DiagramStyle" xmi:id="_MhzOMeSqEeWwmbZy7hs3sw"/>
     <edges xmi:id="_X5fiYOSuEeWwmbZy7hs3sw" type="Transition" element="_X5b4AOSuEeWwmbZy7hs3sw" source="_Mj1OgOSqEeWwmbZy7hs3sw" target="_T8MmYOSuEeWwmbZy7hs3sw">

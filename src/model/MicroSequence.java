@@ -31,9 +31,16 @@ public class MicroSequence extends AThing implements Serializable {
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	public List<MedicalInformation> medicalInfos;
+	
+	@OneToMany(cascade=CascadeType.ALL)
+	public List<FamilyInformation> familyInfos;
 
 	public List<MedicalInformation> getMedicalInfos() {
 		return medicalInfos;
+	}
+
+	public List<FamilyInformation> getFamilyInfos() {
+		return familyInfos;
 	}
 
 	public MicroSequence() {
