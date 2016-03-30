@@ -68,10 +68,10 @@ public class BezierCurve {
 				break;
 			}
 			else if(destX < p.x){
-				right = (middle + right)/2;
+				right = middle; //(middle + right)/2;
 			}
 			else{
-				left = (middle + left)/2;
+				left = middle; //(middle + left)/2;
 			}
 		}
 		if (Math.abs(right-left) <= Limitation){

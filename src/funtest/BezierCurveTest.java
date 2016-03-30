@@ -15,8 +15,11 @@ public class BezierCurveTest {
 		BezierCurveTest test = new BezierCurveTest();
 		try {
 			System.out.println(test.bCurve.calcPointWithT(0.5));
-			Point p = test.bCurve.calcWithX(1);
-			System.out.println(p + "t: " + p.t);
+			Point p = null;
+			for (double i = 0; i < 2.1; i += 0.1){
+				p = test.bCurve.calcWithX(i);
+				System.out.println(p + "\t t: " + p.t);
+			}
 		} catch (BezierCurveException e) {
 			e.printStackTrace();
 		}
