@@ -3,7 +3,6 @@ package beziercurve;
 public class Point {
 	public double x;
 	public double y;
-	public double t = -1;
 	public static int Dimention = 2;
 	public Point() {
 		x = 0;
