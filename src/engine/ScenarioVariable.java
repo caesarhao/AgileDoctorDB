@@ -50,6 +50,11 @@ public class ScenarioVariable {
 
 	public ScenarioVariable(ScenarioParameter p_scPara) {
 		scPara = p_scPara;
+		initVariables();
+	}
+	
+	// Should be call again, if scPara changes.
+	public void initVariables(){
 		n = 0;
 		pt_Trust = scPara.init_tr;
 		pt_Dist = scPara.pTypeV.init_dist;
@@ -58,7 +63,6 @@ public class ScenarioVariable {
 
 		//pt_Aggr = scPara.pTypeV.aggressive;
 		//TODO error here
-
 	}
 	
 	// the range stays in [0,100]
