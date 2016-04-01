@@ -90,8 +90,8 @@ public class ScenarioVariable {
 
 		
 		pt_Trust += dp.getEffTrust();
-		pt_Dist += (10 * n * scPara.pTypeV.coef_chaotic + dp.getEffDisturbance());
-		System.out.println(" disturbance now"+pt_Dist);
+		pt_Dist += (1+ scPara.pTypeV.coef_chaotic)* dp.getEffDisturbance();
+
 		// Notice: aggr doesn't have intial value defined; it's based on trust and disturbance
 		
 		pt_Aggr += dp.getEffAggr()*(1+scPara.pTypeV.coef_aggressive);
@@ -102,7 +102,7 @@ public class ScenarioVariable {
 		
 		//stat_Dist = pt_Dist > scPara.Threshold_Disturb;
 		//stat_Aggr = pt_Aggr > scPara.Threshold_Aggr;
-		
+		System.out.println(" disturbance now"+pt_Dist);
 		oldDialSt = dialSt;
 		
 		// calculate State of session

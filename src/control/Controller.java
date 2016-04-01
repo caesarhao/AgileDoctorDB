@@ -162,6 +162,7 @@ public class Controller {
 		ds1p1dp1.setName("Pair1DoctorWelcomesPatient1");
 		ds1p1dp1.setEffTrust(-5.0);
 		ds1p1dp1.setEffDisturbance(5.0);
+		ds1p1dp1.setEffAggr(5.0);
 	
 		ds1p1dp1.setPrimitiveType(PrimitiveType.Statement);
 		ds1p1dp1.setPhraseActor(da1);
@@ -172,6 +173,7 @@ public class Controller {
 		ds1p1dp2.setName("Pair1DoctorWelcomesPatient2");
 		ds1p1dp2.setEffTrust(5.0);
 		ds1p1dp2.setEffDisturbance(0.0);
+		ds1p1dp2.setEffAggr(0);
 		ds1p1dp2.setPrimitiveType(PrimitiveType.Statement);
 		ds1p1dp2.setPhraseActor(da1);
 		
@@ -182,6 +184,7 @@ public class Controller {
 		ds1p1dp3.setName("Pair1DoctorWelcomesPatient3");
 		ds1p1dp3.setEffTrust(10.0);
 		ds1p1dp3.setEffDisturbance(-10.0);
+		ds1p1dp3.setEffAggr(-5.0);
 		ds1p1dp3.setPrimitiveType(PrimitiveType.Statement);
 		ds1p1dp3.setPhraseActor(da1);
 		ds1p1dp3.setExpression("Bonjour "+ pa1.getTitle() + ", je suis Docteur "+ds1p1dp3.getPhraseActor().getName());
@@ -229,7 +232,8 @@ public class Controller {
 		DoctorPhrase ds1p2dp1 = new DoctorPhrase();
 		ds1p2dp1.setName("Pair2DoctorWelcomesPatient1");
 		ds1p2dp1.setEffTrust(5.0);
-		ds1p2dp1.setEffDisturbance(0.0);
+		ds1p2dp1.setEffDisturbance(-5.0);
+		ds1p2dp1.setEffAggr(-3.0);
 		ds1p2dp1.setPrimitiveType(PrimitiveType.Statement);
 		ds1p2dp1.setPhraseActor(da1);
 		ds1p2dp1.setExpression("Vous allez bien ?");
@@ -239,6 +243,7 @@ public class Controller {
 		ds1p2dp2.setName("Pair2DoctorWelcomesPatient2");
 		ds1p2dp2.setEffTrust(0.0);
 		ds1p2dp2.setEffDisturbance(5.0);
+		ds1p2dp2.setEffAggr(3.0);
 		ds1p2dp2.setPrimitiveType(PrimitiveType.Statement);
 		ds1p2dp2.setPhraseActor(da1);	
 		ds1p2dp2.setExpression("Comment-va tu ?");
@@ -248,6 +253,7 @@ public class Controller {
 		ds1p2dp3.setName("Pair2DoctorWelcomesPatient3");
 		ds1p2dp3.setEffTrust(5.0);
 		ds1p2dp3.setEffDisturbance(-5.0);
+		ds1p2dp3.setEffAggr(-3.0);
 		ds1p2dp3.setPrimitiveType(PrimitiveType.Statement);
 		ds1p2dp3.setPhraseActor(da1);	
 		ds1p2dp3.setExpression("Comment allez-vous " + pa1.getTitle() + " ?");
@@ -312,6 +318,7 @@ public class Controller {
 		ds2p1dp1.setName("Pair1DoctorInviteSit1");
 		ds2p1dp1.setEffTrust(5.0);
 		ds2p1dp1.setEffDisturbance(-5.0);
+		ds2p1dp1.setEffAggr(-3.0);
 		ds2p1dp1.setPrimitiveType(PrimitiveType.Statement);
 		ds2p1dp1.setPhraseActor(da1);
 		ds2p1dp1.setExpression("Suivez-moi. Veuillez-vous asseoir. ");
@@ -431,7 +438,7 @@ public class Controller {
 		DoctorPhrase ds3p2dp1 = new DoctorPhrase();
 		ds3p2dp1.setName("Pair2ReplyComplainWaiting1");
 		ds3p2dp1.setEffTrust(5.0);
-		ds3p2dp1.setEffDisturbance(0.0);
+		ds3p2dp1.setEffDisturbance(-5.0);
 		ds3p2dp1.setPrimitiveType(PrimitiveType.Statement);
 		ds3p2dp1.setPhraseActor(da1);
 		ds3p2dp1.setExpression("Et oui j'ai dû passer plus de temps que prévu avec le patient précédent et en plus j'ai eu une urgence en début d'après-midi...");

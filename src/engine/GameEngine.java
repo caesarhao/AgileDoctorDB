@@ -889,8 +889,9 @@ public class GameEngine {
 		ge.scVar.initVariables();
 		System.out.println("Trail 1 :A patient talkative, aggressive and chaotic, low on comprehension .");
 		System.out.println("*****trail 1*****");
-	//	ge.simulateBest();
-		ge.simulateMedicalInfoBasedTest();
+		System.out.println(ge.scPara.toString());
+		ge.simulateBest();
+	//	ge.simulateMedicalInfoBasedTest();
 		System.out.println("*****end trail 1*****");
 
 		/*
@@ -905,8 +906,9 @@ public class GameEngine {
 		System.out.println(
 				"Trail 2 :A patient normal talkative, aggressive, clear, high on comprehension, low on trust .");
 		System.out.println("*****trail 2*****");
-	//	ge2.simulateBest();
-		ge2.simulateMedicalInfoBasedTest();
+		System.out.println(ge2.scPara.toString());
+		ge2.simulateBest();
+	//	ge2.simulateMedicalInfoBasedTest();
 		System.out.println("*****end trail 2*****");
 
 	}
