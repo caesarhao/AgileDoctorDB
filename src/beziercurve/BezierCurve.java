@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 // http://devmag.org.za/2011/04/05/bzier-curves-a-tutorial/
 public class BezierCurve {
+	private boolean bDebugMode = false;
 	private List<Point> ctrlPoints = null;
 	private int numOfControlPoints = 0;
 	public static double Limitation = 1E-3;
@@ -24,6 +25,12 @@ public class BezierCurve {
 		}
 		this.ctrlPoints = ps;
 		numOfControlPoints = this.ctrlPoints.size();
+	}
+	public boolean getBDebugMode(){
+		return bDebugMode;
+	}
+	public void setBDebugMode(boolean bDebugMode){
+		this.bDebugMode = bDebugMode;
 	}
 	public Point calcPointWithT(double t) throws BezierCurveException{
 		Point p = null;
@@ -64,18 +71,22 @@ public class BezierCurve {
 				e.printStackTrace();
 			}
 			if (Math.abs(p.x - destX) < Limitation){
-				p.t = middle;
+				if(bDebugMode){
+					System.out.println("[BezierCurveDebug] t: " + middle);
+				}
 				break;
 			}
 			else if(destX < p.x){
-				right = (middle + right)/2;
+				right = middle; //(middle + right)/2;
 			}
 			else{
-				left = (middle + left)/2;
+				left = middle; //(middle + left)/2;
 			}
 		}
 		if (Math.abs(right-left) <= Limitation){
-			p.t = (left + right)/2;
+			if(bDebugMode){
+				System.out.println("[BezierCurveDebug] t: " + (left + right)/2);
+			}
 		}
 		return p;
 	}

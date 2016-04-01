@@ -886,6 +886,7 @@ public class GameEngine {
 		 */
 
 		ge.scPara.setPatientParameter(0.8, 0.8, 0.8, 80.0, 80.0,80.0,20.0, 0.2, 0.3);
+		ge.scVar.initVariables();
 		System.out.println("Trail 1 :A patient talkative, aggressive and chaotic, low on comprehension .");
 		System.out.println("*****trail 1*****");
 	//	ge.simulateBest();
@@ -900,6 +901,7 @@ public class GameEngine {
 		
 		GameEngine ge2 = new GameEngine();
 		ge2.scPara.setPatientParameter(0.8, 0.0, 0.0, 80.0, 0.0,0.0,80.0, 0.1, 0.3);
+		ge2.scVar.initVariables();
 		System.out.println(
 				"Trail 2 :A patient normal talkative, aggressive, clear, high on comprehension, low on trust .");
 		System.out.println("*****trail 2*****");
