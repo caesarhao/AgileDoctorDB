@@ -26,9 +26,9 @@ public class EngineTest {
 			e1.printStackTrace();
 		}
 //-------------------test part start--------------------------
-		for (int i = 0; i < 10; i++){
+		for (int i = 0; i < 100; i++){
 			GameEngine ge = new GameEngine();
-			ge.getScPara().setPatientParameter((double)i/10, 0.8, 0.8, 80.0, 80.0,80.0,20.0, 0.2, 0.3);
+			ge.getScPara().setPatientParameter(0.8, 0.8, 0.8, 80.0, 80.0,80.0,20.0, 0.2, 0.3);
 			ge.getScVar().initVariables();
 			ge.simulateBest();
 			try {
