@@ -22,6 +22,22 @@ public class GameEngine {
 		scVar = new ScenarioVariable(scPara);
 		// System.out.println(scVar);
 	}
+	
+	public String outputCSVtitle(){
+		String result = "";
+		result += scPara.outputCSVtitle();
+		result += ", ";
+		result += scVar.outputCSVtitle();
+		return result;
+	}
+	
+	public String outputCSVresult(){
+		String result = "";
+		result += scPara.outputCSVresult();
+		result += ", ";
+		result += scVar.outputCSVresult();
+		return result;
+	}
 
 	public ScenarioParameter getScPara() {
 		return scPara;

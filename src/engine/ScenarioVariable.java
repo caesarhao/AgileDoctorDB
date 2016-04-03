@@ -203,4 +203,44 @@ public class ScenarioVariable {
 		rt += "--------------------------------------------------\n";
 		return rt;
 	}
+	
+	public String outputCSVtitle(){
+		String result = "";
+		result += "Doctor's Actions";
+		result += ", ";
+		result += "pt_Trust";
+		result += ", ";
+		result += "pt_Dist";
+		result += ", ";
+		result += "pt_Talk";
+		result += ", ";
+		result += "pt_Aggr";
+		result += ", ";
+		result += "stat_Aggr";
+		result += ", ";
+		result += "stat_Dist";
+		result += ", ";
+		result += "dialSt";
+		return result;
+	}
+	
+	public String outputCSVresult(){
+		String result = "";
+		result += this.n;
+		result += ", ";
+		result += this.pt_Trust;
+		result += ", ";
+		result += this.pt_Dist;
+		result += ", ";
+		result += this.pt_Talk;
+		result += ", ";
+		result += this.pt_Aggr;
+		result += ", ";
+		result += this.stat_Aggr;
+		result += ", ";
+		result += this.stat_Dist;
+		result += ", ";
+		result += this.dialSt;
+		return result;
+	}
 }

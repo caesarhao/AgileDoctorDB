@@ -84,5 +84,49 @@ public class ScenarioParameter {
 		rt += "--------------------------------------------------\n";
 		return rt;
 	}
+	
+	public String outputCSVtitle(){
+		String result = "";
+		result += "pTypeV.coef_talktive";
+		result += ", ";
+		result += "pTypeV.coef_aggressive";
+		result += ", ";
+		result += "pTypeV.coef_chaotic";
+		result += ", ";
+		result += "pTypeV.init_talk";
+		result += ", ";
+		result += "pTypeV.init_aggr";
+		result += ", ";
+		result += "pTypeV.init_dist";
+		result += ", ";
+		result += "init_tr";
+		result += ", ";
+		result += "probDU";
+		result += ", ";
+		result += "probR";
+		return result;
+	}
+	
+	public String outputCSVresult(){
+		String result = "";
+		result += pTypeV.coef_talktive;
+		result += ", ";
+		result += pTypeV.coef_aggressive;
+		result += ", ";
+		result += pTypeV.coef_chaotic;
+		result += ", ";
+		result += pTypeV.init_talk;
+		result += ", ";
+		result += pTypeV.init_aggr;
+		result += ", ";
+		result += pTypeV.init_dist;
+		result += ", ";
+		result += this.init_tr;
+		result += ", ";
+		result += this.probDU;
+		result += ", ";
+		result += this.probR;
+		return result;
+	}
 
 }
