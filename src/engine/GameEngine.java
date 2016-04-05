@@ -35,7 +35,7 @@ public class GameEngine {
 		String result = "";
 		result += scPara.outputCSVresult();
 		result += ", ";
-		result += scVar.outputCSVresult();
+		result += scVar.getResOneByOne();
 		return result;
 	}
 

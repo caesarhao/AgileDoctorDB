@@ -11,7 +11,7 @@ import engine.GameEngine;
 public class EngineTest {
 
 	public static void main(String[] args) {
-		File csvFile = new File("./enginetest.csv");
+		File csvFile = new File("./enginetest11.csv");
 		FileWriter fWriter = null;
 		
 		try {
@@ -29,6 +29,7 @@ public class EngineTest {
 		for (int i = 0; i < 100; i++){
 			GameEngine ge = new GameEngine();
 			ge.getScPara().setPatientParameter(0.8, 0.8, 0.8, 80.0, 80.0,80.0,20.0, 0.2, 0.3);
+	//		ge.getScPara().setPatientParameter(0.8, 0.0, 0.0, 80.0, 0.0,0.0,80.0, 0.1, 0.3);
 			ge.getScVar().initVariables();
 			ge.simulateBest();
 			try {

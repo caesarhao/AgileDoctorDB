@@ -10,6 +10,7 @@ public class ScenarioVariable {
 	public List<APatientInformation> sGotPatientInfoByDefault = new ArrayList<APatientInformation>(); // got by consulting to files
 	public List<APatientInformation> sGotPatientInfoAllRoot = new ArrayList<APatientInformation>(); // all got info
 	// ScenarioParameter
+	public String myRes = "";
 	public ScenarioParameter scPara;
 	// number of actions effected by the doctor.
 	public int n;
@@ -183,8 +184,11 @@ public class ScenarioVariable {
 			oldDialSt = dialSt;
 			dialSt = DialogueState.R;
 		}
+		myRes += outputCSVresult();
 	}
-	
+	public String getResOneByOne(){
+		return this.myRes;
+	}
 	// argument pp: PatientPhrase is preserved for additional usage.
 	public void calcOnce(DoctorPhrase dp, PatientPhrase pp) {
 		
