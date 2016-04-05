@@ -245,6 +245,7 @@ public class ScenarioVariable {
 		result += this.stat_Dist;
 		result += ", ";
 		result += this.dialSt;
+		result += "\n";
 		return result;
 	}
 }

@@ -25,16 +25,16 @@ public class GameEngine {
 	
 	public String outputCSVtitle(){
 		String result = "";
-		result += scPara.outputCSVtitle();
-		result += ", ";
+		//result += scPara.outputCSVtitle();
+		//result += ", ";
 		result += scVar.outputCSVtitle();
 		return result;
 	}
 	
 	public String outputCSVresult(){
 		String result = "";
-		result += scPara.outputCSVresult();
-		result += ", ";
+		//result += scPara.outputCSVresult();
+		//result += ", ";
 		result += scVar.getResOneByOne();
 		return result;
 	}
