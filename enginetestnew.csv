@@ -1,866 +1,866 @@
-Doctor's Actions; pt_Trust; pt_Dist; pt_Talk; pt_Aggr; stat_Aggr; stat_Dist; dialSt
-1; 30.0; 62.0; 80.0; 80.0; false; false; R
-2; 40.0; 44.0; 80.0; 80.0; false; false; DU
-3; 50.0; 26.0; 80.0; 80.0; false; false; END
-4; 55.0; 17.0; 80.0; 80.0; false; false; DU
-5; 60.0; 8.0; 80.0; 80.0; false; false; END
-6; 65.0; 0.0; 80.0; 80.0; false; false; N
-7; 70.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; N
-2; 35.0; 53.0; 80.0; 80.0; false; false; DU
-3; 40.0; 44.0; 80.0; 80.0; false; false; END
-4; 45.0; 35.0; 80.0; 80.0; false; false; R
-5; 50.0; 26.0; 80.0; 80.0; false; false; DU
-6; 55.0; 17.0; 80.0; 80.0; false; false; R
-7; 60.0; 8.0; 80.0; 80.0; false; false; DU
-8; 65.0; 0.0; 80.0; 80.0; false; false; N
-9; 70.0; 0.0; 80.0; 80.0; false; false; Q
-10; 75.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; R
-2; 40.0; 44.0; 80.0; 80.0; false; false; N
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; END
-5; 55.0; 17.0; 80.0; 80.0; false; false; DU
-6; 60.0; 8.0; 80.0; 80.0; false; false; END
-7; 65.0; 8.0; 80.0; 80.0; false; false; DU
-8; 70.0; 8.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; N
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; END
-5; 55.0; 17.0; 80.0; 80.0; false; false; N
-6; 60.0; 17.0; 80.0; 80.0; false; false; DU
-7; 65.0; 17.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; R
-5; 55.0; 17.0; 80.0; 80.0; false; false; DU
-6; 60.0; 8.0; 80.0; 80.0; false; false; END
-7; 65.0; 0.0; 80.0; 80.0; false; false; R
-8; 70.0; 0.0; 80.0; 80.0; false; false; N
-9; 75.0; 0.0; 80.0; 80.0; false; false; Q
-10; 80.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; N
-2; 35.0; 53.0; 80.0; 80.0; false; false; N
-3; 40.0; 44.0; 80.0; 80.0; false; false; Q
-4; 45.0; 35.0; 80.0; 80.0; false; false; DU
-5; 50.0; 26.0; 80.0; 80.0; false; false; END
-6; 55.0; 26.0; 80.0; 80.0; false; false; DU
-7; 60.0; 26.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; R
-3; 50.0; 26.0; 80.0; 80.0; false; false; DU
-4; 60.0; 8.0; 80.0; 80.0; false; false; END
-5; 65.0; 0.0; 80.0; 80.0; false; false; Q
-6; 70.0; 0.0; 80.0; 80.0; false; false; N
-7; 75.0; 0.0; 80.0; 80.0; false; false; N
-8; 80.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; R
-5; 55.0; 17.0; 80.0; 80.0; false; false; DU
-6; 60.0; 8.0; 80.0; 80.0; false; false; END
-7; 65.0; 0.0; 80.0; 80.0; false; false; N
-8; 70.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; N
-5; 55.0; 17.0; 80.0; 80.0; false; false; DU
-6; 60.0; 8.0; 80.0; 80.0; false; false; N
-7; 65.0; 8.0; 80.0; 80.0; false; false; DU
-8; 70.0; 8.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; Q
-3; 50.0; 26.0; 80.0; 80.0; false; false; DU
-4; 60.0; 8.0; 80.0; 80.0; false; false; END
-5; 65.0; 0.0; 80.0; 80.0; false; false; Q
-6; 70.0; 0.0; 80.0; 80.0; false; false; N
-7; 75.0; 0.0; 80.0; 80.0; false; false; R
-8; 80.0; 0.0; 80.0; 80.0; false; false; N
-9; 85.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; R
-3; 50.0; 26.0; 80.0; 80.0; false; false; DU
-4; 60.0; 8.0; 80.0; 80.0; false; false; END
-5; 65.0; 0.0; 80.0; 80.0; false; false; N
-6; 70.0; 0.0; 80.0; 80.0; false; false; N
-7; 75.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; END
-5; 55.0; 17.0; 80.0; 80.0; false; false; DU
-6; 60.0; 8.0; 80.0; 80.0; false; false; END
-7; 65.0; 8.0; 80.0; 80.0; false; false; DU
-8; 70.0; 8.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; END
-5; 55.0; 17.0; 80.0; 80.0; false; false; DU
-6; 60.0; 8.0; 80.0; 80.0; false; false; END
-7; 65.0; 8.0; 80.0; 80.0; false; false; DU
-8; 70.0; 8.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; N
-2; 35.0; 53.0; 80.0; 80.0; false; false; R
-3; 40.0; 44.0; 80.0; 80.0; false; false; Q
-4; 45.0; 35.0; 80.0; 80.0; false; false; R
-5; 50.0; 26.0; 80.0; 80.0; false; false; END
-6; 55.0; 17.0; 80.0; 80.0; false; false; R
-7; 60.0; 8.0; 80.0; 80.0; false; false; DU
-8; 65.0; 0.0; 80.0; 80.0; false; false; N
-9; 70.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; END
-5; 55.0; 17.0; 80.0; 80.0; false; false; DU
-6; 60.0; 8.0; 80.0; 80.0; false; false; END
-7; 65.0; 8.0; 80.0; 80.0; false; false; DU
-8; 70.0; 8.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; Q
-4; 50.0; 26.0; 80.0; 80.0; false; false; DU
-5; 55.0; 17.0; 80.0; 80.0; false; false; END
-6; 60.0; 8.0; 80.0; 80.0; false; false; DU
-7; 65.0; 0.0; 80.0; 80.0; false; false; R
-8; 70.0; 0.0; 80.0; 80.0; false; false; N
-9; 75.0; 0.0; 80.0; 80.0; false; false; Q
-10; 80.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; END
-5; 55.0; 17.0; 80.0; 80.0; false; false; DU
-6; 60.0; 8.0; 80.0; 80.0; false; false; END
-7; 65.0; 8.0; 80.0; 80.0; false; false; DU
-8; 70.0; 8.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; N
-2; 35.0; 53.0; 80.0; 80.0; false; false; DU
-3; 40.0; 44.0; 80.0; 80.0; false; false; END
-4; 45.0; 35.0; 80.0; 80.0; false; false; DU
-5; 50.0; 26.0; 80.0; 80.0; false; false; END
-6; 55.0; 26.0; 80.0; 80.0; false; false; Q
-7; 60.0; 26.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; END
-5; 55.0; 17.0; 80.0; 80.0; false; false; DU
-6; 60.0; 8.0; 80.0; 80.0; false; false; END
-7; 65.0; 8.0; 80.0; 80.0; false; false; DU
-8; 70.0; 8.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; N
-4; 50.0; 26.0; 80.0; 80.0; false; false; DU
-5; 55.0; 17.0; 80.0; 80.0; false; false; Q
-6; 60.0; 8.0; 80.0; 80.0; false; false; DU
-7; 65.0; 0.0; 80.0; 80.0; false; false; R
-8; 70.0; 0.0; 80.0; 80.0; false; false; N
-9; 75.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; R
-2; 40.0; 44.0; 80.0; 80.0; false; false; DU
-3; 50.0; 26.0; 80.0; 80.0; false; false; END
-4; 55.0; 17.0; 80.0; 80.0; false; false; DU
-5; 60.0; 8.0; 80.0; 80.0; false; false; END
-6; 65.0; 0.0; 80.0; 80.0; false; false; R
-7; 70.0; 0.0; 80.0; 80.0; false; false; N
-8; 75.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; END
-5; 55.0; 17.0; 80.0; 80.0; false; false; DU
-6; 60.0; 8.0; 80.0; 80.0; false; false; END
-7; 65.0; 8.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; Q
-5; 55.0; 17.0; 80.0; 80.0; false; false; DU
-6; 60.0; 8.0; 80.0; 80.0; false; false; END
-7; 65.0; 0.0; 80.0; 80.0; false; false; N
-8; 70.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; R
-2; 40.0; 44.0; 80.0; 80.0; false; false; DU
-3; 50.0; 26.0; 80.0; 80.0; false; false; END
-4; 55.0; 17.0; 80.0; 80.0; false; false; DU
-5; 60.0; 8.0; 80.0; 80.0; false; false; END
-6; 65.0; 0.0; 80.0; 80.0; false; false; N
-7; 70.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; N
-2; 35.0; 53.0; 80.0; 80.0; false; false; DU
-3; 40.0; 44.0; 80.0; 80.0; false; false; END
-4; 45.0; 35.0; 80.0; 80.0; false; false; DU
-5; 50.0; 26.0; 80.0; 80.0; false; false; N
-6; 55.0; 26.0; 80.0; 80.0; false; false; DU
-7; 60.0; 26.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; N
-2; 35.0; 53.0; 80.0; 80.0; false; false; R
-3; 40.0; 44.0; 80.0; 80.0; false; false; DU
-4; 45.0; 35.0; 80.0; 80.0; false; false; END
-5; 50.0; 26.0; 80.0; 80.0; false; false; R
-6; 55.0; 17.0; 80.0; 80.0; false; false; DU
-7; 60.0; 8.0; 80.0; 80.0; false; false; N
-8; 65.0; 8.0; 80.0; 80.0; false; false; DU
-9; 70.0; 8.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; N
-4; 50.0; 26.0; 80.0; 80.0; false; false; DU
-5; 55.0; 17.0; 80.0; 80.0; false; false; END
-6; 60.0; 17.0; 80.0; 80.0; false; false; DU
-7; 65.0; 17.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; END
-5; 55.0; 17.0; 80.0; 80.0; false; false; DU
-6; 60.0; 8.0; 80.0; 80.0; false; false; END
-7; 65.0; 8.0; 80.0; 80.0; false; false; DU
-8; 70.0; 8.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; END
-5; 55.0; 17.0; 80.0; 80.0; false; false; N
-6; 60.0; 17.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; N
-2; 35.0; 53.0; 80.0; 80.0; false; false; DU
-3; 40.0; 44.0; 80.0; 80.0; false; false; END
-4; 45.0; 35.0; 80.0; 80.0; false; false; N
-5; 50.0; 35.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; N
-4; 50.0; 26.0; 80.0; 80.0; false; false; DU
-5; 55.0; 17.0; 80.0; 80.0; false; false; END
-6; 60.0; 17.0; 80.0; 80.0; false; false; DU
-7; 65.0; 17.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; END
-5; 55.0; 17.0; 80.0; 80.0; false; false; R
-6; 60.0; 8.0; 80.0; 80.0; false; false; DU
-7; 65.0; 0.0; 80.0; 80.0; false; false; N
-8; 70.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; N
-2; 35.0; 53.0; 80.0; 80.0; false; false; DU
-3; 40.0; 44.0; 80.0; 80.0; false; false; N
-4; 45.0; 35.0; 80.0; 80.0; false; false; DU
-5; 50.0; 26.0; 80.0; 80.0; false; false; END
-6; 55.0; 26.0; 80.0; 80.0; false; false; DU
-7; 60.0; 26.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; END
-5; 55.0; 17.0; 80.0; 80.0; false; false; DU
-6; 60.0; 8.0; 80.0; 80.0; false; false; END
-7; 65.0; 8.0; 80.0; 80.0; false; false; DU
-8; 70.0; 8.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; N
-2; 35.0; 53.0; 80.0; 80.0; false; false; DU
-3; 40.0; 44.0; 80.0; 80.0; false; false; N
-4; 45.0; 35.0; 80.0; 80.0; false; false; R
-5; 50.0; 26.0; 80.0; 80.0; false; false; DU
-6; 55.0; 17.0; 80.0; 80.0; false; false; END
-7; 60.0; 17.0; 80.0; 80.0; false; false; DU
-8; 65.0; 17.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; N
-2; 35.0; 53.0; 80.0; 80.0; false; false; DU
-3; 40.0; 44.0; 80.0; 80.0; false; false; N
-4; 45.0; 35.0; 80.0; 80.0; false; false; DU
-5; 50.0; 26.0; 80.0; 80.0; false; false; END
-6; 55.0; 26.0; 80.0; 80.0; false; false; DU
-7; 60.0; 26.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; END
-5; 55.0; 17.0; 80.0; 80.0; false; false; DU
-6; 60.0; 8.0; 80.0; 80.0; false; false; END
-7; 65.0; 8.0; 80.0; 80.0; false; false; DU
-8; 70.0; 8.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; R
-2; 40.0; 44.0; 80.0; 80.0; false; false; DU
-3; 50.0; 26.0; 80.0; 80.0; false; false; END
-4; 55.0; 17.0; 80.0; 80.0; false; false; DU
-5; 60.0; 8.0; 80.0; 80.0; false; false; END
-6; 65.0; 0.0; 80.0; 80.0; false; false; N
-7; 70.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; R
-2; 40.0; 44.0; 80.0; 80.0; false; false; DU
-3; 50.0; 26.0; 80.0; 80.0; false; false; R
-4; 60.0; 8.0; 80.0; 80.0; false; false; DU
-5; 70.0; 0.0; 80.0; 80.0; false; false; N
-6; 75.0; 0.0; 80.0; 80.0; false; false; N
-7; 80.0; 0.0; 80.0; 80.0; false; false; N
-8; 85.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; Q
-2; 40.0; 44.0; 80.0; 80.0; false; false; N
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; END
-5; 55.0; 17.0; 80.0; 80.0; false; false; DU
-6; 60.0; 8.0; 80.0; 80.0; false; false; END
-7; 65.0; 8.0; 80.0; 80.0; false; false; DU
-8; 70.0; 8.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; Q
-4; 50.0; 26.0; 80.0; 80.0; false; false; DU
-5; 55.0; 17.0; 80.0; 80.0; false; false; END
-6; 60.0; 8.0; 80.0; 80.0; false; false; DU
-7; 65.0; 0.0; 80.0; 80.0; false; false; N
-8; 70.0; 0.0; 80.0; 80.0; false; false; R
-9; 75.0; 0.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; Q
-2; 40.0; 44.0; 80.0; 80.0; false; false; DU
-3; 50.0; 26.0; 80.0; 80.0; false; false; END
-4; 55.0; 17.0; 80.0; 80.0; false; false; DU
-5; 60.0; 8.0; 80.0; 80.0; false; false; END
-6; 65.0; 0.0; 80.0; 80.0; false; false; R
-7; 70.0; 0.0; 80.0; 80.0; false; false; END
-8; 75.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; R
-2; 40.0; 44.0; 80.0; 80.0; false; false; DU
-3; 50.0; 26.0; 80.0; 80.0; false; false; Q
-4; 60.0; 8.0; 80.0; 80.0; false; false; DU
-5; 70.0; 0.0; 80.0; 80.0; false; false; N
-6; 75.0; 0.0; 80.0; 80.0; false; false; N
-7; 80.0; 0.0; 80.0; 80.0; false; false; N
-8; 85.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; Q
-2; 40.0; 44.0; 80.0; 80.0; false; false; DU
-3; 50.0; 26.0; 80.0; 80.0; false; false; END
-4; 55.0; 17.0; 80.0; 80.0; false; false; N
-5; 60.0; 8.0; 80.0; 80.0; false; false; DU
-6; 65.0; 0.0; 80.0; 80.0; false; false; N
-7; 70.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; END
-5; 55.0; 17.0; 80.0; 80.0; false; false; DU
-6; 60.0; 8.0; 80.0; 80.0; false; false; END
-7; 65.0; 8.0; 80.0; 80.0; false; false; DU
-8; 70.0; 8.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; N
-2; 35.0; 53.0; 80.0; 80.0; false; false; DU
-3; 40.0; 44.0; 80.0; 80.0; false; false; R
-4; 45.0; 35.0; 80.0; 80.0; false; false; DU
-5; 50.0; 26.0; 80.0; 80.0; false; false; END
-6; 55.0; 17.0; 80.0; 80.0; false; false; DU
-7; 60.0; 8.0; 80.0; 80.0; false; false; END
-8; 65.0; 8.0; 80.0; 80.0; false; false; DU
-9; 70.0; 8.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; N
-2; 35.0; 53.0; 80.0; 80.0; false; false; N
-3; 40.0; 44.0; 80.0; 80.0; false; false; DU
-4; 45.0; 35.0; 80.0; 80.0; false; false; END
-5; 50.0; 35.0; 80.0; 80.0; false; false; Q
-6; 55.0; 35.0; 80.0; 80.0; false; false; DU
-7; 60.0; 35.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; N
-2; 35.0; 53.0; 80.0; 80.0; false; false; N
-3; 40.0; 44.0; 80.0; 80.0; false; false; N
-4; 45.0; 44.0; 80.0; 80.0; false; false; DU
-5; 50.0; 44.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; N
-2; 35.0; 53.0; 80.0; 80.0; false; false; N
-3; 40.0; 44.0; 80.0; 80.0; false; false; N
-4; 45.0; 44.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; N
-2; 35.0; 53.0; 80.0; 80.0; false; false; N
-3; 40.0; 44.0; 80.0; 80.0; false; false; DU
-4; 45.0; 35.0; 80.0; 80.0; false; false; END
-5; 50.0; 35.0; 80.0; 80.0; false; false; DU
-6; 55.0; 35.0; 80.0; 80.0; false; false; R
-7; 60.0; 35.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; N
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; END
-5; 55.0; 17.0; 80.0; 80.0; false; false; DU
-6; 60.0; 8.0; 80.0; 80.0; false; false; END
-7; 65.0; 8.0; 80.0; 80.0; false; false; Q
-8; 70.0; 8.0; 80.0; 80.0; false; false; DU
-9; 75.0; 8.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; N
-2; 35.0; 53.0; 80.0; 80.0; false; false; N
-3; 40.0; 44.0; 80.0; 80.0; false; false; DU
-4; 45.0; 35.0; 80.0; 80.0; false; false; END
-5; 50.0; 35.0; 80.0; 80.0; false; false; DU
-6; 55.0; 35.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; N
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; END
-5; 55.0; 17.0; 80.0; 80.0; false; false; DU
-6; 60.0; 8.0; 80.0; 80.0; false; false; END
-7; 65.0; 8.0; 80.0; 80.0; false; false; DU
-8; 70.0; 8.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; R
-5; 55.0; 17.0; 80.0; 80.0; false; false; DU
-6; 60.0; 8.0; 80.0; 80.0; false; false; END
-7; 65.0; 0.0; 80.0; 80.0; false; false; N
-8; 70.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; N
-2; 35.0; 53.0; 80.0; 80.0; false; false; N
-3; 40.0; 44.0; 80.0; 80.0; false; false; DU
-4; 45.0; 35.0; 80.0; 80.0; false; false; END
-5; 50.0; 35.0; 80.0; 80.0; false; false; DU
-6; 55.0; 35.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; R
-4; 50.0; 26.0; 80.0; 80.0; false; false; DU
-5; 55.0; 17.0; 80.0; 80.0; false; false; END
-6; 60.0; 8.0; 80.0; 80.0; false; false; DU
-7; 65.0; 0.0; 80.0; 80.0; false; false; N
-8; 70.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; N
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; END
-5; 55.0; 17.0; 80.0; 80.0; false; false; DU
-6; 60.0; 8.0; 80.0; 80.0; false; false; END
-7; 65.0; 8.0; 80.0; 80.0; false; false; DU
-8; 70.0; 8.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; N
-2; 35.0; 53.0; 80.0; 80.0; false; false; N
-3; 40.0; 44.0; 80.0; 80.0; false; false; DU
-4; 45.0; 35.0; 80.0; 80.0; false; false; END
-5; 50.0; 35.0; 80.0; 80.0; false; false; DU
-6; 55.0; 35.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; R
-2; 40.0; 44.0; 80.0; 80.0; false; false; DU
-3; 50.0; 26.0; 80.0; 80.0; false; false; END
-4; 55.0; 17.0; 80.0; 80.0; false; false; DU
-5; 60.0; 8.0; 80.0; 80.0; false; false; END
-6; 65.0; 0.0; 80.0; 80.0; false; false; N
-7; 70.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; R
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; R
-5; 55.0; 17.0; 80.0; 80.0; false; false; DU
-6; 60.0; 8.0; 80.0; 80.0; false; false; END
-7; 65.0; 0.0; 80.0; 80.0; false; false; N
-8; 70.0; 0.0; 80.0; 80.0; false; false; Q
-9; 75.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; N
-2; 35.0; 53.0; 80.0; 80.0; false; false; DU
-3; 40.0; 44.0; 80.0; 80.0; false; false; END
-4; 45.0; 35.0; 80.0; 80.0; false; false; DU
-5; 50.0; 26.0; 80.0; 80.0; false; false; END
-6; 55.0; 26.0; 80.0; 80.0; false; false; DU
-7; 60.0; 26.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; N
-5; 55.0; 17.0; 80.0; 80.0; false; false; DU
-6; 60.0; 8.0; 80.0; 80.0; false; false; END
-7; 65.0; 8.0; 80.0; 80.0; false; false; DU
-8; 70.0; 8.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; Q
-2; 40.0; 44.0; 80.0; 80.0; false; false; R
-3; 50.0; 26.0; 80.0; 80.0; false; false; DU
-4; 60.0; 8.0; 80.0; 80.0; false; false; END
-5; 65.0; 0.0; 80.0; 80.0; false; false; N
-6; 70.0; 0.0; 80.0; 80.0; false; false; N
-7; 75.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; N
-3; 45.0; 35.0; 80.0; 80.0; false; false; N
-4; 50.0; 26.0; 80.0; 80.0; false; false; DU
-5; 55.0; 17.0; 80.0; 80.0; false; false; N
-6; 60.0; 17.0; 80.0; 80.0; false; false; DU
-7; 65.0; 17.0; 80.0; 80.0; false; false; Q
-8; 70.0; 17.0; 80.0; 80.0; false; false; DU
-9; 75.0; 17.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; N
-2; 35.0; 53.0; 80.0; 80.0; false; false; N
-3; 40.0; 44.0; 80.0; 80.0; false; false; DU
-4; 45.0; 35.0; 80.0; 80.0; false; false; END
-5; 50.0; 35.0; 80.0; 80.0; false; false; DU
-6; 55.0; 35.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; N
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; END
-5; 55.0; 17.0; 80.0; 80.0; false; false; DU
-6; 60.0; 8.0; 80.0; 80.0; false; false; END
-7; 65.0; 8.0; 80.0; 80.0; false; false; DU
-8; 70.0; 8.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; N
-2; 35.0; 53.0; 80.0; 80.0; false; false; N
-3; 40.0; 44.0; 80.0; 80.0; false; false; DU
-4; 45.0; 35.0; 80.0; 80.0; false; false; END
-5; 50.0; 35.0; 80.0; 80.0; false; false; DU
-6; 55.0; 35.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; N
-2; 35.0; 53.0; 80.0; 80.0; false; false; DU
-3; 40.0; 44.0; 80.0; 80.0; false; false; N
-4; 45.0; 35.0; 80.0; 80.0; false; false; DU
-5; 50.0; 26.0; 80.0; 80.0; false; false; END
-6; 55.0; 26.0; 80.0; 80.0; false; false; DU
-7; 60.0; 26.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; Q
-5; 55.0; 17.0; 80.0; 80.0; false; false; DU
-6; 60.0; 8.0; 80.0; 80.0; false; false; END
-7; 65.0; 0.0; 80.0; 80.0; false; false; N
-8; 70.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; N
-2; 35.0; 53.0; 80.0; 80.0; false; false; R
-3; 40.0; 44.0; 80.0; 80.0; false; false; N
-4; 45.0; 35.0; 80.0; 80.0; false; false; DU
-5; 50.0; 26.0; 80.0; 80.0; false; false; END
-6; 55.0; 26.0; 80.0; 80.0; false; false; DU
-7; 60.0; 26.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; R
-5; 55.0; 17.0; 80.0; 80.0; false; false; END
-6; 60.0; 8.0; 80.0; 80.0; false; false; DU
-7; 65.0; 0.0; 80.0; 80.0; false; false; N
-8; 70.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; Q
-3; 50.0; 26.0; 80.0; 80.0; false; false; DU
-4; 60.0; 8.0; 80.0; 80.0; false; false; END
-5; 65.0; 0.0; 80.0; 80.0; false; false; N
-6; 70.0; 0.0; 80.0; 80.0; false; false; N
-7; 75.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; N
-3; 45.0; 35.0; 80.0; 80.0; false; false; N
-4; 50.0; 26.0; 80.0; 80.0; false; false; DU
-5; 55.0; 17.0; 80.0; 80.0; false; false; END
-6; 60.0; 17.0; 80.0; 80.0; false; false; DU
-7; 65.0; 17.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; END
-5; 55.0; 17.0; 80.0; 80.0; false; false; DU
-6; 60.0; 8.0; 80.0; 80.0; false; false; END
-7; 65.0; 8.0; 80.0; 80.0; false; false; DU
-8; 70.0; 8.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; N
-2; 35.0; 53.0; 80.0; 80.0; false; false; R
-3; 40.0; 44.0; 80.0; 80.0; false; false; Q
-4; 45.0; 35.0; 80.0; 80.0; false; false; DU
-5; 50.0; 26.0; 80.0; 80.0; false; false; END
-6; 55.0; 17.0; 80.0; 80.0; false; false; DU
-7; 60.0; 8.0; 80.0; 80.0; false; false; END
-8; 65.0; 8.0; 80.0; 80.0; false; false; DU
-9; 70.0; 8.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; END
-5; 55.0; 17.0; 80.0; 80.0; false; false; DU
-6; 60.0; 8.0; 80.0; 80.0; false; false; END
-7; 65.0; 8.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; Q
-2; 40.0; 44.0; 80.0; 80.0; false; false; DU
-3; 50.0; 26.0; 80.0; 80.0; false; false; END
-4; 55.0; 17.0; 80.0; 80.0; false; false; DU
-5; 60.0; 8.0; 80.0; 80.0; false; false; END
-6; 65.0; 0.0; 80.0; 80.0; false; false; N
-7; 70.0; 0.0; 80.0; 80.0; false; false; R
-8; 75.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; R
-3; 50.0; 26.0; 80.0; 80.0; false; false; DU
-4; 60.0; 8.0; 80.0; 80.0; false; false; END
-5; 65.0; 0.0; 80.0; 80.0; false; false; N
-6; 70.0; 0.0; 80.0; 80.0; false; false; N
-7; 75.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; R
-2; 40.0; 44.0; 80.0; 80.0; false; false; N
-3; 45.0; 35.0; 80.0; 80.0; false; false; R
-4; 50.0; 26.0; 80.0; 80.0; false; false; DU
-5; 55.0; 17.0; 80.0; 80.0; false; false; N
-6; 60.0; 8.0; 80.0; 80.0; false; false; DU
-7; 65.0; 0.0; 80.0; 80.0; false; false; R
-8; 70.0; 0.0; 80.0; 80.0; false; false; N
-9; 75.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; Q
-2; 40.0; 44.0; 80.0; 80.0; false; false; DU
-3; 50.0; 26.0; 80.0; 80.0; false; false; END
-4; 55.0; 17.0; 80.0; 80.0; false; false; N
-5; 60.0; 8.0; 80.0; 80.0; false; false; DU
-6; 65.0; 0.0; 80.0; 80.0; false; false; N
-7; 70.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; END
-5; 55.0; 17.0; 80.0; 80.0; false; false; DU
-6; 60.0; 8.0; 80.0; 80.0; false; false; END
-7; 65.0; 8.0; 80.0; 80.0; false; false; DU
-8; 70.0; 8.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; R
-2; 40.0; 44.0; 80.0; 80.0; false; false; DU
-3; 50.0; 26.0; 80.0; 80.0; false; false; END
-4; 55.0; 17.0; 80.0; 80.0; false; false; DU
-5; 60.0; 8.0; 80.0; 80.0; false; false; END
-6; 65.0; 0.0; 80.0; 80.0; false; false; R
-7; 70.0; 0.0; 80.0; 80.0; false; false; N
-8; 75.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; N
-2; 35.0; 53.0; 80.0; 80.0; false; false; Q
-3; 40.0; 44.0; 80.0; 80.0; false; false; DU
-4; 45.0; 35.0; 80.0; 80.0; false; false; END
-5; 50.0; 26.0; 80.0; 80.0; false; false; DU
-6; 55.0; 17.0; 80.0; 80.0; false; false; END
-7; 60.0; 17.0; 80.0; 80.0; false; false; DU
-8; 65.0; 17.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; N
-5; 55.0; 17.0; 80.0; 80.0; false; false; DU
-6; 60.0; 8.0; 80.0; 80.0; false; false; END
-7; 65.0; 8.0; 80.0; 80.0; false; false; DU
-8; 70.0; 8.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; N
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; END
-5; 55.0; 17.0; 80.0; 80.0; false; false; N
-6; 60.0; 17.0; 80.0; 80.0; false; false; DU
-7; 65.0; 17.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; R
-4; 50.0; 26.0; 80.0; 80.0; false; false; DU
-5; 55.0; 17.0; 80.0; 80.0; false; false; END
-6; 60.0; 8.0; 80.0; 80.0; false; false; DU
-7; 65.0; 0.0; 80.0; 80.0; false; false; N
-8; 70.0; 0.0; 80.0; 80.0; false; false; Q
-9; 75.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; R
-4; 50.0; 26.0; 80.0; 80.0; false; false; DU
-5; 55.0; 17.0; 80.0; 80.0; false; false; END
-6; 60.0; 8.0; 80.0; 80.0; false; false; DU
-7; 65.0; 0.0; 80.0; 80.0; false; false; R
-8; 70.0; 0.0; 80.0; 80.0; false; false; N
-9; 75.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; R
-4; 50.0; 26.0; 80.0; 80.0; false; false; DU
-5; 55.0; 17.0; 80.0; 80.0; false; false; END
-6; 60.0; 8.0; 80.0; 80.0; false; false; N
-7; 65.0; 8.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; N
-4; 50.0; 26.0; 80.0; 80.0; false; false; DU
-5; 55.0; 17.0; 80.0; 80.0; false; false; END
-6; 60.0; 17.0; 80.0; 80.0; false; false; DU
-7; 65.0; 17.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; N
-2; 35.0; 53.0; 80.0; 80.0; false; false; DU
-3; 40.0; 44.0; 80.0; 80.0; false; false; END
-4; 45.0; 35.0; 80.0; 80.0; false; false; N
-5; 50.0; 35.0; 80.0; 80.0; false; false; DU
-6; 55.0; 35.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; END
-5; 55.0; 17.0; 80.0; 80.0; false; false; DU
-6; 60.0; 8.0; 80.0; 80.0; false; false; END
-7; 65.0; 8.0; 80.0; 80.0; false; false; DU
-8; 70.0; 8.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; Q
-2; 40.0; 44.0; 80.0; 80.0; false; false; DU
-3; 50.0; 26.0; 80.0; 80.0; false; false; END
-4; 55.0; 17.0; 80.0; 80.0; false; false; DU
-5; 60.0; 8.0; 80.0; 80.0; false; false; END
-6; 65.0; 0.0; 80.0; 80.0; false; false; R
-7; 70.0; 0.0; 80.0; 80.0; false; false; N
-8; 75.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; N
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; END
-5; 55.0; 17.0; 80.0; 80.0; false; false; DU
-6; 60.0; 8.0; 80.0; 80.0; false; false; END
-7; 65.0; 8.0; 80.0; 80.0; false; false; DU
-8; 70.0; 8.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; N
-4; 50.0; 26.0; 80.0; 80.0; false; false; DU
-5; 55.0; 17.0; 80.0; 80.0; false; false; END
-6; 60.0; 17.0; 80.0; 80.0; false; false; DU
-7; 65.0; 17.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; END
-5; 55.0; 17.0; 80.0; 80.0; false; false; DU
-6; 60.0; 8.0; 80.0; 80.0; false; false; END
-7; 65.0; 8.0; 80.0; 80.0; false; false; DU
-8; 70.0; 8.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; N
-3; 45.0; 35.0; 80.0; 80.0; false; false; Q
-4; 50.0; 26.0; 80.0; 80.0; false; false; DU
-5; 55.0; 17.0; 80.0; 80.0; false; false; END
-6; 60.0; 8.0; 80.0; 80.0; false; false; DU
-7; 65.0; 0.0; 80.0; 80.0; false; false; N
-8; 70.0; 0.0; 80.0; 80.0; false; false; N
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; N
-2; 35.0; 53.0; 80.0; 80.0; false; false; DU
-3; 40.0; 44.0; 80.0; 80.0; false; false; R
-4; 45.0; 35.0; 80.0; 80.0; false; false; DU
-5; 50.0; 26.0; 80.0; 80.0; false; false; END
-6; 55.0; 17.0; 80.0; 80.0; false; false; DU
-7; 60.0; 8.0; 80.0; 80.0; false; false; END
-8; 65.0; 8.0; 80.0; 80.0; false; false; DU
-9; 70.0; 8.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; N
-3; 45.0; 35.0; 80.0; 80.0; false; false; N
-4; 50.0; 26.0; 80.0; 80.0; false; false; R
-5; 55.0; 17.0; 80.0; 80.0; false; false; DU
-6; 60.0; 8.0; 80.0; 80.0; false; false; END
-7; 65.0; 8.0; 80.0; 80.0; false; false; DU
-8; 70.0; 8.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; DU
-2; 40.0; 44.0; 80.0; 80.0; false; false; END
-3; 45.0; 35.0; 80.0; 80.0; false; false; DU
-4; 50.0; 26.0; 80.0; 80.0; false; false; END
-5; 55.0; 17.0; 80.0; 80.0; false; false; DU
-6; 60.0; 8.0; 80.0; 80.0; false; false; END
-7; 65.0; 8.0; 80.0; 80.0; false; false; DU
-8; 70.0; 8.0; 80.0; 80.0; false; false; END
-;;;;;;;
-1; 30.0; 62.0; 80.0; 80.0; false; false; R
-2; 40.0; 44.0; 80.0; 80.0; false; false; DU
-3; 50.0; 26.0; 80.0; 80.0; false; false; R
-4; 60.0; 8.0; 80.0; 80.0; false; false; DU
-5; 70.0; 0.0; 80.0; 80.0; false; false; N
-6; 75.0; 0.0; 80.0; 80.0; false; false; N
-7; 80.0; 0.0; 80.0; 80.0; false; false; N
-8; 85.0; 0.0; 80.0; 80.0; false; false; N
+Doctor's Actions, pt_Trust, pt_Dist, pt_Talk, pt_Aggr, stat_Aggr, stat_Dist, dialSt
+1, 30.0, 62.0, 80.0, 80.0, false, false, R
+2, 40.0, 44.0, 80.0, 80.0, false, false, DU
+3, 50.0, 26.0, 80.0, 80.0, false, false, END
+4, 55.0, 17.0, 80.0, 80.0, false, false, DU
+5, 60.0, 8.0, 80.0, 80.0, false, false, END
+6, 65.0, 0.0, 80.0, 80.0, false, false, N
+7, 70.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, N
+2, 35.0, 53.0, 80.0, 80.0, false, false, DU
+3, 40.0, 44.0, 80.0, 80.0, false, false, END
+4, 45.0, 35.0, 80.0, 80.0, false, false, R
+5, 50.0, 26.0, 80.0, 80.0, false, false, DU
+6, 55.0, 17.0, 80.0, 80.0, false, false, R
+7, 60.0, 8.0, 80.0, 80.0, false, false, DU
+8, 65.0, 0.0, 80.0, 80.0, false, false, N
+9, 70.0, 0.0, 80.0, 80.0, false, false, Q
+10, 75.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, R
+2, 40.0, 44.0, 80.0, 80.0, false, false, N
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, END
+5, 55.0, 17.0, 80.0, 80.0, false, false, DU
+6, 60.0, 8.0, 80.0, 80.0, false, false, END
+7, 65.0, 8.0, 80.0, 80.0, false, false, DU
+8, 70.0, 8.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, N
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, END
+5, 55.0, 17.0, 80.0, 80.0, false, false, N
+6, 60.0, 17.0, 80.0, 80.0, false, false, DU
+7, 65.0, 17.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, R
+5, 55.0, 17.0, 80.0, 80.0, false, false, DU
+6, 60.0, 8.0, 80.0, 80.0, false, false, END
+7, 65.0, 0.0, 80.0, 80.0, false, false, R
+8, 70.0, 0.0, 80.0, 80.0, false, false, N
+9, 75.0, 0.0, 80.0, 80.0, false, false, Q
+10, 80.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, N
+2, 35.0, 53.0, 80.0, 80.0, false, false, N
+3, 40.0, 44.0, 80.0, 80.0, false, false, Q
+4, 45.0, 35.0, 80.0, 80.0, false, false, DU
+5, 50.0, 26.0, 80.0, 80.0, false, false, END
+6, 55.0, 26.0, 80.0, 80.0, false, false, DU
+7, 60.0, 26.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, R
+3, 50.0, 26.0, 80.0, 80.0, false, false, DU
+4, 60.0, 8.0, 80.0, 80.0, false, false, END
+5, 65.0, 0.0, 80.0, 80.0, false, false, Q
+6, 70.0, 0.0, 80.0, 80.0, false, false, N
+7, 75.0, 0.0, 80.0, 80.0, false, false, N
+8, 80.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, R
+5, 55.0, 17.0, 80.0, 80.0, false, false, DU
+6, 60.0, 8.0, 80.0, 80.0, false, false, END
+7, 65.0, 0.0, 80.0, 80.0, false, false, N
+8, 70.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, N
+5, 55.0, 17.0, 80.0, 80.0, false, false, DU
+6, 60.0, 8.0, 80.0, 80.0, false, false, N
+7, 65.0, 8.0, 80.0, 80.0, false, false, DU
+8, 70.0, 8.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, Q
+3, 50.0, 26.0, 80.0, 80.0, false, false, DU
+4, 60.0, 8.0, 80.0, 80.0, false, false, END
+5, 65.0, 0.0, 80.0, 80.0, false, false, Q
+6, 70.0, 0.0, 80.0, 80.0, false, false, N
+7, 75.0, 0.0, 80.0, 80.0, false, false, R
+8, 80.0, 0.0, 80.0, 80.0, false, false, N
+9, 85.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, R
+3, 50.0, 26.0, 80.0, 80.0, false, false, DU
+4, 60.0, 8.0, 80.0, 80.0, false, false, END
+5, 65.0, 0.0, 80.0, 80.0, false, false, N
+6, 70.0, 0.0, 80.0, 80.0, false, false, N
+7, 75.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, END
+5, 55.0, 17.0, 80.0, 80.0, false, false, DU
+6, 60.0, 8.0, 80.0, 80.0, false, false, END
+7, 65.0, 8.0, 80.0, 80.0, false, false, DU
+8, 70.0, 8.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, END
+5, 55.0, 17.0, 80.0, 80.0, false, false, DU
+6, 60.0, 8.0, 80.0, 80.0, false, false, END
+7, 65.0, 8.0, 80.0, 80.0, false, false, DU
+8, 70.0, 8.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, N
+2, 35.0, 53.0, 80.0, 80.0, false, false, R
+3, 40.0, 44.0, 80.0, 80.0, false, false, Q
+4, 45.0, 35.0, 80.0, 80.0, false, false, R
+5, 50.0, 26.0, 80.0, 80.0, false, false, END
+6, 55.0, 17.0, 80.0, 80.0, false, false, R
+7, 60.0, 8.0, 80.0, 80.0, false, false, DU
+8, 65.0, 0.0, 80.0, 80.0, false, false, N
+9, 70.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, END
+5, 55.0, 17.0, 80.0, 80.0, false, false, DU
+6, 60.0, 8.0, 80.0, 80.0, false, false, END
+7, 65.0, 8.0, 80.0, 80.0, false, false, DU
+8, 70.0, 8.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, Q
+4, 50.0, 26.0, 80.0, 80.0, false, false, DU
+5, 55.0, 17.0, 80.0, 80.0, false, false, END
+6, 60.0, 8.0, 80.0, 80.0, false, false, DU
+7, 65.0, 0.0, 80.0, 80.0, false, false, R
+8, 70.0, 0.0, 80.0, 80.0, false, false, N
+9, 75.0, 0.0, 80.0, 80.0, false, false, Q
+10, 80.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, END
+5, 55.0, 17.0, 80.0, 80.0, false, false, DU
+6, 60.0, 8.0, 80.0, 80.0, false, false, END
+7, 65.0, 8.0, 80.0, 80.0, false, false, DU
+8, 70.0, 8.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, N
+2, 35.0, 53.0, 80.0, 80.0, false, false, DU
+3, 40.0, 44.0, 80.0, 80.0, false, false, END
+4, 45.0, 35.0, 80.0, 80.0, false, false, DU
+5, 50.0, 26.0, 80.0, 80.0, false, false, END
+6, 55.0, 26.0, 80.0, 80.0, false, false, Q
+7, 60.0, 26.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, END
+5, 55.0, 17.0, 80.0, 80.0, false, false, DU
+6, 60.0, 8.0, 80.0, 80.0, false, false, END
+7, 65.0, 8.0, 80.0, 80.0, false, false, DU
+8, 70.0, 8.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, N
+4, 50.0, 26.0, 80.0, 80.0, false, false, DU
+5, 55.0, 17.0, 80.0, 80.0, false, false, Q
+6, 60.0, 8.0, 80.0, 80.0, false, false, DU
+7, 65.0, 0.0, 80.0, 80.0, false, false, R
+8, 70.0, 0.0, 80.0, 80.0, false, false, N
+9, 75.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, R
+2, 40.0, 44.0, 80.0, 80.0, false, false, DU
+3, 50.0, 26.0, 80.0, 80.0, false, false, END
+4, 55.0, 17.0, 80.0, 80.0, false, false, DU
+5, 60.0, 8.0, 80.0, 80.0, false, false, END
+6, 65.0, 0.0, 80.0, 80.0, false, false, R
+7, 70.0, 0.0, 80.0, 80.0, false, false, N
+8, 75.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, END
+5, 55.0, 17.0, 80.0, 80.0, false, false, DU
+6, 60.0, 8.0, 80.0, 80.0, false, false, END
+7, 65.0, 8.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, Q
+5, 55.0, 17.0, 80.0, 80.0, false, false, DU
+6, 60.0, 8.0, 80.0, 80.0, false, false, END
+7, 65.0, 0.0, 80.0, 80.0, false, false, N
+8, 70.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, R
+2, 40.0, 44.0, 80.0, 80.0, false, false, DU
+3, 50.0, 26.0, 80.0, 80.0, false, false, END
+4, 55.0, 17.0, 80.0, 80.0, false, false, DU
+5, 60.0, 8.0, 80.0, 80.0, false, false, END
+6, 65.0, 0.0, 80.0, 80.0, false, false, N
+7, 70.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, N
+2, 35.0, 53.0, 80.0, 80.0, false, false, DU
+3, 40.0, 44.0, 80.0, 80.0, false, false, END
+4, 45.0, 35.0, 80.0, 80.0, false, false, DU
+5, 50.0, 26.0, 80.0, 80.0, false, false, N
+6, 55.0, 26.0, 80.0, 80.0, false, false, DU
+7, 60.0, 26.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, N
+2, 35.0, 53.0, 80.0, 80.0, false, false, R
+3, 40.0, 44.0, 80.0, 80.0, false, false, DU
+4, 45.0, 35.0, 80.0, 80.0, false, false, END
+5, 50.0, 26.0, 80.0, 80.0, false, false, R
+6, 55.0, 17.0, 80.0, 80.0, false, false, DU
+7, 60.0, 8.0, 80.0, 80.0, false, false, N
+8, 65.0, 8.0, 80.0, 80.0, false, false, DU
+9, 70.0, 8.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, N
+4, 50.0, 26.0, 80.0, 80.0, false, false, DU
+5, 55.0, 17.0, 80.0, 80.0, false, false, END
+6, 60.0, 17.0, 80.0, 80.0, false, false, DU
+7, 65.0, 17.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, END
+5, 55.0, 17.0, 80.0, 80.0, false, false, DU
+6, 60.0, 8.0, 80.0, 80.0, false, false, END
+7, 65.0, 8.0, 80.0, 80.0, false, false, DU
+8, 70.0, 8.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, END
+5, 55.0, 17.0, 80.0, 80.0, false, false, N
+6, 60.0, 17.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, N
+2, 35.0, 53.0, 80.0, 80.0, false, false, DU
+3, 40.0, 44.0, 80.0, 80.0, false, false, END
+4, 45.0, 35.0, 80.0, 80.0, false, false, N
+5, 50.0, 35.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, N
+4, 50.0, 26.0, 80.0, 80.0, false, false, DU
+5, 55.0, 17.0, 80.0, 80.0, false, false, END
+6, 60.0, 17.0, 80.0, 80.0, false, false, DU
+7, 65.0, 17.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, END
+5, 55.0, 17.0, 80.0, 80.0, false, false, R
+6, 60.0, 8.0, 80.0, 80.0, false, false, DU
+7, 65.0, 0.0, 80.0, 80.0, false, false, N
+8, 70.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, N
+2, 35.0, 53.0, 80.0, 80.0, false, false, DU
+3, 40.0, 44.0, 80.0, 80.0, false, false, N
+4, 45.0, 35.0, 80.0, 80.0, false, false, DU
+5, 50.0, 26.0, 80.0, 80.0, false, false, END
+6, 55.0, 26.0, 80.0, 80.0, false, false, DU
+7, 60.0, 26.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, END
+5, 55.0, 17.0, 80.0, 80.0, false, false, DU
+6, 60.0, 8.0, 80.0, 80.0, false, false, END
+7, 65.0, 8.0, 80.0, 80.0, false, false, DU
+8, 70.0, 8.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, N
+2, 35.0, 53.0, 80.0, 80.0, false, false, DU
+3, 40.0, 44.0, 80.0, 80.0, false, false, N
+4, 45.0, 35.0, 80.0, 80.0, false, false, R
+5, 50.0, 26.0, 80.0, 80.0, false, false, DU
+6, 55.0, 17.0, 80.0, 80.0, false, false, END
+7, 60.0, 17.0, 80.0, 80.0, false, false, DU
+8, 65.0, 17.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, N
+2, 35.0, 53.0, 80.0, 80.0, false, false, DU
+3, 40.0, 44.0, 80.0, 80.0, false, false, N
+4, 45.0, 35.0, 80.0, 80.0, false, false, DU
+5, 50.0, 26.0, 80.0, 80.0, false, false, END
+6, 55.0, 26.0, 80.0, 80.0, false, false, DU
+7, 60.0, 26.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, END
+5, 55.0, 17.0, 80.0, 80.0, false, false, DU
+6, 60.0, 8.0, 80.0, 80.0, false, false, END
+7, 65.0, 8.0, 80.0, 80.0, false, false, DU
+8, 70.0, 8.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, R
+2, 40.0, 44.0, 80.0, 80.0, false, false, DU
+3, 50.0, 26.0, 80.0, 80.0, false, false, END
+4, 55.0, 17.0, 80.0, 80.0, false, false, DU
+5, 60.0, 8.0, 80.0, 80.0, false, false, END
+6, 65.0, 0.0, 80.0, 80.0, false, false, N
+7, 70.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, R
+2, 40.0, 44.0, 80.0, 80.0, false, false, DU
+3, 50.0, 26.0, 80.0, 80.0, false, false, R
+4, 60.0, 8.0, 80.0, 80.0, false, false, DU
+5, 70.0, 0.0, 80.0, 80.0, false, false, N
+6, 75.0, 0.0, 80.0, 80.0, false, false, N
+7, 80.0, 0.0, 80.0, 80.0, false, false, N
+8, 85.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, Q
+2, 40.0, 44.0, 80.0, 80.0, false, false, N
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, END
+5, 55.0, 17.0, 80.0, 80.0, false, false, DU
+6, 60.0, 8.0, 80.0, 80.0, false, false, END
+7, 65.0, 8.0, 80.0, 80.0, false, false, DU
+8, 70.0, 8.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, Q
+4, 50.0, 26.0, 80.0, 80.0, false, false, DU
+5, 55.0, 17.0, 80.0, 80.0, false, false, END
+6, 60.0, 8.0, 80.0, 80.0, false, false, DU
+7, 65.0, 0.0, 80.0, 80.0, false, false, N
+8, 70.0, 0.0, 80.0, 80.0, false, false, R
+9, 75.0, 0.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, Q
+2, 40.0, 44.0, 80.0, 80.0, false, false, DU
+3, 50.0, 26.0, 80.0, 80.0, false, false, END
+4, 55.0, 17.0, 80.0, 80.0, false, false, DU
+5, 60.0, 8.0, 80.0, 80.0, false, false, END
+6, 65.0, 0.0, 80.0, 80.0, false, false, R
+7, 70.0, 0.0, 80.0, 80.0, false, false, END
+8, 75.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, R
+2, 40.0, 44.0, 80.0, 80.0, false, false, DU
+3, 50.0, 26.0, 80.0, 80.0, false, false, Q
+4, 60.0, 8.0, 80.0, 80.0, false, false, DU
+5, 70.0, 0.0, 80.0, 80.0, false, false, N
+6, 75.0, 0.0, 80.0, 80.0, false, false, N
+7, 80.0, 0.0, 80.0, 80.0, false, false, N
+8, 85.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, Q
+2, 40.0, 44.0, 80.0, 80.0, false, false, DU
+3, 50.0, 26.0, 80.0, 80.0, false, false, END
+4, 55.0, 17.0, 80.0, 80.0, false, false, N
+5, 60.0, 8.0, 80.0, 80.0, false, false, DU
+6, 65.0, 0.0, 80.0, 80.0, false, false, N
+7, 70.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, END
+5, 55.0, 17.0, 80.0, 80.0, false, false, DU
+6, 60.0, 8.0, 80.0, 80.0, false, false, END
+7, 65.0, 8.0, 80.0, 80.0, false, false, DU
+8, 70.0, 8.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, N
+2, 35.0, 53.0, 80.0, 80.0, false, false, DU
+3, 40.0, 44.0, 80.0, 80.0, false, false, R
+4, 45.0, 35.0, 80.0, 80.0, false, false, DU
+5, 50.0, 26.0, 80.0, 80.0, false, false, END
+6, 55.0, 17.0, 80.0, 80.0, false, false, DU
+7, 60.0, 8.0, 80.0, 80.0, false, false, END
+8, 65.0, 8.0, 80.0, 80.0, false, false, DU
+9, 70.0, 8.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, N
+2, 35.0, 53.0, 80.0, 80.0, false, false, N
+3, 40.0, 44.0, 80.0, 80.0, false, false, DU
+4, 45.0, 35.0, 80.0, 80.0, false, false, END
+5, 50.0, 35.0, 80.0, 80.0, false, false, Q
+6, 55.0, 35.0, 80.0, 80.0, false, false, DU
+7, 60.0, 35.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, N
+2, 35.0, 53.0, 80.0, 80.0, false, false, N
+3, 40.0, 44.0, 80.0, 80.0, false, false, N
+4, 45.0, 44.0, 80.0, 80.0, false, false, DU
+5, 50.0, 44.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, N
+2, 35.0, 53.0, 80.0, 80.0, false, false, N
+3, 40.0, 44.0, 80.0, 80.0, false, false, N
+4, 45.0, 44.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, N
+2, 35.0, 53.0, 80.0, 80.0, false, false, N
+3, 40.0, 44.0, 80.0, 80.0, false, false, DU
+4, 45.0, 35.0, 80.0, 80.0, false, false, END
+5, 50.0, 35.0, 80.0, 80.0, false, false, DU
+6, 55.0, 35.0, 80.0, 80.0, false, false, R
+7, 60.0, 35.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, N
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, END
+5, 55.0, 17.0, 80.0, 80.0, false, false, DU
+6, 60.0, 8.0, 80.0, 80.0, false, false, END
+7, 65.0, 8.0, 80.0, 80.0, false, false, Q
+8, 70.0, 8.0, 80.0, 80.0, false, false, DU
+9, 75.0, 8.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, N
+2, 35.0, 53.0, 80.0, 80.0, false, false, N
+3, 40.0, 44.0, 80.0, 80.0, false, false, DU
+4, 45.0, 35.0, 80.0, 80.0, false, false, END
+5, 50.0, 35.0, 80.0, 80.0, false, false, DU
+6, 55.0, 35.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, N
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, END
+5, 55.0, 17.0, 80.0, 80.0, false, false, DU
+6, 60.0, 8.0, 80.0, 80.0, false, false, END
+7, 65.0, 8.0, 80.0, 80.0, false, false, DU
+8, 70.0, 8.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, R
+5, 55.0, 17.0, 80.0, 80.0, false, false, DU
+6, 60.0, 8.0, 80.0, 80.0, false, false, END
+7, 65.0, 0.0, 80.0, 80.0, false, false, N
+8, 70.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, N
+2, 35.0, 53.0, 80.0, 80.0, false, false, N
+3, 40.0, 44.0, 80.0, 80.0, false, false, DU
+4, 45.0, 35.0, 80.0, 80.0, false, false, END
+5, 50.0, 35.0, 80.0, 80.0, false, false, DU
+6, 55.0, 35.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, R
+4, 50.0, 26.0, 80.0, 80.0, false, false, DU
+5, 55.0, 17.0, 80.0, 80.0, false, false, END
+6, 60.0, 8.0, 80.0, 80.0, false, false, DU
+7, 65.0, 0.0, 80.0, 80.0, false, false, N
+8, 70.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, N
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, END
+5, 55.0, 17.0, 80.0, 80.0, false, false, DU
+6, 60.0, 8.0, 80.0, 80.0, false, false, END
+7, 65.0, 8.0, 80.0, 80.0, false, false, DU
+8, 70.0, 8.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, N
+2, 35.0, 53.0, 80.0, 80.0, false, false, N
+3, 40.0, 44.0, 80.0, 80.0, false, false, DU
+4, 45.0, 35.0, 80.0, 80.0, false, false, END
+5, 50.0, 35.0, 80.0, 80.0, false, false, DU
+6, 55.0, 35.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, R
+2, 40.0, 44.0, 80.0, 80.0, false, false, DU
+3, 50.0, 26.0, 80.0, 80.0, false, false, END
+4, 55.0, 17.0, 80.0, 80.0, false, false, DU
+5, 60.0, 8.0, 80.0, 80.0, false, false, END
+6, 65.0, 0.0, 80.0, 80.0, false, false, N
+7, 70.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, R
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, R
+5, 55.0, 17.0, 80.0, 80.0, false, false, DU
+6, 60.0, 8.0, 80.0, 80.0, false, false, END
+7, 65.0, 0.0, 80.0, 80.0, false, false, N
+8, 70.0, 0.0, 80.0, 80.0, false, false, Q
+9, 75.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, N
+2, 35.0, 53.0, 80.0, 80.0, false, false, DU
+3, 40.0, 44.0, 80.0, 80.0, false, false, END
+4, 45.0, 35.0, 80.0, 80.0, false, false, DU
+5, 50.0, 26.0, 80.0, 80.0, false, false, END
+6, 55.0, 26.0, 80.0, 80.0, false, false, DU
+7, 60.0, 26.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, N
+5, 55.0, 17.0, 80.0, 80.0, false, false, DU
+6, 60.0, 8.0, 80.0, 80.0, false, false, END
+7, 65.0, 8.0, 80.0, 80.0, false, false, DU
+8, 70.0, 8.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, Q
+2, 40.0, 44.0, 80.0, 80.0, false, false, R
+3, 50.0, 26.0, 80.0, 80.0, false, false, DU
+4, 60.0, 8.0, 80.0, 80.0, false, false, END
+5, 65.0, 0.0, 80.0, 80.0, false, false, N
+6, 70.0, 0.0, 80.0, 80.0, false, false, N
+7, 75.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, N
+3, 45.0, 35.0, 80.0, 80.0, false, false, N
+4, 50.0, 26.0, 80.0, 80.0, false, false, DU
+5, 55.0, 17.0, 80.0, 80.0, false, false, N
+6, 60.0, 17.0, 80.0, 80.0, false, false, DU
+7, 65.0, 17.0, 80.0, 80.0, false, false, Q
+8, 70.0, 17.0, 80.0, 80.0, false, false, DU
+9, 75.0, 17.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, N
+2, 35.0, 53.0, 80.0, 80.0, false, false, N
+3, 40.0, 44.0, 80.0, 80.0, false, false, DU
+4, 45.0, 35.0, 80.0, 80.0, false, false, END
+5, 50.0, 35.0, 80.0, 80.0, false, false, DU
+6, 55.0, 35.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, N
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, END
+5, 55.0, 17.0, 80.0, 80.0, false, false, DU
+6, 60.0, 8.0, 80.0, 80.0, false, false, END
+7, 65.0, 8.0, 80.0, 80.0, false, false, DU
+8, 70.0, 8.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, N
+2, 35.0, 53.0, 80.0, 80.0, false, false, N
+3, 40.0, 44.0, 80.0, 80.0, false, false, DU
+4, 45.0, 35.0, 80.0, 80.0, false, false, END
+5, 50.0, 35.0, 80.0, 80.0, false, false, DU
+6, 55.0, 35.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, N
+2, 35.0, 53.0, 80.0, 80.0, false, false, DU
+3, 40.0, 44.0, 80.0, 80.0, false, false, N
+4, 45.0, 35.0, 80.0, 80.0, false, false, DU
+5, 50.0, 26.0, 80.0, 80.0, false, false, END
+6, 55.0, 26.0, 80.0, 80.0, false, false, DU
+7, 60.0, 26.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, Q
+5, 55.0, 17.0, 80.0, 80.0, false, false, DU
+6, 60.0, 8.0, 80.0, 80.0, false, false, END
+7, 65.0, 0.0, 80.0, 80.0, false, false, N
+8, 70.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, N
+2, 35.0, 53.0, 80.0, 80.0, false, false, R
+3, 40.0, 44.0, 80.0, 80.0, false, false, N
+4, 45.0, 35.0, 80.0, 80.0, false, false, DU
+5, 50.0, 26.0, 80.0, 80.0, false, false, END
+6, 55.0, 26.0, 80.0, 80.0, false, false, DU
+7, 60.0, 26.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, R
+5, 55.0, 17.0, 80.0, 80.0, false, false, END
+6, 60.0, 8.0, 80.0, 80.0, false, false, DU
+7, 65.0, 0.0, 80.0, 80.0, false, false, N
+8, 70.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, Q
+3, 50.0, 26.0, 80.0, 80.0, false, false, DU
+4, 60.0, 8.0, 80.0, 80.0, false, false, END
+5, 65.0, 0.0, 80.0, 80.0, false, false, N
+6, 70.0, 0.0, 80.0, 80.0, false, false, N
+7, 75.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, N
+3, 45.0, 35.0, 80.0, 80.0, false, false, N
+4, 50.0, 26.0, 80.0, 80.0, false, false, DU
+5, 55.0, 17.0, 80.0, 80.0, false, false, END
+6, 60.0, 17.0, 80.0, 80.0, false, false, DU
+7, 65.0, 17.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, END
+5, 55.0, 17.0, 80.0, 80.0, false, false, DU
+6, 60.0, 8.0, 80.0, 80.0, false, false, END
+7, 65.0, 8.0, 80.0, 80.0, false, false, DU
+8, 70.0, 8.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, N
+2, 35.0, 53.0, 80.0, 80.0, false, false, R
+3, 40.0, 44.0, 80.0, 80.0, false, false, Q
+4, 45.0, 35.0, 80.0, 80.0, false, false, DU
+5, 50.0, 26.0, 80.0, 80.0, false, false, END
+6, 55.0, 17.0, 80.0, 80.0, false, false, DU
+7, 60.0, 8.0, 80.0, 80.0, false, false, END
+8, 65.0, 8.0, 80.0, 80.0, false, false, DU
+9, 70.0, 8.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, END
+5, 55.0, 17.0, 80.0, 80.0, false, false, DU
+6, 60.0, 8.0, 80.0, 80.0, false, false, END
+7, 65.0, 8.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, Q
+2, 40.0, 44.0, 80.0, 80.0, false, false, DU
+3, 50.0, 26.0, 80.0, 80.0, false, false, END
+4, 55.0, 17.0, 80.0, 80.0, false, false, DU
+5, 60.0, 8.0, 80.0, 80.0, false, false, END
+6, 65.0, 0.0, 80.0, 80.0, false, false, N
+7, 70.0, 0.0, 80.0, 80.0, false, false, R
+8, 75.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, R
+3, 50.0, 26.0, 80.0, 80.0, false, false, DU
+4, 60.0, 8.0, 80.0, 80.0, false, false, END
+5, 65.0, 0.0, 80.0, 80.0, false, false, N
+6, 70.0, 0.0, 80.0, 80.0, false, false, N
+7, 75.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, R
+2, 40.0, 44.0, 80.0, 80.0, false, false, N
+3, 45.0, 35.0, 80.0, 80.0, false, false, R
+4, 50.0, 26.0, 80.0, 80.0, false, false, DU
+5, 55.0, 17.0, 80.0, 80.0, false, false, N
+6, 60.0, 8.0, 80.0, 80.0, false, false, DU
+7, 65.0, 0.0, 80.0, 80.0, false, false, R
+8, 70.0, 0.0, 80.0, 80.0, false, false, N
+9, 75.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, Q
+2, 40.0, 44.0, 80.0, 80.0, false, false, DU
+3, 50.0, 26.0, 80.0, 80.0, false, false, END
+4, 55.0, 17.0, 80.0, 80.0, false, false, N
+5, 60.0, 8.0, 80.0, 80.0, false, false, DU
+6, 65.0, 0.0, 80.0, 80.0, false, false, N
+7, 70.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, END
+5, 55.0, 17.0, 80.0, 80.0, false, false, DU
+6, 60.0, 8.0, 80.0, 80.0, false, false, END
+7, 65.0, 8.0, 80.0, 80.0, false, false, DU
+8, 70.0, 8.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, R
+2, 40.0, 44.0, 80.0, 80.0, false, false, DU
+3, 50.0, 26.0, 80.0, 80.0, false, false, END
+4, 55.0, 17.0, 80.0, 80.0, false, false, DU
+5, 60.0, 8.0, 80.0, 80.0, false, false, END
+6, 65.0, 0.0, 80.0, 80.0, false, false, R
+7, 70.0, 0.0, 80.0, 80.0, false, false, N
+8, 75.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, N
+2, 35.0, 53.0, 80.0, 80.0, false, false, Q
+3, 40.0, 44.0, 80.0, 80.0, false, false, DU
+4, 45.0, 35.0, 80.0, 80.0, false, false, END
+5, 50.0, 26.0, 80.0, 80.0, false, false, DU
+6, 55.0, 17.0, 80.0, 80.0, false, false, END
+7, 60.0, 17.0, 80.0, 80.0, false, false, DU
+8, 65.0, 17.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, N
+5, 55.0, 17.0, 80.0, 80.0, false, false, DU
+6, 60.0, 8.0, 80.0, 80.0, false, false, END
+7, 65.0, 8.0, 80.0, 80.0, false, false, DU
+8, 70.0, 8.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, N
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, END
+5, 55.0, 17.0, 80.0, 80.0, false, false, N
+6, 60.0, 17.0, 80.0, 80.0, false, false, DU
+7, 65.0, 17.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, R
+4, 50.0, 26.0, 80.0, 80.0, false, false, DU
+5, 55.0, 17.0, 80.0, 80.0, false, false, END
+6, 60.0, 8.0, 80.0, 80.0, false, false, DU
+7, 65.0, 0.0, 80.0, 80.0, false, false, N
+8, 70.0, 0.0, 80.0, 80.0, false, false, Q
+9, 75.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, R
+4, 50.0, 26.0, 80.0, 80.0, false, false, DU
+5, 55.0, 17.0, 80.0, 80.0, false, false, END
+6, 60.0, 8.0, 80.0, 80.0, false, false, DU
+7, 65.0, 0.0, 80.0, 80.0, false, false, R
+8, 70.0, 0.0, 80.0, 80.0, false, false, N
+9, 75.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, R
+4, 50.0, 26.0, 80.0, 80.0, false, false, DU
+5, 55.0, 17.0, 80.0, 80.0, false, false, END
+6, 60.0, 8.0, 80.0, 80.0, false, false, N
+7, 65.0, 8.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, N
+4, 50.0, 26.0, 80.0, 80.0, false, false, DU
+5, 55.0, 17.0, 80.0, 80.0, false, false, END
+6, 60.0, 17.0, 80.0, 80.0, false, false, DU
+7, 65.0, 17.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, N
+2, 35.0, 53.0, 80.0, 80.0, false, false, DU
+3, 40.0, 44.0, 80.0, 80.0, false, false, END
+4, 45.0, 35.0, 80.0, 80.0, false, false, N
+5, 50.0, 35.0, 80.0, 80.0, false, false, DU
+6, 55.0, 35.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, END
+5, 55.0, 17.0, 80.0, 80.0, false, false, DU
+6, 60.0, 8.0, 80.0, 80.0, false, false, END
+7, 65.0, 8.0, 80.0, 80.0, false, false, DU
+8, 70.0, 8.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, Q
+2, 40.0, 44.0, 80.0, 80.0, false, false, DU
+3, 50.0, 26.0, 80.0, 80.0, false, false, END
+4, 55.0, 17.0, 80.0, 80.0, false, false, DU
+5, 60.0, 8.0, 80.0, 80.0, false, false, END
+6, 65.0, 0.0, 80.0, 80.0, false, false, R
+7, 70.0, 0.0, 80.0, 80.0, false, false, N
+8, 75.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, N
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, END
+5, 55.0, 17.0, 80.0, 80.0, false, false, DU
+6, 60.0, 8.0, 80.0, 80.0, false, false, END
+7, 65.0, 8.0, 80.0, 80.0, false, false, DU
+8, 70.0, 8.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, N
+4, 50.0, 26.0, 80.0, 80.0, false, false, DU
+5, 55.0, 17.0, 80.0, 80.0, false, false, END
+6, 60.0, 17.0, 80.0, 80.0, false, false, DU
+7, 65.0, 17.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, END
+5, 55.0, 17.0, 80.0, 80.0, false, false, DU
+6, 60.0, 8.0, 80.0, 80.0, false, false, END
+7, 65.0, 8.0, 80.0, 80.0, false, false, DU
+8, 70.0, 8.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, N
+3, 45.0, 35.0, 80.0, 80.0, false, false, Q
+4, 50.0, 26.0, 80.0, 80.0, false, false, DU
+5, 55.0, 17.0, 80.0, 80.0, false, false, END
+6, 60.0, 8.0, 80.0, 80.0, false, false, DU
+7, 65.0, 0.0, 80.0, 80.0, false, false, N
+8, 70.0, 0.0, 80.0, 80.0, false, false, N
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, N
+2, 35.0, 53.0, 80.0, 80.0, false, false, DU
+3, 40.0, 44.0, 80.0, 80.0, false, false, R
+4, 45.0, 35.0, 80.0, 80.0, false, false, DU
+5, 50.0, 26.0, 80.0, 80.0, false, false, END
+6, 55.0, 17.0, 80.0, 80.0, false, false, DU
+7, 60.0, 8.0, 80.0, 80.0, false, false, END
+8, 65.0, 8.0, 80.0, 80.0, false, false, DU
+9, 70.0, 8.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, N
+3, 45.0, 35.0, 80.0, 80.0, false, false, N
+4, 50.0, 26.0, 80.0, 80.0, false, false, R
+5, 55.0, 17.0, 80.0, 80.0, false, false, DU
+6, 60.0, 8.0, 80.0, 80.0, false, false, END
+7, 65.0, 8.0, 80.0, 80.0, false, false, DU
+8, 70.0, 8.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, DU
+2, 40.0, 44.0, 80.0, 80.0, false, false, END
+3, 45.0, 35.0, 80.0, 80.0, false, false, DU
+4, 50.0, 26.0, 80.0, 80.0, false, false, END
+5, 55.0, 17.0, 80.0, 80.0, false, false, DU
+6, 60.0, 8.0, 80.0, 80.0, false, false, END
+7, 65.0, 8.0, 80.0, 80.0, false, false, DU
+8, 70.0, 8.0, 80.0, 80.0, false, false, END
+,,,,,,,
+1, 30.0, 62.0, 80.0, 80.0, false, false, R
+2, 40.0, 44.0, 80.0, 80.0, false, false, DU
+3, 50.0, 26.0, 80.0, 80.0, false, false, R
+4, 60.0, 8.0, 80.0, 80.0, false, false, DU
+5, 70.0, 0.0, 80.0, 80.0, false, false, N
+6, 75.0, 0.0, 80.0, 80.0, false, false, N
+7, 80.0, 0.0, 80.0, 80.0, false, false, N
+8, 85.0, 0.0, 80.0, 80.0, false, false, N
