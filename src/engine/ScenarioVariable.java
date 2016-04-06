@@ -227,7 +227,7 @@ public class ScenarioVariable {
 		result += "dialSt";
 		return result;
 	}
-	
+
 	public String outputCSVresult(){
 		String result = "";
 		result += this.n;
@@ -248,4 +248,33 @@ public class ScenarioVariable {
 		result += "\n";
 		return result;
 	}
+	public String outputPStatusResult(){
+		String result = "";
+		result += this.n;
+		result += ", ";
+		result += this.pt_Trust;
+		result += ", ";
+		result += this.pt_Dist;
+		result += ", ";
+		result += this.pt_Aggr;	
+		result += ", ";
+		result += this.pt_Talk;
+		result += "\n";
+		return result;
+	}
+	public String outputPStatusTitle(){
+		String result = "";
+		result += "DActions Nb";
+		result += ", ";
+		result += "pt_Trust";
+		result += ", ";
+		result += "pt_Dist";
+		result += ", ";
+		result += "pt_Aggr";
+		result += ", ";
+		result += "pt_Talk";
+		result += "\n";
+		return result;
+	}
+	
 }

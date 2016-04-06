@@ -35,7 +35,31 @@ public class GameEngine {
 		String result = "";
 		//result += scPara.outputCSVresult();
 		//result += ", ";
+		
+		// one by one
+		
 		result += scVar.getResOneByOne();
+		return result;
+	}
+	////////////////////////////
+	public String outputPSTitle(){
+		String result = "";
+		//result += scPara.outputCSVresult();
+		//result += ", ";
+		
+		// one by one
+		//result += scVar.getResOneByOne();
+		result += scVar.outputPStatusTitle();
+		return result;
+	}
+	public String outputPSResult(){
+		String result = "";
+		//result += scPara.outputCSVresult();
+		//result += ", ";
+		
+		// one by one
+		//result += scVar.getResOneByOne();
+		result += scVar.outputPStatusResult();
 		return result;
 	}
 
@@ -917,7 +941,7 @@ public class GameEngine {
 		 */
 		
 		GameEngine ge2 = new GameEngine();
-		ge2.scPara.setPatientParameter(0.8, 0.0, 0.0, 80.0, 0.0,0.0,80.0, 0.1, 0.3);
+		ge2.scPara.setPatientParameter(0.8, 0.0, 0.0, 80.0, 0.1,0.1,80.0, 0.1, 0.3);
 		ge2.scVar.initVariables();
 		System.out.println(
 				"Trail 2 :A patient normal talkative, aggressive, clear, high on comprehension, low on trust .");
