@@ -33,12 +33,9 @@ public class GameEngine {
 	
 	public String outputCSVresult(){
 		String result = "";
-		//result += scPara.outputCSVresult();
-		//result += ", ";
-		
-		// one by one
-		
 		result += scVar.getResOneByOne();
+		//result += ", ";
+	
 		return result;
 	}
 	////////////////////////////
@@ -57,8 +54,7 @@ public class GameEngine {
 		//result += scPara.outputCSVresult();
 		//result += ", ";
 		
-		// one by one
-		//result += scVar.getResOneByOne();
+	
 		result += scVar.outputPStatusResult();
 		return result;
 	}
@@ -91,7 +87,7 @@ public class GameEngine {
 					+ Math.pow((100 - (pp.getClearLevel().ordinal()*40+30) - scVar.pt_Dist), 2)
 					+ Math.pow((pp.getLongLevel().ordinal()+1)*25 - scVar.pt_Talk, 2);
 			//debugVar(pp);
-			System.out.println("phase"+ i+" distance:"+currentDistance);
+		//	System.out.println("phase"+ i+" distance:"+currentDistance);
 			if (currentDistance < minDistance) {
 				minDistance = currentDistance;
 				rpp = pp;
@@ -99,7 +95,7 @@ public class GameEngine {
 			}
 			i++;
 		}
-		System.out.println("min distance:"+ minDistance);
+		//System.out.println("min distance:"+ minDistance);
 
 		return rpp;
 	}
@@ -138,7 +134,7 @@ public class GameEngine {
 				// update system variables after selection of doctor.
 				scVar.calcOnce(bestDChoice);
 			}
-			System.out.println(scVar.dialSt + "+++++");
+			//System.out.println(scVar.dialSt + "+++++");
 			lastDoctorPhrase = bestDChoice;
 			switch (scVar.dialSt) {
 			case N:
@@ -236,7 +232,7 @@ public class GameEngine {
 				// update system variables after selection of doctor.
 				scVar.calcOnce(worstDChoice);
 			}
-			System.out.println(scVar.dialSt + "+++++");
+			//System.out.println(scVar.dialSt + "+++++");
 			lastDoctorPhrase = worstDChoice;
 			switch (scVar.dialSt) {
 			case N:
@@ -291,6 +287,99 @@ public class GameEngine {
 		}
 
 	}
+	public void processPairWithRandomStrategy(Pair pair) {
+		DoctorPhrase randDChoice = null;
+		Random ran = new Random();
+   // 	double num_percent2 = random1.nextInt(101)/100.0;
+		// Get corresponding patient phrase.
+		PatientPhrase bestPP = null;
+		boolean flgInitByPatient = false;
+	
+		flgInitByPatient = (pair.getPossibleDoctorPhrases().size() > 0) ? false : true;
+
+		if (!flgInitByPatient) {
+			int pos = ran.nextInt(pair.getPossibleDoctorPhrases().size());
+			randDChoice = pair.getPossibleDoctorPhrases().get(pos);
+			if (null != randDChoice) {
+				
+				if (randDChoice == lastDoctorPhrase) {
+					System.out.println("Doctor " + randDChoice.getPhraseActor().getName() + ": Je veux dire que "
+							+ randDChoice.getExpression());
+
+				} else {
+					System.out.println(
+							"Doctor " + randDChoice.getPhraseActor().getName() + ": " + randDChoice.getExpression());
+
+				}
+
+				// update system variables after selection of doctor.
+				scVar.calcOnce(randDChoice);
+			}
+			//System.out.println(scVar.dialSt + "+++++");
+			lastDoctorPhrase = randDChoice;
+			switch (scVar.dialSt) {
+			case N:
+				bestPP = getBestPatientPhrase(
+						getPPhrasesInPairByType(pair.getPossiblePatientPhrases(), APhrase.PrimitiveType.Statement));
+				// getBestPatientPhrase(pair.getPossiblePatientPhrases());
+				if (bestPP == null) {
+					System.out.println("Patient " + scPara.patient + ": ...");
+				} else
+					System.out.println("Patient " + bestPP.getPhraseActor() + ": " + bestPP.getExpression());
+				break;
+			case DU:
+				//bestPP = getBestPatientPhrase(getPPhrasesInPairByType(pair.getPossiblePatientPhrases(),
+				//		APhrase.PrimitiveType.DontUnderstand));
+				bestPP = getBestPatientPhrase(
+						getPPhrasesInPairByTypeS(pair.getPossiblePatientPhrases(), new ArrayList<APhrase.PrimitiveType>(
+								Arrays.asList(APhrase.PrimitiveType.DontUnderstand))));
+				if (bestPP == null) {
+					System.out.println("Patient " + scPara.patient + ": Je n'ai pas compris...");
+				} else {
+					System.out.println("Patient " + bestPP.getPhraseActor() + ": " + bestPP.getExpression());
+				}
+				processPairWithBestStrategy(pair);
+				break;
+			case Q:
+				//bestPP = getBestPatientPhrase(
+				//		getPPhrasesInPairByType(pair.getPossiblePatientPhrases(), APhrase.PrimitiveType.Questioning));
+				bestPP = getBestPatientPhrase(
+						getPPhrasesInPairByTypeS(pair.getPossiblePatientPhrases(), new ArrayList<APhrase.PrimitiveType>(
+								Arrays.asList( APhrase.PrimitiveType.Questioning))));
+				if (bestPP == null) {
+					System.out.println("Patient " + scPara.patient + ": Pourquoi vous me demandez ça?");
+				} else{
+					System.out.println("Patient " + bestPP.getPhraseActor() + ": " + bestPP.getExpression());
+				}
+				processPairWithBestStrategy(pair);
+				break;
+			case R:
+				//bestPP = getBestPatientPhrase(
+				//		getPPhrasesInPairByType(pair.getPossiblePatientPhrases(), APhrase.PrimitiveType.Disagree));
+				bestPP = getBestPatientPhrase(
+						getPPhrasesInPairByTypeS(pair.getPossiblePatientPhrases(), new ArrayList<APhrase.PrimitiveType>(
+								Arrays.asList( APhrase.PrimitiveType.Disagree))));
+				if (bestPP == null) {
+					System.out.println("Patient " + scPara.patient + ": Je ne veux plus parler de ça...");
+				} else
+					System.out.println("Patient " + bestPP.getPhraseActor() + ": " + bestPP.getExpression());
+				processPairWithBestStrategy(pair);
+				break;
+			case END:
+				System.out.println("Doctor " + scPara.doctor + ": OK, on parle plus sur ça.");
+				break;
+			default:
+				System.out.println("Patient " + scPara.patient + ": Au revoir");
+				break;
+
+			}
+
+		} else {// initialized by patient
+			bestPP = getBestPatientPhrase(pair.getPossiblePatientPhrases());
+			System.out.println("Patient " + scPara.patient + ": " + bestPP.getExpression());
+		}
+
+	}
 
 	public void simulateBest() {
 		List<DialogueSession> selectedDSs = new ArrayList<DialogueSession>();
@@ -323,6 +412,16 @@ public class GameEngine {
 				processPairWithWorstStrategy(pair);
 			}
 		}
+	}
+	public void simulateRandom(){
+		MicroSequence ms = MicroSequence.findByName(MicroSequence.class, "Welcome");
+		for (DialogueSession ds : ms.getDialogueSessions()) {
+			List<Pair> pairs = ds.getPairs();
+			for (Pair pair : pairs) {
+				processPairWithRandomStrategy(pair);
+			}
+		}
+		
 	}
 
 	
@@ -930,7 +1029,12 @@ public class GameEngine {
 		System.out.println("Trail 1 :A patient talkative, aggressive and chaotic, low on comprehension .");
 		System.out.println("*****trail 1*****");
 		System.out.println(ge.scPara.toString());
+		System.out.println("*****Best Choice*****");
 		ge.simulateBest();
+		System.out.println("*****Worst Choice*****");
+		ge.simulateWorst();
+		System.out.println("*****Random Choice*****");
+		ge.simulateRandom();
 	//	ge.simulateMedicalInfoBasedTest();
 		System.out.println("*****end trail 1*****");
 
@@ -941,13 +1045,18 @@ public class GameEngine {
 		 */
 		
 		GameEngine ge2 = new GameEngine();
-		ge2.scPara.setPatientParameter(0.8, 0.0, 0.0, 80.0, 0.1,0.1,80.0, 0.1, 0.3);
+		ge2.scPara.setPatientParameter(0.8, 0.1, 0.1, 80.0, 10.0,10.0,80.0, 0.1, 0.3);
 		ge2.scVar.initVariables();
 		System.out.println(
 				"Trail 2 :A patient normal talkative, aggressive, clear, high on comprehension, low on trust .");
 		System.out.println("*****trail 2*****");
 		System.out.println(ge2.scPara.toString());
+		System.out.println("*****Best Choice*****");
 		ge2.simulateBest();
+		System.out.println("*****Worst Choice*****");
+		ge2.simulateWorst();
+		System.out.println("*****Random Choice*****");
+		ge2.simulateRandom();
 	//	ge2.simulateMedicalInfoBasedTest();
 		System.out.println("*****end trail 2*****");
 

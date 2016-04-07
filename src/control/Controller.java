@@ -441,6 +441,7 @@ public class Controller {
 		ds3p2dp1.setEffDisturbance(-5.0);
 		ds3p2dp1.setPrimitiveType(PrimitiveType.Statement);
 		ds3p2dp1.setPhraseActor(da1);
+		ds3p2dp1.setEffAggr(-3.0);
 		ds3p2dp1.setExpression("Et oui j'ai dû passer plus de temps que prévu avec le patient précédent et en plus j'ai eu une urgence en début d'après-midi...");
 		ds3p2dp1.persist();
 			
@@ -448,6 +449,7 @@ public class Controller {
 		ds3p2dp2.setName("Pair2ReplyComplainWaiting2");
 		ds3p2dp2.setEffTrust(-5.0);
 		ds3p2dp2.setEffDisturbance(5.0);
+		ds3p2dp2.setEffAggr(3.0);
 		ds3p2dp2.setPrimitiveType(PrimitiveType.Statement);
 		ds3p2dp2.setPhraseActor(da1);		
 		ds3p2dp2.setExpression("Certains patients ont besoin qu'on leur consacre plus de temps que d'autres...");
@@ -457,6 +459,7 @@ public class Controller {
 		ds3p2dp3.setName("Pair2ReplyComplainWaiting3");
 		ds3p2dp3.setEffTrust(5.0);
 		ds3p2dp3.setEffDisturbance(0.0);
+		ds3p2dp3.setEffAggr(-5.0);
 		ds3p2dp3.setPrimitiveType(PrimitiveType.Statement);
 		ds3p2dp3.setPhraseActor(da1);
 		ds3p2dp3.setExpression("Je m'excuse de vous avoir fait attendre");
@@ -901,6 +904,7 @@ public class Controller {
 		fi1_p1dp1.setName("DoctorAskDog1P1");
 		fi1_p1dp1.setEffTrust(-5.0);
 		fi1_p1dp1.setEffDisturbance(10.0);
+		fi1_p1dp1.setEffAggr(5.0);
 		fi1_p1dp1.setPrimitiveType(PrimitiveType.ClosedQuestion);
 		fi1_p1dp1.setPhraseActor(da1);
 		fi1_p1dp1.setExpression("Vous baladez toujours avec votre chien ? C’est un caniche, non ?");
@@ -937,7 +941,7 @@ public class Controller {
 		DoctorPhrase fi1_p2dp1 = new DoctorPhrase();
 		fi1_p2dp1.setName("DoctorAskDog1P2");
 		fi1_p2dp1.setEffTrust(5.0);
-		fi1_p2dp1.setEffDisturbance(0.0);
+		//fi1_p2dp1.setEffDisturbance(0.0);
 		fi1_p2dp1.setPrimitiveType(PrimitiveType.Confirmation);
 		fi1_p2dp1.setPhraseActor(da1);
 		fi1_p2dp1.setExpression("Ah je suis désolé.");
@@ -947,6 +951,7 @@ public class Controller {
 		fi1_p2dp2.setName("DoctorAskDog2P2");
 		fi1_p2dp2.setEffTrust(-5.0);
 		fi1_p2dp2.setEffDisturbance(5.0);
+		fi1_p2dp2.setEffAggr(10.0);
 		fi1_p2dp2.setPrimitiveType(PrimitiveType.Confirmation);
 		fi1_p2dp2.setPhraseActor(da1);
 		fi1_p2dp2.setExpression("Ah bon ? ");
@@ -1065,6 +1070,7 @@ public class Controller {
 		fi11_p2dp2.setName("DoctorAskDogReason2P2");
 		fi11_p2dp2.setEffTrust(-5.0);
 		fi11_p2dp2.setEffDisturbance(5.0);
+		fi11_p2dp2.setEffAggr(10.0);
 		fi11_p2dp2.setPrimitiveType(PrimitiveType.Confirmation);
 		fi11_p2dp2.setPhraseActor(da1);
 		fi11_p2dp2.setExpression("Ah oui? Dommage");
@@ -1080,11 +1086,21 @@ public class Controller {
 		fi11_p2pp1.setExpression("(triste) Ouais, je sais, mais c’est dur..");
 		JpaManager.persist(fi11_p2pp1);
 		
+		PatientPhrase fi11_p2pp2 = new PatientPhrase();
+		fi11_p2pp2.setName("PatientAnswerDogReasonP3");
+		fi11_p2pp2.setAggressiveLevel(AggressiveLevel.Neutral);
+		fi11_p2pp2.setClearLevel(ClearLevel.Clear);
+		fi11_p2pp2.setLongLevel(LongLevel.Normal);
+		fi11_p2pp2.setPrimitiveType(PrimitiveType.Disagree);
+		fi11_p2pp2.setPhraseActor(pa1);
+		fi11_p2pp2.setExpression("Comment je peux réfléchir sur ça encore!");
+		JpaManager.persist(fi11_p2pp2);
+		
 		//Add Phrases to Pair 2
 		fi11p2.getPossibleDoctorPhrases().add(fi11_p2dp1);
 		fi11p2.getPossibleDoctorPhrases().add(fi11_p2dp2);
 		
-		fi11p2.getPossiblePatientPhrases().add(fi11_p2pp1);
+		fi11p2.getPossiblePatientPhrases().add(fi11_p2pp2);
 		// same in case of Refuse with Pair1
 		fi11p2.getPossiblePatientPhrases().add(fi11_p1pp2);
 		fi11p2.getPossiblePatientPhrases().add(fi11_p1pp3);
@@ -1118,8 +1134,9 @@ public class Controller {
 		// Phrases for Pair 1
 		DoctorPhrase fi2_p1dp1 = new DoctorPhrase();
 		fi2_p1dp1.setName("DoctorAskGardenP1");
-		fi2_p1dp1.setEffTrust(5.0);
+		fi2_p1dp1.setEffTrust(10.0);
 		fi2_p1dp1.setEffDisturbance(-5.0);
+		fi2_p1dp1.setEffAggr(-5.0);
 		fi2_p1dp1.setPrimitiveType(PrimitiveType.ClosedQuestion);
 		fi2_p1dp1.setPhraseActor(da1);
 		fi2_p1dp1.setExpression("Sinon vous continuez à jardiner ? Vous jardinez, c’est bien ça ?");
@@ -1155,6 +1172,7 @@ public class Controller {
 		fi2_p2dp1.setName("DoctorAskGarden1P2");
 		fi2_p2dp1.setEffTrust(5.0);
 		fi2_p2dp1.setEffDisturbance(-5.0);
+		fi2_p2dp1.setEffAggr(-5.0);
 		fi2_p2dp1.setPrimitiveType(PrimitiveType.Confirmation);
 		fi2_p2dp1.setPhraseActor(da1);
 		fi2_p2dp1.setExpression("(Hochement de la tête) en hein");
@@ -1275,6 +1293,7 @@ public class Controller {
 		ms1mi1p1dp2.setName("DoctorAskConsultReason12");
 		ms1mi1p1dp2.setEffTrust(5.0);
 		ms1mi1p1dp2.setEffDisturbance(5.0);
+		ms1mi1p1dp2.setEffAggr(5.0);
 		ms1mi1p1dp2.setPrimitiveType(PrimitiveType.ClosedQuestion);
 		ms1mi1p1dp2.setPhraseActor(da1);
 		ms1mi1p1dp2.setExpression("Vous ne devrez pas renouveler votre ordonnance par hasard ?");
