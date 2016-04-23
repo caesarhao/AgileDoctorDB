@@ -48,7 +48,16 @@ public class Pair extends AThing implements Serializable {
 	public List<PatientPhrase> getPossiblePatientPhrases() {
 		return possiblePatientPhrases;
 	}
-
+	public List<PatientPhrase> getPossiblePatientPhrasesByType(APhrase.PrimitiveType atype) {
+		List<PatientPhrase> pps = new ArrayList<PatientPhrase>();
+		for(PatientPhrase pp:possiblePatientPhrases){
+			if(atype.compareTo(pp.primitiveType) == 0){
+				pps.add(pp);
+			}
+		}
+		return pps;
+		
+	}
 	
 	
 

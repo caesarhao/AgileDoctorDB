@@ -31,14 +31,18 @@ public class Controller {
 				private Pair ms0ds3p1;
 				private Pair ms0ds3p2;
 		private MicroSequence ms1;
-			private MedicalInformation ms1mi1;
-				private Pair ms1mi1p1;				
-			private MedicalInformation ms1mi2;
-				private Pair ms1mi2p1;
-				
-			// root element	
+		// root element
 			private MedicalInformation ms1mi0;
-				private Pair ms1dmi0p1;
+				private Pair ms1mi0p1;
+				
+				private MedicalInformation ms1mi1;
+					private Pair ms1mi1p1;				
+				private MedicalInformation ms1mi2;
+					private Pair ms1mi2p1;
+				
+				
+		
+				
 				
 			
 				
@@ -100,11 +104,10 @@ public class Controller {
 		s1.persist();
 		fillMS0();
 		fillMS1();
-		//fillMS2();
+		fillMS2();
 		//fillMS3();
 		//fillMedicalInfo();
-		fillMedicalInfo();
-		fillFamilyInfo();
+
 		
 	}
 	private void fillMS0() {
@@ -123,16 +126,22 @@ public class Controller {
 		ms1.setName("AskReason");
 		ms1.persist();
 		s1.getMicroSequences().add(ms1);
+		fillMotifInfo();
+		
 			//fillMS1DS1();
 	}
-/*	private void fillMS2() {
+	private void fillMS2() {
 		// MicroSequences
 		ms2 = new MicroSequence();
 		ms2.setName("GeneralQuestion");
 		ms2.persist();
 		s1.getMicroSequences().add(ms2);
+		fillQGFamilyInfo();
+	
+		
 		//fillMS2DS1();
 	}
+	/*
 	private void fillMS3() {
 		// MicroSequences
 		ms3 = new MicroSequence();
@@ -885,6 +894,7 @@ public class Controller {
 		fi1.setAcquiringMethod(APatientInformation.AcquiringMethod.AskedByDoctor);
 		fi1.setSuperInformation(null);
 		JpaManager.persist(fi1);
+		ms2.getFamilyInfos().add(fi1);
 		
 		//Pair 1 + Pair 2
 		fi1p1 = new Pair();
@@ -981,6 +991,7 @@ public class Controller {
 		fi11.setAcquiringMethod(APatientInformation.AcquiringMethod.AskedByDoctor);
 		fi11.setSuperInformation(fi1);
 		JpaManager.persist(fi11);
+		ms2.getFamilyInfos().add(fi11);
 		
 		//Add Pair1+Pair2
 		
@@ -1015,6 +1026,17 @@ public class Controller {
 		fi11_p1dp2.setPhraseActor(da1);
 		fi11_p1dp2.setExpression("Qu’est ce qui s’est passé ?");
 		JpaManager.persist(fi11_p1dp2);
+		
+		//doctor in case of disagree
+		DoctorPhrase fi11_p1dpAbnor1 = new DoctorPhrase();
+		fi11_p1dpAbnor1.setName("DoctorAskDogReasonAbnor1");
+		fi11_p1dpAbnor1.setEffTrust(0.0);
+		fi11_p1dpAbnor1.setEffDisturbance(5.0);
+		fi11_p1dpAbnor1.setPrimitiveType(PrimitiveType.Statement);
+		fi11_p1dpAbnor1.setPhraseActor(da1);
+		fi11_p1dpAbnor1.setExpression("Oui,je voulais juste vous dire qu'il faut quand même faire un peu plus de la marche, ou quoi que soit.");
+		JpaManager.persist(fi11_p1dpAbnor1);
+		
 
 		PatientPhrase fi11_p1pp1 = new PatientPhrase();
 		fi11_p1pp1.setName("PatientAnswerDogReason1P1");
@@ -1049,6 +1071,7 @@ public class Controller {
 		//add phrase to pair
 		fi11p1.getPossibleDoctorPhrases().add(fi11_p1dp1);
 		fi11p1.getPossibleDoctorPhrases().add(fi11_p1dp2);
+		fi11p1.getPossibleDoctorPhrases().add(fi11_p1dpAbnor1);
 		fi11p1.getPossiblePatientPhrases().add(fi11_p1pp1);
 		fi11p1.getPossiblePatientPhrases().add(fi11_p1pp2);
 		fi11p1.getPossiblePatientPhrases().add(fi11_p1pp3);
@@ -1077,7 +1100,7 @@ public class Controller {
 		JpaManager.persist(fi11_p2dp2);
 		
 		PatientPhrase fi11_p2pp1 = new PatientPhrase();
-		fi11_p2pp1.setName("PatientAnswerDogReasonP2");
+		fi11_p2pp1.setName("PatientAnswerDogReason1P2");
 		fi11_p2pp1.setAggressiveLevel(AggressiveLevel.Neutral);
 		fi11_p2pp1.setClearLevel(ClearLevel.Clear);
 		fi11_p2pp1.setLongLevel(LongLevel.Normal);
@@ -1087,7 +1110,7 @@ public class Controller {
 		JpaManager.persist(fi11_p2pp1);
 		
 		PatientPhrase fi11_p2pp2 = new PatientPhrase();
-		fi11_p2pp2.setName("PatientAnswerDogReasonP3");
+		fi11_p2pp2.setName("PatientAnswerDogReason2P2");
 		fi11_p2pp2.setAggressiveLevel(AggressiveLevel.Neutral);
 		fi11_p2pp2.setClearLevel(ClearLevel.Clear);
 		fi11_p2pp2.setLongLevel(LongLevel.Normal);
@@ -1099,7 +1122,7 @@ public class Controller {
 		//Add Phrases to Pair 2
 		fi11p2.getPossibleDoctorPhrases().add(fi11_p2dp1);
 		fi11p2.getPossibleDoctorPhrases().add(fi11_p2dp2);
-		
+		fi11p2.getPossiblePatientPhrases().add(fi11_p2pp1);
 		fi11p2.getPossiblePatientPhrases().add(fi11_p2pp2);
 		// same in case of Refuse with Pair1
 		fi11p2.getPossiblePatientPhrases().add(fi11_p1pp2);
@@ -1117,7 +1140,7 @@ public class Controller {
 		fi2.setAcquiringMethod(APatientInformation.AcquiringMethod.AskedByDoctor);
 		fi2.setSuperInformation(null);
 		JpaManager.persist(fi2);
-		
+		ms2.getFamilyInfos().add(fi2);
 		//Add Pair1+Pair2
 		
 		fi2p1 = new Pair();
@@ -1214,7 +1237,7 @@ public class Controller {
 		
 	}
 	
-	private void fillFamilyInfo(){
+	private void fillQGFamilyInfo(){
 		//FamilyInfo 1
 		fillFI1CategorieDog();
 		//FamilyInfo 2
@@ -1223,6 +1246,79 @@ public class Controller {
 	
 	// Medical Info
 	private void fillMS1MIConsultReason0(){
+		ms1mi0 = new MedicalInformation();
+		ms1mi0.setName("Categorie_Motif_Consultation");
+		ms1mi0.setAcquiringMethod(APatientInformation.AcquiringMethod.AskedByDoctor);
+		ms1mi0.setImportance(100);
+		ms1mi0.setSuperInformation(null);
+		ms1mi0.persist();
+		
+		ms1.getMedicalInfos().add(ms1mi0);
+	
+		
+		fillMS1MI0Pair();
+		
+	}
+	
+	private void fillMS1MI0Pair(){
+		ms1mi0p1 = new Pair();
+		ms1mi0p1.setName(ms1mi0.getName()+"P1");
+		ms1mi0p1.persist();
+		
+		ms1mi0.getPairs().add(ms1mi0p1);
+		ms1mi0.update();
+		
+		// Phrases for Pair 1
+		//open question
+		DoctorPhrase ms1mi0p1dpOQ1 = new DoctorPhrase();
+		ms1mi0p1dpOQ1.setName("DoctorAskConsultReason_OQ1");
+		ms1mi0p1dpOQ1.setEffTrust(0.0);
+		ms1mi0p1dpOQ1.setEffDisturbance(0.0);
+		ms1mi0p1dpOQ1.setPrimitiveType(PrimitiveType.OpenQuestion);
+		ms1mi0p1dpOQ1.setPhraseActor(da1);
+		ms1mi0p1dpOQ1.setExpression("Je vous écoute.");
+		JpaManager.persist(ms1mi0p1dpOQ1);
+		
+		DoctorPhrase ms1mi0p1dpOQ2 = new DoctorPhrase();
+		ms1mi0p1dpOQ2.setName("DoctorAskConsultReason_OQ2");
+		ms1mi0p1dpOQ2.setEffTrust(0.0);
+		ms1mi0p1dpOQ2.setEffDisturbance(0.0);
+		ms1mi0p1dpOQ2.setPrimitiveType(PrimitiveType.OpenQuestion);
+		ms1mi0p1dpOQ2.setPhraseActor(da1);
+		ms1mi0p1dpOQ2.setExpression("Dites-moi pourquoi vous êtes venu.");
+		JpaManager.persist(ms1mi0p1dpOQ2);
+		
+		
+		PatientPhrase ms1mi0p1pp1 = new PatientPhrase();
+		ms1mi0p1pp1.setName("PatientAnsweConsultReason_Null1");
+		ms1mi0p1pp1.setAggressiveLevel(AggressiveLevel.Neutral);
+		ms1mi0p1pp1.setClearLevel(ClearLevel.Clear);
+		ms1mi0p1pp1.setLongLevel(LongLevel.Normal);
+		ms1mi0p1pp1.setPrimitiveType(PrimitiveType.Statement);
+		ms1mi0p1pp1.setPhraseActor(pa1);
+		ms1mi0p1pp1.setExpression("Je pense que j'ai tout dit.");
+		JpaManager.persist(ms1mi0p1pp1);
+		
+		PatientPhrase ms1mi0p1pp2 = new PatientPhrase();
+		ms1mi0p1pp2.setName("PatientAnsweConsultReason_Null2");
+		ms1mi0p1pp2.setAggressiveLevel(AggressiveLevel.Neutral);
+		ms1mi0p1pp2.setClearLevel(ClearLevel.Clear);
+		ms1mi0p1pp2.setLongLevel(LongLevel.Normal);
+		ms1mi0p1pp2.setPrimitiveType(PrimitiveType.Statement);
+		ms1mi0p1pp2.setPhraseActor(pa1);
+		ms1mi0p1pp2.setExpression("Je n'ai pas d'autre chose à vous dire.");
+		JpaManager.persist(ms1mi0p1pp2);
+		
+
+		
+		ms1mi0p1.getPossibleDoctorPhrases().add(ms1mi0p1dpOQ1);
+		ms1mi0p1.getPossibleDoctorPhrases().add(ms1mi0p1dpOQ2);
+		
+		ms1mi0p1.getPossiblePatientPhrases().add(ms1mi0p1pp1);
+		ms1mi0p1.getPossiblePatientPhrases().add(ms1mi0p1pp2);
+	
+		ms1mi0p1.update();
+		
 		
 	}
 	private void fillMS1MIConsultReason1(){
@@ -1230,8 +1326,9 @@ public class Controller {
 		ms1mi1.setName("ConsultReason1");
 		ms1mi1.setImportance(100);
 		ms1mi1.setPriority(90);
-		ms1mi1.setAcquiringMethod(APatientInformation.AcquiringMethod.ConsultToFile);
-		ms1mi1.setSuperInformation(null);
+		//ms1mi1.setAcquiringMethod(APatientInformation.AcquiringMethod.ConsultToFile);
+		ms1mi1.setAcquiringMethod(APatientInformation.AcquiringMethod.AskedByDoctor);
+		ms1mi1.setSuperInformation(ms1mi0);
 		ms1mi1.persist();
 		
 		ms1.getMedicalInfos().add(ms1mi1);
@@ -1241,8 +1338,8 @@ public class Controller {
 		
 		
 	}
-	DoctorPhrase ms1mi1p1dpOQ1 = null;
-	DoctorPhrase ms1mi1p1dpOQ2 = null; 
+//	DoctorPhrase ms1mi1p1dpOQ1 = null;
+//	DoctorPhrase ms1mi1p1dpOQ2 = null; 
 	
 	//Refuse: no info
 	PatientPhrase ms1mi1p1pp3 = null;
@@ -1261,7 +1358,7 @@ public class Controller {
 		
 		// Phrases for Pair 1
 		//open question
-		ms1mi1p1dpOQ1 = new DoctorPhrase();
+/*		ms1mi1p1dpOQ1 = new DoctorPhrase();
 		ms1mi1p1dpOQ1.setName("DoctorAskConsultReason_OQ1");
 		ms1mi1p1dpOQ1.setEffTrust(0.0);
 		ms1mi1p1dpOQ1.setEffDisturbance(0.0);
@@ -1277,7 +1374,7 @@ public class Controller {
 		ms1mi1p1dpOQ2.setPrimitiveType(PrimitiveType.OpenQuestion);
 		ms1mi1p1dpOQ2.setPhraseActor(da1);
 		ms1mi1p1dpOQ2.setExpression("Dites-moi pourquoi vous êtes venu.");
-		JpaManager.persist(ms1mi1p1dpOQ2);
+		JpaManager.persist(ms1mi1p1dpOQ2);*/
 		
 		
 		DoctorPhrase ms1mi1p1dp1 = new DoctorPhrase();
@@ -1349,8 +1446,8 @@ public class Controller {
 		ms1mi1p1pp5.setExpression("Bah non rien de spécial, le train-train quoi.");
 		JpaManager.persist(ms1mi1p1pp5);
 		
-		ms1mi1p1.getPossibleDoctorPhrases().add(ms1mi1p1dpOQ1);
-		ms1mi1p1.getPossibleDoctorPhrases().add(ms1mi1p1dpOQ2);
+	//	ms1mi1p1.getPossibleDoctorPhrases().add(ms1mi1p1dpOQ1);
+	//	ms1mi1p1.getPossibleDoctorPhrases().add(ms1mi1p1dpOQ2);
 		
 		ms1mi1p1.getPossibleDoctorPhrases().add(ms1mi1p1dp1);
 		ms1mi1p1.getPossibleDoctorPhrases().add(ms1mi1p1dp2);
@@ -1370,7 +1467,7 @@ public class Controller {
 		ms1mi2.setImportance(50);
 		ms1mi2.setPriority(100);
 		ms1mi2.setAcquiringMethod(APatientInformation.AcquiringMethod.ConsultToFile);
-		ms1mi2.setSuperInformation(null);
+		ms1mi2.setSuperInformation(ms1mi0);
 		ms1mi2.persist();
 		
 
@@ -1425,8 +1522,8 @@ public class Controller {
 		ms1mi2p1.getPossiblePatientPhrases().add(ms1mi2p1pp2);
 		
 		//add OpenQuestion already defined for Reason 1
-		ms1mi2p1.getPossibleDoctorPhrases().add(ms1mi1p1dpOQ1);
-		ms1mi2p1.getPossibleDoctorPhrases().add(ms1mi1p1dpOQ2);
+		//ms1mi2p1.getPossibleDoctorPhrases().add(ms1mi1p1dpOQ1);
+		//ms1mi2p1.getPossibleDoctorPhrases().add(ms1mi1p1dpOQ2);
 		
 		//add Refuse Answers of patient
 		ms1mi2p1.getPossiblePatientPhrases().add(ms1mi1p1pp3);
@@ -1438,8 +1535,9 @@ public class Controller {
 		
 	}
 
-	private void fillMedicalInfo(){
+	private void fillMotifInfo(){
 		//Medical Info 1: consultation reasons
+		fillMS1MIConsultReason0();
 		fillMS1MIConsultReason1();
 		fillMS1MIConsultReason2();
 		

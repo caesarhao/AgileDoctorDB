@@ -35,6 +35,7 @@ public abstract class APatientInformation extends AInformation implements Serial
 	public int priority;
 
 	@Column(name = "acquiringMethod", nullable = false)
+	
 	public AcquiringMethod acquiringMethod;
 
 	@OneToMany(cascade = CascadeType.ALL)
@@ -71,12 +72,15 @@ public abstract class APatientInformation extends AInformation implements Serial
 	}
 
 	public AcquiringMethod getAcquiringMethod() {
-		return acquiringMethod;
+		return this.acquiringMethod;
 	}
 
 	public void setAcquiringMethod(AcquiringMethod acquiringMethod) {
 		this.acquiringMethod = acquiringMethod;
 	}
+/*	public int numberAcquiringMethod(){
+		return this.acquiringMethod.size();
+	}*/
 
 
 	/*
