@@ -135,7 +135,7 @@ public class GameEngine {
 		boolean flgInitByPatient = false;
 	
 		double eff_curr,eff_high = 0;
-		
+
 		for (DoctorPhrase dp : pair.getPossibleDoctorPhrases()) {
 			eff_curr = dp.effTrust - dp.effDisturbance;
 			if (eff_curr > eff_high) {
@@ -166,7 +166,7 @@ public class GameEngine {
 			switch (scVar.dialSt) {
 			case N:
 				bestPP = getBestPatientPhrase(
-						getPPhrasesInPairByType(pair.getPossiblePatientPhrases(), APhrase.PrimitiveType.Statement));
+						getPPhrasesInPairByTypeS(pair.getPossiblePatientPhrases(), new ArrayList<APhrase.PrimitiveType>(Arrays.asList(APhrase.PrimitiveType.Statement,APhrase.PrimitiveType.AnswerWithInfo,APhrase.PrimitiveType.Confirmation ))));
 				// getBestPatientPhrase(pair.getPossiblePatientPhrases());
 				if (bestPP == null) {
 					System.out.println("Patient " + scPara.patient + ": ...");
@@ -866,6 +866,7 @@ public class GameEngine {
 	public void simulateInfoBasedRandom(String msName) {
 		int randNum = 0;
 		Random rand = new Random();
+		boolean enableOpenMode = false;
 		APatientInformation currentInfo = null;
 		List<APatientInformation> superRootNodes = new ArrayList<APatientInformation>();
 		List<APatientInformation> rootNodes = new ArrayList<APatientInformation>();
@@ -879,9 +880,11 @@ public class GameEngine {
 			if (null == mi.getSuperInformation()) {
 				superRootNodes.add(mi);
 				scVar.sGotPatientInfo.add(mi);
+				enableOpenMode = true;
 			}
 		}
 		for (FamilyInformation fi : ms.getFamilyInfos()) {
+			enableOpenMode = false;
 			lPAllInfo.add(fi);
 			if (null == fi.getSuperInformation()) {
 				superRootNodes.add(fi);
@@ -900,7 +903,7 @@ public class GameEngine {
 		System.out.println("got info numbers........: " + lPAllInfo.size());
 		while (true) {
 			randNum = rand.nextInt(2);
-			if (randNum == 0) { // open mode
+			if (randNum == 0 && enableOpenMode) { // open mode
 				if (0 < rootNodes.size()) {
 					randNum = rand.nextInt(rootNodes.size());
 					currentInfo = rootNodes.get(randNum);
@@ -944,6 +947,7 @@ public class GameEngine {
 					break;
 				}
 			} else { // close mode
+				randNum = rand.nextInt(lPAllInfo.size());
 				currentInfo = lPAllInfo.get(randNum);
 				if (scVar.sGotPatientInfo.contains(currentInfo)) { // already
 																	// gotten.
@@ -1027,9 +1031,9 @@ public class GameEngine {
 					}
 				}
 			}
-			/*if (scVar.sGotPatientInfo.size() >= lPAllInfo.size()) { // All asked
+			if (scVar.sGotPatientInfo.size() >= lPAllInfo.size() && !enableOpenMode) { // All asked
 				break;
-			} else */
+			} else
 			if (DialogueState.END == scVar.dialSt) { // game over.
 				break;
 			} else {
@@ -1041,6 +1045,7 @@ public class GameEngine {
 	public void simulateInfoBasedBest(String msName) {
 		int randNum = 0;
 		Random rand = new Random();
+		boolean enableOpenMode = false;
 		APatientInformation currentInfo = null;
 		List<APatientInformation> superRootNodes = new ArrayList<APatientInformation>();
 		List<APatientInformation> rootNodes = new ArrayList<APatientInformation>();
@@ -1057,17 +1062,19 @@ public class GameEngine {
 			if (null == mi.getSuperInformation()) {
 				superRootNodes.add(mi);
 				scVar.sGotPatientInfo.add(mi);
+				enableOpenMode = true;
 			}
 		}
 		for (FamilyInformation fi : ms.getFamilyInfos()) {
-			if(fi.getImportance()<30){   // useless nodes
-				continue;
-			}
-			lPAllInfo.add(fi);
+			enableOpenMode = false;
 			if (null == fi.getSuperInformation()) {
 				superRootNodes.add(fi);
 				scVar.sGotPatientInfo.add(fi);
 			}
+			if(fi.getImportance()<30){   // useless nodes
+				continue;
+			}
+			lPAllInfo.add(fi);
 		}
 		for (APatientInformation api : superRootNodes) {
 			namedQuery = "APatientInformation.findBySuperInformation";
@@ -1079,9 +1086,12 @@ public class GameEngine {
 			}
 		}
 		System.out.println("got info numbers........: " + lPAllInfo.size()+",,,"+rootNodes.size());
+		int i =0;
 		while (true) {
 			randNum = rand.nextInt(2);
-			if (randNum == 0) { // open mode
+			//System.out.println("times:"+i);
+
+			if (randNum == 0 && enableOpenMode) { // open mode
 				if (0 < rootNodes.size()) {
 					randNum = rand.nextInt(rootNodes.size());
 					currentInfo = rootNodes.get(randNum);
@@ -1096,8 +1106,6 @@ public class GameEngine {
 					DoctorPhrase bestDChoice = null;
 
 					// Get corresponding patient phrase.
-					PatientPhrase bestPP = null;
-					boolean flgInitByPatient = false;
 				
 					double eff_curr,eff_high = -999.0;
 					
@@ -1156,6 +1164,8 @@ public class GameEngine {
 				
 				}
 			} else { // close mode
+				i++;
+				randNum = rand.nextInt(lPAllInfo.size());
 				currentInfo = lPAllInfo.get(randNum);
 				if (scVar.sGotPatientInfo.contains(currentInfo)) { // already
 																	// gotten.
@@ -1163,93 +1173,101 @@ public class GameEngine {
 				} else if (!scVar.sGotPatientInfo.contains(currentInfo.getSuperInformation())) {
 					continue;
 				}
+				System.out.println("got info:"+lPAllInfo.size()+currentInfo.name);
 				for (Pair pair : currentInfo.getPairs()) {
-					List<DoctorPhrase> dps = pair.getPossibleDoctorPhrases();
-					PatientPhrase bestPP = null;
-					if (0 < dps.size()) { // has Doctor Phrase in the pair
-						double eff_curr,eff_high = -999.0;
-						DoctorPhrase bestDChoice = null;
-						for (DoctorPhrase dp : dps) {
-							eff_curr = dp.effTrust - dp.effDisturbance;
-							if (eff_curr > eff_high) {
-								eff_high = eff_curr;
-								bestDChoice = dp;
-							}
-						}				
-					
-						System.out.println("Doctor " + bestDChoice.getPhraseActor().getName() + ": " + bestDChoice.getExpression());
-						scVar.calcOnce(bestDChoice);
-						switch (scVar.dialSt) {
-						case N:
-							// no info, find in type Confirmation.
-							if (getPPhrasesInPairByType(pair.getPossiblePatientPhrases(),
-									APhrase.PrimitiveType.AnswerWithInfo).size() < 1) {
-								bestPP = getBestPatientPhrase(getPPhrasesInPairByType(pair.getPossiblePatientPhrases(),
-										APhrase.PrimitiveType.Confirmation));
-
-							} else {
-								bestPP = getBestPatientPhrase(getPPhrasesInPairByType(pair.getPossiblePatientPhrases(),
-										APhrase.PrimitiveType.AnswerWithInfo));
-
-							}
-
-							if (bestPP == null) {
-								System.out.println("Patient " + scPara.patient + ": ...(Warning: no data)");
-							} else {
-								System.out
-										.println("Patient " + bestPP.getPhraseActor() + ": " + bestPP.getExpression());
-								scVar.sGotPatientInfo.add(currentInfo);
-							}
-
-							break;
-						case DU:
-							bestPP = getBestPatientPhrase(getPPhrasesInPairByTypeS(pair.getPossiblePatientPhrases(),
-									new ArrayList<APhrase.PrimitiveType>(
-											Arrays.asList(APhrase.PrimitiveType.DontUnderstand))));
-							if (bestPP == null) {
-								System.out.println("Patient " + scPara.patient + ": Je n'ai pas compris...");
-							} else {
-								System.out
-										.println("Patient " + bestPP.getPhraseActor() + ": " + bestPP.getExpression());
-							}
-							break;
-						case Q:
-							bestPP = getBestPatientPhrase(getPPhrasesInPairByTypeS(pair.getPossiblePatientPhrases(),
-									new ArrayList<APhrase.PrimitiveType>(
-											Arrays.asList(APhrase.PrimitiveType.Questioning))));
-							if (bestPP == null) {
-								System.out.println("Patient " + scPara.patient + ": Pourquoi vous me demandez ça?");
-							} else
-								System.out
-										.println("Patient " + bestPP.getPhraseActor() + ": " + bestPP.getExpression());
-							break;
-						case R:
-							bestPP = getBestPatientPhrase(getPPhrasesInPairByTypeS(pair.getPossiblePatientPhrases(),
-									new ArrayList<APhrase.PrimitiveType>(
-											Arrays.asList(APhrase.PrimitiveType.Disagree))));
-							if (bestPP == null) {
-								System.out.println("Patient " + scPara.patient + ": Je ne veux plus parler de ça...");
-							} else
-								System.out
-										.println("Patient " + bestPP.getPhraseActor() + ": " + bestPP.getExpression());
-							break;
-						case END:
-							System.out.println("Doctor " + scPara.doctor + ": OK, on parle plus sur ça.");
-							break;
-						default:
-							System.out.println("Patient " + scPara.patient + ": Au revoir");
-							break;
-						}
-
-					} else { // Patient initialized Pair
-						bestPP = getBestPatientPhrase(pair.getPossiblePatientPhrases());
-						System.out.println("Patient " + bestPP.getPhraseActor() + ": " + bestPP.getExpression());
+					if(!processPairWithBestStrategy(pair)){
+						break;
 					}
+					
+//					System.out.println("Doctor ");
+//					List<DoctorPhrase> dps = pair.getPossibleDoctorPhrases();
+//					PatientPhrase bestPP = null;
+//					if (0 < dps.size()) { // has Doctor Phrase in the pair
+//						double eff_curr,eff_high = -999.0;
+//						DoctorPhrase bestDChoice = null;
+//						for (DoctorPhrase dp : dps) {
+//							eff_curr = dp.effTrust - dp.effDisturbance;
+//							if (eff_curr > eff_high) {
+//								eff_high = eff_curr;
+//								bestDChoice = dp;
+//							}
+//						}	
+//						
+//						System.out.println("Doctor " + bestDChoice.getPhraseActor().getName() + ": " + bestDChoice.getExpression());
+//						scVar.calcOnce(bestDChoice);
+//						switch (scVar.dialSt) {
+//						case N:
+//							// no info, find in type Confirmation.
+//							if (getPPhrasesInPairByType(pair.getPossiblePatientPhrases(),
+//									APhrase.PrimitiveType.AnswerWithInfo).size() < 1) {
+//								bestPP = getBestPatientPhrase(getPPhrasesInPairByType(pair.getPossiblePatientPhrases(),
+//										APhrase.PrimitiveType.Confirmation));
+//
+//							} else {
+//								bestPP = getBestPatientPhrase(getPPhrasesInPairByType(pair.getPossiblePatientPhrases(),
+//										APhrase.PrimitiveType.AnswerWithInfo));
+//
+//							}
+//
+//							if (bestPP == null) {
+//								System.out.println("Patient " + scPara.patient + ": ...(Warning: no data)");
+//							} else {
+//								System.out
+//										.println("Patient " + bestPP.getPhraseActor() + ": " + bestPP.getExpression());
+//								scVar.sGotPatientInfo.add(currentInfo);
+//							}
+//
+//							break;
+//						case DU:
+//							bestPP = getBestPatientPhrase(getPPhrasesInPairByTypeS(pair.getPossiblePatientPhrases(),
+//									new ArrayList<APhrase.PrimitiveType>(
+//											Arrays.asList(APhrase.PrimitiveType.DontUnderstand))));
+//							if (bestPP == null) {
+//								System.out.println("Patient " + scPara.patient + ": Je n'ai pas compris...");
+//							} else {
+//								System.out
+//										.println("Patient " + bestPP.getPhraseActor() + ": " + bestPP.getExpression());
+//							}
+//							break;
+//						case Q:
+//							bestPP = getBestPatientPhrase(getPPhrasesInPairByTypeS(pair.getPossiblePatientPhrases(),
+//									new ArrayList<APhrase.PrimitiveType>(
+//											Arrays.asList(APhrase.PrimitiveType.Questioning))));
+//							if (bestPP == null) {
+//								System.out.println("Patient " + scPara.patient + ": Pourquoi vous me demandez ça?");
+//							} else
+//								System.out
+//										.println("Patient " + bestPP.getPhraseActor() + ": " + bestPP.getExpression());
+//							break;
+//						case R:
+//							bestPP = getBestPatientPhrase(getPPhrasesInPairByTypeS(pair.getPossiblePatientPhrases(),
+//									new ArrayList<APhrase.PrimitiveType>(
+//											Arrays.asList(APhrase.PrimitiveType.Disagree))));
+//							if (bestPP == null) {
+//								System.out.println("Patient " + scPara.patient + ": Je ne veux plus parler de ça...");
+//							} else
+//								System.out
+//										.println("Patient " + bestPP.getPhraseActor() + ": " + bestPP.getExpression());
+//							break;
+//						case END:
+//							System.out.println("Doctor " + scPara.doctor + ": OK, on parle plus sur ça.");
+//							break;
+//						default:
+//							System.out.println("Patient " + scPara.patient + ": Au revoir");
+//							break;
+//						}
+//
+//					} else { // Patient initialized Pair
+//						bestPP = getBestPatientPhrase(pair.getPossiblePatientPhrases());
+//						System.out.println("Patient " + bestPP.getPhraseActor() + ": " + bestPP.getExpression());
+//					}
 				}
+				scVar.sGotPatientInfo.add(currentInfo);
+				System.out.println("got:"+scVar.sGotPatientInfo.size());
 			}
-			/*if (scVar.sGotPatientInfo.size() >= lPAllInfo.size()) { // All asked
+			if (scVar.sGotPatientInfo.size() >= lPAllInfo.size() && !enableOpenMode) { // All asked
 				break;
-			} else */
+			} else
 			if (DialogueState.END == scVar.dialSt) { // game over.
 				break;
 			} else {
@@ -1262,6 +1280,7 @@ public class GameEngine {
 		public void simulateInfoBasedWorst(String msName) {
 			int randNum = 0;
 			Random rand = new Random();
+			boolean enableOpenMode = false;
 			APatientInformation currentInfo = null;
 			List<APatientInformation> superRootNodes = new ArrayList<APatientInformation>();
 			List<APatientInformation> rootNodes = new ArrayList<APatientInformation>();
@@ -1276,10 +1295,11 @@ public class GameEngine {
 				if (null == mi.getSuperInformation()) {
 					superRootNodes.add(mi);
 					scVar.sGotPatientInfo.add(mi);
+					enableOpenMode = true;
 				}
 			}
 			for (FamilyInformation fi : ms.getFamilyInfos()) {
-				
+				enableOpenMode = false;
 				lPAllInfo.add(fi);
 				if (null == fi.getSuperInformation()) {
 					superRootNodes.add(fi);
@@ -1298,7 +1318,7 @@ public class GameEngine {
 			System.out.println("got info numbers........: " + lPAllInfo.size());
 			while (true) {
 				randNum = rand.nextInt(2);
-				if (randNum == 0) { // open mode
+				if (randNum == 0 && enableOpenMode) { // open mode
 					if (0 < rootNodes.size()) {
 						randNum = rand.nextInt(rootNodes.size());
 						currentInfo = rootNodes.get(randNum);
@@ -1356,6 +1376,7 @@ public class GameEngine {
 					
 					}
 				} else { // close mode
+					randNum = rand.nextInt(lPAllInfo.size());
 					currentInfo = lPAllInfo.get(randNum);
 					if (scVar.sGotPatientInfo.contains(currentInfo)) { // already
 																		// gotten.
@@ -1439,9 +1460,9 @@ public class GameEngine {
 						}
 					}
 				}
-				/*if (scVar.sGotPatientInfo.size() >= lPAllInfo.size()) { // All asked
+				if (scVar.sGotPatientInfo.size() >= lPAllInfo.size() && !enableOpenMode) { // All asked
 					break;
-				} else */
+				} else
 				if (DialogueState.END == scVar.dialSt) { // game over.
 					break;
 				} else {
@@ -1748,20 +1769,20 @@ public class GameEngine {
 			System.out.println(ge.scPara.toString());
 
 			System.out.println("*****Best Choice*****");
-			ge.simulateInfoBasedBest("AskReason");
+			ge.simulateInfoBasedBest("GeneralQuestion");
 			
-			ge = new GameEngine();
-			ge.scPara.setPatientParameter(0.8, 0.8, 0.8, 80.0, 80.0, 80.0, 20.0, 0.2, 0.3);
-			ge.scVar.initVariables();
+//			ge = new GameEngine();
+//			ge.scPara.setPatientParameter(0.8, 0.8, 0.8, 80.0, 80.0, 80.0, 20.0, 0.2, 0.3);
+//			ge.scVar.initVariables();
+//			
+//			System.out.println("*****Worst Choice*****");
+//			ge.simulateInfoBasedWorst("GeneralQuestion");
 			
-			System.out.println("*****Worst Choice*****");
-			ge.simulateInfoBasedWorst("AskReason");
-			
-			ge = new GameEngine();
-			ge.scPara.setPatientParameter(0.8, 0.8, 0.8, 80.0, 80.0, 80.0, 20.0, 0.2, 0.3);
-			ge.scVar.initVariables();
-			System.out.println("*****Random Choice*****");
-			ge.simulateInfoBasedRandom("AskReason");
+//			ge = new GameEngine();
+//			ge.scPara.setPatientParameter(0.8, 0.8, 0.8, 80.0, 80.0, 80.0, 20.0, 0.2, 0.3);
+//			ge.scVar.initVariables();
+//			System.out.println("*****Random Choice*****");
+//			ge.simulateInfoBasedRandom("GeneralQuestion");
 	
 
 			System.out.println("*****end trail 4*****");

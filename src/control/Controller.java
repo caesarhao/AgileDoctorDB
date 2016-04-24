@@ -31,7 +31,7 @@ public class Controller {
 				private Pair ms0ds3p1;
 				private Pair ms0ds3p2;
 		private MicroSequence ms1;
-		// root element
+		// (Category) root element
 			private MedicalInformation ms1mi0;
 				private Pair ms1mi0p1;
 				
@@ -39,27 +39,26 @@ public class Controller {
 					private Pair ms1mi1p1;				
 				private MedicalInformation ms1mi2;
 					private Pair ms1mi2p1;
-				
-				
-		
-				
-				
+					
+		private MicroSequence ms2;					
+			//Special:General Question, no micro-sequence order.
+		    //But here for test convenience we just include QG in ms2
 			
-				
-				
-			//Special:General Question, no micro-sequence order
-			private	FamilyInformation fi1;
-				private Pair fi1p1;
-				private Pair fi1p2;
-			private FamilyInformation fi11;
-				private Pair fi11p1;
-				private Pair fi11p2;
-			private FamilyInformation fi2;
-				private Pair fi2p1;
-				private Pair fi2p2;
+		// (Category) root element
+			private FamilyInformation fi0;
+				private Pair fi0p1;
+				private	FamilyInformation fi1;
+					private Pair fi1p1;
+					private Pair fi1p2;
+				private FamilyInformation fi11;
+					private Pair fi11p1;
+					private Pair fi11p2;
+				private FamilyInformation fi2;
+					private Pair fi2p1;
+					private Pair fi2p2;
 			
 		////////TODO	
-		private MicroSequence ms2;
+		
 		private MicroSequence ms3;
 		
 	public static boolean needFillingDatabase() {
@@ -883,16 +882,71 @@ public class Controller {
 		JpaManager.update(fi2);
 	}	
 	*/
+	private void fillQGFamilyInfo(){
+		//FamilyInfo Root
+		fi0 = new FamilyInformation();
+		fi0.setName("Category_GeneralQuestion");
+		fi0.setAcquiringMethod(APatientInformation.AcquiringMethod.AskedByDoctor);
+		fi0.setImportance(100);
+		fi0.setSuperInformation(null);
+		fi0.persist();
+		ms2.getFamilyInfos().add(fi0);
+		fillFI0Pair();
+		//FamilyInfo 1
+		fillFI1CategorieDog();
+		//FamilyInfo 2
+		fillFI2CategorieGarden();	
+	}
+	
+	private void fillFI0Pair(){
+		fi0p1 = new Pair();
+		fi0p1.setName(fi0.getName()+"P1");
+		fi0p1.persist();
+		
+		fi0.getPairs().add(fi0p1);
+		fi0.update();
+		
+		// Phrases for Pair 1
+		//open question
+		DoctorPhrase fi0p1dpOQ1 = new DoctorPhrase();
+		fi0p1dpOQ1.setName("DoctorAskGeneralQuestion_OQ1");
+		fi0p1dpOQ1.setEffTrust(5.0);
+		fi0p1dpOQ1.setEffDisturbance(0.0);
+		fi0p1dpOQ1.setPrimitiveType(PrimitiveType.OpenQuestion);
+		fi0p1dpOQ1.setPhraseActor(da1);
+		fi0p1dpOQ1.setExpression("Vous faite quoi dans le loisir?");
+		JpaManager.persist(fi0p1dpOQ1);
+		
+		
+		
+		
+		PatientPhrase fi0p1pp1 = new PatientPhrase();
+		fi0p1pp1.setName("PatientAnswerGeneralQuestion_Null1");
+		fi0p1pp1.setAggressiveLevel(AggressiveLevel.Neutral);
+		fi0p1pp1.setClearLevel(ClearLevel.Clear);
+		fi0p1pp1.setLongLevel(LongLevel.Normal);
+		fi0p1pp1.setPrimitiveType(PrimitiveType.Statement);
+		fi0p1pp1.setPhraseActor(pa1);
+		fi0p1pp1.setExpression("Bof, rien d'autre");
+		JpaManager.persist(fi0p1pp1);
+		
+	
+
+		
+		fi0p1.getPossibleDoctorPhrases().add(fi0p1dpOQ1);
+		fi0p1.getPossiblePatientPhrases().add(fi0p1pp1);
 	
 	
+		fi0p1.update();
+	}
 
 	private void fillFI1CategorieDog(){
 		fi1 = new FamilyInformation();
 		fi1.setName("Dog");
-		fi1.setImportance(50);
+		fi1.setImportance(10);
 		fi1.setPriority(20);
 		fi1.setAcquiringMethod(APatientInformation.AcquiringMethod.AskedByDoctor);
-		fi1.setSuperInformation(null);
+		fi1.setSuperInformation(fi0);
 		JpaManager.persist(fi1);
 		ms2.getFamilyInfos().add(fi1);
 		
@@ -986,7 +1040,7 @@ public class Controller {
 		// FamilyInfo FI11 (child of FI1)
 		fi11 = new FamilyInformation();
 		fi11.setName("DogReason");
-		fi11.setImportance(50);
+		fi11.setImportance(25);
 		fi11.setPriority(20);
 		fi11.setAcquiringMethod(APatientInformation.AcquiringMethod.AskedByDoctor);
 		fi11.setSuperInformation(fi1);
@@ -1135,10 +1189,10 @@ public class Controller {
 		// node Garden info FI2
 		fi2 = new FamilyInformation();
 		fi2.setName("Garden");
-		fi2.setImportance(50);
+		fi2.setImportance(80);
 		fi2.setPriority(20);
 		fi2.setAcquiringMethod(APatientInformation.AcquiringMethod.AskedByDoctor);
-		fi2.setSuperInformation(null);
+		fi2.setSuperInformation(fi0);
 		JpaManager.persist(fi2);
 		ms2.getFamilyInfos().add(fi2);
 		//Add Pair1+Pair2
@@ -1237,13 +1291,7 @@ public class Controller {
 		
 	}
 	
-	private void fillQGFamilyInfo(){
-		//FamilyInfo 1
-		fillFI1CategorieDog();
-		//FamilyInfo 2
-		fillFI2CategorieGarden();	
-	}
-	
+
 	// Medical Info
 	private void fillMS1MIConsultReason0(){
 		ms1mi0 = new MedicalInformation();
