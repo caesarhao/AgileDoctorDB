@@ -15,18 +15,18 @@ public class EngineTest {
 	public static void testWithParaSet1(){
 				
 		double[] params = {0.8, 0.8, 0.8, 80.0, 80.0,80.0,20.0, 0.2, 0.3};
-		sessionStatus("RandresultFinal1.csv","RandresultEach1.csv",params);
+		sessionStatus("RandresultFinal1_infobased_Motif.csv","RandresultEach1_infobased_Motif.csv",params);
 	}
 	public static void testWithParaSet2(){
 		double[] params = {0.8, 0.1, 0.1, 80.0, 0.0,0.0,80.0, 0.1, 0.3};
-		sessionStatus("RandresultFinal2.csv","RandresultEach2.csv",params);
+		sessionStatus("RandresultFinal2_infobased_Motif.csv","RandresultEach2_infobased_Motif.csv",params);
 
 		
 		
 	}
 	public static void testWithParaSet3(){
 		double[] params = {0.5, 0.5, 0.5, 50.0, 50,50,50.0, 0.5, 0.5};
-		sessionStatus("RandresultFinal3.csv","RandresultEach3.csv",params);
+		sessionStatus("RandresultFinal3_infobased_Motif.csv","RandresultEach3_infobased_Motif.csv",params);
 		
 	}
 	public static void sessionStatus(String file1, String file2, double[] param){
@@ -60,7 +60,8 @@ public class EngineTest {
 			ge.getScVar().initVariables();
 			//ge.simulateBest();
 			//ge.simulateWorst();
-			ge.simulateRandom();
+			//ge.simulateRandom();
+			ge.simulateInfoBasedRandom("AskReason");
 			try {
 				fWriter1.write(ge.outputPSResult());
 				fWriter2.write(ge.outputCSVresult());

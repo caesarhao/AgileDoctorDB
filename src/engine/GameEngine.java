@@ -1769,20 +1769,20 @@ public class GameEngine {
 			System.out.println(ge.scPara.toString());
 
 			System.out.println("*****Best Choice*****");
-			ge.simulateInfoBasedBest("GeneralQuestion");
+			ge.simulateInfoBasedBest("AskReason");
 			
-//			ge = new GameEngine();
-//			ge.scPara.setPatientParameter(0.8, 0.8, 0.8, 80.0, 80.0, 80.0, 20.0, 0.2, 0.3);
-//			ge.scVar.initVariables();
-//			
-//			System.out.println("*****Worst Choice*****");
-//			ge.simulateInfoBasedWorst("GeneralQuestion");
+			ge = new GameEngine();
+			ge.scPara.setPatientParameter(0.8, 0.8, 0.8, 80.0, 80.0, 80.0, 20.0, 0.2, 0.3);
+			ge.scVar.initVariables();
 			
-//			ge = new GameEngine();
-//			ge.scPara.setPatientParameter(0.8, 0.8, 0.8, 80.0, 80.0, 80.0, 20.0, 0.2, 0.3);
-//			ge.scVar.initVariables();
-//			System.out.println("*****Random Choice*****");
-//			ge.simulateInfoBasedRandom("GeneralQuestion");
+			System.out.println("*****Worst Choice*****");
+			ge.simulateInfoBasedWorst("AskReason");
+			
+			ge = new GameEngine();
+			ge.scPara.setPatientParameter(0.8, 0.8, 0.8, 80.0, 80.0, 80.0, 20.0, 0.2, 0.3);
+			ge.scVar.initVariables();
+			System.out.println("*****Random Choice*****");
+			ge.simulateInfoBasedRandom("AskReason");
 	
 
 			System.out.println("*****end trail 4*****");
