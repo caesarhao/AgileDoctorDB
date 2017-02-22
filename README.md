@@ -4,7 +4,7 @@
 [![Test Coverage](https://codeclimate.com/github/caesarhao/AgileDoctorDB/badges/coverage.svg)](https://codeclimate.com/github/caesarhao/AgileDoctorDB/coverage)
 [![Issue Count](https://codeclimate.com/github/caesarhao/AgileDoctorDB/badges/issue_count.svg)](https://codeclimate.com/github/caesarhao/AgileDoctorDB)
 [![Build Status](https://travis-ci.org/caesarhao/AgileDoctorDB.svg?branch=master)](https://travis-ci.org/caesarhao/AgileDoctorDB)
-
+[![Coverage Status](https://coveralls.io/repos/github/caesarhao/AgileDoctorDB/badge.svg?branch=master)](https://coveralls.io/github/caesarhao/AgileDoctorDB?branch=master)
 AgileDoctor based on Relational Database and Java.
 
 ## Requirement
