@@ -5,6 +5,7 @@
 [![Issue Count](https://codeclimate.com/github/caesarhao/AgileDoctorDB/badges/issue_count.svg)](https://codeclimate.com/github/caesarhao/AgileDoctorDB)
 [![Build Status](https://travis-ci.org/caesarhao/AgileDoctorDB.svg?branch=master)](https://travis-ci.org/caesarhao/AgileDoctorDB)
 [![Coverage Status](https://coveralls.io/repos/github/caesarhao/AgileDoctorDB/badge.svg?branch=master)](https://coveralls.io/github/caesarhao/AgileDoctorDB?branch=master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2b258e3997394e7491d58a217ad90f4e)](https://www.codacy.com/app/caesarhao/AgileDoctorDB?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=caesarhao/AgileDoctorDB&amp;utm_campaign=Badge_Grade)
 
 AgileDoctor based on Relational Database and Java.
 
